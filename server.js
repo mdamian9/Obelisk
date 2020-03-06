@@ -23,14 +23,10 @@ app.use(express.json());
 // ===
 
 // Initialize API routes
+const usersRouter = require('./api/routes/users.router.js');
 
 // Use API routes
-
-app.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'GET /'
-    });
-});
+app.use('/users', usersRouter);
 
 // Start up server
 app.listen(PORT, () => {
