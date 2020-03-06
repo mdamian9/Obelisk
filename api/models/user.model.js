@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -26,7 +26,7 @@ const userSchema = new Schema({
 });
 
 // Execute before each user.save() call
-userSchema.pre('save', callback => {
+UserSchema.pre('save', callback => {
     let user = this;
     // Break out if the password hasn't changed
     if (!user.isModified('password')) return callback();
@@ -41,6 +41,7 @@ userSchema.pre('save', callback => {
     });
 });
 
+// Add method to userSchema to verify user password
 UserSchema.methods.verifyPassword = (password, callback) => {
     bcrypt.compare(password, this.password, (err, isMatch) => {
         if (err) return callback(err);
@@ -48,4 +49,4 @@ UserSchema.methods.verifyPassword = (password, callback) => {
     });
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);
