@@ -11,16 +11,26 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Use CORS middleware / setting CORS
+app.use(cors());
+
 // Use morgan to log all requests to the console
 app.use(morgan('dev'));
 
-// Use middlewares: cors and express body-parser
-app.use(cors());
+// Use express body-parser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Initialize MongoDB URI and connect to database
-// ===
+// Connect to remote MongoDB using MONGODB_URI
+mongoose.connect(
+    process.env.MONGODB_URI,
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+).catch(err => {
+    console.log(err);
+});
+mongoose.connection.once('open', () => {
+    console.log('>>> Connected to MongoDB successfully');
+});
 
 // Initialize API routes
 const usersRouter = require('./api/routes/users.router.js');
