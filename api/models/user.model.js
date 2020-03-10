@@ -27,6 +27,7 @@ const UserSchema = new Schema({
 
 // Execute before each user.save() call
 UserSchema.pre('save', callback => {
+
     let user = this;
     // Break out if the password hasn't changed
     if (!user.isModified('password')) return callback();
