@@ -2,7 +2,7 @@
   "name": "Obelisk",
   "version": "1.0.0",
   "description": "Platform to practice trading cryptocurrencies",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -26,5 +26,6 @@
   "devDependencies": {
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": "https://github.com/mdamian9/Obelisk.git"
 }

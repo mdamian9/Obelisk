@@ -1,15 +1,16 @@
-// Require Express, CORS, Mongoose
+// Require Express, CORS, Mongoose, Morgan, and Path
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-
-// Require dotenv to load environment variables
-require('dotenv').config();
+const path = require('path');
 
 // Initialize app and port
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
+
+// Require dotenv to load environment variables
+require('dotenv').config();
 
 // Use CORS middleware / setting CORS
 app.use(cors());
@@ -37,6 +38,17 @@ const usersRouter = require('./api/routes/users.router.js');
 
 // Use API routes
 app.use('/users', usersRouter);
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+};
+
+// Send every request to the React app
+// Define any API routes before this runs
+app.get('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
 
 // Start up server
 app.listen(PORT, () => {
