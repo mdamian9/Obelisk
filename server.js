@@ -36,7 +36,7 @@ mongoose.connection.once('open', () => {
 
 // Initialize the Epress-JWT middleware
 const isAuthenticated = exjwt({
-    secret: process.env.EXJWT_SECRET
+    secret: process.env.JWT_SECRET
 });
 
 // Initialize API routes
