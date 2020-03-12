@@ -27,23 +27,19 @@ app.use(express.json());
 mongoose.connect(
     process.env.MONGODB_URI,
     { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-).catch(err => {
-    console.log(err);
-});
+).catch(err => { console.log(err); });
 mongoose.connection.once('open', () => {
     console.log('>>> Connected to MongoDB successfully');
 });
 
 // Initialize the Epress-JWT middleware
-const isAuthenticated = exjwt({
-    secret: process.env.JWT_SECRET
-});
+const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
 // Initialize API routes
-const usersRouter = require('./api/routes/users.router.js');
+const indexRouter = require('./api/routes/index.router')
 
 // Use API routes
-app.use('/users', usersRouter);
+app.use('/', indexRouter);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {

@@ -26,7 +26,7 @@ const UserSchema = new Schema({
 });
 
 // Execute before each user.save() call
-UserSchema.pre('save', callback => {
+UserSchema.pre('save', function(callback) {
 
     let user = this;
     // Break out if the password hasn't changed
@@ -43,7 +43,7 @@ UserSchema.pre('save', callback => {
 });
 
 // Add method to userSchema to verify user password
-UserSchema.methods.verifyPassword = (password, callback) => {
+UserSchema.methods.verifyPassword = function(password, callback) {
     bcrypt.compare(password, this.password, (err, isMatch) => {
         if (err) return callback(err);
         callback(null, isMatch);
