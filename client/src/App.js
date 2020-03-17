@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage';
 
-function App() {
+const App = () => {
   return (
     <LandingPage />
   );
-}
+};
 
 export default App;
