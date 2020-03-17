@@ -1,19 +1,19 @@
 import React from 'react';
 import './LandingPage.css';
 import { Container, Row, Col } from 'reactstrap';
-import '../LandingNavbar/LandingNavbar';
 import LandingNavbar from '../LandingNavbar/LandingNavbar';
 
 const LandingPage = () => {
     return (
-        <Container>
+        <div>
             <LandingNavbar />
-            <Row>
-                <Col className='text-center'>
-                    This is the LandingPage
-                </Col>
-            </Row>
-        </Container>
+            <Container>
+                <Row>
+                    <Col className='text-center'>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 };
 
