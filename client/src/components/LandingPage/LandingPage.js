@@ -9,7 +9,7 @@ const LandingPage = () => {
     return (
         <div>
             <LandingNavbar />
-            <div id='remaining-div'>
+            <div className='full-r-div'>
                 <Container>
                     <Row>
                         <Col className='text-center'>
@@ -22,7 +22,7 @@ const LandingPage = () => {
                                     Welcome to obelisk.trade, where you can practice trading highly volatile cryptocurrencies without
                                     risking real capital.
                                 </h3>
-                                <br />
+                                <hr />
                                 <h5>
                                     Log in above or create an account below!
                                 </h5>

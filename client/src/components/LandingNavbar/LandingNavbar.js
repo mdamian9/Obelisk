@@ -14,11 +14,9 @@ class LandingNavbar extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // Extract email and password from event.target
-        const { email, password } = event.target;
-        console.log(`email: ${email.value}, password: ${password.value}`);
+        console.log(this.state);
         // Clear form fields
-        document.getElementById('login-form').reset();
+        event.target.reset();
         // Reset state
         this.setState({
             email: '',
@@ -35,10 +33,10 @@ class LandingNavbar extends Component {
                 <Nav className='ml-auto' navbar>
                     <Form inline id="login-form" onSubmit={this.handleFormSubmit}>
                         <FormGroup className='mb-2 mr-sm-2 mb-sm-0'>
-                            <Label for='login-email' className='mr-sm-2'>Email:</Label>
-                            <Input type="email"
-                                name="email" id="login-email"
-                                placeholder="Enter your email"
+                            <Label for='login-username' className='mr-sm-2'>Username:</Label>
+                            <Input type="text"
+                                name="username" id="login-username"
+                                placeholder="Enter your username"
                                 onChange={this.handleChange}
                             />
                         </FormGroup>
