@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reacstrap';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class SignupForm extends Component {
 
     handleChange = event => {
         // Extract name & value from event target and set to state
         const { name, value } = event.target;
-        this.state({
+        this.setState({
             [name]: value
         });
     };
@@ -14,10 +14,11 @@ class SignupForm extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         // Create user in the backend through /signup route
-        axios.post('/signup', this.state).then(res => {
-            console.log(res.data.message);
-        });
+        // axios.post('/signup', this.state).then(res => {
+        //     console.log(res.data.message);
+        // });
         // Clear form fields
+        console.log(this.state);
         event.target.reset();
         // Reset state
         this.setState({

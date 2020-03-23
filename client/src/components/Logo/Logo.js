@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Logo = () => {
+const Logo = ({ width, height }) => {
     return (
-        <div style={{ display: 'flex' }}>
-            <img src='obelisk_01.png' alt='logo' width='30px' height='30px' /><div><b>Obelisk</b></div>
-        </div>
+        <img src='obelisk_01.png' alt='logo' width={width} height={height} />
     );
 };
 
