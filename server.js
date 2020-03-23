@@ -2,9 +2,9 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const exjwt = require('express-jwt');
 const morgan = require('morgan');
 const path = require('path');
-const exjwt = require('express-jwt');
 
 // Require dotenv to load environment variables
 require('dotenv').config();
@@ -49,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 };
 
 // Use Express-JWT middleware
+/* *** */
 app.get('/', isAuthenticated, (req, res) => {
     console.log('You are authenticated');
     res.send('You are authenticated'); // Sending some response when authenticated
