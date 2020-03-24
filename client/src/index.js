@@ -5,11 +5,13 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import SignupPage from './components/SignupPage/SignupPage';
 import LoginPage from './components/LoginPage/LoginPage';
 
 ReactDOM.render(
     <Router>
         <Route exact path='/' component={App} />
+        <Route exact path='/signup' component={SignupPage} />
         <Route exact path='/login' component={LoginPage} />
     </Router>
     , document.getElementById('root')
