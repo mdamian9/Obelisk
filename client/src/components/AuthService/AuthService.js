@@ -25,6 +25,36 @@ class AuthService {
         });
     };
 
+    // Decode token to get profile
+    getProfile = () => {
+        return decode(this.getToken());
+    };
+
+    // Checks if token is expired
+    isTokenExpired(token) {
+        try {
+            const decoded = decode(token);
+            if (decoded.exp < Date.now() / 1000) {
+                return true;
+            } else
+                return false;
+        } catch (err) {
+            return false;
+        };
+    };
+
+    // Checks if there is a saved token and it's still valid
+    loggedIn() {
+        const token = this.getToken();
+        return !!token && !this.isTokenExpired(token) // handwaiving here
+    };
+
+    // Clear user token and profile data from localStorage
+    logout() {
+        axios.defaults.headers.common['Authorization'] = null;
+        localStorage.removeItem('id_token');
+    };
+
 };
 
 export default AuthService;
