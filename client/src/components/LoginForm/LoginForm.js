@@ -12,7 +12,7 @@ class LoginForm extends Component {
     };
 
     // Do not stay on log in page if already logged in
-    componentWillMount() {
+    componentWillMount = () => {
         if (this.Auth.loggedIn()) {
             this.props.history.replace('/');
         };
