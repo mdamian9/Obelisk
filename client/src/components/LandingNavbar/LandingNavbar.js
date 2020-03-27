@@ -14,12 +14,13 @@ class LandingNavbar extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // Log in the user and redirect them to the user home page
+        this.props.handleLogin(this.state.username, this.state.password);
         // Clear form fields
         event.target.reset();
         // Reset state
         this.setState({
-            email: '',
+            username: '',
             password: ''
         });
     };

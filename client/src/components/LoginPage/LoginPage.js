@@ -9,24 +9,24 @@ class LoginPage extends Component {
 
     constructor() {
         super();
-        this.handleLogin = this.handleLogin.bind(this);
         this.Auth = new AuthService();
-    }
+        this.handleLogin = this.handleLogin.bind(this);
+    };
 
-    // Do not stay on log in page if already logged in
+    // Do not stay on login page if already logged in
     componentWillMount = () => {
         if (this.Auth.loggedIn()) {
             this.props.history.replace('/home');
         };
     };
 
+    // Log in the user and redirect them to the user home page
     handleLogin = (username, password) => {
-        // Once the user is logged in, redirect them to their user home page
         this.Auth.login(username, password).then(() => {
             this.props.history.replace('/home');
         }).catch(err => {
             console.log(err);
-            // alert(err.response.data.message);
+            alert(err.response.data.message);
         });
     };
 

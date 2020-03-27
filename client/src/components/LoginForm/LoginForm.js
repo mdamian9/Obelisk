@@ -13,7 +13,7 @@ class LoginForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // Once the user is logged in, redirect them to their user home page
+        // Log in the user and redirect them to the user home page
         this.props.handleLogin(this.state.username, this.state.password);
         // Clear form fields
         event.target.reset();
