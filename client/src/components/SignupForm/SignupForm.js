@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import axios from 'axios';
 
 class SignupForm extends Component {
 
@@ -14,9 +15,9 @@ class SignupForm extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         // Create user in the backend through /signup route
-        // axios.post('/signup', this.state).then(res => {
-        //     console.log(res.data.message);
-        // });
+        axios.post('/signup', this.state).then(res => {
+            console.log(res.data.message);
+        });
         // Clear form fields
         console.log(this.state);
         event.target.reset();

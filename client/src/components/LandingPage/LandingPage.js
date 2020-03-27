@@ -6,6 +6,7 @@ import SignupModal from '../SignupModal/SignupModal';
 import Logo from '../Logo/Logo';
 
 const LandingPage = () => {
+
     return (
         <div>
             <LandingNavbar />

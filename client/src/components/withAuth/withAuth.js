@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../AuthService/AuthService';
 
-withAuth = (AuthComponent) => {
+const withAuth = (AuthComponent) => {
 
     const Auth = new AuthService();
 
@@ -18,7 +18,7 @@ withAuth = (AuthComponent) => {
         may set it to our state. If we failed to decode it so we will redirect to login page. */
         componentWillMount = () => {
             if (!Auth.loggedIn()) {
-                this.props.history.replace('/signup');
+                this.props.history.replace('/login');
             } else {
                 try {
                     const profile = Auth.getProfile();
@@ -27,7 +27,7 @@ withAuth = (AuthComponent) => {
                     });
                 } catch (err) {
                     Auth.logout();
-                    this.props.history.replace('/signup');
+                    this.props.history.replace('/login');
                 };
             };
         };
