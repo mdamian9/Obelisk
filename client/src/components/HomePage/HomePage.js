@@ -4,6 +4,7 @@ import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import './HomePage.css';
+
 const Auth = new AuthService();
 
 class HomePage extends Component {
@@ -50,7 +51,7 @@ class HomePage extends Component {
                                 <hr />
                                 <Row>
                                     <Col>
-                                        <Button color='light'>Find % Change</Button>
+                                        <Button color='light' href='/find-percent-change'>Find % Change</Button>
                                     </Col>
                                     <Col>
                                         <Button color='dark'>Get Target Price</Button>

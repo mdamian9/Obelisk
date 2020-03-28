@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import SignupPage from './components/SignupPage/SignupPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
+import FindPercentChangePage from './components/FindPercentChangePage/FindPercentChangePage';
 
 // if (localStorage.getItem('id_token')) {
 //     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route exact path='/signup' component={SignupPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/home' component={HomePage} />
+        <Route exact path='/find-percent-change' component={FindPercentChangePage} />
     </Router>
     , document.getElementById('root')
 );
