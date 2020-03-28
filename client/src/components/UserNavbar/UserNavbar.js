@@ -95,7 +95,7 @@ class UserNavbar extends Component {
                                     My Account
                                 </DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem href='/'>
+                                <DropdownItem onClick={this.props.handleLogout}>
                                     Log Out
                                 </DropdownItem>
                             </DropdownMenu>
