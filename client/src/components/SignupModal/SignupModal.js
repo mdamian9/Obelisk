@@ -25,7 +25,7 @@ class SignupModal extends Component {
                 <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader toggle={this.toggleModal}>Create Account</ModalHeader>
                     <ModalBody>
-                        <SignupForm />
+                        <SignupForm history={this.props.history} />
                     </ModalBody>
                     <ModalFooter>
                         <div className="text-center">

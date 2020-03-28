@@ -17,9 +17,14 @@ class SignupForm extends Component {
         // Create user in the backend through /signup route
         axios.post('/signup', this.state).then(res => {
             console.log(res.data.message);
+            alert(res.data.message);
+            // Redirect user to login page after they created their account
+            this.props.history.replace('/login');
+        }).catch(err => {
+            console.log(err);
+            alert(err);
         });
         // Clear form fields
-        console.log(this.state);
         event.target.reset();
         // Reset state
         this.setState({

@@ -25,13 +25,12 @@ class LoginPage extends Component {
         this.Auth.login(username, password).then(() => {
             this.props.history.replace('/home');
         }).catch(err => {
-            console.log(err);
+            console.log(err.response);
             alert(err.response.data.message);
         });
     };
 
     render = () => {
-
         return (
             <div>
                 <LogoNavbar />
@@ -54,7 +53,8 @@ class LoginPage extends Component {
                 </div >
             </div>
         );
-    }
+    };
+    
 };
 
 export default LoginPage;

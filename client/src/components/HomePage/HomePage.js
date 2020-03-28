@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
+import UserNavbar from '../UserNavbar/UserNavbar';
 const Auth = new AuthService();
 
 class HomePage extends Component {
@@ -15,6 +16,7 @@ class HomePage extends Component {
         console.log(this.props);
         return (
             <div>
+                <UserNavbar />
                 <div>
                     <h2>Welcome {this.props.user.username}</h2>
                 </div>

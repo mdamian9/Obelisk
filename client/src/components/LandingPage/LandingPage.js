@@ -27,7 +27,7 @@ class LandingPage extends Component {
             this.props.history.replace('/home');
         }).catch(err => {
             console.log(err);
-            // alert(err.response.data.message);
+            alert(err.response.data.message);
         });
     };
 
@@ -54,7 +54,7 @@ class LandingPage extends Component {
                                         Log in above or create an account below!
                                     </h5>
                                 </div>
-                                <SignupModal />
+                                <SignupModal history={this.props.history} />
                             </Col>
                         </Row>
                     </Container>
