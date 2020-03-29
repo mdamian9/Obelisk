@@ -32,7 +32,6 @@ class LandingPage extends Component {
     };
 
     render = () => {
-        console.log(this.props);
         return (
             <div>
                 <LandingNavbar handleLogin={this.handleLogin} />
@@ -41,15 +40,15 @@ class LandingPage extends Component {
                         <Row>
                             <Col className='text-center'>
                                 <div className='d-flex align-items-center justify-content-center' style={{ color: 'black' }}>
-                                    <Logo width='100px' height='100px' /><h4>Obelisk.Trade</h4>
+                                    <Logo width='100px' height='100px' /><h3>Obelisk.Trade</h3>
                                 </div>
-                                <hr />
+                                <hr className='ln-white' />
                                 <div style={{ color: 'white' }}>
                                     <h3>
                                         Welcome to obelisk.trade, where you can practice trading highly volatile cryptocurrencies without
                                         risking real capital.
                                     </h3>
-                                    <hr />
+                                    <hr className='ln-white' />
                                     <h5>
                                         Log in above or create an account below!
                                     </h5>
