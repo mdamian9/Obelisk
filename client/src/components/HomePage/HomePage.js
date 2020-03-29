@@ -3,7 +3,6 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
-import './HomePage.css';
 
 const Auth = new AuthService();
 
@@ -20,7 +19,7 @@ class HomePage extends Component {
                 <UserNavbar handleLogout={this.handleLogout} />
                 <br />
                 <div>
-                    <Container fluid='lg' >
+                    <Container fluid='lg text-white' >
                         <Row>
                             <Col className='section-solid-white text-center' xs={6} style={{ marginLeft: '20px' }}>
                                 <Row>
@@ -30,7 +29,7 @@ class HomePage extends Component {
                                         </h2>
                                     </Col>
                                 </Row>
-                                <hr />
+                                <hr className='ln-white' />
                                 <Row>
                                     <Col>
                                         <Button color='success'>New Entry Trade</Button>
@@ -48,7 +47,7 @@ class HomePage extends Component {
                                         <Button color='secondary'>View Exit Trades</Button>
                                     </Col>
                                 </Row>
-                                <hr />
+                                <hr className='ln-white' />
                                 <Row>
                                     <Col>
                                         <Button color='light' href='/find-percent-change'>Find % Change</Button>
