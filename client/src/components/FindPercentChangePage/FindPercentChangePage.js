@@ -25,19 +25,18 @@ class FindPercentChangePage extends Component {
         });
     };
 
+    // Calculate percent change and set to state, reset form fields
     handleFormSubmit = event => {
         event.preventDefault();
-        const { tradingPair, entryPrice, exitPrice } = event.target;
+        const { entryPrice, exitPrice } = event.target;
         const percentChange = ((parseFloat(exitPrice.value) - parseFloat(entryPrice.value)) / parseFloat(entryPrice.value)) * 100;
         this.setState({
-            tradingPair: tradingPair.value,
-            entryPrice: entryPrice.value,
-            exitPrice: exitPrice.value,
-            percentChange: percentChange.toFixed(2).toString()
+            percentChange: percentChange.toFixed(2)
         });
         event.target.reset();
     };
 
+    // Reset state (calculation display) and all form fields. Basically start with a clean calculation
     resetCalculation = () => {
         this.setState({
             tradingPair: '',

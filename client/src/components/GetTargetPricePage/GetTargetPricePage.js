@@ -11,7 +11,8 @@ class GetTargetPricePage extends Component {
         this.state = {
             tradingPair: '',
             entryPrice: '0.0',
-            percentChange: ''
+            percentChange: '0.0',
+            targetPrice: '0.0'
         };
     };
 
@@ -23,7 +24,18 @@ class GetTargetPricePage extends Component {
     };
 
     handleFormSubmit = event => {
-        
+        event.preventDefault();
+    };
+
+    // Reset state (calculation display) and all form fields. Basically start with a clean calculation
+    resetCalculation = () => {
+        this.setState({
+            tradingPair: '',
+            entryPrice: '0.0',
+            percentChange: '0.0',
+            targetPrice: '0.0'
+        });
+        document.getElementById('calc-form').reset();
     };
 
     render = () => {
@@ -36,10 +48,10 @@ class GetTargetPricePage extends Component {
                         <Row>
                             <Col xs={7} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
-                                    Get Target Price
+                                    Get Target Exit Price
                                 </h3>
                                 <hr className='ln-white' />
-                                <Form onSubmit={this.handleFormSubmit}>
+                                <Form id='calc-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
                                         <Label for='trading-pair'>Trading Pair:</Label>
                                         <Input type='select' name='tradingPair' id='trading-pair'
@@ -58,10 +70,41 @@ class GetTargetPricePage extends Component {
                                             onChange={this.handleChange} required />
                                     </FormGroup>
                                     <FormGroup>
-
+                                        <Label for='percent-change'>Percent change desired:</Label>
+                                        <Input type='text' name='percentChange' id='percent-change'
+                                            placeholder='Enter percent change desired' onChange={this.handleChange} required />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>
+                            </Col>
+                        </Row>
+                        <br />
+                        <Row>
+                            <Col xs={7} className='section-solid-white text-white mx-auto'>
+                                <Row>
+                                    <Col>
+                                        <h3 className='text-center'>
+                                            Target Price Calculation
+                                        </h3>
+                                    </Col>
+                                </Row>
+                                <hr className='ln-white' />
+                                <Row className='align-items-center text-center'>
+                                    <Col>
+                                        Entry price: {this.state.entryPrice} {this.state.tradingPair}
+                                        <br />
+                                        Percent change desired: {this.state.percentChange}%
+                                    </Col>
+                                    <Col>
+                                        Target exit price: {this.state.targetPrice} {this.state.tradingPair}
+                                    </Col>
+                                </Row>
+                                <hr className='ln-white' />
+                                <Row>
+                                    <Col>
+                                        <Button onClick={this.resetCalculation}>Reset Calculation</Button>
+                                    </Col>
+                                </Row>
                             </Col>
                         </Row>
                     </Container>
