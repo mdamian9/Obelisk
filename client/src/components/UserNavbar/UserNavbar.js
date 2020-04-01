@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Logo from '../Logo/Logo';
 import {
     Collapse,
     Navbar,
@@ -13,6 +12,10 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
+import AuthService from '../AuthService/AuthService';
+import Logo from '../Logo/Logo';
+
+const Auth = new AuthService();
 
 class UserNavbar extends Component {
 
@@ -27,6 +30,11 @@ class UserNavbar extends Component {
         this.setState(prevState => ({
             collapseOpen: !prevState.collapseOpen
         }));
+    };
+
+    handleLogout = () => {
+        Auth.logout();
+        this.props.history.replace('/');
     };
 
     render = () => {
@@ -95,7 +103,7 @@ class UserNavbar extends Component {
                                     My Account
                                 </DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem onClick={this.props.handleLogout}>
+                                <DropdownItem onClick={this.handleLogout}>
                                     Log Out
                                 </DropdownItem>
                             </DropdownMenu>

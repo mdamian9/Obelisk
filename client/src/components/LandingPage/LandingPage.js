@@ -10,7 +10,6 @@ class LandingPage extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
-        this.handleLogin = this.handleLogin.bind(this);
     };
 
     // Do not stay on landing page if already logged in
@@ -20,20 +19,10 @@ class LandingPage extends Component {
         };
     };
 
-    // Log in the user and redirect them to the user home page
-    handleLogin = (username, password) => {
-        this.Auth.login(username, password).then(() => {
-            this.props.history.replace('/home');
-        }).catch(err => {
-            console.log(err);
-            alert(err.response.data.message);
-        });
-    };
-
     render = () => {
         return (
             <div>
-                <LandingNavbar handleLogin={this.handleLogin} />
+                <LandingNavbar history={this.props.history} />
                 <div className='full-r-div'>
                     <Container>
                         <Row>

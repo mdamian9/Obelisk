@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Navbar, NavbarBrand, Nav } from 'reactstrap';
+import AuthService from '../AuthService/AuthService';
 import Logo from '../Logo/Logo';
 
 class LandingNavbar extends Component {
 
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+    };
+
+    // Handles the change of a form field
     handleChange = event => {
         // Extract name & value from event.target and set to state
         const { name, value } = event.target;
@@ -12,10 +19,20 @@ class LandingNavbar extends Component {
         });
     };
 
+    // Log in the user and redirect them to the user home page
+    handleLogin = (username, password) => {
+        this.Auth.login(username, password).then(() => {
+            this.props.history.replace('/home');
+        }).catch(err => {
+            console.log(err);
+            alert(err.response.data.message);
+        });
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         // Log in the user and redirect them to the user home page
-        this.props.handleLogin(this.state.username, this.state.password);
+        this.handleLogin(this.state.username, this.state.password);
         // Clear form fields
         event.target.reset();
         // Reset state

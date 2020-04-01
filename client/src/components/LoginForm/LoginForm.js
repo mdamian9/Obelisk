@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import AuthService from '../AuthService/AuthService';
 
 class LoginForm extends Component {
+
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+    };
 
     handleChange = event => {
         // Extract name & value from event target and set to state
@@ -11,10 +17,20 @@ class LoginForm extends Component {
         });
     };
 
+    // Log in the user and redirect them to the user home page
+    handleLogin = (username, password) => {
+        this.Auth.login(username, password).then(() => {
+            this.props.history.replace('/home');
+        }).catch(err => {
+            console.log(err.response);
+            alert(err.response.data.message);
+        });
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         // Log in the user and redirect them to the user home page
-        this.props.handleLogin(this.state.username, this.state.password);
+        this.handleLogin(this.state.username, this.state.password);
         // Clear form fields
         event.target.reset();
         // Reset state

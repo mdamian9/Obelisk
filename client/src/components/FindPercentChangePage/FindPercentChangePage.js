@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import './FindPercentChangePage.css';
-
-const Auth = new AuthService();
 
 class FindPercentChangePage extends Component {
 
@@ -19,27 +16,13 @@ class FindPercentChangePage extends Component {
         };
     };
 
-    resetCalculation = () => {
-        this.setState({
-            tradingPair: '',
-            entryPrice: '0.0',
-            exitPrice: '0.0',
-            percentChange: '0.0'
-        });
-        document.getElementById('calc-form').reset();
-    };
-
+    // Handles the change of a form field
     handleChange = event => {
         // Extract name & value from event target and set to state
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
-    };
-
-    handleLogout = () => {
-        Auth.logout();
-        this.props.history.replace('/');
     };
 
     handleFormSubmit = event => {
@@ -55,10 +38,20 @@ class FindPercentChangePage extends Component {
         event.target.reset();
     };
 
+    resetCalculation = () => {
+        this.setState({
+            tradingPair: '',
+            entryPrice: '0.0',
+            exitPrice: '0.0',
+            percentChange: '0.0'
+        });
+        document.getElementById('calc-form').reset();
+    };
+
     render = () => {
         return (
             <div>
-                <UserNavbar handleLogout={this.handleLogout} />
+                <UserNavbar history={this.props.history} />
                 <br />
                 <div>
                     <Container>
