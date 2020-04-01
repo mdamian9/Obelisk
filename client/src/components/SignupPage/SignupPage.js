@@ -29,7 +29,7 @@ class SignupPage extends Component {
                                 <Col>
                                     <h1 className="text-center" style={{ fontSize: '4vh' }}>Create a new account</h1>
                                     <hr />
-                                    <SignupForm />
+                                    <SignupForm history={this.props.history} />
                                     <hr />
                                     <p className="text-center">
                                         Already have an account? Log in <Link to="/login">here</Link>

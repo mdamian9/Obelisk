@@ -15,7 +15,7 @@ const withAuth = (AuthComponent) => {
         };
 
         /* Check for localStorage token to see if logged in. Decode token so that we 
-        may set it to our state. If we failed to decode it so we will redirect to login page. */
+        may set it to our state. If we failed to decode it so we will redirect to login page */
         componentWillMount = () => {
             if (!Auth.loggedIn()) {
                 this.props.history.replace('/login');

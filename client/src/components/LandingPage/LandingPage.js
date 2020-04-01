@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './LandingPage.css';
 import { Container, Row, Col } from 'reactstrap';
 import LandingNavbar from '../LandingNavbar/LandingNavbar';
 import SignupModal from '../SignupModal/SignupModal';

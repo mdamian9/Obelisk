@@ -35,8 +35,8 @@ class UserNavbar extends Component {
                 <NavbarBrand href='/home' className='d-flex align-items-center'>
                     <Logo width='30px' height='30px' /><b>Obelisk</b>
                 </NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
+                <NavbarToggler onClick={this.toggleCollapse} />
+                <Collapse isOpen={this.state.collapseOpen} navbar>
                     <Nav className='ml-auto' navbar>
                         <NavItem>
                             <NavLink href='/home'>Home</NavLink>

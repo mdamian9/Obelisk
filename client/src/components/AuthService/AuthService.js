@@ -4,19 +4,19 @@ import decode from 'jwt-decode';
 class AuthService {
 
     // Save user token to localStorage
-    setToken(idToken) {
+    setToken = idToken => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
         localStorage.setItem('id_token', idToken);
     };
 
     // Retrieves the user token from localStorage
-    getToken() {
+    getToken = () => {
         return localStorage.getItem('id_token');
     };
 
     // Login method: take username and password as parameters
     login = (username, password) => {
-        // Get a token
+        // Get a token using axios post request to /login
         return axios.post('/login', { username: username, password: password }).then(res => {
             // Set the token once the user logs in
             this.setToken(res.data.token);
@@ -31,7 +31,7 @@ class AuthService {
     };
 
     // Checks if token is expired
-    isTokenExpired(token) {
+    isTokenExpired = token => {
         try {
             const decoded = decode(token);
             if (decoded.exp < Date.now() / 1000) {
@@ -44,13 +44,13 @@ class AuthService {
     };
 
     // Checks if there is a saved token and it's still valid
-    loggedIn() {
+    loggedIn = () => {
         const token = this.getToken();
         return !!token && !this.isTokenExpired(token) // handwaiving here
     };
 
     // Clear user token and profile data from localStorage
-    logout() {
+    logout = () => {
         axios.defaults.headers.common['Authorization'] = null;
         localStorage.removeItem('id_token');
     };
