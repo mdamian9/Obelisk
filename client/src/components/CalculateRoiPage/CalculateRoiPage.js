@@ -13,7 +13,7 @@ class CalculateRoiPage extends Component {
             finalDivestment: '0.0',
             totalProfit: '0.0',
             roi_x: '0.0',
-            roi_percent: '0.0' 
+            roi_percent: '0.0'
         };
     };
 
@@ -28,14 +28,50 @@ class CalculateRoiPage extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log(this.state);
     };
 
     render = () => {
         return (
             <div>
                 <UserNavbar history={this.props.history} />
+                <br />
                 <div>
-                    
+                    <Container>
+                        <Row>
+                            <Col xs={7} className='section-solid-white text-white mx-auto'>
+                                <h3 className='text-center'>
+                                    Calculate Return of Investment
+                                </h3>
+                                <hr className='ln-white' />
+                                <Form id='calc-form' onSubmit={this.handleFormSubmit}>
+                                    <FormGroup>
+                                        <Label for='trading-pair'>Trading pair:</Label>
+                                        <Input type='select' name='tradingPair' id='trading-pair'
+                                            defaultValue='-- select trading pair --' onChange={this.handleChange} required>
+                                            <option disabled>-- select trading pair --</option>
+                                            <option>USD</option>
+                                            <option>USDT</option>
+                                            <option>BTC</option>
+                                            <option>ETH</option>
+                                            <option>BNB</option>
+                                        </Input>
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for='initial-investment'>Initial investment:</Label>
+                                        <Input type='text' name='initialInvestment' id='initial-investment'
+                                            placeholder='Enter your initial investment' onChange={this.handleChange} required />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for='final-divestment'>Final divestment:</Label>
+                                        <Input type='text' name='finalDivestment' id='final-divestment'
+                                            placeholder='Enter your final divestment' onChange={this.handleChange} required />
+                                    </FormGroup>
+                                    <Button>Submit</Button>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
             </div>
         );
