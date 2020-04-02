@@ -24,10 +24,10 @@ class HomePage extends Component {
                                 <hr className='ln-white' />
                                 <Row>
                                     <Col>
-                                        <Button color='success'>New Entry Trade</Button>
+                                        <Button color='success' href='/new-entry-trade'>New Entry Trade</Button>
                                     </Col>
                                     <Col>
-                                        <Button color='danger'>New Exit Trade</Button>
+                                        <Button color='danger' href='/new-exit-trade'>New Exit Trade</Button>
                                     </Col>
                                 </Row>
                                 <br />

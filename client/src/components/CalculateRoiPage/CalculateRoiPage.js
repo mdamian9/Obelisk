@@ -29,6 +29,29 @@ class CalculateRoiPage extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         console.log(this.state);
+        const investment = parseFloat(this.state.initialInvestment);
+        const divestment = parseFloat(this.state.finalDivestment);
+        const roi_x = divestment / investment;
+        const roi_percent = ((divestment / investment) - 1) * 100;
+        const totalProfit = divestment - investment;
+        this.setState({
+            roi_x: roi_x.toFixed(2),
+            roi_percent: roi_percent.toFixed(2),
+            totalProfit: totalProfit
+        });
+    };
+
+    // Reset state (calculation display) and all form fields. Basically start with a clean calculation
+    resetCalculation = () => {
+        this.setState({
+            tradingPair: '',
+            initialInvestment: '0.0',
+            finalDivestment: '0.0',
+            roi_x: '0.0',
+            roi_percent: '0.0',
+            totalProfit: '0.0'
+        });
+        document.getElementById('calc-form').reset();
     };
 
     render = () => {
@@ -91,12 +114,12 @@ class CalculateRoiPage extends Component {
                                     <Col>
                                         <Row>
                                             <Col>
-                                                ROI (multiple): {this.state.roi_x}x {this.state.tradingPair}
+                                                ROI (multiple): {this.state.roi_x}x
                                             </Col>
                                         </Row>
                                         <Row>
                                             <Col>
-                                                ROI (percentage): {this.state.roi_percent}% {this.state.tradingPair}
+                                                ROI (percentage): {this.state.roi_percent}%
                                             </Col>
                                         </Row>
                                         <Row>
