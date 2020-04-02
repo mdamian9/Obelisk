@@ -11,9 +11,9 @@ class CalculateRoiPage extends Component {
             tradingPair: '',
             initialInvestment: '0.0',
             finalDivestment: '0.0',
-            totalProfit: '0.0',
             roi_x: '0.0',
-            roi_percent: '0.0'
+            roi_percent: '0.0',
+            totalProfit: '0.0'
         };
     };
 
@@ -71,8 +71,52 @@ class CalculateRoiPage extends Component {
                                 </Form>
                             </Col>
                         </Row>
+                        <br />
+                        <Row>
+                            <Col xs={7} className='section-solid-white text-white mx-auto'>
+                                <Row>
+                                    <Col>
+                                        <h3 className='text-center'>
+                                            Return of Investment Calculation
+                                        </h3>
+                                    </Col>
+                                </Row>
+                                <hr className='ln-white' />
+                                <Row className='align-items-center text-center'>
+                                    <Col>
+                                        Initial investment: {this.state.initialInvestment} {this.state.tradingPair}
+                                        <br />
+                                        Final divestment: {this.state.finalDivestment} {this.state.tradingPair}
+                                    </Col>
+                                    <Col>
+                                        <Row>
+                                            <Col>
+                                                ROI (multiple): {this.state.roi_x}x {this.state.tradingPair}
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                ROI (percentage): {this.state.roi_percent}% {this.state.tradingPair}
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                Total profit: {this.state.totalProfit} {this.state.tradingPair}
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <hr className='ln-white' />
+                                <Row>
+                                    <Col>
+                                        <Button onClick={this.resetCalculation}>Reset Calculation</Button>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
                     </Container>
                 </div>
+                <br />
             </div>
         );
     };
