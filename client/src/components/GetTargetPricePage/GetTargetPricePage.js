@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
-
+import withAuth from '../withAuth/withAuth';
 
 class GetTargetPricePage extends Component {
 
@@ -16,15 +15,31 @@ class GetTargetPricePage extends Component {
         };
     };
 
+    // Handles the change of a form field and sets new state
     handleChange = event => {
+        // Extract name & value from event target and set to state
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
     };
 
+    // Handle target price calculation and set to state, reset form fields
     handleFormSubmit = event => {
         event.preventDefault();
+        const entryPrice = parseFloat(this.state.entryPrice);
+        const percentChange = parseFloat(this.state.percentChange) / 100;
+        let targetPrice = (entryPrice * percentChange) + entryPrice;
+        switch (this.state.tradingPair) {
+            case 'USD': targetPrice = targetPrice.toFixed(4); break;
+            case 'USDT': targetPrice = targetPrice.toFixed(7); break;
+            case 'BTC': case 'ETH': case 'BNB': targetPrice = targetPrice.toFixed(8); break;
+            default: /* Do nothing */ break;
+        };
+        this.setState({
+            targetPrice: parseFloat(targetPrice.toString().trim('0'))
+        });
+        event.target.reset();
     };
 
     // Reset state (calculation display) and all form fields. Basically start with a clean calculation

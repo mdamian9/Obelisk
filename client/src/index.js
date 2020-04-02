@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
 import FindPercentChangePage from './components/FindPercentChangePage/FindPercentChangePage';
 import GetTargetPricePage from './components/GetTargetPricePage/GetTargetPricePage';
+import CalculateRoiPage from './components/CalculateRoiPage/CalculateRoiPage';
 
 // if (localStorage.getItem('id_token')) {
 //     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route exact path='/home' component={HomePage} />
         <Route exact path='/find-percent-change' component={FindPercentChangePage} />
         <Route exact path='/get-target-price' component={GetTargetPricePage} />
+        <Route exact path='/calculate-roi' component={CalculateRoiPage} />
     </Router>
     , document.getElementById('root')
 );

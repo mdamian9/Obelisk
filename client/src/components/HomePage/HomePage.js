@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import withAuth from '../withAuth/withAuth';
 
 class HomePage extends Component {
 
@@ -48,7 +48,7 @@ class HomePage extends Component {
                                         <Button color='dark' href='/get-target-price'>Get Target Price</Button>
                                     </Col>
                                     <Col>
-                                        <Button color='warning'>Calculate ROI</Button>
+                                        <Button color='warning' href='calculate-roi'>Calculate ROI</Button>
                                     </Col>
                                 </Row>
                             </Col>

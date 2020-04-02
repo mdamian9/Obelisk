@@ -10,7 +10,7 @@ class LandingNavbar extends Component {
         this.Auth = new AuthService();
     };
 
-    // Handles the change of a form field
+    // Handles the change of a form field and sets new state
     handleChange = event => {
         // Extract name & value from event.target and set to state
         const { name, value } = event.target;

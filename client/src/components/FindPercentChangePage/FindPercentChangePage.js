@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
-import './FindPercentChangePage.css';
+import withAuth from '../withAuth/withAuth';
 
 class FindPercentChangePage extends Component {
 
@@ -16,7 +15,7 @@ class FindPercentChangePage extends Component {
         };
     };
 
-    // Handles the change of a form field
+    // Handles the change of a form field and sets new state
     handleChange = event => {
         // Extract name & value from event target and set to state
         const { name, value } = event.target;
@@ -25,7 +24,7 @@ class FindPercentChangePage extends Component {
         });
     };
 
-    // Calculate percent change and set to state, reset form fields
+    // Handle percent change calculation and set to state, reset form fields
     handleFormSubmit = event => {
         event.preventDefault();
         const { entryPrice, exitPrice } = event.target;
