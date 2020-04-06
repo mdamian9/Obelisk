@@ -38,10 +38,12 @@ const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 // Initialize API routes
 const indexRouter = require('./api/routes/index.router');
 const userRouter = require('./api/routes/user.router');
+const entryTradeRouter = require('./api/routes/entryTrades.router');
 
 // Use API routes
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/entryTrades', entryTradeRouter);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {

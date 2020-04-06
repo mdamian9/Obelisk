@@ -19,6 +19,12 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    entryTrades: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'EntryTrade'
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now
@@ -26,7 +32,7 @@ const UserSchema = new Schema({
 });
 
 // Execute before each user.save() call
-UserSchema.pre('save', function(callback) {
+UserSchema.pre('save', function (callback) {
     let user = this;
     // Break out if the password hasn't changed
     if (!user.isModified('password')) return callback();
@@ -42,7 +48,7 @@ UserSchema.pre('save', function(callback) {
 });
 
 // Add method to userSchema to verify user password
-UserSchema.methods.verifyPassword = function(password, callback) {
+UserSchema.methods.verifyPassword = function (password, callback) {
     bcrypt.compare(password, this.password, (err, isMatch) => {
         if (err) return callback(err);
         callback(null, isMatch);
