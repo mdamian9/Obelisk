@@ -38,12 +38,12 @@ const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 // Initialize API routes
 const indexRouter = require('./api/routes/index.router');
 const userRouter = require('./api/routes/user.router');
-const entryTradeRouter = require('./api/routes/entryTrades.router');
+const entryTradeRouter = require('./api/routes/entryTrade.router');
 
 // Use API routes
 app.use('/', indexRouter);
 app.use('/user', userRouter);
-app.use('/entryTrades', entryTradeRouter);
+app.use('/entryTrade', entryTradeRouter);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
@@ -52,10 +52,10 @@ if (process.env.NODE_ENV === 'production') {
 
 // Use Express-JWT middleware
 /* *** */
-app.get('/', isAuthenticated, (req, res) => {
-    console.log('You are authenticated');
-    res.send('You are authenticated'); // Sending some response when authenticated
-});
+// app.get('/', isAuthenticated, (req, res) => {
+//     console.log('You are authenticated');
+//     res.send('You are authenticated'); // Sending some response when authenticated
+// });
 
 // Send every request to the React app
 // Define any API routes before this runs

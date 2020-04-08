@@ -5,6 +5,13 @@ import withAuth from '../withAuth/withAuth';
 
 class NewEntryTradePage extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            userId: this.props.user.id
+        };
+    };
+
     // Handles the change of a form field
     handleChange = event => {
         // Extract name & value from event.target and set to state
@@ -21,6 +28,7 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
+
         return (
             <div>
                 <UserNavbar history={this.props.history} />
@@ -48,8 +56,9 @@ class NewEntryTradePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>
-                                        <Input type='text' name='totalInvestment' id='total-investment'
-                                            placeholder='Enter your total investment' onChange={this.handleChange} required />
+                                        <Input type='number' name='totalInvestment' id='total-investment'
+                                            placeholder='0.00000000' step='0.00000001' min='0.00000001'
+                                            onChange={this.handleChange} required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
@@ -58,8 +67,9 @@ class NewEntryTradePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-price'>Coin price:</Label>
-                                        <Input type='text' name='coinPrice' id='coin-price'
-                                            placeholder='Enter coin buy price' onChange={this.handleChange} required />
+                                        <Input type='number' name='coinPrice' id='coin-price'
+                                            placeholder='0.00000000' step='0.00000001' min='0.00000001'
+                                            onChange={this.handleChange} required />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>

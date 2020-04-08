@@ -28,7 +28,7 @@ class FindPercentChangePage extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const { entryPrice, exitPrice } = event.target;
-        const percentChange = ((parseFloat(exitPrice.value) - parseFloat(entryPrice.value)) / parseFloat(entryPrice.value)) * 100;
+        const percentChange = (exitPrice.value - entryPrice.value) / entryPrice.value * 100;
         this.setState({
             percentChange: percentChange.toFixed(2)
         });
@@ -74,13 +74,13 @@ class FindPercentChangePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Entry price:</Label>
-                                        <Input type='text' name='entryPrice' id='entry-price' placeholder='Enter entry price'
-                                            onChange={this.handleChange} required />
+                                        <Input type='number' name='entryPrice' id='entry-price' placeholder='0.00000000'
+                                            step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='exit-price'>Exit price:</Label>
-                                        <Input type='text' name='exitPrice' id='exit-price' placeholder='Enter exit price'
-                                            onChange={this.handleChange} required />
+                                        <Input type='number' name='exitPrice' id='exit-price' placeholder='0.00000000'
+                                            step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>
