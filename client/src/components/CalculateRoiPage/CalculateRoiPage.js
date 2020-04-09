@@ -8,7 +8,7 @@ class CalculateRoiPage extends Component {
     constructor() {
         super();
         this.state = {
-            tradingPair: '',
+            currency: '',
             initialInvestment: '0.0',
             finalDivestment: '0.0',
             roi_x: '0.0',
@@ -44,7 +44,7 @@ class CalculateRoiPage extends Component {
     // Reset state (calculation display) and all form fields. Basically start with a clean calculation
     resetCalculation = () => {
         this.setState({
-            tradingPair: '',
+            currency: '',
             initialInvestment: '0.0',
             finalDivestment: '0.0',
             roi_x: '0.0',
@@ -69,10 +69,10 @@ class CalculateRoiPage extends Component {
                                 <hr className='ln-white' />
                                 <Form id='calc-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
-                                        <Label for='trading-pair'>Trading pair:</Label>
-                                        <Input type='select' name='tradingPair' id='trading-pair'
-                                            defaultValue='-- select trading pair --' onChange={this.handleChange} required>
-                                            <option disabled>-- select trading pair --</option>
+                                        <Label for='currency'>Select currency:</Label>
+                                        <Input type='select' name='currency' id='currency'
+                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
+                                            <option disabled>-- select currency --</option>
                                             <option>USD</option>
                                             <option>USDT</option>
                                             <option>BTC</option>
@@ -82,13 +82,15 @@ class CalculateRoiPage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='initial-investment'>Initial investment:</Label>
-                                        <Input type='text' name='initialInvestment' id='initial-investment'
-                                            placeholder='Enter your initial investment' onChange={this.handleChange} required />
+                                        <Input type='number' name='initialInvestment' id='initial-investment'
+                                            placeholder='0.00000000' min='0.00000001' step='0.00000001'
+                                            onChange={this.handleChange} required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='final-divestment'>Final divestment:</Label>
-                                        <Input type='text' name='finalDivestment' id='final-divestment'
-                                            placeholder='Enter your final divestment' onChange={this.handleChange} required />
+                                        <Input type='number' name='finalDivestment' id='final-divestment'
+                                            placeholder='0.00000000' min='0.00000001' step='0.00000001'
+                                            onChange={this.handleChange} required />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>
@@ -107,9 +109,9 @@ class CalculateRoiPage extends Component {
                                 <hr className='ln-white' />
                                 <Row className='align-items-center text-center'>
                                     <Col>
-                                        Initial investment: {this.state.initialInvestment} {this.state.tradingPair}
+                                        Initial investment: {this.state.initialInvestment} {this.state.currency}
                                         <br />
-                                        Final divestment: {this.state.finalDivestment} {this.state.tradingPair}
+                                        Final divestment: {this.state.finalDivestment} {this.state.currency}
                                     </Col>
                                     <Col>
                                         <Row>
@@ -124,7 +126,7 @@ class CalculateRoiPage extends Component {
                                         </Row>
                                         <Row>
                                             <Col>
-                                                Total profit: {this.state.totalProfit} {this.state.tradingPair}
+                                                Total profit: {this.state.totalProfit} {this.state.currency}
                                             </Col>
                                         </Row>
                                     </Col>

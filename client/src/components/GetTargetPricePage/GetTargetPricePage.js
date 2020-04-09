@@ -8,7 +8,7 @@ class GetTargetPricePage extends Component {
     constructor() {
         super();
         this.state = {
-            tradingPair: '',
+            currency: '',
             entryPrice: '0.0',
             percentChange: '0.0',
             targetPrice: '0.0'
@@ -29,8 +29,8 @@ class GetTargetPricePage extends Component {
         event.preventDefault();
         const entryPrice = parseFloat(this.state.entryPrice);
         const percentChange = parseFloat(this.state.percentChange) / 100;
-        let targetPrice = (entryPrice * percentChange) + entryPrice;
-        switch (this.state.tradingPair) {
+        let targetPrice = entryPrice * percentChange + entryPrice;
+        switch (this.state.currency) {
             case 'USD': targetPrice = targetPrice.toFixed(4); break;
             case 'USDT': targetPrice = targetPrice.toFixed(7); break;
             case 'BTC': case 'ETH': case 'BNB': targetPrice = targetPrice.toFixed(8); break;
@@ -45,7 +45,7 @@ class GetTargetPricePage extends Component {
     // Reset state (calculation display) and all form fields. Basically start with a clean calculation
     resetCalculation = () => {
         this.setState({
-            tradingPair: '',
+            currency: '',
             entryPrice: '0.0',
             percentChange: '0.0',
             targetPrice: '0.0'
@@ -68,10 +68,10 @@ class GetTargetPricePage extends Component {
                                 <hr className='ln-white' />
                                 <Form id='calc-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
-                                        <Label for='trading-pair'>Trading Pair:</Label>
-                                        <Input type='select' name='tradingPair' id='trading-pair'
-                                            defaultValue='-- select trading pair --' onChange={this.handleChange} required>
-                                            <option disabled>-- select trading pair --</option>
+                                        <Label for='currency'>Select currency:</Label>
+                                        <Input type='select' name='currency' id='currency'
+                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
+                                            <option disabled>-- select currency --</option>
                                             <option>USD</option>
                                             <option>USDT</option>
                                             <option>BTC</option>
@@ -81,13 +81,13 @@ class GetTargetPricePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Entry price:</Label>
-                                        <Input type='text' name='entryPrice' id='entry-price' placeholder='Enter entry price'
-                                            onChange={this.handleChange} required />
+                                        <Input type='number' name='entryPrice' id='entry-price' placeholder='0.00000000'
+                                            step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='percent-change'>Percent change desired:</Label>
-                                        <Input type='text' name='percentChange' id='percent-change'
-                                            placeholder='Enter percent change desired' onChange={this.handleChange} required />
+                                        <Input type='number' name='percentChange' id='percent-change' placeholder='00.00'
+                                            step='0.01' min='0.01' onChange={this.handleChange} required />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>
@@ -106,12 +106,12 @@ class GetTargetPricePage extends Component {
                                 <hr className='ln-white' />
                                 <Row className='align-items-center text-center'>
                                     <Col>
-                                        Entry price: {this.state.entryPrice} {this.state.tradingPair}
+                                        Entry price: {this.state.entryPrice} {this.state.currency}
                                         <br />
                                         Percent change desired: {this.state.percentChange}%
                                     </Col>
                                     <Col>
-                                        Target exit price: {this.state.targetPrice} {this.state.tradingPair}
+                                        Target exit price: {this.state.targetPrice} {this.state.currency}
                                     </Col>
                                 </Row>
                                 <hr className='ln-white' />

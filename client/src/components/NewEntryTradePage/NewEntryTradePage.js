@@ -5,13 +5,6 @@ import withAuth from '../withAuth/withAuth';
 
 class NewEntryTradePage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            userId: this.props.user.id
-        };
-    };
-
     // Handles the change of a form field
     handleChange = event => {
         // Extract name & value from event.target and set to state
@@ -25,6 +18,11 @@ class NewEntryTradePage extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         console.log(this.state);
+
+        // const entryTrade = {
+        //     userId: this.state.userId,
+        //     tradingP
+        // }
     };
 
     render = () => {

@@ -8,7 +8,7 @@ class FindPercentChangePage extends Component {
     constructor() {
         super();
         this.state = {
-            tradingPair: '',
+            currency: '',
             entryPrice: '0.0',
             exitPrice: '0.0',
             percentChange: '0.0'
@@ -38,7 +38,7 @@ class FindPercentChangePage extends Component {
     // Reset state (calculation display) and all form fields. Basically start with a clean calculation
     resetCalculation = () => {
         this.setState({
-            tradingPair: '',
+            currency: '',
             entryPrice: '0.0',
             exitPrice: '0.0',
             percentChange: '0.0'
@@ -61,10 +61,10 @@ class FindPercentChangePage extends Component {
                                 <hr className='ln-white' />
                                 <Form id='calc-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
-                                        <Label for='trading-pair'>Trading Pair:</Label>
-                                        <Input type='select' name='tradingPair' id='trading-pair'
-                                            defaultValue='-- select trading pair --' onChange={this.handleChange} required>
-                                            <option disabled>-- select trading pair --</option>
+                                        <Label for='currency'>Select currency:</Label>
+                                        <Input type='select' name='currency' id='currency'
+                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
+                                            <option disabled>-- select currency --</option>
                                             <option>USD</option>
                                             <option>USDT</option>
                                             <option>BTC</option>
@@ -99,9 +99,9 @@ class FindPercentChangePage extends Component {
                                 <hr className='ln-white' />
                                 <Row className='align-items-center text-center'>
                                     <Col>
-                                        Entry price: {this.state.entryPrice} {this.state.tradingPair}
+                                        Entry price: {this.state.entryPrice} {this.state.currency}
                                         <br />
-                                        Exit price: {this.state.exitPrice} {this.state.tradingPair}
+                                        Exit price: {this.state.exitPrice} {this.state.currency}
                                     </Col>
                                     <Col>
                                         Percent change: {this.state.percentChange}%
