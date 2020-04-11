@@ -13,7 +13,7 @@ import FindPercentChangePage from './components/FindPercentChangePage/FindPercen
 import GetTargetPricePage from './components/GetTargetPricePage/GetTargetPricePage';
 import CalculateRoiPage from './components/CalculateRoiPage/CalculateRoiPage';
 import NewEntryTradePage from './components/NewEntryTradePage/NewEntryTradePage';
-import EntryTradesPage from './components/EntryTradesPage/EntryTradesPage';
+import EntryTradeLogPage from './components/EntryTradeLogPage/EntryTradeLogPage';
 
 // if (localStorage.getItem('id_token')) {
 //     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
@@ -29,7 +29,7 @@ ReactDOM.render(
         <Route exact path='/get-target-price' component={GetTargetPricePage} />
         <Route exact path='/calculate-roi' component={CalculateRoiPage} />
         <Route exact path='/new-entry-trade' component={NewEntryTradePage} />
-        <Route exact path='/entry-trades' component={EntryTradesPage} />
+        <Route exact path='/entry-trades' component={EntryTradeLogPage} />
     </Router>
     , document.getElementById('root')
 );

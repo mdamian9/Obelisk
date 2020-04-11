@@ -6,7 +6,7 @@ const db = require('../models');
 // Signup Route
 router.post('/signup', (req, res, next) => {
     db.User.create(req.body).then(() => {
-        console.log('Successfully create');
+        console.log('Successfully created new user');
         res.status(201).json({ message: 'You have successfully created new account!' });
     }).catch(err => {
         console.log(err);

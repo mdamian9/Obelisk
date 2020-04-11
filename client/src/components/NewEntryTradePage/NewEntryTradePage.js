@@ -26,13 +26,13 @@ class NewEntryTradePage extends Component {
         event.preventDefault();
         const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.coinPrice);
         const entryTrade = {
-            userId: this.state.userId,
             currency: this.state.currency,
             totalInvestment: this.state.totalInvestment,
             coinName: this.state.coinName,
             tradingPair: `${this.state.coinName}/${this.state.currency}`,
             coinPrice: this.state.coinPrice,
-            totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, '')
+            totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
+            user: this.props.user.id
         };
         const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
         axios.post('/entryTrade', entryTrade, config).then(res => {

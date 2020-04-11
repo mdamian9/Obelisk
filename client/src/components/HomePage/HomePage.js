@@ -6,6 +6,7 @@ import withAuth from '../withAuth/withAuth';
 class HomePage extends Component {
 
     render = () => {
+        console.log(this.props.user);
         return (
             <div>
                 <UserNavbar history={this.props.history} />
