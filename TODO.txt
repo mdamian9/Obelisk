@@ -1,0 +1,4 @@
+- Create custom JSON file with data for cryptocurrencies
+- Use datalist when choosing a cryptocurrency pair on all forms
+- Use correct decimal placement for different cryptos
+- 

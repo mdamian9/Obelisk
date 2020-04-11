@@ -12,7 +12,7 @@ class SignupPage extends Component {
         this.Auth = new AuthService();
     };
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         if (this.Auth.loggedIn()) {
             this.props.history.replace('/home');
         };

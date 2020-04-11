@@ -13,7 +13,7 @@ class LandingPage extends Component {
     };
 
     // Do not stay on landing page if already logged in
-    componentWillMount = () => {
+    componentDidMount = () => {
         if (this.Auth.loggedIn()) {
             this.props.history.replace('/home');
         };

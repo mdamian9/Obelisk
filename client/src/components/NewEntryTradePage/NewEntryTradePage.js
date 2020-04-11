@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import axios from 'axios';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 
 class NewEntryTradePage extends Component {
+
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+    };
 
     // Handles the change of a form field
     handleChange = event => {
@@ -17,12 +24,24 @@ class NewEntryTradePage extends Component {
     // Create new entry trade and save to database
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
-
-        // const entryTrade = {
-        //     userId: this.state.userId,
-        //     tradingP
-        // }
+        const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.coinPrice);
+        const entryTrade = {
+            userId: this.state.userId,
+            currency: this.state.currency,
+            totalInvestment: this.state.totalInvestment,
+            coinName: this.state.coinName,
+            tradingPair: `${this.state.coinName}/${this.state.currency}`,
+            coinPrice: this.state.coinPrice,
+            totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, '')
+        };
+        const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
+        axios.post('/entryTrade', entryTrade, config).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
+        event.target.reset();
+        alert('Successfully created new trade!');
     };
 
     render = () => {
@@ -41,10 +60,10 @@ class NewEntryTradePage extends Component {
                                 <hr className='ln-white' />
                                 <Form id='entry-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
-                                        <Label for='trading-pair'>Trading pair:</Label>
-                                        <Input type='select' name='tradingPair' id='trading-pair'
-                                            defaultValue='-- select trading pair --' onChange={this.handleChange} required>
-                                            <option disabled>-- select trading pair --</option>
+                                        <Label for='currency'>Select currency:</Label>
+                                        <Input type='select' name='currency' id='currency'
+                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
+                                            <option disabled>-- select currency --</option>
                                             <option>USD</option>
                                             <option>USDT</option>
                                             <option>BTC</option>

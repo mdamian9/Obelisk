@@ -7,7 +7,7 @@ const EntryTradeSchema = new Schema({
         required: true,
         trim: true
     },
-    tradingPair: {
+    currency: {
         type: String,
         required: true,
         trim: true
@@ -18,6 +18,11 @@ const EntryTradeSchema = new Schema({
         trim: true
     },
     coinName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    tradingPair: {
         type: String,
         required: true,
         trim: true

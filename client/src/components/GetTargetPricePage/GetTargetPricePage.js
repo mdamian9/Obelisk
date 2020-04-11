@@ -37,7 +37,7 @@ class GetTargetPricePage extends Component {
             default: /* Do nothing */ break;
         };
         this.setState({
-            targetPrice: parseFloat(targetPrice.toString().trim('0'))
+            targetPrice: targetPrice.replace(/\.?0+$/, '')
         });
         event.target.reset();
     };
