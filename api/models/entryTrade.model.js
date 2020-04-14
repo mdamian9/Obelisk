@@ -33,7 +33,7 @@ const EntryTradeSchema = new Schema({
         trim: true
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },

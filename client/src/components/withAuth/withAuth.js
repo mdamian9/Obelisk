@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import AuthService from '../AuthService/AuthService';
 
 const withAuth = (AuthComponent) => {
@@ -35,6 +36,7 @@ const withAuth = (AuthComponent) => {
         // Check if user exists and pass user to the AuthComponent
         render = () => {
             if (this.state.user) {
+                console.log(this.state.user);
                 return (
                     <AuthComponent history={this.props.history} user={this.state.user} />
                 );

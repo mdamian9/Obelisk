@@ -6,13 +6,13 @@ const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
 router.get('/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
-        if (user) {
-            res.status(200).json(user);
-        } else {
+        if (!user) {
             res.status(404).send({
                 success: false,
                 message: 'No user found'
             });
+        } else {
+            res.status(200).json(user);
         };
     }).catch(err => {
         console.log(err);
