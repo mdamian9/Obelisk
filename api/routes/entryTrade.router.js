@@ -44,10 +44,15 @@ router.post('/', isAuthenticated, (req, res, next) => {
 });
 
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
-    db.EntryTrade.find({ user: req.params.userId }).then(trades => {
-        console.log(trades);
+    const queryProjection = '_id currency totalInvestment coinName tradingPair coinPrice totalCoins date'
+    db.EntryTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
+        res.status(200).json(trades);
     }).catch(err => {
         console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
     });
 });
 

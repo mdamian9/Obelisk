@@ -5,6 +5,32 @@ import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 
+const TableRow = ({ trade, toggleModal }) => {
+    return (
+        <tr>
+            <th scope="row">{trade.date}</th>
+            <td>{trade.tradingPair}</td>
+            <td>{trade.totalInvestment} {trade.currency}</td>
+            <td>{trade.coinPrice} {trade.currency}</td>
+            <td>{trade.totalCoins} {trade.coinName}</td>
+            <td>
+                <Button onClick={() => { toggleModal(trade); }} color='danger'>Delete</Button>
+            </td>
+        </tr >
+    );
+};
+
+const TableBody = ({ trades, toggleModal }) => {
+    const tradeRows = trades.map(trade => {
+        return <TableRow key={trade._id} trade={trade} toggleModal={toggleModal} />
+    });
+    return (
+        <tbody>
+            {tradeRows}
+        </tbody>
+    );
+};
+
 class EntryTradeLogPage extends Component {
 
     constructor(props) {
@@ -18,14 +44,19 @@ class EntryTradeLogPage extends Component {
     componentDidMount = () => {
         const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
         axios.get(`/entryTrade/userTrades/${this.props.user.id}`, config).then(res => {
-            console.log(res.data);
+            this.setState({
+                entryTrades: res.data
+            });
         }).catch(err => {
             console.log(err);
         });
     };
 
+    toggleModal = () => {
+        console.log('Toggle delete trade modal');
+    };
+
     render = () => {
-        console.log(this.props.user);
         return (
             <div>
                 <UserNavbar history={this.props.history} />
@@ -38,6 +69,18 @@ class EntryTradeLogPage extends Component {
                                     Entry Trades
                                 </h3>
                                 <hr className='ln-white' />
+                                <Table dark striped>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Trading Pair</th>
+                                            <th>Total Investment</th>
+                                            <th>Entry Price</th>
+                                            <th>Total Coins</th>
+                                        </tr>
+                                    </thead>
+                                    <TableBody trades={this.state.entryTrades} toggleModal={this.toggleModal} />
+                                </Table>
                             </Col>
                         </Row>
                     </Container>
