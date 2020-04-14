@@ -43,4 +43,12 @@ router.post('/', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
+    db.EntryTrade.find({ user: req.params.userId }).then(trades => {
+        console.log(trades);
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
 module.exports = router;

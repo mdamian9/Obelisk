@@ -23,8 +23,15 @@ const withAuth = (AuthComponent) => {
             } else {
                 try {
                     const profile = Auth.getProfile();
-                    this.setState({
-                        user: profile
+                    const config = { headers: { Authorization: `Bearer ${Auth.getToken()}` } };
+                    // Get complete user data, and set entryTrades to profile
+                    axios.get(`/user/${profile.id}`, config).then(res => {
+                        profile.entryTrades = res.data.entryTrades;
+                        this.setState({
+                            user: profile
+                        });
+                    }).catch(err => {
+                        console.log(err);
                     });
                 } catch (err) {
                     Auth.logout();
@@ -36,7 +43,6 @@ const withAuth = (AuthComponent) => {
         // Check if user exists and pass user to the AuthComponent
         render = () => {
             if (this.state.user) {
-                console.log(this.state.user);
                 return (
                     <AuthComponent history={this.props.history} user={this.state.user} />
                 );
