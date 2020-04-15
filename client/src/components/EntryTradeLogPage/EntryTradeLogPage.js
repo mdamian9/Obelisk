@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
+import { Container, Row, Col, Table } from 'reactstrap';
 import axios from 'axios';
+import moment from 'moment';
 import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
 
-const TableRow = ({ trade, toggleModal }) => {
+const TableRow = ({ trade, updateTrades }) => {
+    const date = moment.utc(trade.date).local().format('MM/D/YYYY');
+    const time = moment.utc(trade.date).local().format('h:mm:ss a');
     return (
         <tr>
-            <th scope="row">{trade.date}</th>
+            <th scope="row">{date},<br />{time}</th>
             <td>{trade.tradingPair}</td>
             <td>{trade.totalInvestment} {trade.currency}</td>
             <td>{trade.coinPrice} {trade.currency}</td>
             <td>{trade.totalCoins} {trade.coinName}</td>
-            <td>
-                <Button onClick={() => { toggleModal(trade); }} color='danger'>Delete</Button>
-            </td>
+            <td><DeleteTradeModal tradeId={trade._id} updateTrades={updateTrades} /></td>
         </tr >
     );
 };
 
-const TableBody = ({ trades, toggleModal }) => {
+const TableBody = ({ trades, updateTrades }) => {
     const tradeRows = trades.map(trade => {
-        return <TableRow key={trade._id} trade={trade} toggleModal={toggleModal} />
+        return <TableRow key={trade._id} trade={trade} updateTrades={updateTrades} />
     });
     return (
         <tbody>
@@ -42,6 +44,10 @@ class EntryTradeLogPage extends Component {
     };
 
     componentDidMount = () => {
+        this.getEntryTrades();
+    };
+
+    getEntryTrades = () => {
         const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
         axios.get(`/entryTrade/userTrades/${this.props.user.id}`, config).then(res => {
             this.setState({
@@ -50,10 +56,6 @@ class EntryTradeLogPage extends Component {
         }).catch(err => {
             console.log(err);
         });
-    };
-
-    toggleModal = () => {
-        console.log('Toggle delete trade modal');
     };
 
     render = () => {
@@ -79,7 +81,7 @@ class EntryTradeLogPage extends Component {
                                             <th>Total Coins</th>
                                         </tr>
                                     </thead>
-                                    <TableBody trades={this.state.entryTrades} toggleModal={this.toggleModal} />
+                                    <TableBody trades={this.state.entryTrades} updateTrades={this.getEntryTrades} />
                                 </Table>
                             </Col>
                         </Row>

@@ -7,14 +7,13 @@ class SignupModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalOpen: false
+            isOpen: false
         };
-        this.toggleModal = this.toggleModal.bind(this);
     };
 
     toggleModal = () => {
         this.setState(prevState => ({
-            modalOpen: !prevState.modalOpen
+            isOpen: !prevState.isOpen
         }));
     };
 
@@ -22,7 +21,7 @@ class SignupModal extends Component {
         return (
             <div>
                 <Button color='primary' onClick={this.toggleModal}>Create account</Button>
-                <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal} className={this.props.className}>
+                <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader toggle={this.toggleModal}>Create Account</ModalHeader>
                     <ModalBody>
                         <SignupForm history={this.props.history} />

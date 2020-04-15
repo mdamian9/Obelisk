@@ -43,6 +43,20 @@ router.post('/', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.delete('/:id', isAuthenticated, (req, res, next) => {
+    db.EntryTrade.findByIdAndDelete(req.params.id).then(() => {
+        console.log('Deleted trade');
+        res.status(200).json({
+            message: 'Successfully deleted trade!'
+        });
+    }).catch(err => {
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
     const queryProjection = '_id currency totalInvestment coinName tradingPair coinPrice totalCoins date'
     db.EntryTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
