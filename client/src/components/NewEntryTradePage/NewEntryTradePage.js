@@ -36,8 +36,7 @@ class NewEntryTradePage extends Component {
         };
         const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
         axios.post('/entryTrade', entryTrade, config).then(res => {
-            console.log(res);
-            alert(res.data.message);
+            this.props.history.replace('/entry-trades');
         }).catch(err => {
             console.log(err);
         });

@@ -19,6 +19,29 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    wallet: {
+        type: { type: Object },
+        usd: {
+            type: Number,
+            default: 0.0
+        },
+        usdt:  {
+            type: Number,
+            default: 0.0
+        },
+        btc:  {
+            type: Number,
+            default: 0.0
+        },
+        eth:  {
+            type: Number,
+            default: 0.0
+        },
+        bnb:  {
+            type: Number,
+            default: 0.0
+        }
+    },
     entryTrades: [
         {
             type: Schema.Types.ObjectId,

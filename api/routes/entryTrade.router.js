@@ -21,10 +21,11 @@ router.get('/', isAuthenticated, (req, res, next) => {
 router.post('/', isAuthenticated, (req, res, next) => {
     const entryTrade = req.body;
     db.EntryTrade.create(entryTrade).then(trade => {
-        return db.User.findByIdAndUpdate(trade.user, { $push: { entryTrades: trade._id } });
+        const options = { useFindAndModify: true };
+        return db.User.findByIdAndUpdate(trade.user, options, { $push: { entryTrades: trade._id } });
     }).then(() => {
         res.status(201).json({
-            message: 'Successfully created new entry trade and updated user entry trades',
+            message: 'Successfully created new entry trade!',
             entryTrade: {
                 currency: entryTrade.currency,
                 totalInvestment: entryTrade.totalInvestment,
@@ -36,7 +37,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
             }
         });
     }).catch(err => {
-        return res.status(404).json({
+        res.status(404).json({
             message: 'Error occurred',
             error: err
         });
@@ -44,8 +45,10 @@ router.post('/', isAuthenticated, (req, res, next) => {
 });
 
 router.delete('/:id', isAuthenticated, (req, res, next) => {
-    db.EntryTrade.findByIdAndDelete(req.params.id).then(() => {
-        console.log('Deleted trade');
+    db.EntryTrade.findByIdAndDelete(req.params.id).then(trade => {
+        const options = { useFindAndModify: true };
+        return db.User.findByIdAndUpdate(trade.user, options, { $pull: { entryTrades: trade._id } });
+    }).then(() => {
         res.status(200).json({
             message: 'Successfully deleted trade!'
         });

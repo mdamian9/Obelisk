@@ -21,13 +21,12 @@ class DeleteTradeModal extends Component {
 
     deleteTrade = () => {
         const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
-        axios.delete(`/entryTrade/${this.props.tradeId}`, config).then(res => {
-            alert(res.data.message);
+        axios.delete(`/entryTrade/${this.props.tradeId}`, config).then(() => {
+            this.props.updateTrades();
+            this.toggleModal();
         }).catch(err => {
             console.log(err);
         });
-        this.props.updateTrades();
-        this.toggleModal();
     };
 
     render = () => {
