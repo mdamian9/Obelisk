@@ -34,8 +34,8 @@ class NewEntryTradePage extends Component {
             totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
             user: this.props.user.id
         };
-        const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
-        axios.post('/entryTrade', entryTrade, config).then(res => {
+        // const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
+        axios.post('/entryTrade', entryTrade).then(res => {
             this.props.history.replace('/entry-trades');
         }).catch(err => {
             console.log(err);

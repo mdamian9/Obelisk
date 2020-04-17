@@ -20,8 +20,7 @@ class DeleteTradeModal extends Component {
     };
 
     deleteTrade = () => {
-        const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
-        axios.delete(`/entryTrade/${this.props.tradeId}`, config).then(() => {
+        axios.delete(`/entryTrade/${this.props.tradeId}`).then(() => {
             this.props.updateTrades();
             this.toggleModal();
         }).catch(err => {

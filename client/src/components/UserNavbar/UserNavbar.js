@@ -99,8 +99,11 @@ class UserNavbar extends Component {
                                 <DropdownItem href='/tutorial'>
                                     Tutorial
                                 </DropdownItem>
+                                <DropdownItem href='/wallet'>
+                                    Wallet
+                                </DropdownItem>
                                 <DropdownItem>
-                                    My Account
+                                    Account
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem onClick={this.handleLogout}>

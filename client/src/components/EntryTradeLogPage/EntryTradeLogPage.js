@@ -48,8 +48,7 @@ class EntryTradeLogPage extends Component {
     };
 
     getEntryTrades = () => {
-        const config = { headers: { Authorization: `Bearer ${this.Auth.getToken()}` } };
-        axios.get(`/entryTrade/userTrades/${this.props.user.id}`, config).then(res => {
+        axios.get(`/entryTrade/userTrades/${this.props.user.id}`).then(res => {
             this.setState({
                 entryTrades: res.data
             });

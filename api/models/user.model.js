@@ -22,24 +22,79 @@ const UserSchema = new Schema({
     wallet: {
         type: { type: Object },
         usd: {
-            type: Number,
-            default: 0.0
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'United States Dollar'
+            },
+            ticker: {
+                type: String,
+                default: 'USD'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
         },
-        usdt:  {
-            type: Number,
-            default: 0.0
+        usdt: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Tether'
+            },
+            ticker: {
+                type: String,
+                default: 'USDT'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
         },
-        btc:  {
-            type: Number,
-            default: 0.0
+        btc: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Bitcoin'
+            },
+            ticker: {
+                type: String,
+                default: 'BTC'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
         },
-        eth:  {
-            type: Number,
-            default: 0.0
+        eth: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Ethereum'
+            },
+            ticker: {
+                type: String,
+                default: 'ETH'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
         },
-        bnb:  {
-            type: Number,
-            default: 0.0
+        bnb: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Binance Coin'
+            },
+            ticker: {
+                type: String,
+                default: 'BNB'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
         }
     },
     entryTrades: [

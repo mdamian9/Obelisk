@@ -23,9 +23,9 @@ const withAuth = (AuthComponent) => {
             } else {
                 try {
                     const profile = Auth.getProfile();
-                    const config = { headers: { Authorization: `Bearer ${Auth.getToken()}` } };
                     // Get complete user data, and set entryTrades to profile
-                    axios.get(`/user/${profile.id}`, config).then(res => {
+                    axios.get(`/user/${profile.id}`).then(res => {
+                        profile.wallet = res.data.wallet;
                         profile.entryTrades = res.data.entryTrades;
                         this.setState({
                             user: profile
