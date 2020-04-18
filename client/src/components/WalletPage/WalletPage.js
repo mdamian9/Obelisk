@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Col, Table, Button } from 'reactstrap';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import AddFundsModal from '../AddFundsModal/AddFundsModal';
 
-const TableRow = ({ currency }) => {
+const TableRow = ({ currency, addFunds }) => {
     return (
         <tr>
             <td>{currency.name}</td>
             <td>{currency.funds} {currency.ticker}</td>
+            <td><Button color='primary' onClick={addFunds}>Deposit</Button></td>
         </tr>
     );
 };
 
-const TableBody = ({ wallet }) => {
+const TableBody = ({ wallet, addFunds }) => {
     const currencyRows = [];
     for (const currency in wallet) {
-        currencyRows.push(<TableRow key={wallet[currency].name} currency={wallet[currency]} />)
+        currencyRows.push(<TableRow key={wallet[currency].name} currency={wallet[currency]} addFunds={addFunds} />)
     };
     return (
         <tbody>
@@ -39,6 +41,10 @@ class WalletPage extends Component {
         });
     };
 
+    addFunds = () => {
+        console.log('Adding funds');
+    };
+
     render = () => {
         return (
             <div>
@@ -59,7 +65,7 @@ class WalletPage extends Component {
                                             <th>Total</th>
                                         </tr>
                                     </thead>
-                                    <TableBody wallet={this.state.wallet} />
+                                    <TableBody wallet={this.state.wallet} addFunds={this.addFunds} />
                                 </Table>
                             </Col>
                         </Row>

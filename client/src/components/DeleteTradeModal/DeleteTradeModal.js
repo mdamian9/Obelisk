@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 
 class DeleteTradeModal extends Component {
 
     constructor(props) {
         super(props);
-        this.Auth = new AuthService();
         this.state = {
             isOpen: false
         };
