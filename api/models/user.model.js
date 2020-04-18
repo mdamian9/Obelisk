@@ -19,7 +19,85 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    wallet: {
+    mainWallet: {
+        type: { type: Object },
+        usd: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'United States Dollar'
+            },
+            ticker: {
+                type: String,
+                default: 'USD'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
+        },
+        usdt: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Tether'
+            },
+            ticker: {
+                type: String,
+                default: 'USDT'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
+        },
+        btc: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Bitcoin'
+            },
+            ticker: {
+                type: String,
+                default: 'BTC'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
+        },
+        eth: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Ethereum'
+            },
+            ticker: {
+                type: String,
+                default: 'ETH'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
+        },
+        bnb: {
+            type: { type: Object },
+            name: {
+                type: String,
+                default: 'Binance Coin'
+            },
+            ticker: {
+                type: String,
+                default: 'BNB'
+            },
+            funds: {
+                type: Number,
+                default: 0
+            }
+        }
+    },
+    tradingWallet: {
         type: { type: Object },
         usd: {
             type: { type: Object },

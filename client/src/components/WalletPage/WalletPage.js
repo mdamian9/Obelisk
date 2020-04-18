@@ -4,20 +4,20 @@ import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import AddFundsModal from '../AddFundsModal/AddFundsModal';
 
-const TableRow = ({ currency, addFunds }) => {
+const TableRow = ({ currency }) => {
     return (
         <tr>
             <td>{currency.name}</td>
             <td>{currency.funds} {currency.ticker}</td>
-            <td><Button color='primary' onClick={addFunds}>Deposit</Button></td>
+            <td><AddFundsModal currency={currency} /></td>
         </tr>
     );
 };
 
-const TableBody = ({ wallet, addFunds }) => {
+const TableBody = ({ wallet }) => {
     const currencyRows = [];
     for (const currency in wallet) {
-        currencyRows.push(<TableRow key={wallet[currency].name} currency={wallet[currency]} addFunds={addFunds} />)
+        currencyRows.push(<TableRow key={wallet[currency].name} currency={wallet[currency]} />)
     };
     return (
         <tbody>
@@ -31,18 +31,16 @@ class WalletPage extends Component {
     constructor() {
         super();
         this.state = {
-            wallet: {}
+            mainWallet: {},
+            tradingWallet: {}
         };
     };
 
     componentDidMount = () => {
         this.setState({
-            wallet: this.props.user.wallet
+            mainWallet: this.props.user.mainWallet,
+            tradingWallet: this.props.user.tradingWallet
         });
-    };
-
-    addFunds = () => {
-        console.log('Adding funds');
     };
 
     render = () => {
@@ -65,7 +63,7 @@ class WalletPage extends Component {
                                             <th>Total</th>
                                         </tr>
                                     </thead>
-                                    <TableBody wallet={this.state.wallet} addFunds={this.addFunds} />
+                                    <TableBody wallet={this.state.mainWallet} />
                                 </Table>
                             </Col>
                         </Row>

@@ -25,7 +25,8 @@ const withAuth = (AuthComponent) => {
                     const profile = Auth.getProfile();
                     // Get complete user data, and set entryTrades to profile
                     axios.get(`/user/${profile.id}`).then(res => {
-                        profile.wallet = res.data.wallet;
+                        profile.mainWallet = res.data.mainWallet;
+                        profile.tradingWallet = res.data.tradingWallet;
                         profile.entryTrades = res.data.entryTrades;
                         this.setState({
                             user: profile

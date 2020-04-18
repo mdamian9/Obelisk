@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 
 class AddFundsModal extends Component {
@@ -12,28 +12,47 @@ class AddFundsModal extends Component {
     };
 
     toggleModal = () => {
-        console.log('Toggle Modal');
-        // this.setState(prevState => ({
-        //     isOpen: !prevState.isOpen
-        // }));
+        this.setState(prevState => ({
+            isOpen: !prevState.isOpen
+        }));
+    };
+
+    handleChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        // this.addFunds();
+        console.log('form submit - add funds');
+        console.log(this.state.totalDeposit);
+        this.toggleModal();
     };
 
     render = () => {
         return (
             <div>
                 <Button color='primary' onClick={this.toggleModal}>Deposit</Button>
-                <Modal>
+                <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader>
-
+                        Deposit {this.props.currency.ticker}:
                     </ModalHeader>
-                    <ModalBody>
-                        <Form>
-
-                        </Form>
-                    </ModalBody>
-                    <ModalFooter>
-
-                    </ModalFooter>
+                    <Form id='add-funds-form' onSubmit={this.handleFormSubmit}>
+                        <ModalBody>
+                            <FormGroup>
+                                <Label for='total-deposit'>Enter amount to add to main wallet:</Label>
+                                <Input type='number' name='totalDeposit' id='total-deposit' placeholder='0.00000000'
+                                    step='0.00000001' onChange={this.handleChange} required />
+                            </FormGroup>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color='success'>Confirm</Button>
+                            <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+                        </ModalFooter>
+                    </Form>
                 </Modal>
             </div>
         );
