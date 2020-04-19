@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 
 class AddFundsModal extends Component {
 
     constructor(props) {
         super(props);
+        this.Auth = new AuthService();
         this.state = {
             isOpen: false
         };
@@ -26,9 +28,18 @@ class AddFundsModal extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log('form submit - add funds');
-        console.log(this.state.totalDeposit);
+        const update = {
+            currency: this.props.currency.ticker.toLowerCase(),
+            totalDeposit: this.state.totalDeposit
+        };
+        axios.patch(`/user/addFunds/${this.Auth.getProfile().id}`, update).then(res => {
+            console.log(res.data);
+        }).catch(err => {
+            console.log(err);
+        });
         this.toggleModal();
+        // Refresh wallet page to render updated wallet
+        document.location.reload();
     };
 
     render = () => {

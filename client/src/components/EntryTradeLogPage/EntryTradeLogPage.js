@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 import axios from 'axios';
 import moment from 'moment';
-import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
@@ -37,7 +36,6 @@ class EntryTradeLogPage extends Component {
 
     constructor(props) {
         super(props);
-        this.Auth = new AuthService();
         this.state = {
             entryTrades: []
         };

@@ -10,11 +10,11 @@ const TableRow = ({ currency, walletName }) => {
     if (walletName === 'mainWallet') {
         ActionButton =
             <div className='d-flex'>
-                <AddFundsModal currency={currency} />&ensp;<TransferFundsModal currency={currency} />
+                <AddFundsModal currency={currency} />&ensp;<TransferFundsModal currency={currency} walletName={walletName} />
             </div>
             ;
     } else {
-        ActionButton = <TransferFundsModal currency={currency} />
+        ActionButton = <TransferFundsModal currency={currency} walletName={walletName} />
     };
     return (
         <tr>

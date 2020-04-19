@@ -20,4 +20,23 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.patch('/addFunds/:id/', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        const newFunds = user['mainWallet'][req.body.currency].funds + parseFloat(req.body.totalDeposit);
+        user['mainWallet'][req.body.currency].funds = newFunds;
+        return user.save();
+    }).then(user => {
+        res.status(200).json({
+            message: 'Sucessfully added funds to main wallet!',
+            user: user
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 module.exports = router;
