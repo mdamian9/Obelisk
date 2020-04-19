@@ -8,8 +8,16 @@ class TransferFundsModal extends Component {
     constructor(props) {
         super(props);
         this.Auth = new AuthService();
+        const from = this.props.walletName; let to;
+        if (from === 'mainWallet') {
+            to = 'tradingWallet';
+        } else {
+            to = 'mainWallet'
+        };
         this.state = {
-            isOpen: false
+            isOpen: false,
+            from: from,
+            to: to
         };
     };
 
@@ -28,16 +36,26 @@ class TransferFundsModal extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.Auth.getProfile().id);
-        console.log(`Transferring funds ${this.state.totalTransfer}`);
+        const update = {
+            from: this.state.from,
+            to: this.state.to,
+            currency: this.props.currency.ticker.toLowerCase(),
+            totalTransfer: this.state.totalTransfer
+        };
+        axios.patch(`/user/transferFunds/${this.Auth.getProfile().id}`, update).then(res => {
+            console.log(res.data);
+        }).catch(err => {
+            console.log(err);
+        });
+        this.toggleModal();
+        // Refresh wallet page to render updated wallet
+        document.location.reload();
     };
 
     render = () => {
-        let oppWallet;
-        if (this.props.walletName === 'tradingWallet') {
-            oppWallet = 'main wallet'
-        } else {
-            oppWallet = 'trading wallet'
+        let oppWallet = 'trading wallet'
+        if (this.state.from === 'tradingWallet') {
+            oppWallet = 'main wallet';
         };
         return (
             <div>

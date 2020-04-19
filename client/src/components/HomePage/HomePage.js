@@ -23,19 +23,19 @@ class HomePage extends Component {
                                 </Row>
                                 <hr className='ln-white' />
                                 <Row>
-                                    <Col>
+                                    <Col className='d-flex justify-content-center'>
+                                        <Button color='info' href='/wallet'>Wallet</Button>
+                                        &ensp;
                                         <Button color='success' href='/new-entry-trade'>New Entry Trade</Button>
-                                    </Col>
-                                    <Col>
+                                        &ensp;
                                         <Button color='danger' href='/new-exit-trade'>New Exit Trade</Button>
                                     </Col>
                                 </Row>
                                 <br />
                                 <Row>
-                                    <Col>
-                                        <Button color='primary'>View Entry Trades</Button>
-                                    </Col>
-                                    <Col>
+                                    <Col className='d-flex justify-content-center'>
+                                        <Button color='primary' href='/entry-trades'>View Entry Trades</Button>
+                                        &ensp;
                                         <Button color='secondary'>View Exit Trades</Button>
                                     </Col>
                                 </Row>

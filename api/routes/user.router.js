@@ -22,13 +22,32 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
 
 router.patch('/addFunds/:id/', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
-        const newFunds = user['mainWallet'][req.body.currency].funds + parseFloat(req.body.totalDeposit);
-        user['mainWallet'][req.body.currency].funds = newFunds;
+        const updatedFunds = user['mainWallet'][req.body.currency].funds + parseFloat(req.body.totalDeposit);
+        user['mainWallet'][req.body.currency].funds = updatedFunds;
         return user.save();
-    }).then(user => {
+    }).then(() => {
         res.status(200).json({
             message: 'Sucessfully added funds to main wallet!',
-            user: user
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
+router.patch('/transferFunds/:id', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        const updatedFromWalletFunds = user[req.body.from][req.body.currency].funds - parseFloat(req.body.totalTransfer);
+        const updatedToWalletFunds = user[req.body.to][req.body.currency].funds + parseFloat(req.body.totalTransfer);
+        user[req.body.from][req.body.currency].funds = updatedFromWalletFunds;
+        user[req.body.to][req.body.currency].funds = updatedToWalletFunds;
+        return user.save();
+    }).then(() => {
+        res.status(200).json({
+            message: 'Sucessfully transferred funds!',
         });
     }).catch(err => {
         console.log(err);
