@@ -26,7 +26,6 @@ class AddFundsModal extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // this.addFunds();
         console.log('form submit - add funds');
         console.log(this.state.totalDeposit);
         this.toggleModal();
@@ -43,7 +42,7 @@ class AddFundsModal extends Component {
                     <Form id='add-funds-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
-                                <Label for='total-deposit'>Enter amount to add to main wallet:</Label>
+                                <Label for='total-deposit'>Deposit amount to main wallet:</Label>
                                 <Input type='number' name='totalDeposit' id='total-deposit' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
                             </FormGroup>
