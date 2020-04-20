@@ -10,6 +10,9 @@ class NewEntryTradePage extends Component {
     constructor(props) {
         super(props);
         this.Auth = new AuthService();
+        this.state = {
+            wallet: this.props.user.tradingWallet
+        };
     };
 
     // Handles the change of a form field
@@ -43,7 +46,10 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
-
+        let availableFunds = <p></p>;
+        if (this.state.currency) {
+            availableFunds = <p>Available {this.state.currency}: {this.state.wallet[this.state.currency.toLowerCase()].funds}</p>
+        };
         return (
             <div>
                 <UserNavbar history={this.props.history} />
@@ -68,6 +74,7 @@ class NewEntryTradePage extends Component {
                                             <option>ETH</option>
                                             <option>BNB</option>
                                         </Input>
+                                        {availableFunds}
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>

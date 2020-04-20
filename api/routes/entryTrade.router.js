@@ -20,21 +20,25 @@ router.get('/', isAuthenticated, (req, res, next) => {
 
 router.post('/', isAuthenticated, (req, res, next) => {
     const entryTrade = req.body;
+    targetWallet = req.body.currency.toLowerCase();
+
+    // db.User.findById(trade.user).then(user => {
+        // const updatedTradingFunds = user.tradingWallet[targetWallet].funds - parseFloat(entryTrade.totalInvestment);
+        // user.tradingWallet[targetWallet].funds = updatedTradingFunds;
+    //     r
+    // })
+
     db.EntryTrade.create(entryTrade).then(trade => {
-        const options = { useFindAndModify: true };
-        return db.User.findByIdAndUpdate(trade.user, options, { $push: { entryTrades: trade._id } });
+        const options = { useFindAndModify: false, new: true };
+        return db.User.findByIdAndUpdate(trade.user, { $push: { entryTrades: trade._id } }, options);
+    }).then(user => {
+        console.log(user);
+        const updatedTradingFunds = user.tradingWallet[targetWallet].funds - parseFloat(entryTrade.totalInvestment);
+        user.tradingWallet[targetWallet].funds = updatedTradingFunds;
+        return user.save();
     }).then(() => {
         res.status(201).json({
             message: 'Successfully created new entry trade!',
-            entryTrade: {
-                currency: entryTrade.currency,
-                totalInvestment: entryTrade.totalInvestment,
-                coinName: entryTrade.coinName,
-                tradingPair: entryTrade.tradingPair,
-                coinPrice: entryTrade.coinPrice,
-                totalCoins: entryTrade.totalCoins,
-                date: entryTrade.date
-            }
         });
     }).catch(err => {
         res.status(404).json({
