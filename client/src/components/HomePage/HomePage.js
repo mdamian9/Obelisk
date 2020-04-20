@@ -42,13 +42,11 @@ class HomePage extends Component {
                                 </Row>
                                 <hr className='ln-white' />
                                 <Row>
-                                    <Col>
+                                    <Col className='d-flex justify-content-center'>
                                         <Button color='light' href='/find-percent-change'>Find % Change</Button>
-                                    </Col>
-                                    <Col>
+                                        &ensp;
                                         <Button color='dark' href='/get-target-price'>Get Target Price</Button>
-                                    </Col>
-                                    <Col>
+                                        &ensp;
                                         <Button color='warning' href='calculate-roi'>Calculate ROI</Button>
                                     </Col>
                                 </Row>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import axios from 'axios';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import NewEntryTradeErrModal from './NewEntryTradeErrorModal';
 import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 
@@ -11,8 +12,15 @@ class NewEntryTradePage extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            wallet: this.props.user.tradingWallet
+            wallet: this.props.user.tradingWallet,
+            errModalOpen: false
         };
+    };
+
+    toggleErrModal = () => {
+        this.setState(prevState => ({
+            errModalOpen: !prevState.errModalOpen
+        }));
     };
 
     // Handles the change of a form field
@@ -27,31 +35,44 @@ class NewEntryTradePage extends Component {
     // Create new entry trade and save to database
     handleFormSubmit = event => {
         event.preventDefault();
-        const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.coinPrice);
-        const entryTrade = {
-            currency: this.state.currency,
-            totalInvestment: this.state.totalInvestment,
-            coinName: this.state.coinName,
-            tradingPair: `${this.state.coinName}/${this.state.currency}`,
-            coinPrice: this.state.coinPrice,
-            totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
-            user: this.props.user.id
+        const availableFunds = this.state.wallet[this.state.currency.toLowerCase()].funds;
+        // If total investment is greater than available trading funds, toggle error modal
+        if (this.state.totalInvestment > availableFunds) {
+            event.target.reset();
+            this.toggleErrModal();
+            this.setState({
+                totalInvestment: 0
+            });
+        } else {
+            const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.coinPrice);
+            const entryTrade = {
+                currency: this.state.currency,
+                totalInvestment: this.state.totalInvestment,
+                coinName: this.state.coinName,
+                tradingPair: `${this.state.coinName}/${this.state.currency}`,
+                coinPrice: this.state.coinPrice,
+                totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
+                user: this.props.user.id
+            };
+            axios.post('/entryTrade', entryTrade).then(() => {
+                this.props.history.replace('/entry-trades');
+            }).catch(err => { console.log(err); });
+            event.target.reset();
         };
-        axios.post('/entryTrade', entryTrade).then(res => {
-            this.props.history.replace('/entry-trades');
-        }).catch(err => {
-            console.log(err);
-        });
-        event.target.reset();
     };
 
     render = () => {
-        let availableFunds = <p></p>;
+        let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
-            availableFunds = <p>Available {this.state.currency}: {this.state.wallet[this.state.currency.toLowerCase()].funds}</p>
+            const availableFunds = this.state.wallet[this.state.currency.toLowerCase()].funds;
+            renderAvailableFunds = <p>Available {this.state.currency}: {availableFunds}</p>
+            if (this.state.totalInvestment > availableFunds) {
+                renderAvailableFunds = <b className='text-danger'>You do not have enough funds in your trading wallet.</b>
+            };
         };
         return (
             <div>
+                <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
                 <UserNavbar history={this.props.history} />
                 <br />
                 <div>
@@ -74,7 +95,7 @@ class NewEntryTradePage extends Component {
                                             <option>ETH</option>
                                             <option>BNB</option>
                                         </Input>
-                                        {availableFunds}
+                                        {renderAvailableFunds}
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>
