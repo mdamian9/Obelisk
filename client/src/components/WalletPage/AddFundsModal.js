@@ -34,12 +34,12 @@ class AddFundsModal extends Component {
         };
         axios.patch(`/user/addFunds/${this.Auth.getProfile().id}`, update).then(res => {
             console.log(res.data);
+            this.toggleModal();
+            // Refresh wallet page to render updated wallet
+            document.location.reload();
         }).catch(err => {
             console.log(err);
         });
-        this.toggleModal();
-        // Refresh wallet page to render updated wallet
-        document.location.reload();
     };
 
     render = () => {

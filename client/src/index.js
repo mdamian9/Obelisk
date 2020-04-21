@@ -15,8 +15,9 @@ import CalculateRoiPage from './components/CalculateRoiPage/CalculateRoiPage';
 import WalletPage from './components/WalletPage/WalletPage';
 import NewEntryTradePage from './components/NewEntryTradePage/NewEntryTradePage';
 import EntryTradeLogPage from './components/EntryTradeLogPage/EntryTradeLogPage';
+import ExitTradeLogPage from './components/ExitTradeLogPage/ExitTradeLogPage';
 
-// If there is a valid token, automatically set headers with Auth bearer token for requests
+// If there is a valid token, automatically set headers with Auth bearer token for axios requests
 if (localStorage.getItem('id_token')) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
 };
@@ -33,6 +34,7 @@ ReactDOM.render(
         <Route exact path='/wallet' component={WalletPage} />
         <Route exact path='/new-entry-trade' component={NewEntryTradePage} />
         <Route exact path='/entry-trades' component={EntryTradeLogPage} />
+        <Route exact path='/exit-trades' component={ExitTradeLogPage} />
     </Router>
     , document.getElementById('root')
 );

@@ -44,13 +44,13 @@ class NewEntryTradePage extends Component {
                 totalInvestment: 0
             });
         } else {
-            const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.coinPrice);
+            const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.entryPrice);
             const entryTrade = {
                 currency: this.state.currency,
                 totalInvestment: this.state.totalInvestment,
                 coinName: this.state.coinName,
                 tradingPair: `${this.state.coinName}/${this.state.currency}`,
-                coinPrice: this.state.coinPrice,
+                entryPrice: this.state.entryPrice,
                 totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
                 user: this.props.user.id
             };
@@ -109,8 +109,8 @@ class NewEntryTradePage extends Component {
                                             placeholder='Enter name of coin bought' onChange={this.handleChange} required />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for='coin-price'>Coin price:</Label>
-                                        <Input type='number' name='coinPrice' id='coin-price'
+                                        <Label for='entry-price'>Coin entry price:</Label>
+                                        <Input type='number' name='entryPrice' id='entry-price'
                                             placeholder='0.00000000' step='0.00000001' min='0.00000001'
                                             onChange={this.handleChange} required />
                                     </FormGroup>

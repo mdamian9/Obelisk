@@ -22,7 +22,7 @@ const EntryTradeSchema = new Schema({
         required: true,
         trim: true
     },
-    coinPrice: {
+    entryPrice: {
         type: Number,
         required: true,
         trim: true

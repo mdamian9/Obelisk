@@ -13,9 +13,9 @@ const TableRow = ({ trade, updateTrades }) => {
         <tr>
             <th scope="row">{date},<br />{time}</th>
             <td>{trade.tradingPair}</td>
-            <td>{trade.totalInvestment} {trade.currency}</td>
-            <td>{trade.entryPrice} {trade.currency}</td>
+            <td>{trade.exitPrice} {trade.currency}</td>
             <td>{trade.totalCoins} {trade.coinName}</td>
+            <td>{trade.totalDivestment} {trade.currency}</td>
             <td><DeleteTradeModal tradeId={trade._id} updateTrades={updateTrades} /></td>
         </tr >
     );
@@ -32,23 +32,23 @@ const TableBody = ({ trades, updateTrades }) => {
     );
 };
 
-class EntryTradeLogPage extends Component {
+class ExitTradeLogPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            entryTrades: []
+            exitTrades: []
         };
     };
 
-    componentDidMount = () => {
-        this.getEntryTrades();
-    };
+    // componentDidMount = () => {
+    //     this.getExitTrades();
+    // };
 
-    getEntryTrades = () => {
-        axios.get(`/entryTrade/userTrades/${this.props.user.id}`).then(res => {
+    getExitTrades = () => {
+        axios.get(`/exitTrade/userTrades/${this.props.user.id}`).then(res => {
             this.setState({
-                entryTrades: res.data
+                exitTrades: res.data
             });
         }).catch(err => {
             console.log(err);
@@ -65,7 +65,7 @@ class EntryTradeLogPage extends Component {
                         <Row>
                             <Col xs={10} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
-                                    Entry Trades
+                                    Exit Trades
                                 </h3>
                                 <hr className='ln-white' />
                                 <Table dark striped>
@@ -73,12 +73,12 @@ class EntryTradeLogPage extends Component {
                                         <tr>
                                             <th>Date</th>
                                             <th>Trading Pair</th>
-                                            <th>Total Investment</th>
-                                            <th>Entry Price</th>
+                                            <th>Exit Price</th>
                                             <th>Total Coins</th>
+                                            <th>Total Divestment</th>
                                         </tr>
                                     </thead>
-                                    <TableBody trades={this.state.entryTrades} updateTrades={this.getEntryTrades} />
+                                    <TableBody trades={this.state.exitTrades} updateTrades={this.getExitTrades} />
                                 </Table>
                             </Col>
                         </Row>
@@ -90,4 +90,4 @@ class EntryTradeLogPage extends Component {
 
 };
 
-export default withAuth(EntryTradeLogPage);
+export default withAuth(ExitTradeLogPage);

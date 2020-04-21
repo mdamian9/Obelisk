@@ -58,7 +58,7 @@ router.delete('/:id', isAuthenticated, (req, res, next) => {
 });
 
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
-    const queryProjection = '_id currency totalInvestment coinName tradingPair coinPrice totalCoins date'
+    const queryProjection = '_id currency totalInvestment coinName tradingPair entryPrice totalCoins date'
     db.EntryTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
         res.status(200).json(trades);
     }).catch(err => {
