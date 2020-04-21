@@ -17,7 +17,8 @@ class TransferFundsModal extends Component {
         this.state = {
             isOpen: false,
             from: from,
-            to: to
+            to: to,
+            totalTransfer: 0
         };
     };
 
@@ -39,7 +40,7 @@ class TransferFundsModal extends Component {
         const update = {
             from: this.state.from,
             to: this.state.to,
-            currency: this.props.currency.ticker.toLowerCase(),
+            currency: this.props.targetWallet.ticker.toLowerCase(),
             totalTransfer: this.state.totalTransfer
         };
         axios.patch(`/user/transferFunds/${this.Auth.getProfile().id}`, update).then(res => {
@@ -53,27 +54,35 @@ class TransferFundsModal extends Component {
     };
 
     render = () => {
-        let oppWallet = 'trading wallet'
+        let fromWallet = 'main wallet', toWallet = 'trading wallet';
+        let renderTransferError = <p></p>;
+        let confirmButton = <Button color='success'>Confirm</Button>;
         if (this.state.from === 'tradingWallet') {
-            oppWallet = 'main wallet';
+            fromWallet = 'trading wallet';
+            toWallet = 'main wallet';
+        };
+        if (this.state.totalTransfer > this.props.targetWallet.funds) {
+            renderTransferError = <p><b className='text-danger'>You do not have enough funds in your {fromWallet}.</b></p>
+            confirmButton = <div></div>;
         };
         return (
             <div>
                 <Button color='primary' onClick={this.toggleModal}>Transfer</Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader>
-                        Transfer {this.props.currency.ticker}:
+                        Transfer {this.props.targetWallet.ticker}:
                     </ModalHeader>
                     <Form id='transfer-funds-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
-                                <Label for='total-transfer'>Transfer funds to {oppWallet}:</Label>
+                                <Label for='total-transfer'>Transfer funds to {toWallet}:</Label>
                                 <Input type='number' name='totalTransfer' id='total-transfer' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
+                                {renderTransferError}
                             </FormGroup>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color='success'>Confirm</Button>
+                            {confirmButton}
                             <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
                         </ModalFooter>
                     </Form>

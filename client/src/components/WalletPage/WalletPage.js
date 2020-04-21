@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
-import AddFundsModal from '../AddFundsModal/AddFundsModal';
-import TransferFundsModal from '../TransferFundsModal/TransferFundsModal';
+import AddFundsModal from './AddFundsModal';
+import TransferFundsModal from './TransferFundsModal';
 
-const TableRow = ({ currency, walletName }) => {
+const TableRow = ({ targetWallet, walletName }) => {
     let ActionButton;
     if (walletName === 'mainWallet') {
         ActionButton =
             <div className='d-flex'>
-                <AddFundsModal currency={currency} />&ensp;<TransferFundsModal currency={currency} walletName={walletName} />
+                <AddFundsModal targetWallet={targetWallet} />&ensp;<TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
             </div>
             ;
     } else {
-        ActionButton = <TransferFundsModal currency={currency} walletName={walletName} />
+        ActionButton = <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
     };
     return (
         <tr>
-            <td>{currency.name}</td>
-            <td>{currency.funds} {currency.ticker}</td>
+            <td>{targetWallet.name}</td>
+            <td>{targetWallet.funds} {targetWallet.ticker}</td>
             <td>{ActionButton}</td>
         </tr>
     );
@@ -29,7 +29,7 @@ const TableBody = ({ wallet, walletName }) => {
     const currencyRows = [];
     for (const currency in wallet) {
         currencyRows.push(
-            <TableRow key={wallet[currency].name} currency={wallet[currency]} walletName={walletName} />
+            <TableRow key={wallet[currency].name} targetWallet={wallet[currency]} walletName={walletName} />
         );
     };
     return (

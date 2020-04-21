@@ -29,7 +29,7 @@ class AddFundsModal extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const update = {
-            currency: this.props.currency.ticker.toLowerCase(),
+            currency: this.props.targetWallet.ticker.toLowerCase(),
             totalDeposit: this.state.totalDeposit
         };
         axios.patch(`/user/addFunds/${this.Auth.getProfile().id}`, update).then(res => {
@@ -48,7 +48,7 @@ class AddFundsModal extends Component {
                 <Button color='primary' onClick={this.toggleModal}>Deposit</Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader>
-                        Deposit {this.props.currency.ticker}:
+                        Deposit {this.props.targetWallet.ticker}:
                     </ModalHeader>
                     <Form id='add-funds-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
