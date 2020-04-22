@@ -2,7 +2,6 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const exjwt = require('express-jwt');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -32,30 +31,22 @@ mongoose.connection.once('open', () => {
     console.log('>>> Connected to MongoDB successfully');
 });
 
-// Initialize the Epress-JWT middleware
-const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
-
 // Initialize API routes
 const indexRouter = require('./api/routes/index.router');
 const userRouter = require('./api/routes/user.router');
 const entryTradeRouter = require('./api/routes/entryTrade.router');
+const exitTradeRouter = require('./api/routes/exitTrade.router');
 
 // Use API routes
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/entryTrade', entryTradeRouter);
+app.use('/exitTrade', exitTradeRouter);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 };
-
-// Use Express-JWT middleware
-/* *** */
-// app.get('/', isAuthenticated, (req, res) => {
-//     console.log('You are authenticated');
-//     res.send('You are authenticated'); // Sending some response when authenticated
-// });
 
 // Send every request to the React app
 // Define any API routes before this runs

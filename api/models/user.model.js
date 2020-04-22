@@ -181,6 +181,12 @@ const UserSchema = new Schema({
             ref: 'EntryTrade'
         }
     ],
+    exitTrades: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'ExitTrade'
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now

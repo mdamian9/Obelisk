@@ -37,6 +37,10 @@ const EntryTradeSchema = new Schema({
         ref: 'User',
         required: true
     },
+    exitTrade: {
+        type: Schema.Types.ObjectId,
+        ref: 'ExitTrade'
+    },
     date: {
         type: Date,
         default: Date.now
