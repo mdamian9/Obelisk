@@ -14,9 +14,7 @@ class AddFundsModal extends Component {
     };
 
     toggleModal = () => {
-        this.setState(prevState => ({
-            isOpen: !prevState.isOpen
-        }));
+        this.setState(prevState => ({ isOpen: !prevState.isOpen }));
     };
 
     handleChange = event => {
