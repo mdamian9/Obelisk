@@ -8,7 +8,7 @@ import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
 
 const TableRow = ({ trade, updateTrades }) => {
     const date = moment.utc(trade.date).local().format('MM/D/YYYY');
-    const time = moment.utc(trade.date).local().format('h:mm:ss a');
+    const time = moment.utc(trade.date).local().format('h:mm a');
     return (
         <tr>
             <th scope="row">{date},<br />{time}</th>
