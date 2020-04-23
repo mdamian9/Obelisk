@@ -18,9 +18,9 @@ const TableRow = ({ trade, updateTrades }) => {
             <td>{trade.entryPrice} {trade.currency}</td>
             <td>{trade.totalCoins} {trade.coinName}</td>
             <td className='d-flex'>
-                <SellTradeModal trade={trade} />
+                <SellTradeModal trade={trade} history={this.props.history} />
                 &ensp;
-                <DeleteTradeModal tradeId={trade._id} updateTrades={updateTrades} />
+                <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
             </td>
         </tr >
     );

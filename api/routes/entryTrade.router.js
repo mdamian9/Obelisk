@@ -46,7 +46,7 @@ router.delete('/:id', isAuthenticated, (req, res, next) => {
         return db.User.findByIdAndUpdate(trade.user, { $pull: { entryTrades: trade._id }, options });
     }).then(() => {
         res.status(200).json({
-            message: 'Successfully deleted trade!'
+            message: 'Successfully deleted entry trade!'
         });
     }).catch(err => {
         res.status(500).json({

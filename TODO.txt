@@ -2,7 +2,6 @@
     - Add error validation to transfer funds (ie if transfer total is greater than funds available)
     
 - Add NewExitTradePage and ExitTradePageLogPage
-    - Add button to entry trade in EntryTradeLogPage to pop up sell trade modal (form)
     - Add button to exit trade in ExitTradeLogPage to pop up info modal with entry info
 
 - Add TwitterWidget

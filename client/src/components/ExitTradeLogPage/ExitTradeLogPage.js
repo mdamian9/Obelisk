@@ -16,7 +16,7 @@ const TableRow = ({ trade, updateTrades }) => {
             <td>{trade.totalCoins} {trade.coinName}</td>
             <td>{trade.exitPrice} {trade.currency}</td>
             <td>{trade.totalDivestment} {trade.currency}</td>
-            <td><DeleteTradeModal tradeId={trade._id} updateTrades={updateTrades} /></td>
+            <td><DeleteTradeModal type='exitTrade' tradeId={trade._id} updateTrades={updateTrades} /></td>
         </tr >
     );
 };

@@ -32,6 +32,7 @@ class SellTradeModal extends Component {
             case 'BTC': case 'ETH': case 'BNB': totalDivestment = totalDivestment.toFixed(8); break;
             default: /* Do nothing */ break;
         };
+        console.log(totalDivestment);
         const exitTrade = {
             currency: this.props.trade.currency,
             totalDivestment: totalDivestment,

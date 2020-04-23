@@ -18,7 +18,7 @@ class DeleteTradeModal extends Component {
     };
 
     deleteTrade = () => {
-        axios.delete(`/entryTrade/${this.props.tradeId}`).then(() => {
+        axios.delete(`/${this.props.type}/${this.props.tradeId}`).then(() => {
             this.props.updateTrades();
             this.toggleModal();
         }).catch(err => {

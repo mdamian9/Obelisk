@@ -32,4 +32,23 @@ router.post('/', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.delete('/:id', isAuthenticated, (req, res, next) => {
+    db.ExitTrade.findByIdAndDelete(req.params.id).then(trade => {
+        const options = { useFindAndModify: false, new: true };
+        const promise1 = db.EntryTrade.findByIdAndUpdate(trade.entryTrade, { $unset: { exitTrade: trade._id } }, options);
+        const promise2 = db.User.findByIdAndUpdate(trade.user, { $pull: { exitTrades: trade._id }, options });
+        return Promise.all([promise1, promise2]);
+    }).then(values => {
+        res.status(200).json({
+            message: 'Successfully deleted exit trade!',
+            values: values
+        });
+    }).catch(err => {
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 module.exports = router;
