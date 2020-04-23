@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 
 class SellTradeModal extends Component {
@@ -16,9 +15,37 @@ class SellTradeModal extends Component {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
     };
 
+    handleChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log('Sell trade');
+        let totalDivestment = this.props.trade.totalCoins * this.state.exitPrice;
+        
+        // Double check if switch statement returns correct output
+
+        switch (this.props.trade.currency) {
+            case 'USD': totalDivestment = totalDivestment.toFixed(4); break;
+            case 'USDT': totalDivestment = totalDivestment.toFixed(7); break;
+            case 'BTC': case 'ETH': case 'BNB': totalDivestment = totalDivestment.toFixed(8); break;
+            default: /* Do nothing */ break;
+        };
+        const exitTrade = {
+            currency: this.props.trade.currency,
+            totalDivestment: totalDivestment,
+            coinName: this.props.trade.coinName,
+            tradingPair: this.props.trade.tradingPair,
+            exitPrice: this.state.exitPrice,
+            totalCoins: this.props.trade.totalCoins,
+            user: this.props.trade.user,
+            entryTrade: this.props.trade._id
+        };
+        axios.post('/exitTrade', exitTrade).then(() => {
+            this.props.history.replace('/exit-trades');
+        }).catch(err => { console.log(err); });
+        event.target.reset();
     };
 
     render = () => {

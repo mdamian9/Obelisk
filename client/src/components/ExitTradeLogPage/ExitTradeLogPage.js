@@ -13,8 +13,8 @@ const TableRow = ({ trade, updateTrades }) => {
         <tr>
             <th scope="row">{date},<br />{time}</th>
             <td>{trade.tradingPair}</td>
-            <td>{trade.exitPrice} {trade.currency}</td>
             <td>{trade.totalCoins} {trade.coinName}</td>
+            <td>{trade.exitPrice} {trade.currency}</td>
             <td>{trade.totalDivestment} {trade.currency}</td>
             <td><DeleteTradeModal tradeId={trade._id} updateTrades={updateTrades} /></td>
         </tr >
@@ -41,9 +41,9 @@ class ExitTradeLogPage extends Component {
         };
     };
 
-    // componentDidMount = () => {
-    //     this.getExitTrades();
-    // };
+    componentDidMount = () => {
+        this.getExitTrades();
+    };
 
     getExitTrades = () => {
         axios.get(`/exitTrade/userTrades/${this.props.user.id}`).then(res => {
@@ -73,8 +73,8 @@ class ExitTradeLogPage extends Component {
                                         <tr>
                                             <th>Date</th>
                                             <th>Trading Pair</th>
-                                            <th>Exit Price</th>
                                             <th>Total Coins</th>
+                                            <th>Exit Price</th>
                                             <th>Total Divestment</th>
                                         </tr>
                                     </thead>
