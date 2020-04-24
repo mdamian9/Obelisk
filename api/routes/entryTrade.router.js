@@ -5,7 +5,7 @@ const db = require('../models');
 const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
-    const queryProjection = '_id currency totalInvestment coinName tradingPair entryPrice totalCoins sold user date'
+    const queryProjection = '_id currency totalInvestment coinName tradingPair entryPrice totalCoins sold exitTrade user date'
     db.EntryTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
         res.status(200).json(trades);
     }).catch(err => {

@@ -5,7 +5,7 @@ const db = require('../models');
 const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
-    const queryProjection = '_id currency totalDivestment coinName tradingPair exitPrice totalCoins user date'
+    const queryProjection = '_id currency totalDivestment coinName tradingPair exitPrice totalCoins entryTrade user date'
     db.ExitTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
         res.status(200).json(trades);
     }).catch(err => {
@@ -25,8 +25,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
         const promise1 = db.EntryTrade.findByIdAndUpdate(
             trade.entryTrade,
             {
-                $set: { exitTrade: trade._id },
-                $set: { sold: true }
+                $set: { sold: true, exitTrade: trade._id }
             },
             options
         );

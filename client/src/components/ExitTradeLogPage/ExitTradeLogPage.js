@@ -5,6 +5,7 @@ import moment from 'moment';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
+import TradeInfoModal from '../TradeInfoModal/TradeInfoModal';
 
 const TableRow = ({ trade, updateTrades }) => {
     const date = moment.utc(trade.date).local().format('MM/D/YYYY');
@@ -16,7 +17,11 @@ const TableRow = ({ trade, updateTrades }) => {
             <td>{trade.totalCoins} {trade.coinName}</td>
             <td>{trade.exitPrice} {trade.currency}</td>
             <td>{trade.totalDivestment} {trade.currency}</td>
-            <td><DeleteTradeModal type='exitTrade' tradeId={trade._id} updateTrades={updateTrades} /></td>
+            <td className='d-flex'>
+                <TradeInfoModal type='entryTrade' oppTradeId={trade.entryTrade} />
+                &ensp;
+                <DeleteTradeModal type='exitTrade' tradeId={trade._id} updateTrades={updateTrades} />
+            </td>
         </tr >
     );
 };

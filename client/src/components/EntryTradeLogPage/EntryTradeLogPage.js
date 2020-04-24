@@ -6,6 +6,7 @@ import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
 import SellTradeModal from './SellTradeModal';
+import TradeInfoModal from '../TradeInfoModal/TradeInfoModal';
 
 const TableRow = ({ trade, updateTrades, history }) => {
     const date = moment.utc(trade.date).local().format('MM/D/YYYY');
@@ -19,7 +20,7 @@ const TableRow = ({ trade, updateTrades, history }) => {
     if (trade.sold === true) {
         ActionButton =
             <div className='d-flex'>
-                <Button color='primary'>Info</Button>
+                <TradeInfoModal type='exitTrade' oppTradeId={trade.exitTrade} />
                 &ensp;
                 <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
             </div>;
