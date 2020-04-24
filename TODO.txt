@@ -1,8 +1,8 @@
-- Wallet    
-    - Add error validation to transfer funds (ie if transfer total is greater than funds available)
+- Wallet (completed for now) 
     
 - Add NewExitTradePage and ExitTradePageLogPage
     - Add button to exit trade in ExitTradeLogPage to pop up info modal with entry info
+    - Update user [currency] balance when trade is sold
 
 - Add TwitterWidget
 

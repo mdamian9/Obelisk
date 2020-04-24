@@ -6,15 +6,14 @@ import AddFundsModal from './AddFundsModal';
 import TransferFundsModal from './TransferFundsModal';
 
 const TableRow = ({ targetWallet, walletName }) => {
-    let ActionButton;
-    if (walletName === 'mainWallet') {
-        ActionButton =
-            <div className='d-flex'>
-                <AddFundsModal targetWallet={targetWallet} />&ensp;<TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
-            </div>
-            ;
-    } else {
-        ActionButton = <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
+    let ActionButton =
+        <div className='d-flex'>
+            <AddFundsModal targetWallet={targetWallet} />
+            &ensp;
+            <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
+        </div>;
+    if (walletName === 'tradingWallet') {
+        ActionButton = <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />;
     };
     return (
         <tr>

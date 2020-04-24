@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Col, Table, Button } from 'reactstrap';
 import axios from 'axios';
 import moment from 'moment';
 import withAuth from '../withAuth/withAuth';
@@ -7,9 +7,23 @@ import UserNavbar from '../UserNavbar/UserNavbar';
 import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
 import SellTradeModal from './SellTradeModal';
 
-const TableRow = ({ trade, updateTrades }) => {
+const TableRow = ({ trade, updateTrades, history }) => {
     const date = moment.utc(trade.date).local().format('MM/D/YYYY');
     const time = moment.utc(trade.date).local().format('h:mm a');
+    let ActionButton =
+        <div className='d-flex'>
+            <SellTradeModal trade={trade} history={history} />
+            &ensp;
+            <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
+        </div>;
+    if (trade.sold === true) {
+        ActionButton =
+            <div className='d-flex'>
+                <Button color='primary'>Info</Button>
+                &ensp;
+                <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
+            </div>;
+    };
     return (
         <tr>
             <th scope="row">{date},<br />{time}</th>
@@ -17,18 +31,14 @@ const TableRow = ({ trade, updateTrades }) => {
             <td>{trade.totalInvestment} {trade.currency}</td>
             <td>{trade.entryPrice} {trade.currency}</td>
             <td>{trade.totalCoins} {trade.coinName}</td>
-            <td className='d-flex'>
-                <SellTradeModal trade={trade} history={this.props.history} />
-                &ensp;
-                <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
-            </td>
+            <td>{ActionButton}</td>
         </tr >
     );
 };
 
-const TableBody = ({ trades, updateTrades }) => {
+const TableBody = ({ trades, updateTrades, history }) => {
     const tradeRows = trades.map(trade => {
-        return <TableRow key={trade._id} trade={trade} updateTrades={updateTrades} />
+        return <TableRow key={trade._id} trade={trade} updateTrades={updateTrades} history={history} />
     });
     return (
         <tbody>
@@ -84,7 +94,11 @@ class EntryTradeLogPage extends Component {
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <TableBody trades={this.state.entryTrades} updateTrades={this.getEntryTrades} />
+                                    <TableBody
+                                        trades={this.state.entryTrades}
+                                        updateTrades={this.getEntryTrades}
+                                        history={this.props.history}
+                                    />
                                 </Table>
                             </Col>
                         </Row>

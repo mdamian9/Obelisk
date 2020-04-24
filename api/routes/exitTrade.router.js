@@ -22,7 +22,14 @@ router.post('/', isAuthenticated, (req, res, next) => {
     console.log(exitTrade);
     db.ExitTrade.create(exitTrade).then(trade => {
         const options = { useFindAndModify: false, new: true };
-        const promise1 = db.EntryTrade.findByIdAndUpdate(trade.entryTrade, { $set: { exitTrade: trade._id } }, options);
+        const promise1 = db.EntryTrade.findByIdAndUpdate(
+            trade.entryTrade,
+            {
+                $set: { exitTrade: trade._id },
+                $set: { sold: true }
+            },
+            options
+        );
         const promise2 = db.User.findByIdAndUpdate(trade.user, { $push: { exitTrades: trade._id } }, options);
         return Promise.all([promise1, promise2]);
     }).then(() => {

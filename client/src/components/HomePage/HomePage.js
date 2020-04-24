@@ -35,9 +35,9 @@ class HomePage extends Component {
                                 <br />
                                 <Row>
                                     <Col className='d-flex justify-content-center'>
-                                        <Button color='primary' href='/entry-trades'>View Entry Trades</Button>
+                                        <Button color='primary' href='/entry-trades'>Entry Trade Log</Button>
                                         &ensp;
-                                        <Button color='secondary'>View Exit Trades</Button>
+                                        <Button color='secondary'>Exit Trade Log</Button>
                                     </Col>
                                 </Row>
                                 <hr className='ln-white' />
