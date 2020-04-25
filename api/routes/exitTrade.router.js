@@ -4,6 +4,18 @@ const exjwt = require('express-jwt');
 const db = require('../models');
 const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
+router.get('/:id', isAuthenticated, (req, res, next) => {
+    db.ExitTrade.findById(req.params.id).then(trade => {
+        res.status(200).json(trade);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
     const queryProjection = '_id currency totalDivestment coinName tradingPair exitPrice totalCoins entryTrade user date'
     db.ExitTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
