@@ -36,7 +36,6 @@ router.post('/', isAuthenticated, (req, res, next) => {
         const options = { useFindAndModify: false, new: true };
         return db.User.findByIdAndUpdate(trade.user, { $push: { entryTrades: trade._id } }, options);
     }).then(user => {
-        console.log(user);
         const updatedTradingFunds = user.tradingWallet[targetWallet].funds - parseFloat(entryTrade.totalInvestment);
         user.tradingWallet[targetWallet].funds = updatedTradingFunds;
         return user.save();
@@ -54,8 +53,13 @@ router.post('/', isAuthenticated, (req, res, next) => {
 
 router.delete('/:id', isAuthenticated, (req, res, next) => {
     db.EntryTrade.findByIdAndDelete(req.params.id).then(trade => {
-        const options = { useFindAndModify: false };
-        return db.User.findByIdAndUpdate(trade.user, { $pull: { entryTrades: trade._id }, options });
+        const options = { useFindAndModify: false, new: true };
+        db.User.findByIdAndUpdate(trade.user, { $pull: { entryTrades: trade._id }, options }).then(user => {
+            const targetWallet = trade.currency.toLowerCase();
+            const updatedTradingFunds = user.tradingWallet[targetWallet].funds + parseFloat(trade.totalInvestment);
+            user.tradingWallet[targetWallet].funds = updatedTradingFunds;
+            return user.save();
+        });
     }).then(() => {
         res.status(200).json({
             message: 'Successfully deleted entry trade!'

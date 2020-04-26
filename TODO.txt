@@ -1,3 +1,7 @@
+- *** Most Recent *** 
+    - Balances updated correctly when posting / deleting different types of trades
+    - Complete building TradeInfoModal
+
 - Wallet (completed for now) 
     
 - Add NewExitTradePage and ExitTradePageLogPage

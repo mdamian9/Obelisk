@@ -7,11 +7,6 @@ const ExitTradeSchema = new Schema({
         required: true,
         trim: true
     },
-    totalDivestment: {
-        type: Number,
-        required: true,
-        trim: true
-    },
     coinName: {
         type: String,
         required: true,
@@ -28,6 +23,16 @@ const ExitTradeSchema = new Schema({
         trim: true
     },
     totalCoins: {
+        type: Number,
+        required: true,
+        trim: true
+    },
+    totalDivestment: {
+        type: Number,
+        required: true,
+        trim: true
+    },
+    totalProfit: {
         type: Number,
         required: true,
         trim: true

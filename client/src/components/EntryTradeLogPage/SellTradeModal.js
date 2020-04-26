@@ -23,30 +23,40 @@ class SellTradeModal extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let totalDivestment = this.props.trade.totalCoins * this.state.exitPrice;
-        
+        let totalProfit = totalDivestment - this.props.trade.totalInvestment;
+
         // Double check if switch statement returns correct output
 
         switch (this.props.trade.currency) {
-            case 'USD': totalDivestment = totalDivestment.toFixed(4); break;
-            case 'USDT': totalDivestment = totalDivestment.toFixed(7); break;
-            case 'BTC': case 'ETH': case 'BNB': totalDivestment = totalDivestment.toFixed(8); break;
+            case 'USD':
+                totalDivestment = totalDivestment.toFixed(4);
+                totalProfit = totalProfit.toFixed(4);
+                break;
+            case 'USDT':
+                totalDivestment = totalDivestment.toFixed(7);
+                totalProfit = totalProfit.toFixed(7);
+                break;
+            case 'BTC': case 'ETH': case 'BNB':
+                totalDivestment = totalDivestment.toFixed(8);
+                totalProfit = totalProfit.toFixed(8);
+                break;
             default: /* Do nothing */ break;
         };
-        console.log(totalDivestment);
+        // console.log(totalDivestment);
         const exitTrade = {
             currency: this.props.trade.currency,
-            totalDivestment: totalDivestment,
             coinName: this.props.trade.coinName,
             tradingPair: this.props.trade.tradingPair,
             exitPrice: this.state.exitPrice,
             totalCoins: this.props.trade.totalCoins,
+            totalDivestment: totalDivestment,
+            totalProfit: totalProfit,
             user: this.props.trade.user,
             entryTrade: this.props.trade._id
         };
-        axios.post('/exitTrade', exitTrade).then(() => {
-            this.props.history.replace('/exit-trades');
-        }).catch(err => { console.log(err); });
+        axios.post('/exitTrade', exitTrade).catch(err => { console.log(err); });
         event.target.reset();
+        this.props.history.replace('/exit-trades');
     };
 
     render = () => {
