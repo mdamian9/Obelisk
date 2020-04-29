@@ -33,11 +33,25 @@ class TradeInfoModal extends Component {
         const oppTradeDate = moment.utc(this.state.oppTrade.date).local().format('MM/D/YYYY, h:mm a');
         let renderTradeInfo =
             <ModalBody>
-                <b>Sold this entry trade on: </b>{oppTradeDate}
+                Sold this entry trade on: <b>{oppTradeDate}</b>
                 <br />
-                <b>Sold {this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} at:</b>
+                Sold <b>{this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} </b>
+                at: <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency} </b>each
                 <br />
-            </ModalBody>;
+                Entry price: <b>{this.props.trade.entryPrice} {this.props.trade.currency}</b>
+                <br />
+                Exit price: <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency}</b>
+                <br />
+                Total investment: <b>{this.props.trade.totalInvestment} {this.props.trade.currency}</b>
+                <br />
+                Total divestment: <b>{this.state.oppTrade.totalDivestment} {this.state.oppTrade.currency}</b>
+                <br />
+                Total profit: <b>{this.state.oppTrade.totalProfit} {this.state.oppTrade.currency}</b>
+                <br />
+                Percent change: <b>{this.state.oppTrade.percentChange}%</b>
+                <br />
+                xROI: <b>{this.state.oppTrade.x_roi}x return of investment</b>
+            </ModalBody >;
         if (this.props.type === 'entryTrade') {
             renderTradeInfo =
                 <ModalBody>

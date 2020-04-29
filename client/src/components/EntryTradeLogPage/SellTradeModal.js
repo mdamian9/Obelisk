@@ -42,6 +42,9 @@ class SellTradeModal extends Component {
                 break;
             default: /* Do nothing */ break;
         };
+        const percentChange = (this.state.exitPrice - this.props.trade.entryPrice) / this.props.trade.entryPrice * 100;
+        const x_roi = totalDivestment / this.props.trade.totalInvestment;
+
         // console.log(totalDivestment);
         const exitTrade = {
             currency: this.props.trade.currency,
@@ -51,6 +54,8 @@ class SellTradeModal extends Component {
             totalCoins: this.props.trade.totalCoins,
             totalDivestment: totalDivestment,
             totalProfit: totalProfit,
+            percentChange: percentChange.toFixed(2),
+            x_roi: x_roi.toFixed(2),
             user: this.props.trade.user,
             entryTrade: this.props.trade._id
         };

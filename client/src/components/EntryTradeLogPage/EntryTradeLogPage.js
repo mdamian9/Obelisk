@@ -20,7 +20,7 @@ const TableRow = ({ trade, updateTrades, history }) => {
     if (trade.sold === true) {
         ActionButton =
             <div className='d-flex'>
-                <TradeInfoModal type='exitTrade' oppTradeId={trade.exitTrade} />
+                <TradeInfoModal type='exitTrade' trade={trade} oppTradeId={trade.exitTrade} />
                 &ensp;
                 <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
             </div>;

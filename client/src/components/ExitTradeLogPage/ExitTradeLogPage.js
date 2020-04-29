@@ -18,7 +18,7 @@ const TableRow = ({ trade, updateTrades }) => {
             <td>{trade.exitPrice} {trade.currency}</td>
             <td>{trade.totalDivestment} {trade.currency}</td>
             <td className='d-flex'>
-                <TradeInfoModal type='entryTrade' oppTradeId={trade.entryTrade} />
+                <TradeInfoModal type='entryTrade' trade={trade} oppTradeId={trade.entryTrade} />
                 &ensp;
                 <DeleteTradeModal type='exitTrade' tradeId={trade._id} updateTrades={updateTrades} />
             </td>

@@ -2,7 +2,8 @@
     - Balances updated correctly when posting / deleting different types of trades
     - Complete building TradeInfoModal
 
-- Wallet (completed for now) 
+- Wallet / Delete exit trade
+    - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
     
 - Add NewExitTradePage and ExitTradePageLogPage
     - Add button to exit trade in ExitTradeLogPage to pop up info modal with entry info

@@ -47,6 +47,16 @@ const ExitTradeSchema = new Schema({
         ref: 'EntryTrade',
         required: true
     },
+    percentChange: {
+        type: Number,
+        required: true,
+        trim: true
+    },
+    x_roi: {
+        type: Number,
+        required: true,
+        trim: true
+    },
     date: {
         type: Date,
         default: Date.now
