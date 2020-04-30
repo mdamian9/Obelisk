@@ -33,29 +33,46 @@ class TradeInfoModal extends Component {
         const oppTradeDate = moment.utc(this.state.oppTrade.date).local().format('MM/D/YYYY, h:mm a');
         let renderTradeInfo =
             <ModalBody>
-                Sold this entry trade on: <b>{oppTradeDate}</b>
+                • Sold this entry trade on: <b>{oppTradeDate}</b>
                 <br />
-                Sold <b>{this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} </b>
-                at: <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency} </b>each
+                • Sold <b>{this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} </b>
+                at <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency} </b>each
                 <br />
-                Entry price: <b>{this.props.trade.entryPrice} {this.props.trade.currency}</b>
+                • Entry price: <b>{this.props.trade.entryPrice} {this.props.trade.currency}</b>
                 <br />
-                Exit price: <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency}</b>
+                • Exit price: <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency}</b>
                 <br />
-                Total investment: <b>{this.props.trade.totalInvestment} {this.props.trade.currency}</b>
+                • Total investment: <b>{this.props.trade.totalInvestment} {this.props.trade.currency}</b>
                 <br />
-                Total divestment: <b>{this.state.oppTrade.totalDivestment} {this.state.oppTrade.currency}</b>
+                • Total divestment: <b>{this.state.oppTrade.totalDivestment} {this.state.oppTrade.currency}</b>
                 <br />
-                Total profit: <b>{this.state.oppTrade.totalProfit} {this.state.oppTrade.currency}</b>
+                • Total profit: <b>{this.state.oppTrade.totalProfit} {this.state.oppTrade.currency}</b>
                 <br />
-                Percent change: <b>{this.state.oppTrade.percentChange}%</b>
+                • Return on investment (percentage): <b>{this.state.oppTrade.percentChange}% ROI</b>
                 <br />
-                xROI: <b>{this.state.oppTrade.x_roi}x return of investment</b>
+                • Return on investment (multiple): <b>{this.state.oppTrade.x_roi}x return of investment</b>
             </ModalBody >;
         if (this.props.type === 'entryTrade') {
             renderTradeInfo =
                 <ModalBody>
-                    <h6>Entry trade: {this.state.oppTrade.totalInvestment}</h6>
+                    • Bought this exit trade on: <b>{oppTradeDate}</b>
+                    <br />
+                    • Bought <b>{this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} </b>
+                    at <b>{this.state.oppTrade.entryPrice} {this.state.oppTrade.currency} </b>each
+                    <br />
+                    • Entry price: <b>{this.state.oppTrade.entryPrice} {this.state.oppTrade.currency}</b>
+                    <br />
+                    • Exit price: <b>{this.props.trade.exitPrice} {this.props.trade.currency}</b>
+                    <br />
+                    • Total investment: <b>{this.state.oppTrade.totalInvestment} {this.state.oppTrade.currency}</b>
+                    <br />
+                    • Total divestment: <b>{this.props.trade.totalDivestment} {this.props.trade.currency}</b>
+                    <br />
+                    • Total profit: <b>{this.props.trade.totalProfit} {this.props.trade.currency}</b>
+                    <br />
+                    • Return on investment (percentage): <b>{this.props.trade.percentChange}% ROI</b>
+                    <br />
+                    • Return on investment (multiple): <b>{this.props.trade.x_roi}x ROI</b>
                 </ModalBody>;
         };
 

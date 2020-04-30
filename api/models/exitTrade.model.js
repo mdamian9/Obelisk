@@ -37,16 +37,6 @@ const ExitTradeSchema = new Schema({
         required: true,
         trim: true
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    entryTrade: {
-        type: Schema.Types.ObjectId,
-        ref: 'EntryTrade',
-        required: true
-    },
     percentChange: {
         type: Number,
         required: true,
@@ -57,6 +47,17 @@ const ExitTradeSchema = new Schema({
         required: true,
         trim: true
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    entryTrade: {
+        type: Schema.Types.ObjectId,
+        ref: 'EntryTrade',
+        required: true
+    },
+
     date: {
         type: Date,
         default: Date.now

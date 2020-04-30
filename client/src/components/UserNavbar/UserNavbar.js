@@ -49,19 +49,9 @@ class UserNavbar extends Component {
                         <NavItem>
                             <NavLink href='/home'>Home</NavLink>
                         </NavItem>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                New Trade
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem href='/new-entry-trade'>
-                                    New Entry Trade
-                                </DropdownItem>
-                                <DropdownItem href='/new-exit-trade'>
-                                    New Exit Trade
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
+                        <NavItem>
+                            <NavLink href='/new-entry-trade'>New Entry Trade</NavLink>
+                        </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 Trade Log

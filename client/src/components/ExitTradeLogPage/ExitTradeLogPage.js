@@ -81,6 +81,7 @@ class ExitTradeLogPage extends Component {
                                             <th>Total Coins</th>
                                             <th>Exit Price</th>
                                             <th>Total Divestment</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <TableBody trades={this.state.exitTrades} updateTrades={this.getExitTrades} />

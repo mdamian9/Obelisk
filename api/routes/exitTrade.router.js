@@ -18,7 +18,7 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
 
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
     const queryProjection =
-        '_id currency coinName tradingPair exitPrice totalCoins totalProfit totalDivestment user entryTrade date';
+        '_id currency coinName tradingPair exitPrice totalCoins totalDivestment totalProfit percentChange x_roi user entryTrade date';
     db.ExitTrade.find({ user: req.params.userId }).select(queryProjection).then(trades => {
         res.status(200).json(trades);
     }).catch(err => {

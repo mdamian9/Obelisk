@@ -27,17 +27,15 @@ class HomePage extends Component {
                                     <Col className='d-flex justify-content-center'>
                                         <Button color='info' href='/wallet'>Wallet</Button>
                                         &ensp;
-                                        <Button color='success' href='/new-entry-trade'>New Entry Trade</Button>
-                                        &ensp;
-                                        <Button color='danger' href='/new-exit-trade'>New Exit Trade</Button>
+                                        <Button color='primary' href='/new-entry-trade'>New Entry Trade</Button>
                                     </Col>
                                 </Row>
                                 <br />
                                 <Row>
                                     <Col className='d-flex justify-content-center'>
-                                        <Button color='primary' href='/entry-trades'>Entry Trade Log</Button>
+                                        <Button color='success' href='/entry-trades'>Entry Trade Log</Button>
                                         &ensp;
-                                        <Button color='secondary'>Exit Trade Log</Button>
+                                        <Button color='danger' href='/exit-trades'>Exit Trade Log</Button>
                                     </Col>
                                 </Row>
                                 <hr className='ln-white' />
