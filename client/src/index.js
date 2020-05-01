@@ -16,6 +16,7 @@ import WalletPage from './components/WalletPage/WalletPage';
 import NewEntryTradePage from './components/NewEntryTradePage/NewEntryTradePage';
 import EntryTradeLogPage from './components/EntryTradeLogPage/EntryTradeLogPage';
 import ExitTradeLogPage from './components/ExitTradeLogPage/ExitTradeLogPage';
+import TutorialPage from './components/TutorialPage/TutorialPage';
 
 // If there is a valid token, automatically set headers with Auth bearer token for axios requests
 if (localStorage.getItem('id_token')) {
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route exact path='/signup' component={SignupPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/home' component={HomePage} />
+        <Route exact path='/tutorial' component={TutorialPage} />
         <Route exact path='/find-percent-change' component={FindPercentChangePage} />
         <Route exact path='/get-target-price' component={GetTargetPricePage} />
         <Route exact path='/calculate-roi' component={CalculateRoiPage} />

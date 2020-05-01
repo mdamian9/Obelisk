@@ -12,12 +12,10 @@
 
 - Add TwitterWidget
 
-- Add footer display when making entryTrade to display funds available for chosen cryptocurrency
-    - Validation for entrytrade (if funds aren't available in tradingWallet)
-    - Modal alert to tell user to transfer funds from main wallet or add funds to main if necessary
-
 - Create custom JSON file with data for cryptocurrencies
 - Use datalist when choosing a cryptocurrency pair on all forms (predefined cryptos)
 - Use correct decimal placement for different cryptos
 - Add icons to wallet
 - Add *Nomics API to get real time market data, and integrate into app to dynamically render using API data
+
+- In the end, convert all possible class components to functional components using useState
