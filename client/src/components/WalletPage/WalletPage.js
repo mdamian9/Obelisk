@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table } from 'reactstrap';
+import { Container, Row, Table, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import AddFundsModal from './AddFundsModal';
 import TransferFundsModal from './TransferFundsModal';
+import './WalletPage.css';
 
 const TableRow = ({ targetWallet, walletName }) => {
     let ActionButton =
@@ -11,6 +13,18 @@ const TableRow = ({ targetWallet, walletName }) => {
             <AddFundsModal targetWallet={targetWallet} />
             &ensp;
             <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
+            &ensp;
+            {/* Need to build modal */}
+            <Button className='tooltip-btn' color='danger'>
+                <FontAwesomeIcon icon='minus-square' />
+                <span className='tooltip'>Withdraw funds</span>
+            </Button>
+            &ensp;
+            {/* Need to build modal */}
+            <Button className='tooltip-btn' color='danger'>
+                <FontAwesomeIcon icon='times-circle' />
+                <span className='tooltip'>Reset funds to 0</span>
+            </Button>
         </div>;
     if (walletName === 'tradingWallet') {
         ActionButton = <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />;
@@ -62,8 +76,8 @@ class WalletPage extends Component {
                 <br />
                 <div>
                     <Container>
-                        <Row>
-                            <Col className='section-solid-white text-white'>
+                        <Row className='d-flex justify-content-center'>
+                            <div className='section-solid-white text-white'>
                                 <h3 className='text-center'>
                                     Main Wallet
                                 </h3>
@@ -73,13 +87,14 @@ class WalletPage extends Component {
                                         <tr>
                                             <th>Currency</th>
                                             <th>Total</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <TableBody wallet={this.state.mainWallet} walletName='mainWallet' />
                                 </Table>
-                            </Col>
-                            <Col xs={1} />
-                            <Col className='section-solid-white text-white'>
+                            </div>
+                            &ensp;
+                            <div className='section-solid-white text-white'>
                                 <h3 className='text-center'>
                                     Trading Wallet
                                 </h3>
@@ -89,11 +104,12 @@ class WalletPage extends Component {
                                         <tr>
                                             <th>Currency</th>
                                             <th>Total</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <TableBody wallet={this.state.tradingWallet} walletName='tradingWallet' />
                                 </Table>
-                            </Col>
+                            </div>
                         </Row>
                     </Container>
                 </div>

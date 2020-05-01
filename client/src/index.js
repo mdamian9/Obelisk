@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
+// Import index.css dile and bootstrap
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// Import App and other necessary components
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import SignupPage from './components/SignupPage/SignupPage';
@@ -17,6 +19,11 @@ import NewEntryTradePage from './components/NewEntryTradePage/NewEntryTradePage'
 import EntryTradeLogPage from './components/EntryTradeLogPage/EntryTradeLogPage';
 import ExitTradeLogPage from './components/ExitTradeLogPage/ExitTradeLogPage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
+// Import font awesome modules and build library with icons
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faExchangeAlt, faMinusSquare, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+library.add(fab, faExchangeAlt, faMinusSquare, faTimesCircle);
 
 // If there is a valid token, automatically set headers with Auth bearer token for axios requests
 if (localStorage.getItem('id_token')) {

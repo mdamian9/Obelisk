@@ -64,7 +64,7 @@ class CalculateRoiPage extends Component {
                         <Row>
                             <Col xs={7} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
-                                    Calculate Return of Investment
+                                    Calculate Return on Investment
                                 </h3>
                                 <hr className='ln-white' />
                                 <Form id='calc-form' onSubmit={this.handleFormSubmit}>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
+import './WalletPage.css';
 
 class TransferFundsModal extends Component {
 
@@ -43,11 +45,10 @@ class TransferFundsModal extends Component {
             currency: this.props.targetWallet.ticker.toLowerCase(),
             totalTransfer: this.state.totalTransfer
         };
-        axios.patch(`/user/transferFunds/${this.Auth.getProfile().id}`, update).then(res => {
-            console.log(res.data);
+        axios.patch(`/user/transferFunds/${this.Auth.getProfile().id}`, update).then(() => {
             this.toggleModal();
             // Refresh wallet page to render updated wallet
-            document.location.reload();    
+            document.location.reload();
         }).catch(err => {
             console.log(err);
         });
@@ -67,7 +68,10 @@ class TransferFundsModal extends Component {
         };
         return (
             <div>
-                <Button color='primary' onClick={this.toggleModal}>Transfer</Button>
+                <Button className='tooltip-btn' color='primary' onClick={this.toggleModal}>
+                    <FontAwesomeIcon icon='exchange-alt' />
+                    <span className='tooltip'>Transfer funds</span>
+                </Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader>
                         Transfer {this.props.targetWallet.ticker}:
