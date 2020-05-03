@@ -3,22 +3,20 @@ import { Container, Row, Table, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
-import AddFundsModal from './AddFundsModal';
+import DepositFundsModal from './DepositFundsModal';
+import WithdrawFundsModal from './WithdrawFundsModal';
 import TransferFundsModal from './TransferFundsModal';
 import './WalletPage.css';
 
 const TableRow = ({ targetWallet, walletName }) => {
     let ActionButton =
         <div className='d-flex'>
-            <AddFundsModal targetWallet={targetWallet} />
+            <DepositFundsModal targetWallet={targetWallet} />
             &ensp;
             <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
             &ensp;
             {/* Need to build modal */}
-            <Button className='tooltip-btn' color='danger'>
-                <FontAwesomeIcon icon='minus-square' />
-                <span className='tooltip'>Withdraw funds</span>
-            </Button>
+            <WithdrawFundsModal targetWallet={targetWallet} />
             &ensp;
             {/* Need to build modal */}
             <Button className='tooltip-btn' color='danger'>

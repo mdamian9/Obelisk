@@ -32,9 +32,7 @@ class TransferFundsModal extends Component {
 
     handleChange = event => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
+        this.setState({ [name]: value });
     };
 
     handleFormSubmit = event => {
@@ -79,7 +77,7 @@ class TransferFundsModal extends Component {
                     <Form id='transfer-funds-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
-                                <Label for='total-transfer'>Transfer funds to {toWallet}:</Label>
+                                <Label for='total-transfer'>Transfer {this.props.targetWallet.ticker} to {toWallet}:</Label>
                                 <Input type='number' name='totalTransfer' id='total-transfer' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
                                 {renderTransferError}

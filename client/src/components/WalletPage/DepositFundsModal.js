@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, M
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 
-class AddFundsModal extends Component {
+class DepositFundsModal extends Component {
 
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ class AddFundsModal extends Component {
             currency: this.props.targetWallet.ticker.toLowerCase(),
             totalDeposit: this.state.totalDeposit
         };
-        axios.patch(`/user/addFunds/${this.Auth.getProfile().id}`, update).then(res => {
+        axios.patch(`/user/depositFunds/${this.Auth.getProfile().id}`, update).then(res => {
             console.log(res.data);
             this.toggleModal();
             // Refresh wallet page to render updated wallet
@@ -51,7 +51,7 @@ class AddFundsModal extends Component {
                     <Form id='add-funds-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
-                                <Label for='total-deposit'>Deposit amount to main wallet:</Label>
+                                <Label for='total-deposit'>Deposit amount to main {this.props.targetWallet.ticker} wallet:</Label>
                                 <Input type='number' name='totalDeposit' id='total-deposit' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
                             </FormGroup>
@@ -68,4 +68,4 @@ class AddFundsModal extends Component {
 
 };
 
-export default AddFundsModal;
+export default DepositFundsModal;

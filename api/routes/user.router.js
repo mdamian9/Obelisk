@@ -20,7 +20,7 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
-router.patch('/addFunds/:id/', isAuthenticated, (req, res, next) => {
+router.patch('/depositFunds/:id/', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         const updatedFunds = user['mainWallet'][req.body.currency].funds + parseFloat(req.body.totalDeposit);
         user['mainWallet'][req.body.currency].funds = updatedFunds;
