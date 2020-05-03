@@ -58,4 +58,22 @@ router.patch('/transferFunds/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.patch('/withdrawFunds/:id', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        const updatedBalance = user['mainWallet'][req.body.currency].funds - parseFloat(req.body.totalWithdrawal);
+        user['mainWallet'][req.body.currency].funds = updatedBalance;
+        return user.save();
+    }).then(() => {
+        res.status(200).json({
+            message: 'Successfully withdrew funds!'
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 module.exports = router;

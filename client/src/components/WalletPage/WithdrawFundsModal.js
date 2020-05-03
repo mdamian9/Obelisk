@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import AuthService from '../AuthService/AuthService';
+import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './WalletPage.css';
 
@@ -9,6 +9,7 @@ class WithdrawFundsModal extends Component {
 
     constructor(props) {
         super(props);
+        this.Auth = new AuthService();
         this.state = {
             isOpen: false
         };
@@ -23,12 +24,27 @@ class WithdrawFundsModal extends Component {
         this.setState({ [name]: value });
     };
 
+    handleFormSubmit = event => {
+        event.preventDefault();
+        const update = {
+            currency: this.props.targetWallet.ticker.toLowerCase(),
+            totalWithdrawal: this.state.totalWithdrawal
+        };
+        axios.patch(`/user/withdrawFunds/${this.Auth.getProfile().id}`, update).then(() => {
+            this.toggleModal();
+            // Refresh wallet page to render updated wallet
+            document.location.reload();
+        }).catch(err => {
+            console.log(err);
+        });
+        event.target.reset();
+    };
+
     render = () => {
-        console.log(this.props.targetWallet);
-        let renderTransferError = <p></p>;
+        let renderAvailableFunds = <p>Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}</p>;
         let confirmButton = <Button color='success'>Confirm</Button>;
-        if (this.state.totalTransfer > this.props.targetWallet.funds) {
-            renderTransferError = <p><b className='text-danger'>You do not have enough funds to withdraw from your wallet.</b></p>
+        if (this.state.totalWithdrawal > this.props.targetWallet.funds) {
+            renderAvailableFunds = <p><b className='text-danger'>You do not have enough funds to withdraw from your wallet.</b></p>
             confirmButton = <div></div>;
         };
         return (
@@ -41,13 +57,13 @@ class WithdrawFundsModal extends Component {
                     <ModalHeader>
                         Withdraw {this.props.targetWallet.ticker}
                     </ModalHeader>
-                    <Form id='transfer-funds-form' onSubmit={this.handleFormSubmit}>
+                    <Form id='withdraw-funds-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
-                                <Label for='total-transfer'>Withdraw funds from main {this.props.targetWallet.ticker} wallet:</Label>
-                                <Input type='number' name='totalTransfer' id='total-transfer' placeholder='0.00000000'
+                                <Label for='total-withdrawal'>Withdraw funds from main {this.props.targetWallet.ticker} wallet:</Label>
+                                <Input type='number' name='totalWithdrawal' id='total-withdrawal' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
-                                {renderTransferError}
+                                {renderAvailableFunds}
                             </FormGroup>
                         </ModalBody>
                         <ModalFooter>
