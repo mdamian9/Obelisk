@@ -76,4 +76,21 @@ router.patch('/withdrawFunds/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.patch('/resetFunds/:id', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        user['mainWallet'][req.body.currency].funds = 0;
+        return user.save();
+    }).then(() => {
+        res.status(200).json({
+            message: 'Successfully reset funds to 0!'
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 module.exports = router;

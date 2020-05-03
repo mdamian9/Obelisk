@@ -1,8 +1,8 @@
 - *** Most Recent *** 
-    - Worked on wallet aesthetic - added fontAwesome, buttons, tooltip
+    - Created withdrawFunds modal
 
 - *** To do next ***
- - Create modals for withdraw / reset funds
+ - Create modal for reset funds
 
 - Wallet / Delete exit trade
     - Create modals for withdraw / reset funds

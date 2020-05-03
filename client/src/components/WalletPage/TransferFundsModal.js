@@ -54,14 +54,14 @@ class TransferFundsModal extends Component {
 
     render = () => {
         let fromWallet = 'main wallet', toWallet = 'trading wallet';
-        let renderTransferError = <p></p>;
+        let renderAvailableFunds = <p>Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}</p>;
         let confirmButton = <Button color='success'>Confirm</Button>;
         if (this.state.from === 'tradingWallet') {
             fromWallet = 'trading wallet';
             toWallet = 'main wallet';
         };
         if (this.state.totalTransfer > this.props.targetWallet.funds) {
-            renderTransferError = <p><b className='text-danger'>You do not have enough funds in your {fromWallet}.</b></p>
+            renderAvailableFunds = <p><b className='text-danger'>You do not have enough funds in your {fromWallet}.</b></p>
             confirmButton = <div></div>;
         };
         return (
@@ -80,7 +80,7 @@ class TransferFundsModal extends Component {
                                 <Label for='total-transfer'>Transfer {this.props.targetWallet.ticker} to {toWallet}:</Label>
                                 <Input type='number' name='totalTransfer' id='total-transfer' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
-                                {renderTransferError}
+                                {renderAvailableFunds}
                             </FormGroup>
                         </ModalBody>
                         <ModalFooter>
