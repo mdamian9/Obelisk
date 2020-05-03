@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import withAuth from '../withAuth/withAuth';

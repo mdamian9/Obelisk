@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, Table, Button } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Container, Row, Table } from 'reactstrap';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DepositFundsModal from './DepositFundsModal';
 import WithdrawFundsModal from './WithdrawFundsModal';
 import TransferFundsModal from './TransferFundsModal';
+import ResetFundsModal from './ResetFundsModal';
 import './WalletPage.css';
 
 const TableRow = ({ targetWallet, walletName }) => {
@@ -15,14 +15,9 @@ const TableRow = ({ targetWallet, walletName }) => {
             &ensp;
             <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />
             &ensp;
-            {/* Need to build modal */}
             <WithdrawFundsModal targetWallet={targetWallet} />
             &ensp;
-            {/* Need to build modal */}
-            <Button className='tooltip-btn' color='danger'>
-                <FontAwesomeIcon icon='times-circle' />
-                <span className='tooltip'>Reset funds to 0</span>
-            </Button>
+            <ResetFundsModal targetWallet={targetWallet} />
         </div>;
     if (walletName === 'tradingWallet') {
         ActionButton = <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />;
