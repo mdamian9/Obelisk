@@ -27,7 +27,7 @@ class DepositFundsModal extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const update = {
-            currency: this.props.targetWallet.ticker.toLowerCase(),
+            currency: this.props.targetWallet.ticker,
             totalDeposit: this.state.totalDeposit
         };
         axios.patch(`/user/depositFunds/${this.Auth.getProfile().id}`, update).then(res => {

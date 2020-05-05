@@ -35,12 +35,17 @@ class TransferFundsModal extends Component {
         this.setState({ [name]: value });
     };
 
+    setMaxTransfer = () => {
+        document.getElementById('transfer-form').totalTransfer.value = this.props.targetWallet.funds;
+        this.setState({ totalTransfer: this.props.targetWallet.funds });
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         const update = {
             from: this.state.from,
             to: this.state.to,
-            currency: this.props.targetWallet.ticker.toLowerCase(),
+            currency: this.props.targetWallet.ticker,
             totalTransfer: this.state.totalTransfer
         };
         axios.patch(`/user/transferFunds/${this.Auth.getProfile().id}`, update).then(() => {
@@ -54,7 +59,16 @@ class TransferFundsModal extends Component {
 
     render = () => {
         let fromWallet = 'main wallet', toWallet = 'trading wallet';
-        let renderAvailableFunds = <p>Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}</p>;
+        let renderAvailableFunds =
+            <div className='d-flex align-items-center'>
+                <div>
+                    Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}
+                </div>
+                &ensp;
+                <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMaxTransfer}>
+                    Max
+                </Button>
+            </div>;
         let confirmButton = <Button color='success'>Confirm</Button>;
         if (this.state.from === 'tradingWallet') {
             fromWallet = 'trading wallet';
@@ -74,14 +88,14 @@ class TransferFundsModal extends Component {
                     <ModalHeader>
                         Transfer {this.props.targetWallet.ticker}:
                     </ModalHeader>
-                    <Form id='transfer-funds-form' onSubmit={this.handleFormSubmit}>
+                    <Form id='transfer-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
                                 <Label for='total-transfer'>Transfer {this.props.targetWallet.ticker} to {toWallet}:</Label>
                                 <Input type='number' name='totalTransfer' id='total-transfer' placeholder='0.00000000'
                                     step='0.00000001' onChange={this.handleChange} required />
-                                {renderAvailableFunds}
                             </FormGroup>
+                            {renderAvailableFunds}
                         </ModalBody>
                         <ModalFooter>
                             {confirmButton}

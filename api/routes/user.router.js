@@ -4,6 +4,18 @@ const exjwt = require('express-jwt');
 const db = require('../models');
 const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
+// Helper function to fix correct decimal for given currency
+const fixDecimal = (currency, total) => {
+    switch (currency) {
+        case 'USD': total = total.toFixed(4); break;
+        case 'USDT': total = total.toFixed(7); break;
+        case 'BTC': case 'ETH': case 'BNB': total = total.toFixed(8); break;
+        default: /* Do nothing */ break;
+    };
+    return total;
+};
+
+// Get user by id
 router.get('/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         if (!user) {
@@ -20,10 +32,11 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Deposit funds route
 router.patch('/depositFunds/:id/', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
-        const updatedFunds = user['mainWallet'][req.body.currency].funds + parseFloat(req.body.totalDeposit);
-        user['mainWallet'][req.body.currency].funds = updatedFunds;
+        const updatedFunds = user['mainWallet'][req.body.currency.toLowerCase()].funds + parseFloat(req.body.totalDeposit);
+        user['mainWallet'][req.body.currency.toLowerCase()].funds = fixDecimal(req.body.currency, updatedFunds);
         return user.save();
     }).then(() => {
         res.status(200).json({
@@ -38,12 +51,14 @@ router.patch('/depositFunds/:id/', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Transfer funds route
 router.patch('/transferFunds/:id', isAuthenticated, (req, res, next) => {
+    const targetCurrency = req.body.currency.toLowerCase();
     db.User.findById(req.params.id).then(user => {
-        const updatedFromWalletFunds = user[req.body.from][req.body.currency].funds - parseFloat(req.body.totalTransfer);
-        const updatedToWalletFunds = user[req.body.to][req.body.currency].funds + parseFloat(req.body.totalTransfer);
-        user[req.body.from][req.body.currency].funds = updatedFromWalletFunds;
-        user[req.body.to][req.body.currency].funds = updatedToWalletFunds;
+        const updatedFromWalletFunds = user[req.body.from][targetCurrency].funds - parseFloat(req.body.totalTransfer);
+        const updatedToWalletFunds = user[req.body.to][targetCurrency].funds + parseFloat(req.body.totalTransfer);
+        user[req.body.from][targetCurrency].funds = fixDecimal(req.body.currency, updatedFromWalletFunds);
+        user[req.body.to][targetCurrency].funds = fixDecimal(req.body.currency, updatedToWalletFunds);
         return user.save();
     }).then(() => {
         res.status(200).json({
@@ -58,10 +73,11 @@ router.patch('/transferFunds/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Withdraw funds route
 router.patch('/withdrawFunds/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
-        const updatedBalance = user['mainWallet'][req.body.currency].funds - parseFloat(req.body.totalWithdrawal);
-        user['mainWallet'][req.body.currency].funds = updatedBalance;
+        const updatedBalance = user['mainWallet'][req.body.currency.toLowerCase()].funds - parseFloat(req.body.totalWithdrawal);
+        user['mainWallet'][req.body.currency.toLowerCase()].funds = fixDecimal(req.body.currency, updatedBalance);
         return user.save();
     }).then(() => {
         res.status(200).json({
@@ -76,6 +92,7 @@ router.patch('/withdrawFunds/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Reset funds route
 router.patch('/resetFunds/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         user['mainWallet'][req.body.currency].funds = 0;

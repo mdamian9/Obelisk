@@ -27,7 +27,7 @@ class WithdrawFundsModal extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const update = {
-            currency: this.props.targetWallet.ticker.toLowerCase(),
+            currency: this.props.targetWallet.ticker,
             totalWithdrawal: this.state.totalWithdrawal
         };
         axios.patch(`/user/withdrawFunds/${this.Auth.getProfile().id}`, update).then(() => {

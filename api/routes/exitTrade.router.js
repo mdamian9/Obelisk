@@ -4,6 +4,18 @@ const exjwt = require('express-jwt');
 const db = require('../models');
 const isAuthenticated = exjwt({ secret: process.env.JWT_SECRET });
 
+// Helper function to fix correct decimal for given currency
+const fixDecimal = (currency, total) => {
+    switch (currency) {
+        case 'USD': total = total.toFixed(4); break;
+        case 'USDT': total = total.toFixed(7); break;
+        case 'BTC': case 'ETH': case 'BNB': total = total.toFixed(8); break;
+        default: /* Do nothing */ break;
+    };
+    return total;
+};
+
+// Get a single exit trade by id, return document
 router.get('/:id', isAuthenticated, (req, res, next) => {
     db.ExitTrade.findById(req.params.id).then(trade => {
         res.status(200).json(trade);
@@ -16,6 +28,7 @@ router.get('/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Get user exit trades by user ID, return array of trades
 router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
     const queryProjection =
         '_id currency coinName tradingPair exitPrice totalCoins totalDivestment totalProfit percentChange x_roi user entryTrade date';
@@ -30,6 +43,7 @@ router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Post a new exit trade - add to DB and update user trades / wallet
 router.post('/', isAuthenticated, (req, res, next) => {
     const exitTrade = req.body;
     console.log(exitTrade);
@@ -41,7 +55,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
         db.User.findById(trade.user).then(user => {
             const updatedTradingFunds = user.tradingWallet[targetWallet].funds + parseFloat(exitTrade.totalDivestment);
             user.exitTrades.push(trade.exitTrade);
-            user.tradingWallet[targetWallet].funds = updatedTradingFunds;
+            user.tradingWallet[targetWallet].funds = fixDecimal(trade.currency, updatedTradingFunds);
             return user.save();
         });
     }).then(result => {
@@ -56,6 +70,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Delete an exit trade by ID - update user wallet
 router.delete('/:id', isAuthenticated, (req, res, next) => {
     db.ExitTrade.findByIdAndDelete(req.params.id).then(trade => {
         const options = { useFindAndModify: false, new: true };
@@ -71,7 +86,7 @@ router.delete('/:id', isAuthenticated, (req, res, next) => {
             .then(user => {
                 const targetWallet = trade.currency.toLowerCase();
                 const updatedTradingFunds = user.tradingWallet[targetWallet].funds - parseFloat(trade.totalDivestment);
-                user.tradingWallet[targetWallet].funds = updatedTradingFunds;
+                user.tradingWallet[targetWallet].funds = fixDecimal(trade.currency, updatedTradingFunds);
                 return user.save();
             });
         return Promise.all([promise1, promise2]);

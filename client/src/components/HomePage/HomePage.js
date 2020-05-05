@@ -16,7 +16,7 @@ const HomePage = props => {
                                 <Col>
                                     <h2>
                                         Welcome {props.user.username}!
-                                        </h2>
+                                    </h2>
                                 </Col>
                             </Row>
                             <hr className='ln-white' />
@@ -24,7 +24,7 @@ const HomePage = props => {
                                 <Col className='d-flex justify-content-center'>
                                     <Button color='info' href='/wallet'>Wallet</Button>
                                         &ensp;
-                                        <Button color='primary' href='/new-entry-trade'>New Entry Trade</Button>
+                                    <Button color='primary' href='/new-entry-trade'>New Entry Trade</Button>
                                 </Col>
                             </Row>
                             <br />
@@ -32,7 +32,7 @@ const HomePage = props => {
                                 <Col className='d-flex justify-content-center'>
                                     <Button color='success' href='/entry-trades'>Entry Trade Log</Button>
                                         &ensp;
-                                        <Button color='danger' href='/exit-trades'>Exit Trade Log</Button>
+                                    <Button color='danger' href='/exit-trades'>Exit Trade Log</Button>
                                 </Col>
                             </Row>
                             <hr className='ln-white' />
@@ -42,14 +42,14 @@ const HomePage = props => {
                                         &ensp;
                                         <Button color='dark' href='/get-target-price'>Get Target Price</Button>
                                         &ensp;
-                                        <Button color='warning' href='calculate-roi'>Calculate ROI</Button>
+                                    <Button color='warning' href='calculate-roi'>Calculate ROI</Button>
                                 </Col>
                             </Row>
                         </Col>
                         <Col className='section-solid-white text-center' xs={5} style={{ marginLeft: '40px' }}>
                             <h2>
                                 Section 2
-                                </h2>
+                            </h2>
                         </Col>
                     </Row>
                 </Container>
