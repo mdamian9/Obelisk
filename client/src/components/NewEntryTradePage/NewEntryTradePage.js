@@ -12,7 +12,6 @@ class NewEntryTradePage extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            wallet: this.props.user.tradingWallet,
             errModalOpen: false
         };
     };
@@ -21,6 +20,12 @@ class NewEntryTradePage extends Component {
         this.setState(prevState => ({
             errModalOpen: !prevState.errModalOpen
         }));
+    };
+
+    setMax = () => {
+        const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
+        document.getElementById('entry-form').totalInvestment.value = availableFunds;
+        this.setState({ totalInvestment: availableFunds })
     };
 
     // Handles the change of a form field
@@ -35,7 +40,7 @@ class NewEntryTradePage extends Component {
     // Create new entry trade and save to database
     handleFormSubmit = event => {
         event.preventDefault();
-        const availableFunds = this.state.wallet[this.state.currency.toLowerCase()].funds;
+        const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
         // If total investment is greater than available trading funds, toggle error modal
         if (this.state.totalInvestment > availableFunds) {
             event.target.reset();
@@ -64,8 +69,17 @@ class NewEntryTradePage extends Component {
     render = () => {
         let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
-            const availableFunds = this.state.wallet[this.state.currency.toLowerCase()].funds;
-            renderAvailableFunds = <p>Available {this.state.currency}: {availableFunds}</p>
+            const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
+            renderAvailableFunds =
+                <div className='d-flex align-items-center' style={{ marginTop: 5 }}>
+                    <div>
+                        Available {this.state.currency}: {availableFunds}
+                    </div>
+                    &ensp;
+                    <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMax}>
+                        Max
+                    </Button>
+                </div>;
             if (this.state.totalInvestment > availableFunds) {
                 renderAvailableFunds = <b className='text-danger'>You do not have enough funds in your trading wallet.</b>
             };
@@ -95,13 +109,14 @@ class NewEntryTradePage extends Component {
                                             <option>ETH</option>
                                             <option>BNB</option>
                                         </Input>
-                                        {renderAvailableFunds}
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>
                                         <Input type='number' name='totalInvestment' id='total-investment'
                                             placeholder='0.00000000' step='0.00000001' min='0.00000001'
-                                            onChange={this.handleChange} required />
+                                            onChange={this.handleChange} required
+                                        />
+                                        {renderAvailableFunds}
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>

@@ -24,6 +24,11 @@ class WithdrawFundsModal extends Component {
         this.setState({ [name]: value });
     };
 
+    setMax = () => {
+        document.getElementById('withdrawal-form').totalWithdrawal.value = this.props.targetWallet.funds;
+        this.setState({ totalWithdrawal: this.props.targetWallet.funds });
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         const update = {
@@ -41,7 +46,16 @@ class WithdrawFundsModal extends Component {
     };
 
     render = () => {
-        let renderAvailableFunds = <p>Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}</p>;
+        let renderAvailableFunds =
+            <div className='d-flex align-items-center'>
+                <div>
+                    Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}
+                </div>
+                &ensp;
+                <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMax}>
+                    Max
+                </Button>
+            </div>;
         let confirmButton = <Button color='success'>Confirm</Button>;
         if (this.state.totalWithdrawal > this.props.targetWallet.funds) {
             renderAvailableFunds = <p><b className='text-danger'>You do not have enough funds to withdraw from your wallet.</b></p>
@@ -57,7 +71,7 @@ class WithdrawFundsModal extends Component {
                     <ModalHeader>
                         Withdraw {this.props.targetWallet.ticker}
                     </ModalHeader>
-                    <Form id='withdraw-funds-form' onSubmit={this.handleFormSubmit}>
+                    <Form id='withdrawal-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
                                 <Label for='total-withdrawal'>Withdraw funds from main {this.props.targetWallet.ticker} wallet:</Label>

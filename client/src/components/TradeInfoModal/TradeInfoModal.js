@@ -14,15 +14,9 @@ class TradeInfoModal extends Component {
     };
 
     componentDidMount = () => {
-        console.log(`GET request for ${this.props.oppTradeId}`);
         axios.get(`/${this.props.type}/${this.props.oppTradeId}`).then(res => {
-            console.log(res.data);
-            this.setState({
-                oppTrade: res.data
-            });
-        }).catch(err => {
-            console.log(err);
-        });
+            this.setState({ oppTrade: res.data });
+        }).catch(err => { console.log(err); });
     };
 
     toggleModal = () => {
@@ -30,10 +24,16 @@ class TradeInfoModal extends Component {
     };
 
     render = () => {
+        const tradeDate = moment.utc(this.props.trade.date).local().format('MM/D/YYYY, h:mm a');
         const oppTradeDate = moment.utc(this.state.oppTrade.date).local().format('MM/D/YYYY, h:mm a');
         let renderTradeInfo =
             <ModalBody>
-                • Sold this entry trade on: <b>{oppTradeDate}</b>
+                • Bought this position on: <b>{tradeDate}</b>
+                <br />
+                • Bought <b>{this.props.trade.totalCoins} {this.props.trade.coinName} </b>
+                at <b>{this.props.trade.entryPrice} {this.props.trade.currency} </b>each
+                <br />
+                • Sold this position on: <b>{oppTradeDate}</b>
                 <br />
                 • Sold <b>{this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} </b>
                 at <b>{this.state.oppTrade.exitPrice} {this.state.oppTrade.currency} </b>each
@@ -50,15 +50,20 @@ class TradeInfoModal extends Component {
                 <br />
                 • Return on investment (percentage): <b>{this.state.oppTrade.percentChange}% ROI</b>
                 <br />
-                • Return on investment (multiple): <b>{this.state.oppTrade.x_roi}x return of investment</b>
+                • Return on investment (multiple): <b>{this.state.oppTrade.x_roi}x ROI</b>
             </ModalBody >;
         if (this.props.type === 'entryTrade') {
             renderTradeInfo =
                 <ModalBody>
-                    • Bought this exit trade on: <b>{oppTradeDate}</b>
+                    • Bought this position on: <b>{oppTradeDate}</b>
                     <br />
                     • Bought <b>{this.state.oppTrade.totalCoins} {this.state.oppTrade.coinName} </b>
                     at <b>{this.state.oppTrade.entryPrice} {this.state.oppTrade.currency} </b>each
+                    <br />
+                    • Sold this position on: <b>{tradeDate}</b>
+                    <br />
+                    • Sold <b>{this.props.trade.totalCoins} {this.props.trade.coinName} </b>
+                    at <b>{this.props.trade.exitPrice} {this.props.trade.currency} </b>each
                     <br />
                     • Entry price: <b>{this.state.oppTrade.entryPrice} {this.state.oppTrade.currency}</b>
                     <br />

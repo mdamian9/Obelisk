@@ -35,7 +35,7 @@ class TransferFundsModal extends Component {
         this.setState({ [name]: value });
     };
 
-    setMaxTransfer = () => {
+    setMax = () => {
         document.getElementById('transfer-form').totalTransfer.value = this.props.targetWallet.funds;
         this.setState({ totalTransfer: this.props.targetWallet.funds });
     };
@@ -65,7 +65,7 @@ class TransferFundsModal extends Component {
                     Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}
                 </div>
                 &ensp;
-                <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMaxTransfer}>
+                <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMax}>
                     Max
                 </Button>
             </div>;
