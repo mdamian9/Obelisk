@@ -1,5 +1,5 @@
 - *** Most Recent *** 
-    - Added fontAwesome icons to HomePage and UserNavbar
+    - Created CryptoIcon component, added crypto icons to wallet
 
 - *** To do next ***
     - 
@@ -19,7 +19,6 @@
 - Create custom JSON file with data for cryptocurrencies
 - Use datalist when choosing an alt to buy
 - Use correct decimal placement for different alts
-- Add crypto icons to wallet
 - Add *Nomics API to get real time market data, and integrate into app to dynamically render using API data
 
 - In the end, convert all possible class components to functional components using useState
