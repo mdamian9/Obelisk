@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Table } from 'reactstrap';
+import USD_icon from 'cryptocurrency-icons/svg/color/usd.svg';
+import USDT_icon from 'cryptocurrency-icons/svg/color/usdt.svg';
+import BTC_icon from 'cryptocurrency-icons/svg/color/btc.svg';
+import ETH_icon from 'cryptocurrency-icons/svg/color/eth.svg';
+import BNB_icon from 'cryptocurrency-icons/svg/color/bnb.svg';
 import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DepositFundsModal from './DepositFundsModal';
@@ -9,6 +14,15 @@ import ResetFundsModal from './ResetFundsModal';
 import './WalletPage.css';
 
 const TableRow = ({ targetWallet, walletName }) => {
+    let walletIcon = <div></div>;
+    switch (targetWallet.ticker) {
+        case 'USD': walletIcon = <img src={USD_icon} alt='usd-icon' />; break;
+        case 'USDT': walletIcon = <img src={USDT_icon} alt='usdt-icon' />; break;
+        case 'BTC': walletIcon = <img src={BTC_icon} alt='btc-icon' />; break;
+        case 'ETH': walletIcon = <img src={ETH_icon} alt='eth-icon' />; break;
+        case 'BNB': walletIcon = <img src={BNB_icon} alt='bnb-icon' />; break;
+        default: /* do nothing */ break;
+    };
     let ActionButton =
         <div className='d-flex'>
             <DepositFundsModal targetWallet={targetWallet} />
@@ -24,7 +38,7 @@ const TableRow = ({ targetWallet, walletName }) => {
     };
     return (
         <tr>
-            <td>{targetWallet.name}</td>
+            <td>{walletIcon}&ensp;{targetWallet.name}</td>
             <td>{targetWallet.funds} {targetWallet.ticker}</td>
             <td>{ActionButton}</td>
         </tr>

@@ -12,6 +12,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthService from '../AuthService/AuthService';
 import Logo from '../Logo/Logo';
 
@@ -47,10 +48,10 @@ class UserNavbar extends Component {
                 <Collapse isOpen={this.state.collapseOpen} navbar>
                     <Nav className='ml-auto' navbar>
                         <NavItem>
-                            <NavLink href='/home'>Home</NavLink>
+                            <NavLink href='/home'><FontAwesomeIcon icon='home' /> Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href='/new-entry-trade'>New Entry Trade</NavLink>
+                            <NavLink href='/new-entry-trade'><FontAwesomeIcon icon='file-import' /> New Entry Trade</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
@@ -58,10 +59,10 @@ class UserNavbar extends Component {
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem href='/entry-trades'>
-                                    Entry Trades Log
+                                    <FontAwesomeIcon icon='file-import' /> Entry Trade Log
                                 </DropdownItem>
                                 <DropdownItem href='/exit-trades'>
-                                    Exit Trades Log
+                                    <FontAwesomeIcon icon='file-export' /> Exit Trade Log
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
@@ -71,13 +72,13 @@ class UserNavbar extends Component {
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem href='/find-percent-change'>
-                                    Find % Change
+                                    <FontAwesomeIcon icon='chart-line' /> Find % Change
                                 </DropdownItem>
                                 <DropdownItem href='/get-target-price'>
-                                    Get Target Price
+                                    <FontAwesomeIcon icon='search-dollar' /> Get Target Price
                                 </DropdownItem>
                                 <DropdownItem href='/calculate-roi'>
-                                    Calculate ROI
+                                    <FontAwesomeIcon icon='hand-holding-usd' /> Calculate ROI
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
@@ -86,18 +87,18 @@ class UserNavbar extends Component {
                                 Menu
                             </DropdownToggle>
                             <DropdownMenu right>
+                                <DropdownItem href='/tutorial'>
+                                    <FontAwesomeIcon icon='clipboard-list' /> Tutorial
+                                </DropdownItem>
                                 <DropdownItem href='/wallet'>
-                                    Wallet
+                                    <FontAwesomeIcon icon='wallet' /> Wallet
                                 </DropdownItem>
                                 <DropdownItem>
-                                    Account
-                                </DropdownItem>
-                                <DropdownItem href='/tutorial'>
-                                    Tutorial
+                                    <FontAwesomeIcon icon='user-circle' /> Account
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem onClick={this.handleLogout}>
-                                    Log Out
+                                    <FontAwesomeIcon icon='sign-out-alt' /> Log Out
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>

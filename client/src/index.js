@@ -22,8 +22,14 @@ import TutorialPage from './components/TutorialPage/TutorialPage';
 // Import font awesome modules and build library with icons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faExchangeAlt, faMinusSquare, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-library.add(fab, faExchangeAlt, faMinusSquare, faTimesCircle);
+import {
+    faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faUserCircle, faClipboardList, faSignOutAlt,
+    faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd
+} from '@fortawesome/free-solid-svg-icons';
+library.add(
+    fab, faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faUserCircle, faClipboardList, faSignOutAlt,
+    faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd
+);
 
 // If there is a valid token, automatically set headers with Auth bearer token for axios requests
 if (localStorage.getItem('id_token')) {
