@@ -1,8 +1,8 @@
 - *** Most Recent *** 
-    - Created CryptoIcon component, added crypto icons to wallet
+    - Deleted CryptoIcon component, added crypto icons cryptocurrencies.js module
 
 - *** To do next ***
-    - 
+    - Keep adding cryptos, start working on datalist, complete *modalBody* in delete trade modal
 
 - Create TwitterWidget and add to HomePage
 
@@ -16,7 +16,6 @@
 
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)
-- Create custom JSON file with data for cryptocurrencies
 - Use datalist when choosing an alt to buy
 - Use correct decimal placement for different alts
 - Add *Nomics API to get real time market data, and integrate into app to dynamically render using API data
