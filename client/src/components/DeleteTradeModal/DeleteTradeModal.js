@@ -27,13 +27,17 @@ class DeleteTradeModal extends Component {
     };
 
     render = () => {
+        let modalBody =
+            <div>
+                Are you sure you want to delete this trade?
+            </div>;
         return (
             <div>
                 <Button color='danger' onClick={this.toggleModal}>Delete</Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader toggle={this.toggleModal}>Confirm Delete</ModalHeader>
                     <ModalBody>
-                        Are you sure you want to delete this trade?
+                        {modalBody}
                     </ModalBody>
                     <ModalFooter>
                         <Button color="danger" onClick={this.deleteTrade}>Delete</Button>{' '}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Table } from 'reactstrap';
 import withAuth from '../withAuth/withAuth';
-import CryptoIcon from '../CryptoIcon/CryptoIcon';
+import Currencies from '../../assets/currencies';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DepositFundsModal from './DepositFundsModal';
 import WithdrawFundsModal from './WithdrawFundsModal';
@@ -25,7 +25,11 @@ const TableRow = ({ targetWallet, walletName }) => {
     };
     return (
         <tr>
-            <td><CryptoIcon ticker={targetWallet.ticker} />&ensp;{targetWallet.name}</td>
+            <td>
+                <img src={Currencies[targetWallet.ticker].icon} alt={`icon-${targetWallet.ticker}`} />
+                &ensp;
+                {targetWallet.name}
+            </td>
             <td>{targetWallet.funds} {targetWallet.ticker}</td>
             <td>{ActionButton}</td>
         </tr>
