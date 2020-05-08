@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import axios from 'axios';
+import Currencies from '../../assets/currencies';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import NewEntryTradeErrModal from './NewEntryTradeErrorModal';
 import AuthService from '../AuthService/AuthService';
@@ -67,6 +68,7 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
+        console.log(Currencies);
         let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
             const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
