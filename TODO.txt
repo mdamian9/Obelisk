@@ -14,6 +14,8 @@
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
 
+- currencies.js module - get decimal places right
+
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)
 - Use datalist when choosing an alt to buy
