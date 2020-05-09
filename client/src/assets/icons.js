@@ -146,7 +146,7 @@ const Icons = {
     ADA: ADA_icon, ADX: ADX_icon, AE: AE_icon, AGI: AGI_icon, AION: AION_icon, ALGO: GENERIC, AMB: AMB_icon, ANKR: GENERIC,
     APPC: APPC_icon, ARDR: ARDR_icon, ARK: ARK_icon, ARN: ARN_icon, ARPA: GENERIC, AST: AST_icon, ATOM: ATOM_icon, BAND: GENERIC,
     BAT: BAT_icon, BCD: BCD_icon, BCH: BCH_icon, BCPT: BCPT_icon, BEAM: BEAM_icon, BLZ: BLZ_icon, BNB: BNB_icon, BNT: BNT_icon,
-    BQX: GENERIC, BRD: BRD_icon, BTC: BTC_icon, BTG: BTG_icon, BTS: BTS_icon, CDT: CDT_icon, CELR: GENERIC, CHR: GENERIC,
+    BQX: GENERIC, BRD: BRD_icon, BSV: GENERIC, BTC: BTC_icon, BTG: BTG_icon, BTS: BTS_icon, CDT: CDT_icon, CELR: GENERIC, CHR: GENERIC,
     CHZ: GENERIC, CMT: CMT_icon, CND: CND_icon, COS: GENERIC, COTI: GENERIC, CTSI: GENERIC, CTSX: GENERIC, CVC: CVC_icon,
     DASH: DASH_icon, DATA: DATA_icon, DENT: DENT_icon, DCR: DCR_icon, DLT: DLT_icon, DNT: DNT_icon, DOCK: DOCK_icon,
     DOGE: DOGE_icon, DREP: GENERIC, DUSK: GENERIC, EDO: EDO_icon, ELF: ELF_icon, ENG: ENG_icon, ENJ: ENJ_icon, EOS: EOS_icon,

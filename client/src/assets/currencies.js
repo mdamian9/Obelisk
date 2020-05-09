@@ -110,10 +110,28 @@ const Currencies = {
         icon: Icons.BCD
     },
     BCH: {
-        name: 'Bitcoin Cash ABC',
+        name: 'Bitcoin Cash',
         ticker: 'BCH',
         decimals: 8,
         icon: Icons.BCH
+    },
+    BCPT: {
+        name: 'Blockmason Credit Protocol',
+        ticker: 'BCPT',
+        decimals: 8,
+        icon: Icons.BCPT
+    },
+    BEAM: {
+        name: 'Beam',
+        ticker: 'BEAM',
+        decimals: 8,
+        icon: Icons.BEAM
+    },
+    BLZ: {
+        name: 'Bluzelle',
+        ticker: 'BLZ',
+        decimals: 8,
+        icon: Icons.BLZ
     },
     BNB: {
         name: 'Binance Coin',
@@ -121,11 +139,47 @@ const Currencies = {
         decimals: 8,
         icon: Icons.BNB
     },
+    BNT: {
+        name: 'Bancor',
+        ticker: 'BNT',
+        decimals: 8,
+        icon: Icons.BNT
+    },
+    BQX: {
+        name: 'Voyager',
+        ticker: 'BQX',
+        decimals: 8,
+        icon: Icons.BQX
+    },
+    BRD: {
+        name: 'Bread',
+        ticker: 'BRD',
+        decimals: 8,
+        icon: Icons.BRD
+    },
+    BSV: {
+        name: 'Bitcoin SV',
+        ticker: 'BSV',
+        decimals: 8,
+        icon: Icons.BSV
+    },
     BTC: {
         name: 'Bitcoin',
         ticker: 'BTC',
         decimals: 8,
         icon: Icons.BTC
+    },
+    BTG: {
+        name: 'Bitcoin Gold',
+        ticker: 'BTG',
+        decimals: 8,
+        icon: Icons.BTG
+    },
+    BTS: {
+        name: 'BitShares',
+        ticker: 'BTS',
+        decimals: 8,
+        icon: Icons.BTS
     },
     DASH: {
         name: 'Dash',
