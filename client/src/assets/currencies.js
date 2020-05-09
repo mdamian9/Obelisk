@@ -181,6 +181,75 @@ const Currencies = {
         decimals: 8,
         icon: Icons.BTS
     },
+
+    CDT: {
+        name: 'Blox',
+        ticker: 'CDT',
+        decimals: 8,
+        icon: Icons.CDT
+    },
+    CELR: {
+        name: 'Celer Network',
+        ticker: 'CELR',
+        decimals: 8,
+        icon: Icons.CELR
+    },
+    CHR: {
+        name: 'Chromia',
+        ticker: 'CHR',
+        decimals: 8,
+        icon: Icons.CHR
+    },
+    CHZ: {
+        name: 'Chiliz',
+        ticker: 'CHZ',
+        decimals: 8,
+        icon: Icons.CHZ
+    },
+    CMT: {
+        name: 'CyberMiles',
+        ticker: 'CMT',
+        decimals: 8,
+        icon: Icons.CMT
+    },
+    COS: {
+        name: 'Contentos',
+        ticker: 'COS',
+        decimals: 8,
+        icon: Icons.COS
+    },
+    COTI: {
+        name: 'COTI',
+        ticker: 'COTI',
+        decimals: 8,
+        icon: Icons.COTI
+    },
+    CTSI: {
+        name: 'Cartesi',
+        ticker: 'CTSI',
+        decimals: 8,
+        icon: Icons.CTSI
+    },
+    CTXC: {
+        name: 'Cortex',
+        ticker: 'CTXC',
+        decimals: 8,
+        icon: Icons.CTXC
+    },
+    CVC: {
+        name: 'Civic',
+        ticker: 'CVC',
+        decimals: 8,
+        icon: Icons.CVC
+    },
+
+    // : {
+    //     name: '',
+    //     ticker: '',
+    //     decimals: 8,
+    //     icon: Icons.
+    // },
+
     DASH: {
         name: 'Dash',
         ticker: 'DASH',
