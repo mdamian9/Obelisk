@@ -428,13 +428,102 @@ const Currencies = {
         decimals: 8,
         icon: Icons.GXC
     },
-
-    // : {
-    //     name: '',
-    //     ticker: '',
-    //     decimals: 8,
-    //     icon: Icons.
-    // },
+    HBAR: {
+        name: 'Hedera Hashgraph',
+        ticker: 'HBAR',
+        decimals: 8,
+        icon: Icons.HBAR
+    },
+    HC: {
+        name: 'HyperCash',
+        ticker: 'HC',
+        decimals: 8,
+        icon: Icons.HC
+    },
+    HIVE: {
+        name: 'Hive',
+        ticker: 'HIVE',
+        decimals: 8,
+        icon: Icons.HIVE
+    },
+    HOT: {
+        name: 'Holo',
+        ticker: 'HOT',
+        decimals: 8,
+        icon: Icons.HOT
+    },
+    ICX: {
+        name: 'ICON',
+        ticker: 'ICX',
+        decimals: 8,
+        icon: Icons.ICX
+    },
+    INS: {
+        name: 'Insolar',
+        ticker: 'INS',
+        decimals: 8,
+        icon: Icons.INS
+    },
+    IOST: {
+        name: 'IOST',
+        ticker: 'IOST',
+        decimals: 8,
+        icon: Icons.IOST
+    },
+    IOTA: {
+        name: 'MIOTA',
+        ticker: 'IOTA',
+        decimals: 8,
+        icon: Icons.IOTA
+    },
+    IOTX: {
+        name: 'IoTeX',
+        ticker: 'IOTX',
+        decimals: 8,
+        icon: Icons.IOTX
+    },
+    KAVA: {
+        name: 'Kava',
+        ticker: 'KAVA',
+        decimals: 8,
+        icon: Icons.KAVA
+    },
+    KEY: {
+        name: 'Selfkey',
+        ticker: 'KEY',
+        decimals: 8,
+        icon: Icons.KEY
+    },
+    KMD: {
+        name: 'Komodo',
+        ticker: 'KMD',
+        decimals: 8,
+        icon: Icons.KMD
+    },
+    KNC: {
+        name: 'Kyber Network',
+        ticker: 'KNC',
+        decimals: 8,
+        icon: Icons.KNC
+    },
+    LEND: {
+        name: 'Aave',
+        ticker: 'LEND',
+        decimals: 8,
+        icon: Icons.LEND
+    },
+    LINK: {
+        name: 'Chainlink',
+        ticker: 'LINK',
+        decimals: 8,
+        icon: Icons.LINK
+    },
+    LOOM: {
+        name: 'Loom Network',
+        ticker: 'LOOM',
+        decimals: 8,
+        icon: Icons.LOOM
+    },
 
     USD: {
         name: 'United States Dollar',
