@@ -242,6 +242,91 @@ const Currencies = {
         decimals: 8,
         icon: Icons.CVC
     },
+    DASH: {
+        name: 'Dash',
+        ticker: 'DASH',
+        decimals: 8,
+        icon: Icons.DASH
+    },
+    DATA: {
+        name: 'Streamr',
+        ticker: 'DATA',
+        decimals: 8,
+        icon: Icons.DATA
+    },
+    DENT: {
+        name: 'Dent',
+        ticker: 'DENT',
+        decimals: 8,
+        icon: Icons.DENT
+    },
+    DCR: {
+        name: 'Decred',
+        ticker: 'DCR',
+        decimals: 8,
+        icon: Icons.DCR
+    },
+    DLT: {
+        name: 'Agrello',
+        ticker: 'DLT',
+        decimals: 8,
+        icon: Icons.DLT
+    },
+    DNT: {
+        name: 'district0x',
+        ticker: 'DNT',
+        decimals: 8,
+        icon: Icons.DNT
+    },
+    DOCK: {
+        name: 'Dock',
+        ticker: 'DOCK',
+        decimals: 8,
+        icon: Icons.DOCK
+    },
+    DOGE: {
+        name: 'Dogecoin',
+        ticker: 'DOGE',
+        decimals: 8,
+        icon: Icons.DOGE
+    },
+    DREP: {
+        name: 'DREP',
+        ticker: 'DREP',
+        decimals: 8,
+        icon: Icons.DREP
+    },
+    DUSK: {
+        name: 'Dusk Network',
+        ticker: 'DUSK',
+        decimals: 8,
+        icon: Icons.DUSK
+    },
+    EDO: {
+        name: 'Eidoo',
+        ticker: 'EDO',
+        decimals: 8,
+        icon: Icons.EDO
+    },
+    ELF: {
+        name: 'aelf',
+        ticker: 'ELF',
+        decimals: 8,
+        icon: Icons.ELF
+    },
+    ENG: {
+        name: 'Enigma',
+        ticker: 'ENG',
+        decimals: 8,
+        icon: Icons.ENG
+    },
+    ENJ: {
+        name: 'Enjin Coin',
+        ticker: 'ENJ',
+        decimals: 8,
+        icon: Icons.ENJ
+    },
+
 
     // : {
     //     name: '',
@@ -250,18 +335,7 @@ const Currencies = {
     //     icon: Icons.
     // },
 
-    DASH: {
-        name: 'Dash',
-        ticker: 'DASH',
-        decimals: 8,
-        icon: Icons.DASH
-    },
-    ENJ: {
-        name: 'Enjin Coin',
-        ticker: 'ENJ',
-        decimals: 8,
-        icon: Icons.ENJ
-    },
+
     ETC: {
         name: 'Ethereum Classic',
         ticker: 'ETC',
