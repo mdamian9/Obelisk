@@ -524,6 +524,121 @@ const Currencies = {
         decimals: 8,
         icon: Icons.LOOM
     },
+    LRC: {
+        name: 'Loopring',
+        ticker: 'LRC',
+        decimals: 8,
+        icon: Icons.LRC
+    },
+    LSK: {
+        name: 'Lisk',
+        ticker: 'LSK',
+        decimals: 8,
+        icon: Icons.LSK
+    },
+    LTC: {
+        name: 'Litecoin',
+        ticker: 'LTC',
+        decimals: 8,
+        icon: Icons.LTC
+    },
+    LTO: {
+        name: 'LTO Network',
+        ticker: 'LTO',
+        decimals: 8,
+        icon: Icons.LTO
+    },
+    LUN: {
+        name: 'Lunyr',
+        ticker: 'LUN',
+        decimals: 8,
+        icon: Icons.LUN
+    },
+    MANA: {
+        name: 'Decentraland',
+        ticker: 'MANA',
+        decimals: 8,
+        icon: Icons.MANA
+    },
+    MATIC: {
+        name: 'Matic Network',
+        ticker: 'MATIC',
+        decimals: 8,
+        icon: Icons.MATIC
+    },
+    MBL: {
+        name: 'MovieBloc',
+        ticker: 'MBL',
+        decimals: 8,
+        icon: Icons.MBL
+    },
+    MCO: {
+        name: 'MCO',
+        ticker: 'MCO',
+        decimals: 8,
+        icon: Icons.MCO
+    },
+    MDA: {
+        name: 'Moeda Loyalty Points',
+        ticker: 'MDA',
+        decimals: 8,
+        icon: Icons.MDA
+    },
+    MFT: {
+        name: 'Mainframe',
+        ticker: 'MFT',
+        decimals: 8,
+        icon: Icons.MFT
+    },
+    MITH: {
+        name: 'Mithril',
+        ticker: 'MITH',
+        decimals: 8,
+        icon: Icons.MITH
+    },
+    MTL: {
+        name: 'Metal',
+        ticker: 'MTL',
+        decimals: 8,
+        icon: Icons.MTL
+    },
+    NANO: {
+        name: 'Nano',
+        ticker: 'NANO',
+        decimals: 8,
+        icon: Icons.NANO
+    },
+    NAS: {
+        name: 'Nebulas',
+        ticker: 'NAS',
+        decimals: 8,
+        icon: Icons.NAS
+    },
+    NCASH: {
+        name: 'Nucleus Vision',
+        ticker: 'NCASH',
+        decimals: 8,
+        icon: Icons.NCASH
+    },
+    NAV: {
+        name: 'NavCoin',
+        ticker: 'NAV',
+        decimals: 8,
+        icon: Icons.NAV
+    },
+    NEBL: {
+        name: 'Neblio',
+        ticker: 'NEBL',
+        decimals: 8,
+        icon: Icons.NEBL
+    },
+
+    // : {
+    //     name: '',
+    //     ticker: '',
+    //     decimals: 8,
+    //     icon: Icons.
+    // },
 
     USD: {
         name: 'United States Dollar',
