@@ -158,7 +158,7 @@ const Icons = {
     LRC: LRC_icon, LSK: LSK_icon, LTC: LTC_icon, LTO: GENERIC, LUN: LUN_icon, MANA: MANA_icon, MATIC: MATIC_icon, MBL: GENERIC,
     MCO: MCO_icon, MDA: MDA_icon, MFT: MFT_icon, MITH: MITH_icon, MTL: MTL_icon, NANO: NANO_icon, NAS: NAS_icon, NCASH: NCASH_icon,
     NAV: NAV_icon, NEBL: NEBL_icon, NEO: NEO_icon, NKN: GENERIC, NPXS: NPXS_icon, NULS: NULS_icon, NXS: NXS_icon, OAX: OAX_icon,
-    OGN: GENERIC, OMG: OMG_icon, ONE: GENERIC, ONG: ONG_icon, ONT: ONT_icon, OST: OST_icon, PERL: GENERIC, PHB: GENERIC,
+    OGN: GENERIC, OMG: OMG_icon, ONE: GENERIC, ONG: ONG_icon, ONT: ONT_icon, OST: OST_icon, PERL: GENERIC, PHX: GENERIC,
     PIVX: PIVX_icon, POA: POA_icon, POE: POE_icon, POLY: POLY_icon, POWR: POWR_icon, PPT: PPT_icon, QKC: GENERIC, QLC: QLC_icon,
     QSP: QSP_icon, QTUM: QTUM_icon, RCN: RCN_icon, RDN: RDN_icon, REN: REN_icon, REP: REP_icon, REQ: REQ_icon, RLC: RLC_icon,
     RVN: RVN_icon, SC: SC_icon, SKY: SKY_icon, SNGLS: SNGLS_icon, SNM: SNM_icon, SNT: SNT_icon, SOL: GENERIC, STEEM: STEEM_icon,

@@ -632,6 +632,114 @@ const Currencies = {
         decimals: 8,
         icon: Icons.NEBL
     },
+    NEO: {
+        name: 'Neo',
+        ticker: 'NEO',
+        decimals: 8,
+        icon: Icons.NEO
+    },
+    NKN: {
+        name: 'NKN',
+        ticker: 'NKN',
+        decimals: 8,
+        icon: Icons.NKN
+    },
+    NPXS: {
+        name: 'Pundi X',
+        ticker: 'NPXS',
+        decimals: 8,
+        icon: Icons.NPXS
+    },
+    NULS: {
+        name: 'NULS',
+        ticker: 'NULS',
+        decimals: 8,
+        icon: Icons.NULS
+    },
+    NXS: {
+        name: 'Nexus',
+        ticker: 'NXS',
+        decimals: 8,
+        icon: Icons.NXS
+    },
+    OAX: {
+        name: 'OAX',
+        ticker: 'OAX',
+        decimals: 8,
+        icon: Icons.OAX
+    },
+    OGN: {
+        name: 'Origin Protocol',
+        ticker: 'OGN',
+        decimals: 8,
+        icon: Icons.OGN
+    },
+    OMG: {
+        name: 'OmiseGO',
+        ticker: 'OMG',
+        decimals: 8,
+        icon: Icons.OMG
+    },
+    ONE: {
+        name: 'Harmony',
+        ticker: 'ONE',
+        decimals: 8,
+        icon: Icons.ONE
+    },
+    ONG: {
+        name: 'Ontology Gas',
+        ticker: 'ONG',
+        decimals: 8,
+        icon: Icons.ONG
+    },
+    ONT: {
+        name: 'Ontology',
+        ticker: 'ONT',
+        decimals: 8,
+        icon: Icons.ONT
+    },
+    OST: {
+        name: 'OST',
+        ticker: 'OST',
+        decimals: 8,
+        icon: Icons.OST
+    },
+    PERL: {
+        name: 'Perlin',
+        ticker: 'PERL',
+        decimals: 8,
+        icon: Icons.PERL
+    },
+    PHX: {
+        name: 'Red Pulse Phoenix',
+        ticker: 'PHX',
+        decimals: 8,
+        icon: Icons.PHX
+    },
+    PIVX: {
+        name: 'PIVX',
+        ticker: 'PIVX',
+        decimals: 8,
+        icon: Icons.PIVX
+    },
+    POA: {
+        name: 'POA',
+        ticker: 'POA',
+        decimals: 8,
+        icon: Icons.POA
+    },
+    POE: {
+        name: 'Po.et',
+        ticker: 'POE',
+        decimals: 8,
+        icon: Icons.POE
+    },
+    POLY: {
+        name: 'Polymath',
+        ticker: 'POLY',
+        decimals: 8,
+        icon: Icons.POLY
+    },
 
     // : {
     //     name: '',
