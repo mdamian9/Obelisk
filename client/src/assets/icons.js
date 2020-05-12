@@ -53,7 +53,7 @@ import GNT_icon from 'cryptocurrency-icons/svg/color/gnt.svg';
 import GRS_icon from 'cryptocurrency-icons/svg/color/grs.svg';
 import GTO_icon from 'cryptocurrency-icons/svg/color/gto.svg';
 import GVT_icon from 'cryptocurrency-icons/svg/color/gvt.svg';
-import GXS_icon from 'cryptocurrency-icons/svg/color/gxs.svg';
+import GXC_icon from 'cryptocurrency-icons/svg/color/gxs.svg';
 import HOT_icon from 'cryptocurrency-icons/svg/color/hot.svg';
 import ICX_icon from 'cryptocurrency-icons/svg/color/icx.svg';
 import INS_icon from 'cryptocurrency-icons/svg/color/ins.svg';
@@ -152,7 +152,7 @@ const Icons = {
     DASH: DASH_icon, DATA: DATA_icon, DENT: DENT_icon, DCR: DCR_icon, DLT: DLT_icon, DNT: DNT_icon, DOCK: DOCK_icon,
     DOGE: DOGE_icon, DREP: GENERIC, DUSK: GENERIC, EDO: EDO_icon, ELF: ELF_icon, ENG: ENG_icon, ENJ: ENJ_icon, EOS: EOS_icon,
     ERD: GENERIC, ETC: ETC_icon, ETH: ETH_icon, EVX: EVX_icon, FET: GENERIC, FTM: GENERIC, FTT: GENERIC, FUEL: FUEL_icon,
-    FUN: FUN_icon, GAS: GAS_icon, GNT: GNT_icon, GO: GENERIC, GRS: GRS_icon, GTO: GTO_icon, GVT: GVT_icon, GXS: GXS_icon,
+    FUN: FUN_icon, GAS: GAS_icon, GNT: GNT_icon, GO: GENERIC, GRS: GRS_icon, GTO: GTO_icon, GVT: GVT_icon, GXC: GXC_icon,
     HBAR: GENERIC, HC: GENERIC, HIVE: GENERIC, HOT: HOT_icon, ICX: ICX_icon, INS: INS_icon, IOST: IOST_icon, IOTA: GENERIC,
     IOTX: IOTX_icon, KAVA: GENERIC, KEY: GENERIC, KMD: KMD_icon, KNC: KNC_icon, LEND: LEND_icon, LINK: LINK_icon, LOOM: LOOM_icon,
     LRC: LRC_icon, LSK: LSK_icon, LTC: LTC_icon, LTO: GENERIC, LUN: LUN_icon, MANA: MANA_icon, MATIC: MATIC_icon, MBL: GENERIC,

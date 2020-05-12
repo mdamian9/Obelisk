@@ -326,16 +326,18 @@ const Currencies = {
         decimals: 8,
         icon: Icons.ENJ
     },
-
-
-    // : {
-    //     name: '',
-    //     ticker: '',
-    //     decimals: 8,
-    //     icon: Icons.
-    // },
-
-
+    EOS: {
+        name: 'EOS',
+        ticker: 'EOS',
+        decimals: 8,
+        icon: Icons.EOS
+    },
+    ERD: {
+        name: 'Elrond',
+        ticker: 'ERD',
+        decimals: 8,
+        icon: Icons.ERD
+    },
     ETC: {
         name: 'Ethereum Classic',
         ticker: 'ETC',
@@ -348,6 +350,92 @@ const Currencies = {
         decimals: 8,
         icon: Icons.ETH
     },
+    EVX: {
+        name: 'Everex',
+        ticker: 'EVX',
+        decimals: 8,
+        icon: Icons.EVX
+    },
+    FET: {
+        name: 'Fetch.ai',
+        ticker: 'FET',
+        decimals: 8,
+        icon: Icons.FET
+    },
+    FTM: {
+        name: 'Fantom',
+        ticker: 'FTM',
+        decimals: 8,
+        icon: Icons.Fantom
+    },
+    FTT: {
+        name: 'FTX Token',
+        ticker: 'FTT',
+        decimals: 8,
+        icon: Icons.FTT
+    },
+    FUEL: {
+        name: 'Etherparty',
+        ticker: 'FUEL',
+        decimals: 8,
+        icon: Icons.FUEL
+    },
+    FUN: {
+        name: 'FunFair',
+        ticker: 'FUN',
+        decimals: 8,
+        icon: Icons.FUN
+    },
+    GAS: {
+        name: 'Gas',
+        ticker: 'GAS',
+        decimals: 8,
+        icon: Icons.GAS
+    },
+    GNT: {
+        name: 'Golem',
+        ticker: 'GNT',
+        decimals: 8,
+        icon: Icons.GNT
+    },
+    GO: {
+        name: 'GoChain',
+        ticker: 'GO',
+        decimals: 8,
+        icon: Icons.GO
+    },
+    GRS: {
+        name: 'Groestlcoin',
+        ticker: 'GRS',
+        decimals: 8,
+        icon: Icons.GRS
+    },
+    GTO: {
+        name: 'Gifto',
+        ticker: 'GTO',
+        decimals: 8,
+        icon: Icons.GTO
+    },
+    GVT: {
+        name: 'Genesis Vision',
+        ticker: 'GVT',
+        decimals: 8,
+        icon: Icons.GVT
+    },
+    GXC: {
+        name: 'GXChain',
+        ticker: 'GXC',
+        decimals: 8,
+        icon: Icons.GXC
+    },
+
+    // : {
+    //     name: '',
+    //     ticker: '',
+    //     decimals: 8,
+    //     icon: Icons.
+    // },
+
     USD: {
         name: 'United States Dollar',
         ticker: 'USD',
