@@ -740,6 +740,126 @@ const Currencies = {
         decimals: 8,
         icon: Icons.POLY
     },
+    POWR: {
+        name: 'Power Ledger',
+        ticker: 'POWR',
+        decimals: 8,
+        icon: Icons.POWR
+    },
+    PPT: {
+        name: 'Populous',
+        ticker: 'PPT',
+        decimals: 8,
+        icon: Icons.PPT
+    },
+    QKC: {
+        name: 'QuarkChain',
+        ticker: 'QKC',
+        decimals: 8,
+        icon: Icons.QKC
+    },
+    QLC: {
+        name: 'QLC Chain',
+        ticker: 'QLC',
+        decimals: 8,
+        icon: Icons.QLC
+    },
+    QSP: {
+        name: 'Quantstamp',
+        ticker: 'QSP',
+        decimals: 8,
+        icon: Icons.QSP
+    },
+    QTUM: {
+        name: 'Qtum',
+        ticker: 'QTUM',
+        decimals: 8,
+        icon: Icons.QTUM
+    },
+    RCN: {
+        name: 'Ripio Credit Network',
+        ticker: 'RCN',
+        decimals: 8,
+        icon: Icons.RCN
+    },
+    RDN: {
+        name: 'Raiden Network Token',
+        ticker: 'RDN',
+        decimals: 8,
+        icon: Icons.RDN
+    },
+    REN: {
+        name: 'Ren',
+        ticker: 'REN',
+        decimals: 8,
+        icon: Icons.REN
+    },
+    REP: {
+        name: 'Augur',
+        ticker: 'REP',
+        decimals: 8,
+        icon: Icons.REP
+    },
+    REQ: {
+        name: 'Request',
+        ticker: 'REQ',
+        decimals: 8,
+        icon: Icons.REQ
+    },
+    RLC: {
+        name: 'iExec RLC',
+        ticker: 'RLC',
+        decimals: 8,
+        icon: Icons.RLC
+    },
+    RVN: {
+        name: 'Ravencoin',
+        ticker: 'RVN',
+        decimals: 8,
+        icon: Icons.RVN
+    },
+    SC: {
+        name: 'Siacoin',
+        ticker: 'SC',
+        decimals: 8,
+        icon: Icons.SC
+    },
+    SKY: {
+        name: 'Skycoin',
+        ticker: 'SKY',
+        decimals: 8,
+        icon: Icons.SKY
+    },
+    SNGLS: {
+        name: 'SingularDTV',
+        ticker: 'SNGLS',
+        decimals: 8,
+        icon: Icons.SNGLS
+    },
+    SNM: {
+        name: 'SONM',
+        ticker: 'SNM',
+        decimals: 8,
+        icon: Icons.SNM
+    },
+    SNT: {
+        name: 'Status',
+        ticker: 'SNT',
+        decimals: 8,
+        icon: Icons.SNT
+    },
+    SOL: {
+        name: 'Solana',
+        ticker: 'SOL',
+        decimals: 8,
+        icon: Icons.SOL
+    },
+    STEEM: {
+        name: 'Steem',
+        ticker: 'STEEM',
+        decimals: 8,
+        icon: Icons.STEEM
+    },
 
     // : {
     //     name: '',
