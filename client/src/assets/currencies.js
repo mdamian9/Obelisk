@@ -254,17 +254,23 @@ const Currencies = {
         decimals: 8,
         icon: Icons.DATA
     },
+    DCR: {
+        name: 'Decred',
+        ticker: 'DCR',
+        decimals: 8,
+        icon: Icons.DCR
+    },
     DENT: {
         name: 'Dent',
         ticker: 'DENT',
         decimals: 8,
         icon: Icons.DENT
     },
-    DCR: {
-        name: 'Decred',
-        ticker: 'DCR',
+    DGB: {
+        name: 'Digibyte',
+        ticker: 'DGB',
         decimals: 8,
-        icon: Icons.DCR
+        icon: Icons.DENT
     },
     DLT: {
         name: 'Agrello',
@@ -860,14 +866,90 @@ const Currencies = {
         decimals: 8,
         icon: Icons.STEEM
     },
-
-    // : {
-    //     name: '',
-    //     ticker: '',
-    //     decimals: 8,
-    //     icon: Icons.
-    // },
-
+    STORJ: {
+        name: 'Storj',
+        ticker: 'STORJ',
+        decimals: 8,
+        icon: Icons.STORJ
+    },
+    STORM: {
+        name: 'Storm',
+        ticker: 'STORM',
+        decimals: 8,
+        icon: Icons.STORM
+    },
+    STPT: {
+        name: 'Standard Tokenization Protocol',
+        ticker: 'STPT',
+        decimals: 8,
+        icon: Icons.STPT
+    },
+    STRAT: {
+        name: 'Stratis',
+        ticker: 'STRAT',
+        decimals: 8,
+        icon: Icons.STRAT
+    },
+    STX: {
+        name: 'Blockstack',
+        ticker: 'STX',
+        decimals: 8,
+        icon: Icons.STX
+    },
+    SYS: {
+        name: 'Syscoin',
+        ticker: 'SYS',
+        decimals: 8,
+        icon: Icons.SYS
+    },
+    TCT: {
+        name: 'TokenClub',
+        ticker: 'TCT',
+        decimals: 8,
+        icon: Icons.TCT
+    },
+    TFUEL: {
+        name: 'Theta Fuel',
+        ticker: 'TFUEL',
+        decimals: 8,
+        icon: Icons.TFUEL
+    },
+    THETA: {
+        name: 'THETA',
+        ticker: 'THETA',
+        decimals: 8,
+        icon: Icons.THETA
+    },
+    TNB: {
+        name: 'Time New Bank',
+        ticker: 'TNB',
+        decimals: 8,
+        icon: Icons.TNB
+    },
+    TNT: {
+        name: 'Tierion',
+        ticker: 'TNT',
+        decimals: 8,
+        icon: Icons.TNT
+    },
+    TOMO: {
+        name: 'TomoChain',
+        ticker: 'TOMO',
+        decimals: 8,
+        icon: Icons.TOMO
+    },
+    TROY: {
+        name: 'TROY',
+        ticker: 'TROY',
+        decimals: 8,
+        icon: Icons.TROY
+    },
+    TRX: {
+        name: 'TRON',
+        ticker: 'TRX',
+        decimals: 8,
+        icon: Icons.TRX
+    },
     USD: {
         name: 'United States Dollar',
         ticker: 'USD',
@@ -880,6 +962,144 @@ const Currencies = {
         decimals: 7,
         icon: Icons.USDT
     },
+    VET: {
+        name: 'VeChain',
+        ticker: 'VET',
+        decimals: 8,
+        icon: Icons.VET
+    },
+    VIA: {
+        name: 'Viacoin',
+        ticker: 'VIA',
+        decimals: 8,
+        icon: Icons.VIA
+    },
+    VIB: {
+        name: 'Viberate',
+        ticker: 'VIB',
+        decimals: 8,
+        icon: Icons.VIB
+    },
+    VIBE: {
+        name: 'VIBE',
+        ticker: 'VIBE',
+        decimals: 8,
+        icon: Icons.VIBE
+    },
+    VITE: {
+        name: 'VITE',
+        ticker: 'VITE',
+        decimals: 8,
+        icon: Icons.VITE
+    },
+    WABI: {
+        name: 'Tael',
+        ticker: 'WABI',
+        decimals: 8,
+        icon: Icons.WABI
+    },
+    WAN: {
+        name: 'Wanchain',
+        ticker: 'WAN',
+        decimals: 8,
+        icon: Icons.WAN
+    },
+    WAVES: {
+        name: 'Waves',
+        ticker: 'WAVES',
+        decimals: 8,
+        icon: Icons.WAVES
+    },
+    WPR: {
+        name: 'WePower',
+        ticker: 'WPR',
+        decimals: 8,
+        icon: Icons.WPR
+    },
+    WRX: {
+        name: 'WazirX',
+        ticker: 'WRX',
+        decimals: 8,
+        icon: Icons.WRX
+    },
+    WTC: {
+        name: 'Waltonchain',
+        ticker: 'WTC',
+        decimals: 8,
+        icon: Icons.WTC
+    },
+    XEM: {
+        name: 'NEM',
+        ticker: 'XEM',
+        decimals: 8,
+        icon: Icons.XEM
+    },
+    XLM: {
+        name: 'Stellar',
+        ticker: 'XLM',
+        decimals: 8,
+        icon: Icons.XLM
+    },
+    XMR: {
+        name: 'Monero',
+        ticker: 'XMR',
+        decimals: 8,
+        icon: Icons.XMR
+    },
+    XRP: {
+        name: 'XRP',
+        ticker: 'XRP',
+        decimals: 8,
+        icon: Icons.XRP
+    },
+    XTZ: {
+        name: 'Tezos',
+        ticker: 'XTZ',
+        decimals: 8,
+        icon: Icons.XTZ
+    },
+    XVG: {
+        name: 'Verge',
+        ticker: 'XVG',
+        decimals: 8,
+        icon: Icons.XVG
+    },
+    XZC: {
+        name: 'Zcoin',
+        ticker: 'XZC',
+        decimals: 8,
+        icon: Icons.XZC
+    },
+    YOYO: {
+        name: 'YOYOW',
+        ticker: 'YOYO',
+        decimals: 8,
+        icon: Icons.YOYO
+    },
+    ZEC: {
+        name: 'Zcash',
+        ticker: 'ZEC',
+        decimals: 8,
+        icon: Icons.ZEC
+    },
+    ZEN: {
+        name: 'Horizen',
+        ticker: 'ZEN',
+        decimals: 8,
+        icon: Icons.ZEN
+    },
+    ZIL: {
+        name: 'Zilliqa',
+        ticker: 'Zil',
+        decimals: 8,
+        icon: Icons.Zil
+    },
+    ZRX: {
+        name: '0x',
+        ticker: 'ZRX',
+        decimals: 8,
+        icon: Icons.ZRX
+    }
 };
 
 export default Currencies;
