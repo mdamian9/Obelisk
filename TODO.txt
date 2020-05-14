@@ -1,8 +1,8 @@
 - *** Most Recent *** 
-    - Deleted CryptoIcon component, added crypto icons cryptocurrencies.js module
+    - Changed currencies.js module from object to array, built datalist
 
 - *** To do next ***
-    - Keep adding cryptos, start working on datalist, complete *modalBody* in delete trade modal
+    - FIX WALLET PAGE (currencies.js module)
 
 - Create TwitterWidget and add to HomePage
 

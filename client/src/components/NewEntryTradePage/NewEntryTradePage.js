@@ -68,7 +68,6 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
-        console.log(Currencies);
         let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
             const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
@@ -122,8 +121,18 @@ class NewEntryTradePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
-                                        <Input type='text' name='coinName' id='coin-name'
-                                            placeholder='Enter name of coin bought' onChange={this.handleChange} required />
+                                        <Input list='currencies' id='coin-name' name='coinName'
+                                            placeholder='Enter name of coin' onChange={this.handleChange} required />
+                                        {/* Fix this datalist icon */}
+                                        <datalist id='currencies'>
+                                            {Currencies.map(currency => {
+                                                return (
+                                                    <option key={currency.id} value={currency.ticker}>
+                                                        <img src={currency.icon} />
+                                                    </option>
+                                                );
+                                            })}
+                                        </datalist>
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Coin entry price:</Label>
