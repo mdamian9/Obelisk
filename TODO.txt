@@ -1,8 +1,8 @@
 - *** Most Recent *** 
-    - 
+    - Made select options for currency field in new entry trade page (show icons)
 
 - *** To do next ***
-    - Make select options for currency field in new entry trade page (show icons)
+    - 
 
 - Create TwitterWidget and add to HomePage
 

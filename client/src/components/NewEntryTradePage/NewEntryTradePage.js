@@ -15,7 +15,8 @@ class NewEntryTradePage extends Component {
         this.Auth = new AuthService();
         this.state = {
             errModalOpen: false,
-            selectedOption: null
+            selectedOptionOne: null,
+            selectedOptionTwo: null
         };
     };
 
@@ -40,9 +41,14 @@ class NewEntryTradePage extends Component {
         });
     };
 
-    // Handles the change of the select options (cryptocurrencies)
-    handleSelect = selectedOption => {
-        this.setState({ selectedOption, coinName: selectedOption.value });
+    // Handles the change of the select options (currency)
+    handleSelectOne = selectedOptionOne => {
+        this.setState({ selectedOptionOne, currency: selectedOptionOne.value });
+    };
+
+    // Handles the change of the select options (cryptocurrencies - coinName)
+    handleSelectTwo = selectedOptionTwo => {
+        this.setState({ selectedOptionTwo, coinName: selectedOptionTwo.value });
     };
 
     // Create new entry trade and save to database
@@ -75,8 +81,45 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
-        const { selectedOption } = this.state;
-        const selectOptions = Currencies.map(currency => {
+        const { selectedOptionOne, selectedOptionTwo } = this.state;
+        const selectOptionsOne = [
+            {
+                value: 'USD',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies.find(c => c.ticker === 'USD').icon} alt={`icon-USD`} width={26} height={26} />&ensp;United States Dollar (USD)
+                    </div >
+            },
+            {
+                value: 'USDT',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies.find(c => c.ticker === 'USDT').icon} alt={`icon-USDT`} width={26} height={26} />&ensp;Tether (USDT)
+                    </div >
+            },
+            {
+                value: 'BTC',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies.find(c => c.ticker === 'BTC').icon} alt={`icon-BTC`} width={26} height={26} />&ensp;Bitcoin (BTC)
+                    </div >
+            },
+            {
+                value: 'ETH',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies.find(c => c.ticker === 'ETH').icon} alt={`icon-ETH`} width={26} height={26} />&ensp;Ethereum (ETH)
+                    </div >
+            },
+            {
+                value: 'BNB',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies.find(c => c.ticker === 'BNB').icon} alt={`icon-BNB`} width={26} height={26} />&ensp;Binance Coin (BNB)
+                    </div >
+            }
+        ];
+        const selectOptionsTwo = Currencies.map(currency => {
             return ({
                 value: currency.ticker,
                 label:
@@ -118,15 +161,8 @@ class NewEntryTradePage extends Component {
                                 <Form id='entry-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
                                         <Label for='currency'>Select currency:</Label>
-                                        <Input type='select' name='currency' id='currency'
-                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
-                                            <option disabled>-- select currency --</option>
-                                            <option>USD</option>
-                                            <option>USDT</option>
-                                            <option>BTC</option>
-                                            <option>ETH</option>
-                                            <option>BNB</option>
-                                        </Input>
+                                        <Select value={selectedOptionOne} onChange={this.handleSelectOne} options={selectOptionsOne}
+                                            id='currency' name='currency' />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>
@@ -138,7 +174,7 @@ class NewEntryTradePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
-                                        <Select value={selectedOption} onChange={this.handleSelect} options={selectOptions}
+                                        <Select value={selectedOptionTwo} onChange={this.handleSelectTwo} options={selectOptionsTwo}
                                             id='coin-name' name='coinName' />
                                     </FormGroup>
                                     <FormGroup>
