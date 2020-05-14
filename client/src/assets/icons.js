@@ -141,6 +141,8 @@ import ZEC_icon from 'cryptocurrency-icons/svg/color/zec.svg';
 import ZEN_icon from 'cryptocurrency-icons/svg/color/zen.svg';
 import ZIL_icon from 'cryptocurrency-icons/svg/color/zil.svg';
 import ZRX_icon from 'cryptocurrency-icons/svg/color/zrx.svg';
+import USD_icon from 'cryptocurrency-icons/svg/color/usd.svg';
+import USDT_icon from 'cryptocurrency-icons/svg/color/usdt.svg';
 
 const Icons = {
     ADA: ADA_icon, ADX: ADX_icon, AE: AE_icon, AGI: AGI_icon, AION: AION_icon, ALGO: GENERIC, AMB: AMB_icon, ANKR: GENERIC,
@@ -162,8 +164,8 @@ const Icons = {
     QSP: QSP_icon, QTUM: QTUM_icon, RCN: RCN_icon, RDN: RDN_icon, REN: REN_icon, REP: REP_icon, REQ: REQ_icon, RLC: RLC_icon,
     RVN: RVN_icon, SC: SC_icon, SKY: SKY_icon, SNGLS: SNGLS_icon, SNM: SNM_icon, SNT: SNT_icon, SOL: GENERIC, STEEM: STEEM_icon,
     STORJ: STORJ_icon, STORM: STORM_icon, STPT: GENERIC, STRAT: STRAT_icon, STX: GENERIC, SYS: SYS_icon, TCT: GENERIC,
-    TFUEL: GENERIC, THETA: THETA_icon, TNB: TNB_icon, TNT: TNT_icon, TOMO: TOMO_icon, TROY: GENERIC, TRX: TRX_icon,
-    VET: VET_icon, VIA: VIA_icon, VIB: VIB_icon, VIBE: VIBE_icon, VITE: GENERIC, WABI: WABI_icon, WAN: WAN_icon,
+    TFUEL: GENERIC, THETA: THETA_icon, TNB: TNB_icon, TNT: TNT_icon, TOMO: TOMO_icon, TROY: GENERIC, TRX: TRX_icon, USD: USD_icon,
+    USDT: USDT_icon, VET: VET_icon, VIA: VIA_icon, VIB: VIB_icon, VIBE: VIBE_icon, VITE: GENERIC, WABI: WABI_icon, WAN: WAN_icon,
     WAVES: WAVES_icon, WPR: WPR_icon, WRX: GENERIC, WTC: WTC_icon, XEM: XEM_icon, XLM: XLM_icon, XMR: XMR_icon, XRP: XRP_icon,
     XTZ: XTZ_icon, XVG: XVG_icon, XZC: XZC_icon, YOYO: GENERIC, ZEC: ZEC_icon, ZEN: ZEN_icon, ZIL: ZIL_icon, ZRX: ZRX_icon
 };

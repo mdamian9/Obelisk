@@ -1,8 +1,8 @@
 - *** Most Recent *** 
-    - Changed currencies.js module from object to array, built datalist
+    - 
 
 - *** To do next ***
-    - FIX WALLET PAGE (currencies.js module)
+    - Make select options for currency field in new entry trade page (show icons)
 
 - Create TwitterWidget and add to HomePage
 

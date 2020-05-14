@@ -23,10 +23,11 @@ const TableRow = ({ targetWallet, walletName }) => {
     if (walletName === 'tradingWallet') {
         ActionButton = <TransferFundsModal targetWallet={targetWallet} walletName={walletName} />;
     };
+    const currency = Currencies.find(element => element.ticker === targetWallet.ticker);
     return (
         <tr>
             <td>
-                <img src={Currencies[targetWallet.ticker].icon} alt={`icon-${targetWallet.ticker}`} />
+                <img src={currency.icon} alt={`icon-${targetWallet.ticker}`} />
                 &ensp;
                 {targetWallet.name}
             </td>

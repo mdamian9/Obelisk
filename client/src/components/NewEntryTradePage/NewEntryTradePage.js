@@ -15,7 +15,7 @@ class NewEntryTradePage extends Component {
         this.Auth = new AuthService();
         this.state = {
             errModalOpen: false,
-            coinName: null
+            selectedOption: null
         };
     };
 
@@ -38,6 +38,11 @@ class NewEntryTradePage extends Component {
         this.setState({
             [name]: value
         });
+    };
+
+    // Handles the change of the select options (cryptocurrencies)
+    handleSelect = selectedOption => {
+        this.setState({ selectedOption, coinName: selectedOption.value });
     };
 
     // Create new entry trade and save to database
@@ -70,13 +75,13 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
-        // console.log(Currencies.sort('name'));
+        const { selectedOption } = this.state;
         const selectOptions = Currencies.map(currency => {
             return ({
                 value: currency.ticker,
                 label:
                     <div style={{ color: 'black' }}>
-                        <img src={currency.icon} alt={`icon-${currency.ticker}`} />&ensp;{currency.name} ({currency.ticker})
+                        <img src={currency.icon} alt={`icon-${currency.ticker}`} width={26} height={26} />&ensp;{currency.name} ({currency.ticker})
                     </div>
             });
         });
@@ -133,7 +138,8 @@ class NewEntryTradePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
-                                        <Select value={this.state.coinName} onChange={this.handleChange} options={selectOptions} />
+                                        <Select value={selectedOption} onChange={this.handleSelect} options={selectOptions}
+                                            id='coin-name' name='coinName' />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Coin entry price:</Label>

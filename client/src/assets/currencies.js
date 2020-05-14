@@ -1109,160 +1109,174 @@ const Currencies = [
     },
     {
         id: 158,
+        name: 'United States Dollar',
+        ticker: 'USD',
+        decimals: 4,
+        icon: Icons.USD
+    },
+    {
+        id: 159,
+        name: 'Tether',
+        ticker: 'USDT',
+        decimals: 7,
+        icon: Icons.USDT
+    },
+    {
+        id: 160,
         name: 'VeChain',
         ticker: 'VET',
         decimals: 8,
         icon: Icons.VET
     },
     {
-        id: 159,
+        id: 161,
         name: 'Viacoin',
         ticker: 'VIA',
         decimals: 8,
         icon: Icons.VIA
     },
     {
-        id: 160,
+        id: 162,
         name: 'Viberate',
         ticker: 'VIB',
         decimals: 8,
         icon: Icons.VIB
     },
     {
-        id: 161,
+        id: 163,
         name: 'VIBE',
         ticker: 'VIBE',
         decimals: 8,
         icon: Icons.VIBE
     },
     {
-        id: 162,
+        id: 164,
         name: 'VITE',
         ticker: 'VITE',
         decimals: 8,
         icon: Icons.VITE
     },
     {
-        id: 163,
+        id: 165,
         name: 'Tael',
         ticker: 'WABI',
         decimals: 8,
         icon: Icons.WABI
     },
     {
-        id: 164,
+        id: 166,
         name: 'Wanchain',
         ticker: 'WAN',
         decimals: 8,
         icon: Icons.WAN
     },
     {
-        id: 165,
+        id: 167,
         name: 'Waves',
         ticker: 'WAVES',
         decimals: 8,
         icon: Icons.WAVES
     },
     {
-        id: 166,
+        id: 168,
         name: 'WePower',
         ticker: 'WPR',
         decimals: 8,
         icon: Icons.WPR
     },
     {
-        id: 167,
+        id: 169,
         name: 'WazirX',
         ticker: 'WRX',
         decimals: 8,
         icon: Icons.WRX
     },
     {
-        id: 168,
+        id: 170,
         name: 'Waltonchain',
         ticker: 'WTC',
         decimals: 8,
         icon: Icons.WTC
     },
     {
-        id: 169,
+        id: 171,
         name: 'NEM',
         ticker: 'XEM',
         decimals: 8,
         icon: Icons.XEM
     },
     {
-        id: 170,
+        id: 172,
         name: 'Stellar',
         ticker: 'XLM',
         decimals: 8,
         icon: Icons.XLM
     },
     {
-        id: 171,
+        id: 173,
         name: 'Monero',
         ticker: 'XMR',
         decimals: 8,
         icon: Icons.XMR
     },
     {
-        id: 172,
+        id: 174,
         name: 'XRP',
         ticker: 'XRP',
         decimals: 8,
         icon: Icons.XRP
     },
     {
-        id: 173,
+        id: 175,
         name: 'Tezos',
         ticker: 'XTZ',
         decimals: 8,
         icon: Icons.XTZ
     },
     {
-        id: 174,
+        id: 176,
         name: 'Verge',
         ticker: 'XVG',
         decimals: 8,
         icon: Icons.XVG
     },
     {
-        id: 175,
+        id: 177,
         name: 'Zcoin',
         ticker: 'XZC',
         decimals: 8,
         icon: Icons.XZC
     },
     {
-        id: 176,
+        id: 178,
         name: 'YOYOW',
         ticker: 'YOYO',
         decimals: 8,
         icon: Icons.YOYO
     },
     {
-        id: 177,
+        id: 179,
         name: 'Zcash',
         ticker: 'ZEC',
         decimals: 8,
         icon: Icons.ZEC
     },
     {
-        id: 178,
+        id: 180,
         name: 'Horizen',
         ticker: 'ZEN',
         decimals: 8,
         icon: Icons.ZEN
     },
     {
-        id: 179,
+        id: 181,
         name: 'Zilliqa',
         ticker: 'ZIL',
         decimals: 8,
         icon: Icons.ZIL
     },
     {
-        id: 180,
+        id: 182,
         name: '0x',
         ticker: 'ZRX',
         decimals: 8,
