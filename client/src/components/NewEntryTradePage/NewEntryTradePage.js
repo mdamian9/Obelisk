@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import Select from 'react-select';
 import axios from 'axios';
 import Currencies from '../../assets/currencies';
 import UserNavbar from '../UserNavbar/UserNavbar';
@@ -13,7 +14,8 @@ class NewEntryTradePage extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            errModalOpen: false
+            errModalOpen: false,
+            coinName: null
         };
     };
 
@@ -68,6 +70,16 @@ class NewEntryTradePage extends Component {
     };
 
     render = () => {
+        // console.log(Currencies.sort('name'));
+        const selectOptions = Currencies.map(currency => {
+            return ({
+                value: currency.ticker,
+                label:
+                    <div style={{ color: 'black' }}>
+                        <img src={currency.icon} alt={`icon-${currency.ticker}`} />&ensp;{currency.name} ({currency.ticker})
+                    </div>
+            });
+        });
         let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
             const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
@@ -121,18 +133,7 @@ class NewEntryTradePage extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
-                                        <Input list='currencies' id='coin-name' name='coinName'
-                                            placeholder='Enter name of coin' onChange={this.handleChange} required />
-                                        {/* Fix this datalist icon */}
-                                        <datalist id='currencies'>
-                                            {Currencies.map(currency => {
-                                                return (
-                                                    <option key={currency.id} value={currency.ticker}>
-                                                        <img src={currency.icon} />
-                                                    </option>
-                                                );
-                                            })}
-                                        </datalist>
+                                        <Select value={this.state.coinName} onChange={this.handleChange} options={selectOptions} />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Coin entry price:</Label>

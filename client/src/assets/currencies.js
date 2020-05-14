@@ -314,7 +314,7 @@ const Currencies = [
         name: 'Digibyte',
         ticker: 'DGB',
         decimals: 8,
-        icon: Icons.DENT
+        icon: Icons.DGB
     },
     {
         id: 45,
@@ -433,7 +433,7 @@ const Currencies = [
         name: 'Fantom',
         ticker: 'FTM',
         decimals: 8,
-        icon: Icons.Fantom
+        icon: Icons.FTM
     },
     {
         id: 62,
@@ -1109,174 +1109,160 @@ const Currencies = [
     },
     {
         id: 158,
-        name: 'United States Dollar',
-        ticker: 'USD',
-        decimals: 4,
-        icon: Icons.USD
-    },
-    {
-        id: 159,
-        name: 'Tether',
-        ticker: 'USDT',
-        decimals: 7,
-        icon: Icons.USDT
-    },
-    {
-        id: 160,
         name: 'VeChain',
         ticker: 'VET',
         decimals: 8,
         icon: Icons.VET
     },
     {
-        id: 161,
+        id: 159,
         name: 'Viacoin',
         ticker: 'VIA',
         decimals: 8,
         icon: Icons.VIA
     },
     {
-        id: 162,
+        id: 160,
         name: 'Viberate',
         ticker: 'VIB',
         decimals: 8,
         icon: Icons.VIB
     },
     {
-        id: 163,
+        id: 161,
         name: 'VIBE',
         ticker: 'VIBE',
         decimals: 8,
         icon: Icons.VIBE
     },
     {
-        id: 164,
+        id: 162,
         name: 'VITE',
         ticker: 'VITE',
         decimals: 8,
         icon: Icons.VITE
     },
     {
-        id: 165,
+        id: 163,
         name: 'Tael',
         ticker: 'WABI',
         decimals: 8,
         icon: Icons.WABI
     },
     {
-        id: 166,
+        id: 164,
         name: 'Wanchain',
         ticker: 'WAN',
         decimals: 8,
         icon: Icons.WAN
     },
     {
-        id: 167,
+        id: 165,
         name: 'Waves',
         ticker: 'WAVES',
         decimals: 8,
         icon: Icons.WAVES
     },
     {
-        id: 168,
+        id: 166,
         name: 'WePower',
         ticker: 'WPR',
         decimals: 8,
         icon: Icons.WPR
     },
     {
-        id: 169,
+        id: 167,
         name: 'WazirX',
         ticker: 'WRX',
         decimals: 8,
         icon: Icons.WRX
     },
     {
-        id: 170,
+        id: 168,
         name: 'Waltonchain',
         ticker: 'WTC',
         decimals: 8,
         icon: Icons.WTC
     },
     {
-        id: 171,
+        id: 169,
         name: 'NEM',
         ticker: 'XEM',
         decimals: 8,
         icon: Icons.XEM
     },
     {
-        id: 172,
+        id: 170,
         name: 'Stellar',
         ticker: 'XLM',
         decimals: 8,
         icon: Icons.XLM
     },
     {
-        id: 173,
+        id: 171,
         name: 'Monero',
         ticker: 'XMR',
         decimals: 8,
         icon: Icons.XMR
     },
     {
-        id: 174,
+        id: 172,
         name: 'XRP',
         ticker: 'XRP',
         decimals: 8,
         icon: Icons.XRP
     },
     {
-        id: 175,
+        id: 173,
         name: 'Tezos',
         ticker: 'XTZ',
         decimals: 8,
         icon: Icons.XTZ
     },
     {
-        id: 176,
+        id: 174,
         name: 'Verge',
         ticker: 'XVG',
         decimals: 8,
         icon: Icons.XVG
     },
     {
-        id: 177,
+        id: 175,
         name: 'Zcoin',
         ticker: 'XZC',
         decimals: 8,
         icon: Icons.XZC
     },
     {
-        id: 178,
+        id: 176,
         name: 'YOYOW',
         ticker: 'YOYO',
         decimals: 8,
         icon: Icons.YOYO
     },
     {
-        id: 179,
+        id: 177,
         name: 'Zcash',
         ticker: 'ZEC',
         decimals: 8,
         icon: Icons.ZEC
     },
     {
-        id: 180,
+        id: 178,
         name: 'Horizen',
         ticker: 'ZEN',
         decimals: 8,
         icon: Icons.ZEN
     },
     {
-        id: 181,
+        id: 179,
         name: 'Zilliqa',
-        ticker: 'Zil',
+        ticker: 'ZIL',
         decimals: 8,
-        icon: Icons.Zil
+        icon: Icons.ZIL
     },
     {
-        id: 182,
+        id: 180,
         name: '0x',
         ticker: 'ZRX',
         decimals: 8,
