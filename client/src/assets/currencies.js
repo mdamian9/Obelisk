@@ -1,1287 +1,1104 @@
 import Icons from './icons';
 
-const Currencies = [
-    {
-        id: 0,
+const Currencies = {
+    ADA: {
         name: 'Cardano',
         ticker: 'ADA',
         decimals: 6,
         icon: Icons.ADA
     },
-    {
-        id: 1,
+    ADX: {
         name: 'AdEX',
         ticker: 'ADX',
         decimals: 6,
         icon: Icons.ADX
     },
-    {
-        id: 2,
+    AE: {
         name: 'Aeternity',
         ticker: 'AE',
         decimals: 6,
         icon: Icons.AE
     },
-    {
-        id: 3,
+    AGI: {
         name: 'SingularityNET',
         ticker: 'AGI',
         decimals: 6,
         icon: Icons.AGI
     },
-    {
-        id: 4,
+    AION: {
         name: 'Aion',
         ticker: 'AION',
         decimals: 6,
         icon: Icons.AION
     },
-    {
-        id: 5,
+    ALGO: {
         name: 'Algorand',
         ticker: 'ALGO',
         decimals: 6,
         icon: Icons.ALGO
     },
-    {
-        id: 6,
+    AMB: {
         name: 'Ambrosus',
         ticker: 'AMB',
         decimals: 6,
         icon: Icons.AMB
     },
-    {
-        id: 7,
+    ANKR: {
         name: 'Ankr',
         ticker: 'ANKR',
         decimals: 6,
         icon: Icons.ANKR
     },
-    {
-        id: 8,
+    APPC: {
         name: 'AppCoins',
         ticker: 'APPC',
         decimals: 6,
         icon: Icons.APPC
     },
-    {
-        id: 9,
+    ARDR: {
         name: 'Ardor',
         ticker: 'ARDR',
         decimals: 6,
         icon: Icons.ARDR
     },
-    {
-        id: 10,
+    ARK: {
         name: 'Ark',
         ticker: 'ARK',
         decimals: 6,
         icon: Icons.ARK
     },
-    {
-        id: 11,
+    ARN: {
         name: 'Aeron',
         ticker: 'ARN',
         decimals: 6,
         icon: Icons.ARN
     },
-    {
-        id: 12,
+    ARPA: {
         name: 'ARPA Chain',
         ticker: 'ARPA',
         decimals: 6,
         icon: Icons.ARPA
     },
-    {
-        id: 13,
+    AST: {
         name: 'AirSwap',
         ticker: 'AST',
         decimals: 6,
         icon: Icons.AST
     },
-    {
-        id: 14,
+    ATOM: {
         name: 'Cosmos',
         ticker: 'ATOM',
         decimals: 8,
         icon: Icons.ATOM
     },
-    {
-        id: 15,
+    BAND: {
         name: 'Band Protocol',
         ticker: 'BAND',
         decimals: 6,
         icon: Icons.BAND
     },
-    {
-        id: 16,
+    BAT: {
         name: 'Basic Attention Token',
         ticker: 'BAT',
         decimals: 8,
         icon: Icons.BAT
     },
-    {
-        id: 17,
+    BCD: {
         name: 'Bitcoin Diamond',
         ticker: 'BCH',
         decimals: 8,
         icon: Icons.BCD
     },
-    {
-        id: 18,
+    BCH: {
         name: 'Bitcoin Cash',
         ticker: 'BCH',
         decimals: 8,
         icon: Icons.BCH
     },
-    {
-        id: 19,
+    BCPT: {
         name: 'Blockmason Credit Protocol',
         ticker: 'BCPT',
         decimals: 8,
         icon: Icons.BCPT
     },
-    {
-        id: 20,
+    BEAM: {
         name: 'Beam',
         ticker: 'BEAM',
         decimals: 8,
         icon: Icons.BEAM
     },
-    {
-        id: 21,
+    BLZ: {
         name: 'Bluzelle',
         ticker: 'BLZ',
         decimals: 8,
         icon: Icons.BLZ
     },
-    {
-        id: 22,
+    BNB: {
         name: 'Binance Coin',
         ticker: 'BNB',
         decimals: 8,
         icon: Icons.BNB
     },
-    {
-        id: 23,
+    BNT: {
         name: 'Bancor',
         ticker: 'BNT',
         decimals: 8,
         icon: Icons.BNT
     },
-    {
-        id: 24,
+    BQX: {
         name: 'Voyager',
         ticker: 'BQX',
         decimals: 8,
         icon: Icons.BQX
     },
-    {
-        id: 25,
+    BRD: {
         name: 'Bread',
         ticker: 'BRD',
         decimals: 8,
         icon: Icons.BRD
     },
-    {
-        id: 26,
+    BSV: {
         name: 'Bitcoin SV',
         ticker: 'BSV',
         decimals: 8,
         icon: Icons.BSV
     },
-    {
-        id: 27,
+    BTC: {
         name: 'Bitcoin',
         ticker: 'BTC',
         decimals: 8,
         icon: Icons.BTC
     },
-    {
-        id: 28,
+    BTG: {
         name: 'Bitcoin Gold',
         ticker: 'BTG',
         decimals: 8,
         icon: Icons.BTG
     },
-    {
-        id: 29,
+    BTS: {
         name: 'BitShares',
         ticker: 'BTS',
         decimals: 8,
         icon: Icons.BTS
     },
-    {
-        id: 30,
+    CDT: {
         name: 'Blox',
         ticker: 'CDT',
         decimals: 8,
         icon: Icons.CDT
     },
-    {
-        id: 31,
+    CELR: {
         name: 'Celer Network',
         ticker: 'CELR',
         decimals: 8,
         icon: Icons.CELR
     },
-    {
-        id: 32,
+    CHR: {
         name: 'Chromia',
         ticker: 'CHR',
         decimals: 8,
         icon: Icons.CHR
     },
-    {
-        id: 33,
+    CHZ: {
         name: 'Chiliz',
         ticker: 'CHZ',
         decimals: 8,
         icon: Icons.CHZ
     },
-    {
-        id: 34,
+    CMT: {
         name: 'CyberMiles',
         ticker: 'CMT',
         decimals: 8,
         icon: Icons.CMT
     },
-    {
-        id: 35,
+    COS: {
         name: 'Contentos',
         ticker: 'COS',
         decimals: 8,
         icon: Icons.COS
     },
-    {
-        id: 36,
+    COTI: {
         name: 'COTI',
         ticker: 'COTI',
         decimals: 8,
         icon: Icons.COTI
     },
-    {
-        id: 37,
+    CTSI: {
         name: 'Cartesi',
         ticker: 'CTSI',
         decimals: 8,
         icon: Icons.CTSI
     },
-    {
-        id: 38,
+    CXTX: {
         name: 'Cortex',
         ticker: 'CTXC',
         decimals: 8,
         icon: Icons.CTXC
     },
-    {
-        id: 39,
+    CVC: {
         name: 'Civic',
         ticker: 'CVC',
         decimals: 8,
         icon: Icons.CVC
     },
-    {
-        id: 40,
+    DASH: {
         name: 'Dash',
         ticker: 'DASH',
         decimals: 8,
         icon: Icons.DASH
     },
-    {
-        id: 41,
+    DATA: {
         name: 'Streamr',
         ticker: 'DATA',
         decimals: 8,
         icon: Icons.DATA
     },
-    {
-        id: 42,
+    DCR: {
         name: 'Decred',
         ticker: 'DCR',
         decimals: 8,
         icon: Icons.DCR
     },
-    {
-        id: 43,
+    DENT: {
         name: 'Dent',
         ticker: 'DENT',
         decimals: 8,
         icon: Icons.DENT
     },
-    {
-        id: 44,
+    DGB: {
         name: 'Digibyte',
         ticker: 'DGB',
         decimals: 8,
         icon: Icons.DGB
     },
-    {
-        id: 45,
+    DLT: {
         name: 'Agrello',
         ticker: 'DLT',
         decimals: 8,
         icon: Icons.DLT
     },
-    {
-        id: 46,
+    DNT: {
         name: 'district0x',
         ticker: 'DNT',
         decimals: 8,
         icon: Icons.DNT
     },
-    {
-        id: 47,
+    DOCK: {
         name: 'Dock',
         ticker: 'DOCK',
         decimals: 8,
         icon: Icons.DOCK
     },
-    {
-        id: 48,
+    DOGE: {
         name: 'Dogecoin',
         ticker: 'DOGE',
         decimals: 8,
         icon: Icons.DOGE
     },
-    {
-        id: 49,
+    DREP: {
         name: 'DREP',
         ticker: 'DREP',
         decimals: 8,
         icon: Icons.DREP
     },
-    {
-        id: 50,
+    DUSK: {
         name: 'Dusk Network',
         ticker: 'DUSK',
         decimals: 8,
         icon: Icons.DUSK
     },
-    {
-        id: 51,
+    EDO: {
         name: 'Eidoo',
         ticker: 'EDO',
         decimals: 8,
         icon: Icons.EDO
     },
-    {
-        id: 52,
+    ELF: {
         name: 'aelf',
         ticker: 'ELF',
         decimals: 8,
         icon: Icons.ELF
     },
-    {
-        id: 53,
+    ENG: {
         name: 'Enigma',
         ticker: 'ENG',
         decimals: 8,
         icon: Icons.ENG
     },
-    {
-        id: 54,
+    ENJ: {
         name: 'Enjin Coin',
         ticker: 'ENJ',
         decimals: 8,
         icon: Icons.ENJ
     },
-    {
-        id: 55,
+    EOS: {
         name: 'EOS',
         ticker: 'EOS',
         decimals: 8,
         icon: Icons.EOS
     },
-    {
-        id: 56,
+    ERD: {
         name: 'Elrond',
         ticker: 'ERD',
         decimals: 8,
         icon: Icons.ERD
     },
-    {
-        id: 57,
+    ETC: {
         name: 'Ethereum Classic',
         ticker: 'ETC',
         decimals: 8,
         icon: Icons.ETC
     },
-    {
-        id: 58,
+    ETH: {
         name: 'Ethereum',
         ticker: 'ETH',
         decimals: 8,
         icon: Icons.ETH
     },
-    {
-        id: 59,
+    EVX: {
         name: 'Everex',
         ticker: 'EVX',
         decimals: 8,
         icon: Icons.EVX
     },
-    {
-        id: 60,
+    FET: {
         name: 'Fetch.ai',
         ticker: 'FET',
         decimals: 8,
         icon: Icons.FET
     },
-    {
-        id: 61,
+    FTM: {
         name: 'Fantom',
         ticker: 'FTM',
         decimals: 8,
         icon: Icons.FTM
     },
-    {
-        id: 62,
+    FTT: {
         name: 'FTX Token',
         ticker: 'FTT',
         decimals: 8,
         icon: Icons.FTT
     },
-    {
-        id: 63,
+    FUEL: {
         name: 'Etherparty',
         ticker: 'FUEL',
         decimals: 8,
         icon: Icons.FUEL
     },
-    {
-        id: 64,
+    FUN: {
         name: 'FunFair',
         ticker: 'FUN',
         decimals: 8,
         icon: Icons.FUN
     },
-    {
-        id: 65,
+    GAS: {
         name: 'Gas',
         ticker: 'GAS',
         decimals: 8,
         icon: Icons.GAS
     },
-    {
-        id: 66,
+    GNT: {
         name: 'Golem',
         ticker: 'GNT',
         decimals: 8,
         icon: Icons.GNT
     },
-    {
-        id: 67,
+    GO: {
         name: 'GoChain',
         ticker: 'GO',
         decimals: 8,
         icon: Icons.GO
     },
-    {
-        id: 68,
+    GRS: {
         name: 'Groestlcoin',
         ticker: 'GRS',
         decimals: 8,
         icon: Icons.GRS
     },
-    {
-        id: 69,
+    GTO: {
         name: 'Gifto',
         ticker: 'GTO',
         decimals: 8,
         icon: Icons.GTO
     },
-    {
-        id: 70,
+    GVT: {
         name: 'Genesis Vision',
         ticker: 'GVT',
         decimals: 8,
         icon: Icons.GVT
     },
-    {
-        id: 71,
+    GXC: {
         name: 'GXChain',
         ticker: 'GXC',
         decimals: 8,
         icon: Icons.GXC
     },
-    {
-        id: 72,
+    HBAR: {
         name: 'Hedera Hashgraph',
         ticker: 'HBAR',
         decimals: 8,
         icon: Icons.HBAR
     },
-    {
-        id: 73,
+    HC: {
         name: 'HyperCash',
         ticker: 'HC',
         decimals: 8,
         icon: Icons.HC
     },
-    {
-        id: 74,
+    HIVE: {
         name: 'Hive',
         ticker: 'HIVE',
         decimals: 8,
         icon: Icons.HIVE
     },
-    {
-        id: 75,
+    HOT: {
         name: 'Holo',
         ticker: 'HOT',
         decimals: 8,
         icon: Icons.HOT
     },
-    {
-        id: 76,
+    ICX: {
         name: 'ICON',
         ticker: 'ICX',
         decimals: 8,
         icon: Icons.ICX
     },
-    {
-        id: 77,
+    INS: {
         name: 'Insolar',
         ticker: 'INS',
         decimals: 8,
         icon: Icons.INS
     },
-    {
-        id: 78,
+    IOST: {
         name: 'IOST',
         ticker: 'IOST',
         decimals: 8,
         icon: Icons.IOST
     },
-    {
-        id: 79,
+    IOTA: {
         name: 'MIOTA',
         ticker: 'IOTA',
         decimals: 8,
         icon: Icons.IOTA
     },
-    {
-        id: 80,
+    IOTX: {
         name: 'IoTeX',
         ticker: 'IOTX',
         decimals: 8,
         icon: Icons.IOTX
     },
-    {
-        id: 81,
+    KAVA: {
         name: 'Kava',
         ticker: 'KAVA',
         decimals: 8,
         icon: Icons.KAVA
     },
-    {
-        id: 82,
+    KEY: {
         name: 'Selfkey',
         ticker: 'KEY',
         decimals: 8,
         icon: Icons.KEY
     },
-    {
-        id: 83,
+    KMD: {
         name: 'Komodo',
         ticker: 'KMD',
         decimals: 8,
         icon: Icons.KMD
     },
-    {
-        id: 84,
+    KNC: {
         name: 'Kyber Network',
         ticker: 'KNC',
         decimals: 8,
         icon: Icons.KNC
     },
-    {
-        id: 85,
+    LEND: {
         name: 'Aave',
         ticker: 'LEND',
         decimals: 8,
         icon: Icons.LEND
     },
-    {
-        id: 86,
+    LINK: {
         name: 'Chainlink',
         ticker: 'LINK',
         decimals: 8,
         icon: Icons.LINK
     },
-    {
-        id: 87,
+    LOOM: {
         name: 'Loom Network',
         ticker: 'LOOM',
         decimals: 8,
         icon: Icons.LOOM
     },
-    {
-        id: 88,
+    LRC: {
         name: 'Loopring',
         ticker: 'LRC',
         decimals: 8,
         icon: Icons.LRC
     },
-    {
-        id: 89,
+    LSK: {
         name: 'Lisk',
         ticker: 'LSK',
         decimals: 8,
         icon: Icons.LSK
     },
-    {
-        id: 90,
+    LTC: {
         name: 'Litecoin',
         ticker: 'LTC',
         decimals: 8,
         icon: Icons.LTC
     },
-    {
-        id: 91,
+    LTO: {
         name: 'LTO Network',
         ticker: 'LTO',
         decimals: 8,
         icon: Icons.LTO
     },
-    {
-        id: 92,
+    LUN: {
         name: 'Lunyr',
         ticker: 'LUN',
         decimals: 8,
         icon: Icons.LUN
     },
-    {
-        id: 93,
+    MANA: {
         name: 'Decentraland',
         ticker: 'MANA',
         decimals: 8,
         icon: Icons.MANA
     },
-    {
-        id: 94,
+    MATIC: {
         name: 'Matic Network',
         ticker: 'MATIC',
         decimals: 8,
         icon: Icons.MATIC
     },
-    {
-        id: 95,
+    MBL: {
         name: 'MovieBloc',
         ticker: 'MBL',
         decimals: 8,
         icon: Icons.MBL
     },
-    {
-        id: 96,
+    MCO: {
         name: 'MCO',
         ticker: 'MCO',
         decimals: 8,
         icon: Icons.MCO
     },
-    {
-        id: 97,
+    MDA: {
         name: 'Moeda Loyalty Points',
         ticker: 'MDA',
         decimals: 8,
         icon: Icons.MDA
     },
-    {
-        id: 98,
+    MFT: {
         name: 'Mainframe',
         ticker: 'MFT',
         decimals: 8,
         icon: Icons.MFT
     },
-    {
-        id: 99,
+    MITH: {
         name: 'Mithril',
         ticker: 'MITH',
         decimals: 8,
         icon: Icons.MITH
     },
-    {
-        id: 100,
+    MTL: {
         name: 'Metal',
         ticker: 'MTL',
         decimals: 8,
         icon: Icons.MTL
     },
-    {
-        id: 101,
+    NANO: {
         name: 'Nano',
         ticker: 'NANO',
         decimals: 8,
         icon: Icons.NANO
     },
-    {
-        id: 102,
+    NAS: {
         name: 'Nebulas',
         ticker: 'NAS',
         decimals: 8,
         icon: Icons.NAS
     },
-    {
-        id: 103,
+    NCASH: {
         name: 'Nucleus Vision',
         ticker: 'NCASH',
         decimals: 8,
         icon: Icons.NCASH
     },
-    {
-        id: 104,
+    NAV: {
         name: 'NavCoin',
         ticker: 'NAV',
         decimals: 8,
         icon: Icons.NAV
     },
-    {
-        id: 105,
+    NEBL: {
         name: 'Neblio',
         ticker: 'NEBL',
         decimals: 8,
         icon: Icons.NEBL
     },
-    {
-        id: 106,
+    NEO: {
         name: 'Neo',
         ticker: 'NEO',
         decimals: 8,
         icon: Icons.NEO
     },
-    {
-        id: 107,
+    NKN: {
         name: 'NKN',
         ticker: 'NKN',
         decimals: 8,
         icon: Icons.NKN
     },
-    {
-        id: 108,
+    NPXS: {
         name: 'Pundi X',
         ticker: 'NPXS',
         decimals: 8,
         icon: Icons.NPXS
     },
-    {
-        id: 109,
+    NULS: {
         name: 'NULS',
         ticker: 'NULS',
         decimals: 8,
         icon: Icons.NULS
     },
-    {
-        id: 110,
+    NXS: {
         name: 'Nexus',
         ticker: 'NXS',
         decimals: 8,
         icon: Icons.NXS
     },
-    {
-        id: 111,
+    OAX: {
         name: 'OAX',
         ticker: 'OAX',
         decimals: 8,
         icon: Icons.OAX
     },
-    {
-        id: 112,
+    OGN: {
         name: 'Origin Protocol',
         ticker: 'OGN',
         decimals: 8,
         icon: Icons.OGN
     },
-    {
-        id: 113,
+    OMG: {
         name: 'OmiseGO',
         ticker: 'OMG',
         decimals: 8,
         icon: Icons.OMG
     },
-    {
-        id: 114,
+    ONE: {
         name: 'Harmony',
         ticker: 'ONE',
         decimals: 8,
         icon: Icons.ONE
     },
-    {
-        id: 115,
+    ONG: {
         name: 'Ontology Gas',
         ticker: 'ONG',
         decimals: 8,
         icon: Icons.ONG
     },
-    {
-        id: 116,
+    ONT: {
         name: 'Ontology',
         ticker: 'ONT',
         decimals: 8,
         icon: Icons.ONT
     },
-    {
-        id: 117,
+    OST: {
         name: 'OST',
         ticker: 'OST',
         decimals: 8,
         icon: Icons.OST
     },
-    {
-        id: 118,
+    PERL: {
         name: 'Perlin',
         ticker: 'PERL',
         decimals: 8,
         icon: Icons.PERL
     },
-    {
-        id: 119,
+    PHX: {
         name: 'Red Pulse Phoenix',
         ticker: 'PHX',
         decimals: 8,
         icon: Icons.PHX
     },
-    {
-        id: 120,
+    PIVX: {
         name: 'PIVX',
         ticker: 'PIVX',
         decimals: 8,
         icon: Icons.PIVX
     },
-    {
-        id: 121,
+    POA: {
         name: 'POA',
         ticker: 'POA',
         decimals: 8,
         icon: Icons.POA
     },
-    {
-        id: 122,
+    POE: {
         name: 'Po.et',
         ticker: 'POE',
         decimals: 8,
         icon: Icons.POE
     },
-    {
-        id: 123,
+    POLY: {
         name: 'Polymath',
         ticker: 'POLY',
         decimals: 8,
         icon: Icons.POLY
     },
-    {
-        id: 124,
+    POWR: {
         name: 'Power Ledger',
         ticker: 'POWR',
         decimals: 8,
         icon: Icons.POWR
     },
-    {
-        id: 125,
+    PPT: {
         name: 'Populous',
         ticker: 'PPT',
         decimals: 8,
         icon: Icons.PPT
     },
-    {
-        id: 126,
+    QKC: {
         name: 'QuarkChain',
         ticker: 'QKC',
         decimals: 8,
         icon: Icons.QKC
     },
-    {
-        id: 127,
+    QLC: {
         name: 'QLC Chain',
         ticker: 'QLC',
         decimals: 8,
         icon: Icons.QLC
     },
-    {
-        id: 128,
+    QSP: {
         name: 'Quantstamp',
         ticker: 'QSP',
         decimals: 8,
         icon: Icons.QSP
     },
-    {
-        id: 129,
+    QTUM: {
         name: 'Qtum',
         ticker: 'QTUM',
         decimals: 8,
         icon: Icons.QTUM
     },
-    {
-        id: 130,
+    RCN: {
         name: 'Ripio Credit Network',
         ticker: 'RCN',
         decimals: 8,
         icon: Icons.RCN
     },
-    {
-        id: 131,
+    RDN: {
         name: 'Raiden Network Token',
         ticker: 'RDN',
         decimals: 8,
         icon: Icons.RDN
     },
-    {
-        id: 132,
+    REN: {
         name: 'Ren',
         ticker: 'REN',
         decimals: 8,
         icon: Icons.REN
     },
-    {
-        id: 133,
+    REP: {
         name: 'Augur',
         ticker: 'REP',
         decimals: 8,
         icon: Icons.REP
     },
-    {
-        id: 134,
+    REQ: {
         name: 'Request',
         ticker: 'REQ',
         decimals: 8,
         icon: Icons.REQ
     },
-    {
-        id: 135,
+    RLC: {
         name: 'iExec RLC',
         ticker: 'RLC',
         decimals: 8,
         icon: Icons.RLC
     },
-    {
-        id: 136,
+    RVN: {
         name: 'Ravencoin',
         ticker: 'RVN',
         decimals: 8,
         icon: Icons.RVN
     },
-    {
-        id: 137,
+    SC: {
         name: 'Siacoin',
         ticker: 'SC',
         decimals: 8,
         icon: Icons.SC
     },
-    {
-        id: 138,
+    SKY: {
         name: 'Skycoin',
         ticker: 'SKY',
         decimals: 8,
         icon: Icons.SKY
     },
-    {
-        id: 139,
+    SNGLS: {
         name: 'SingularDTV',
         ticker: 'SNGLS',
         decimals: 8,
         icon: Icons.SNGLS
     },
-    {
-        id: 140,
+    SNM: {
         name: 'SONM',
         ticker: 'SNM',
         decimals: 8,
         icon: Icons.SNM
     },
-    {
-        id: 141,
+    SNT: {
         name: 'Status',
         ticker: 'SNT',
         decimals: 8,
         icon: Icons.SNT
     },
-    {
-        id: 142,
+    SOL: {
         name: 'Solana',
         ticker: 'SOL',
         decimals: 8,
         icon: Icons.SOL
     },
-    {
-        id: 143,
+    STEEM: {
         name: 'Steem',
         ticker: 'STEEM',
         decimals: 8,
         icon: Icons.STEEM
     },
-    {
-        id: 144,
+    STORJ: {
         name: 'Storj',
         ticker: 'STORJ',
         decimals: 8,
         icon: Icons.STORJ
     },
-    {
-        id: 145,
+    STORM: {
         name: 'Storm',
         ticker: 'STORM',
         decimals: 8,
         icon: Icons.STORM
     },
-    {
-        id: 146,
+    STPT: {
         name: 'Standard Tokenization Protocol',
         ticker: 'STPT',
         decimals: 8,
         icon: Icons.STPT
     },
-    {
-        id: 147,
+    STRAT: {
         name: 'Stratis',
         ticker: 'STRAT',
         decimals: 8,
         icon: Icons.STRAT
     },
-    {
-        id: 148,
+    STX: {
         name: 'Blockstack',
         ticker: 'STX',
         decimals: 8,
         icon: Icons.STX
     },
-    {
-        id: 149,
+    SYS: {
         name: 'Syscoin',
         ticker: 'SYS',
         decimals: 8,
         icon: Icons.SYS
     },
-    {
-        id: 150,
+    TCT: {
         name: 'TokenClub',
         ticker: 'TCT',
         decimals: 8,
         icon: Icons.TCT
     },
-    {
-        id: 151,
+    TFUEL: {
         name: 'Theta Fuel',
         ticker: 'TFUEL',
         decimals: 8,
         icon: Icons.TFUEL
     },
-    {
-        id: 152,
+    THETA: {
         name: 'THETA',
         ticker: 'THETA',
         decimals: 8,
         icon: Icons.THETA
     },
-    {
-        id: 153,
+    TNB: {
         name: 'Time New Bank',
         ticker: 'TNB',
         decimals: 8,
         icon: Icons.TNB
     },
-    {
-        id: 154,
+    TNT: {
         name: 'Tierion',
         ticker: 'TNT',
         decimals: 8,
         icon: Icons.TNT
     },
-    {
-        id: 155,
+    TOMO: {
         name: 'TomoChain',
         ticker: 'TOMO',
         decimals: 8,
         icon: Icons.TOMO
     },
-    {
-        id: 156,
+    TROY: {
         name: 'TROY',
         ticker: 'TROY',
         decimals: 8,
         icon: Icons.TROY
     },
-    {
-        id: 157,
+    TRX: {
         name: 'TRON',
         ticker: 'TRX',
         decimals: 8,
         icon: Icons.TRX
     },
-    {
-        id: 158,
+    USD: {
         name: 'United States Dollar',
         ticker: 'USD',
         decimals: 4,
         icon: Icons.USD
     },
-    {
-        id: 159,
+    USDT: {
         name: 'Tether',
         ticker: 'USDT',
         decimals: 7,
         icon: Icons.USDT
     },
-    {
-        id: 160,
+    VET: {
         name: 'VeChain',
         ticker: 'VET',
         decimals: 8,
         icon: Icons.VET
     },
-    {
-        id: 161,
+    VIA: {
         name: 'Viacoin',
         ticker: 'VIA',
         decimals: 8,
         icon: Icons.VIA
     },
-    {
-        id: 162,
+    VIB: {
         name: 'Viberate',
         ticker: 'VIB',
         decimals: 8,
         icon: Icons.VIB
     },
-    {
-        id: 163,
+    VIBE: {
         name: 'VIBE',
         ticker: 'VIBE',
         decimals: 8,
         icon: Icons.VIBE
     },
-    {
-        id: 164,
+    VITE: {
         name: 'VITE',
         ticker: 'VITE',
         decimals: 8,
         icon: Icons.VITE
     },
-    {
-        id: 165,
+    WABI: {
         name: 'Tael',
         ticker: 'WABI',
         decimals: 8,
         icon: Icons.WABI
     },
-    {
-        id: 166,
+    WAN: {
         name: 'Wanchain',
         ticker: 'WAN',
         decimals: 8,
         icon: Icons.WAN
     },
-    {
-        id: 167,
+    WAVES: {
         name: 'Waves',
         ticker: 'WAVES',
         decimals: 8,
         icon: Icons.WAVES
     },
-    {
-        id: 168,
+    WPR: {
         name: 'WePower',
         ticker: 'WPR',
         decimals: 8,
         icon: Icons.WPR
     },
-    {
-        id: 169,
+    WRX: {
         name: 'WazirX',
         ticker: 'WRX',
         decimals: 8,
         icon: Icons.WRX
     },
-    {
-        id: 170,
+    WTC: {
         name: 'Waltonchain',
         ticker: 'WTC',
         decimals: 8,
         icon: Icons.WTC
     },
-    {
-        id: 171,
+    XEM: {
         name: 'NEM',
         ticker: 'XEM',
         decimals: 8,
         icon: Icons.XEM
     },
-    {
-        id: 172,
+    XLM: {
         name: 'Stellar',
         ticker: 'XLM',
         decimals: 8,
         icon: Icons.XLM
     },
-    {
-        id: 173,
+    XMR: {
         name: 'Monero',
         ticker: 'XMR',
         decimals: 8,
         icon: Icons.XMR
     },
-    {
-        id: 174,
+    XRP: {
         name: 'XRP',
         ticker: 'XRP',
         decimals: 8,
         icon: Icons.XRP
     },
-    {
-        id: 175,
+    XTZ: {
         name: 'Tezos',
         ticker: 'XTZ',
         decimals: 8,
         icon: Icons.XTZ
     },
-    {
-        id: 176,
+    XVG: {
         name: 'Verge',
         ticker: 'XVG',
         decimals: 8,
         icon: Icons.XVG
     },
-    {
-        id: 177,
+    XZC: {
         name: 'Zcoin',
         ticker: 'XZC',
         decimals: 8,
         icon: Icons.XZC
     },
-    {
-        id: 178,
+    YOYO: {
         name: 'YOYOW',
         ticker: 'YOYO',
         decimals: 8,
         icon: Icons.YOYO
     },
-    {
-        id: 179,
+    ZEC: {
         name: 'Zcash',
         ticker: 'ZEC',
         decimals: 8,
         icon: Icons.ZEC
     },
-    {
-        id: 180,
+    ZEN: {
         name: 'Horizen',
         ticker: 'ZEN',
         decimals: 8,
         icon: Icons.ZEN
     },
-    {
-        id: 181,
+    ZIL: {
         name: 'Zilliqa',
         ticker: 'ZIL',
         decimals: 8,
         icon: Icons.ZIL
     },
-    {
-        id: 182,
+    ZRX: {
         name: '0x',
         ticker: 'ZRX',
         decimals: 8,
         icon: Icons.ZRX
     }
-]
+}
 
 export default Currencies;

@@ -9,18 +9,14 @@
 - Wallet / Delete exit trade
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
     - fix toLowerCase issue (front to back end) **
-    - Add more info to DeleteTradeModal - help user understand what happens
 
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
-
-- currencies.js module - order currencies alpha, by coin name not ticker
-- currencies.js module - get decimal places right
+    - Add more info to DeleteTradeModal - help user understand what happens
 
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)
-- Use datalist when choosing an alt to buy
-- Use correct decimal placement for different alts
+- Use correct decimal placement for different alts (currencies.js)
 - Add *Nomics API to get real time market data, and integrate into app to dynamically render using API data
 
 - In the end, convert all possible class components to functional components using useState

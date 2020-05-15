@@ -87,47 +87,48 @@ class NewEntryTradePage extends Component {
                 value: 'USD',
                 label:
                     < div style={{ color: 'black' }}>
-                        <img src={Currencies.find(c => c.ticker === 'USD').icon} alt={`icon-USD`} width={26} height={26} />&ensp;United States Dollar (USD)
+                        <img src={Currencies['USD'].icon} alt={`icon-USD`} width={26} height={26} />&ensp;United States Dollar (USD)
                     </div >
             },
             {
                 value: 'USDT',
                 label:
                     < div style={{ color: 'black' }}>
-                        <img src={Currencies.find(c => c.ticker === 'USDT').icon} alt={`icon-USDT`} width={26} height={26} />&ensp;Tether (USDT)
+                        <img src={Currencies['USDT'].icon} alt={`icon-USDT`} width={26} height={26} />&ensp;Tether (USDT)
                     </div >
             },
             {
                 value: 'BTC',
                 label:
                     < div style={{ color: 'black' }}>
-                        <img src={Currencies.find(c => c.ticker === 'BTC').icon} alt={`icon-BTC`} width={26} height={26} />&ensp;Bitcoin (BTC)
+                        <img src={Currencies['BTC'].icon} alt={`icon-BTC`} width={26} height={26} />&ensp;Bitcoin (BTC)
                     </div >
             },
             {
                 value: 'ETH',
                 label:
                     < div style={{ color: 'black' }}>
-                        <img src={Currencies.find(c => c.ticker === 'ETH').icon} alt={`icon-ETH`} width={26} height={26} />&ensp;Ethereum (ETH)
+                        <img src={Currencies['ETH'].icon} alt={`icon-ETH`} width={26} height={26} />&ensp;Ethereum (ETH)
                     </div >
             },
             {
                 value: 'BNB',
                 label:
                     < div style={{ color: 'black' }}>
-                        <img src={Currencies.find(c => c.ticker === 'BNB').icon} alt={`icon-BNB`} width={26} height={26} />&ensp;Binance Coin (BNB)
+                        <img src={Currencies['BNB'].icon} alt={`icon-BNB`} width={26} height={26} />&ensp;Binance Coin (BNB)
                     </div >
             }
         ];
-        const selectOptionsTwo = Currencies.map(currency => {
-            return ({
+        const selectOptionsTwo = [];
+        for (const currency in Currencies) {
+            selectOptionsTwo.push({
                 value: currency.ticker,
                 label:
                     <div style={{ color: 'black' }}>
-                        <img src={currency.icon} alt={`icon-${currency.ticker}`} width={26} height={26} />&ensp;{currency.name} ({currency.ticker})
+                        <img src={Currencies[currency].icon} alt={`icon-${currency}`} width={26} height={26} />&ensp;{Currencies[currency].name} ({currency})
                     </div>
             });
-        });
+        };
         let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
             const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
