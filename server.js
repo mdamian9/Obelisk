@@ -36,12 +36,14 @@ const indexRouter = require('./api/routes/index.router');
 const userRouter = require('./api/routes/user.router');
 const entryTradeRouter = require('./api/routes/entryTrade.router');
 const exitTradeRouter = require('./api/routes/exitTrade.router');
+const twitterRouter = require('./api/routes/twitter.router');
 
 // Use API routes
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/entryTrade', entryTradeRouter);
 app.use('/exitTrade', exitTradeRouter);
+app.use('/tweets', twitterRouter);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
