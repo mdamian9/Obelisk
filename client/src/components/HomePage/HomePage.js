@@ -10,61 +10,70 @@ const HomePage = props => {
             <UserNavbar history={props.history} />
             <br />
             <div>
-                <Container fluid='lg' className='text-white' >
-                    <Row>
-                        <Col className='section-solid-white text-center' xs={6} style={{ marginLeft: '20px' }}>
-                            <Row>
-                                <Col>
-                                    <h2>
-                                        Welcome {props.user.username}!
-                                    </h2>
-                                </Col>
-                            </Row>
-                            <hr className='ln-white' />
-                            <Row>
-                                <Col className='d-flex justify-content-center'>
-                                    <Button color='info' href='/wallet'>
-                                        <FontAwesomeIcon icon='wallet' /> Wallet
+                <Container fluid='lg' className='text-white'>
+                    <Row className='justify-content-center'>
+                        <Col className='text-center'>
+                            <div className='section-solid-white'>
+                                <h2>
+                                    Welcome {props.user.username}!
+                                </h2>
+                                <hr className='ln-white' />
+                                <Row>
+                                    <Col className='d-flex justify-content-center'>
+                                        <Button color='info' href='/wallet'>
+                                            <FontAwesomeIcon icon='wallet' /> Wallet
                                     </Button>
                                     &ensp;
                                     <Button color='primary' href='/new-entry-trade'>
-                                        <FontAwesomeIcon icon='file-import' /> New Entry Trade
+                                            <FontAwesomeIcon icon='file-import' /> New Entry Trade
                                     </Button>
-                                </Col>
-                            </Row>
-                            <br />
-                            <Row>
-                                <Col className='d-flex justify-content-center'>
-                                    <Button color='success' href='/entry-trades'>
-                                        <FontAwesomeIcon icon='file-import' /> Entry Trade Log
+                                    </Col>
+                                </Row>
+                                <br />
+                                <Row>
+                                    <Col className='d-flex justify-content-center'>
+                                        <Button color='success' href='/entry-trades'>
+                                            <FontAwesomeIcon icon='file-import' /> Entry Trade Log
                                     </Button>
                                     &ensp;
                                     <Button color='danger' href='/exit-trades'>
-                                        <FontAwesomeIcon icon='file-export' /> Exit Trade Log
+                                            <FontAwesomeIcon icon='file-export' /> Exit Trade Log
                                     </Button>
-                                </Col>
-                            </Row>
-                            <hr className='ln-white' />
-                            <Row>
-                                <Col className='d-flex justify-content-center'>
-                                    <Button color='light' href='/find-percent-change'>
-                                        <FontAwesomeIcon icon='chart-line' /> Find % Change
+                                    </Col>
+                                </Row>
+                                <hr className='ln-white' />
+                                <Row>
+                                    <Col className='d-flex justify-content-center'>
+                                        <Button color='light' href='/find-percent-change'>
+                                            <FontAwesomeIcon icon='chart-line' /> Find % Change
                                     </Button>
                                     &ensp;
                                     <Button color='dark' href='/get-target-price'>
-                                        <FontAwesomeIcon icon='search-dollar' /> Get Target Price
+                                            <FontAwesomeIcon icon='search-dollar' /> Get Target Price
                                     </Button>
                                     &ensp;
                                     <Button color='warning' href='calculate-roi'>
-                                        <FontAwesomeIcon icon='hand-holding-usd' /> Calculate ROI
+                                            <FontAwesomeIcon icon='hand-holding-usd' /> Calculate ROI
                                     </Button>
-                                </Col>
-                            </Row>
+                                    </Col>
+                                </Row>
+                            </div>
+                            <br />
+                            <div className='section-solid-white'>
+                                <Row>
+                                    <Col>
+                                        <h2>
+                                            <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
+                                        </h2>
+                                    </Col>
+                                </Row>
+                            </div>
                         </Col>
-                        <Col className='section-solid-white text-center' xs={5} style={{ marginLeft: '40px' }}>
-                            <h2>
-                                Section 2
+                        <Col className='section-solid-white' xs={5}>
+                            <h2 className='text-center'>
+                                <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
                             </h2>
+                            <hr className='ln-white' />
                         </Col>
                     </Row>
                 </Container>
