@@ -1,5 +1,5 @@
 - *** Most Recent *** 
-    - Made select options for currency field in new entry trade page (show icons)
+    - Installed twit package / started building TwitterWidget component
 
 - *** To do next ***
     - 
@@ -7,11 +7,11 @@
 - Create TwitterWidget and add to HomePage
 
 - Wallet / Delete exit trade
-    - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
     - fix toLowerCase issue (front to back end) **
 
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
+    - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
     - Add more info to DeleteTradeModal - help user understand what happens
 
 - Fix decimals toFixed on trades / balances
