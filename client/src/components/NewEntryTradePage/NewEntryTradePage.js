@@ -122,13 +122,15 @@ class NewEntryTradePage extends Component {
         const selectOptionsTwo = [];
         for (const currency in Currencies) {
             selectOptionsTwo.push({
-                value: currency.ticker,
+                name: Currencies[currency].name.toLowerCase(),
+                value: currency,
                 label:
                     <div style={{ color: 'black' }}>
                         <img src={Currencies[currency].icon} alt={`icon-${currency}`} width={26} height={26} />&ensp;{Currencies[currency].name} ({currency})
                     </div>
             });
         };
+        selectOptionsTwo.sort((a, b) => (a.name > b.name) ? 1 : -1);
         let renderAvailableFunds = <p></p>;
         if (this.state.currency) {
             const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;

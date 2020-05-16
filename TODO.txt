@@ -1,10 +1,11 @@
 - *** Most Recent *** 
-    - Installed twit package / started building TwitterWidget component
+    - Sorted currencies on front-end (NewEntryTradePage) by alpha name order instead of alpha ticker order. Working on TwitterWidget component + back-end twitterRouter.js
 
 - *** To do next ***
     - 
 
 - Create TwitterWidget and add to HomePage
+    - 
 
 - Wallet / Delete exit trade
     - fix toLowerCase issue (front to back end) **
