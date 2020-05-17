@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
 
 class CalculateRoiPage extends Component {
@@ -61,87 +62,89 @@ class CalculateRoiPage extends Component {
                 <br />
                 <div>
                     <Container>
-                        <Row>
-                            <Col xs={7} className='section-solid-white text-white mx-auto'>
-                                <h3 className='text-center'>
-                                    Calculate Return on Investment
-                                </h3>
-                                <hr className='ln-white' />
-                                <Form id='calc-form' onSubmit={this.handleFormSubmit}>
-                                    <FormGroup>
-                                        <Label for='currency'>Select currency:</Label>
-                                        <Input type='select' name='currency' id='currency'
-                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
-                                            <option disabled>-- select currency --</option>
-                                            <option>USD</option>
-                                            <option>USDT</option>
-                                            <option>BTC</option>
-                                            <option>ETH</option>
-                                            <option>BNB</option>
-                                        </Input>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for='initial-investment'>Initial investment:</Label>
-                                        <Input type='number' name='initialInvestment' id='initial-investment'
-                                            placeholder='0.00000000' min='0.00000001' step='0.00000001'
-                                            onChange={this.handleChange} required />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for='final-divestment'>Final divestment:</Label>
-                                        <Input type='number' name='finalDivestment' id='final-divestment'
-                                            placeholder='0.00000000' min='0.00000001' step='0.00000001'
-                                            onChange={this.handleChange} required />
-                                    </FormGroup>
-                                    <Button>Submit</Button>
-                                </Form>
+                        <Row className='justify-content-center'>
+                            <Col className='text-white'>
+                                <div className='section-solid-white'>
+                                    <h3 className='text-center'>
+                                        Calculate Return on Investment
+                                    </h3>
+                                    <hr className='ln-white' />
+                                    <Form id='calc-form' onSubmit={this.handleFormSubmit}>
+                                        <FormGroup>
+                                            <Label for='currency'>Select currency:</Label>
+                                            <Input type='select' name='currency' id='currency'
+                                                defaultValue='-- select currency --' onChange={this.handleChange} required>
+                                                <option disabled>-- select currency --</option>
+                                                <option>USD</option>
+                                                <option>USDT</option>
+                                                <option>BTC</option>
+                                                <option>ETH</option>
+                                                <option>BNB</option>
+                                            </Input>
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for='initial-investment'>Initial investment:</Label>
+                                            <Input type='number' name='initialInvestment' id='initial-investment'
+                                                placeholder='0.00000000' min='0.00000001' step='0.00000001'
+                                                onChange={this.handleChange} required />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for='final-divestment'>Final divestment:</Label>
+                                            <Input type='number' name='finalDivestment' id='final-divestment'
+                                                placeholder='0.00000000' min='0.00000001' step='0.00000001'
+                                                onChange={this.handleChange} required />
+                                        </FormGroup>
+                                        <Button>Submit</Button>
+                                    </Form>
+                                </div>
                             </Col>
-                        </Row>
-                        <br />
-                        <Row>
-                            <Col xs={7} className='section-solid-white text-white mx-auto'>
-                                <Row>
-                                    <Col>
-                                        <h3 className='text-center'>
-                                            Return of Investment Calculation
-                                        </h3>
-                                    </Col>
-                                </Row>
-                                <hr className='ln-white' />
-                                <Row className='align-items-center text-center'>
-                                    <Col>
-                                        Initial investment: {this.state.initialInvestment} {this.state.currency}
-                                        <br />
+                            <Col className='text-white text-center'>
+                                <div className='section-solid-white'>
+                                    <Row>
+                                        <Col>
+                                            <h3>
+                                                Return of Investment Calculation
+                                            </h3>
+                                        </Col>
+                                    </Row>
+                                    <hr className='ln-white' />
+                                    <Row className='align-items-center'>
+                                        <Col>
+                                            Initial investment: {this.state.initialInvestment} {this.state.currency}
+                                            <br />
                                         Final divestment: {this.state.finalDivestment} {this.state.currency}
-                                    </Col>
-                                    <Col>
-                                        <Row>
-                                            <Col>
-                                                ROI (multiple): {this.state.roi_x}x
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                ROI (percentage): {this.state.roi_percent}%
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>
-                                                Total profit: {this.state.totalProfit} {this.state.currency}
-                                            </Col>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                                <hr className='ln-white' />
-                                <Row>
-                                    <Col>
-                                        <Button onClick={this.resetCalculation}>Reset Calculation</Button>
-                                    </Col>
-                                </Row>
+                                        </Col>
+                                        <Col>
+                                            <Row>
+                                                <Col>
+                                                    ROI (multiple): {this.state.roi_x}x
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    ROI (percentage): {this.state.roi_percent}%
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    Total profit: {this.state.totalProfit} {this.state.currency}
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <hr className='ln-white' />
+                                    <Row>
+                                        <Col>
+                                            <Button onClick={this.resetCalculation}>Reset Calculation</Button>
+                                        </Col>
+                                    </Row>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
                 </div>
                 <br />
+                <Footer />
             </div>
         );
     };

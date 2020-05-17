@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import TwitterWidget from '../TwitterWidget/TwitterWidget';
+import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
 
 const HomePage = props => {
@@ -73,12 +74,14 @@ const HomePage = props => {
                                     <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
                                 </h2>
                                 <hr className='ln-white' />
-                                <TwitterWidget keyphrase='bitcoin' />
+                                <TwitterWidget style={{ maxHeight: '65vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
                             </div>
                         </Col>
                     </Row>
                 </Container>
             </div>
+            <br />
+            <Footer />
         </div>
     );
 };

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 import axios from 'axios';
 import moment from 'moment';
-import withAuth from '../withAuth/withAuth';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
 import SellTradeModal from './SellTradeModal';
 import TradeInfoModal from '../TradeInfoModal/TradeInfoModal';
+import Footer from '../Footer/Footer';
+import withAuth from '../withAuth/withAuth';
 
 const TableRow = ({ trade, updateTrades, history }) => {
     const date = moment.utc(trade.date).local().format('MM/D/YYYY');
@@ -104,6 +105,8 @@ class EntryTradeLogPage extends Component {
                             </Col>
                         </Row>
                     </Container>
+                    <br />
+                    <Footer />
                 </div>
             </div>
         );

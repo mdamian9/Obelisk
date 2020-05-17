@@ -50,7 +50,7 @@ class TwitterWidget extends Component {
             });
         };
         return (
-            <div style={{ maxHeight: '70vh', overflowY: 'scroll' }}>
+            <div style={this.props.style}>
                 {renderTweets}
                 <br />
             </div>

@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import LandingNavbar from '../LandingNavbar/LandingNavbar';
 import SignupModal from '../SignupModal/SignupModal';
 import Logo from '../Logo/Logo';
+import Footer from '../Footer/Footer';
 import AuthService from '../AuthService/AuthService';
 
 class LandingPage extends Component {
@@ -23,7 +24,7 @@ class LandingPage extends Component {
         return (
             <div>
                 <LandingNavbar history={this.props.history} />
-                <div className='full-r-div'>
+                <div className='full-r-div' style={{ marginTop: '-30px' }}>
                     <Container>
                         <Row>
                             <Col className='text-center'>
@@ -45,6 +46,7 @@ class LandingPage extends Component {
                             </Col>
                         </Row>
                     </Container>
+                    <Footer />
                 </div>
             </div>
         );

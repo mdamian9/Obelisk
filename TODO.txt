@@ -2,10 +2,7 @@
     - Working on TwitterWidget / HomePage
 
 - *** To do next ***
-    - 
-
-- Create TwitterWidget and add to HomePage
-    - 
+    - Use react-select for tools pages forms
 
 - Wallet / Delete exit trade
     - fix toLowerCase issue (front to back end) **
