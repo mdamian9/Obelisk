@@ -5,6 +5,7 @@ import axios from 'axios';
 import Currencies from '../../assets/currencies';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import NewEntryTradeErrModal from './NewEntryTradeErrorModal';
+import Footer from '../Footer/Footer';
 import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 
@@ -191,6 +192,8 @@ class NewEntryTradePage extends Component {
                             </Col>
                         </Row>
                     </Container>
+                    <br />
+                    <Footer />
                 </div>
             </div>
         );

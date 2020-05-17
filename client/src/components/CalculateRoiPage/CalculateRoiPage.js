@@ -62,7 +62,7 @@ class CalculateRoiPage extends Component {
                 <br />
                 <div>
                     <Container>
-                        <Row className='justify-content-center'>
+                        <Row className='justify-content-center align-items-center'>
                             <Col className='text-white'>
                                 <div className='section-solid-white'>
                                     <h3 className='text-center'>

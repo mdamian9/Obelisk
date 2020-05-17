@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
 
 class FindPercentChangePage extends Component {
@@ -53,69 +54,72 @@ class FindPercentChangePage extends Component {
                 <br />
                 <div>
                     <Container>
-                        <Row>
-                            <Col xs={7} className='section-solid-white text-white mx-auto'>
-                                <h3 className='text-center'>
-                                    Find Percent Change
-                                </h3>
-                                <hr className='ln-white' />
-                                <Form id='calc-form' onSubmit={this.handleFormSubmit}>
-                                    <FormGroup>
-                                        <Label for='currency'>Select currency:</Label>
-                                        <Input type='select' name='currency' id='currency'
-                                            defaultValue='-- select currency --' onChange={this.handleChange} required>
-                                            <option disabled>-- select currency --</option>
-                                            <option>USD</option>
-                                            <option>USDT</option>
-                                            <option>BTC</option>
-                                            <option>ETH</option>
-                                            <option>BNB</option>
-                                        </Input>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for='entry-price'>Entry price:</Label>
-                                        <Input type='number' name='entryPrice' id='entry-price' placeholder='0.00000000'
-                                            step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for='exit-price'>Exit price:</Label>
-                                        <Input type='number' name='exitPrice' id='exit-price' placeholder='0.00000000'
-                                            step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
-                                    </FormGroup>
-                                    <Button>Submit</Button>
-                                </Form>
+                        <Row className='justify-content-center align-items-center'>
+                            <Col className='text-white'>
+                                <div className='section-solid-white'>
+                                    <h3 className='text-center'>
+                                        Find Percent Change
+                                    </h3>
+                                    <hr className='ln-white' />
+                                    <Form id='calc-form' onSubmit={this.handleFormSubmit}>
+                                        <FormGroup>
+                                            <Label for='currency'>Select currency:</Label>
+                                            <Input type='select' name='currency' id='currency'
+                                                defaultValue='-- select currency --' onChange={this.handleChange} required>
+                                                <option disabled>-- select currency --</option>
+                                                <option>USD</option>
+                                                <option>USDT</option>
+                                                <option>BTC</option>
+                                                <option>ETH</option>
+                                                <option>BNB</option>
+                                            </Input>
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for='entry-price'>Entry price:</Label>
+                                            <Input type='number' name='entryPrice' id='entry-price' placeholder='0.00000000'
+                                                step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for='exit-price'>Exit price:</Label>
+                                            <Input type='number' name='exitPrice' id='exit-price' placeholder='0.00000000'
+                                                step='0.00000001' min='0.00000001' onChange={this.handleChange} required />
+                                        </FormGroup>
+                                        <Button>Submit</Button>
+                                    </Form>
+                                </div>
                             </Col>
-                        </Row>
-                        <br />
-                        <Row>
-                            <Col xs={7} className='section-solid-white text-white mx-auto'>
-                                <Row>
-                                    <Col>
-                                        <h3 className='text-center'>
-                                            Percent Change Calculation
-                                        </h3>
-                                    </Col>
-                                </Row>
-                                <hr className='ln-white' />
-                                <Row className='align-items-center text-center'>
-                                    <Col>
-                                        Entry price: {this.state.entryPrice} {this.state.currency}
-                                        <br />
-                                        Exit price: {this.state.exitPrice} {this.state.currency}
-                                    </Col>
-                                    <Col>
-                                        Percent change: {this.state.percentChange}%
-                                    </Col>
-                                </Row>
-                                <hr className='ln-white' />
-                                <Row>
-                                    <Col>
-                                        <Button onClick={this.resetCalculation}>Reset Calculation</Button>
-                                    </Col>
-                                </Row>
+                            <Col className='text-center text-white'>
+                                <div className='section-solid-white'>
+                                    <Row>
+                                        <Col>
+                                            <h3 className='text-center'>
+                                                Percent Change Calculation
+                                            </h3>
+                                        </Col>
+                                    </Row>
+                                    <hr className='ln-white' />
+                                    <Row className='align-items-center'>
+                                        <Col>
+                                            Entry price: {this.state.entryPrice} {this.state.currency}
+                                            <br />
+                                            Exit price: {this.state.exitPrice} {this.state.currency}
+                                        </Col>
+                                        <Col>
+                                            Percent change: {this.state.percentChange}%
+                                        </Col>
+                                    </Row>
+                                    <hr className='ln-white' />
+                                    <Row>
+                                        <Col>
+                                            <Button onClick={this.resetCalculation}>Reset Calculation</Button>
+                                        </Col>
+                                    </Row>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
+                    <br />
+                    <Footer />
                 </div>
             </div>
         );
