@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Navbar, NavbarBrand, Nav } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthService from '../AuthService/AuthService';
 import Logo from '../Logo/Logo';
 
@@ -66,7 +67,7 @@ class LandingNavbar extends Component {
                                 onChange={this.handleChange}
                             />
                         </FormGroup>
-                        <Button>Log In</Button>
+                        <Button><FontAwesomeIcon icon='sign-in-alt' /> Log In</Button>
                     </Form>
                 </Nav>
             </Navbar>

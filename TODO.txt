@@ -1,5 +1,5 @@
 - *** Most Recent *** 
-    - Sorted currencies on front-end (NewEntryTradePage) by alpha name order instead of alpha ticker order. Working on TwitterWidget component + back-end twitterRouter.js
+    - Working on TwitterWidget / HomePage
 
 - *** To do next ***
     - 

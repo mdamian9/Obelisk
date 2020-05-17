@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserNavbar from '../UserNavbar/UserNavbar';
+import TwitterWidget from '../TwitterWidget/TwitterWidget';
 import withAuth from '../withAuth/withAuth';
 
 const HomePage = props => {
@@ -10,7 +11,7 @@ const HomePage = props => {
             <UserNavbar history={props.history} />
             <br />
             <div>
-                <Container fluid='lg' className='text-white'>
+                <Container className='text-white'>
                     <Row className='justify-content-center'>
                         <Col className='text-center'>
                             <div className='section-solid-white'>
@@ -60,20 +61,20 @@ const HomePage = props => {
                             </div>
                             <br />
                             <div className='section-solid-white'>
-                                <Row>
-                                    <Col>
-                                        <h2>
-                                            <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
-                                        </h2>
-                                    </Col>
-                                </Row>
+                                <h2>
+                                    <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
+                                </h2>
+                                <hr className='ln-white' />
                             </div>
                         </Col>
-                        <Col className='section-solid-white' xs={5}>
-                            <h2 className='text-center'>
-                                <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
-                            </h2>
-                            <hr className='ln-white' />
+                        <Col>
+                            <div className='section-solid-white'>
+                                <h2 className='text-center'>
+                                    <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
+                                </h2>
+                                <hr className='ln-white' />
+                                <TwitterWidget keyphrase='bitcoin' />
+                            </div>
                         </Col>
                     </Row>
                 </Container>
