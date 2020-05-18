@@ -24,11 +24,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
     faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faUserCircle, faClipboardList, faSignInAlt,
-    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd
+    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
     fab, faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faUserCircle, faClipboardList, faSignInAlt,
-    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd
+    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser
 );
 
 // If there is a valid token, automatically set headers with Auth bearer token for axios requests
