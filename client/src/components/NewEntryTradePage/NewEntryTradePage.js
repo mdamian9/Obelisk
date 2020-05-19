@@ -151,10 +151,10 @@ class NewEntryTradePage extends Component {
         };
         return (
             <div>
-                <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
-                <UserNavbar history={this.props.history} />
-                <br />
-                <div>
+                <div className='content'>
+                    <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
+                    <UserNavbar history={this.props.history} />
+                    <br />
                     <Container>
                         <Row>
                             <Col xs={7} className='section-solid-white text-white mx-auto'>
@@ -192,9 +192,8 @@ class NewEntryTradePage extends Component {
                             </Col>
                         </Row>
                     </Container>
-                    <br />
-                    <Footer />
                 </div>
+                <Footer />
             </div>
         );
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardText, CardBody, CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import axios from 'axios';
 
 const RenderTweet = ({ tweet }) => {
@@ -40,7 +40,25 @@ class TwitterWidget extends Component {
         };
     };
 
+    searchTweets = event => {
+        event.preventDefault();
+        console.log(event.target.value);
+    };
+
     render = () => {
+        let searchBar = <div></div>;
+        if (this.props.type === 'search') {
+            searchBar =
+                <div>
+                    <Form className='d-flex justify-content-center' style={{ padding: '10px' }} onSubmit={this.searchTweets}>
+                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                            <Input type="text" name="searchTweets" id="search-tweets" placeholder="Enter keyword(s)" required />
+                        </FormGroup>
+                        <Button>Search</Button>
+                    </Form>
+                    <hr className='ln-white' />
+                </div>
+        };
         let renderTweets = <div></div>;
         if (this.state.tweets) {
             renderTweets = this.state.tweets.map(tweet => {
@@ -51,6 +69,7 @@ class TwitterWidget extends Component {
         };
         return (
             <div style={this.props.style}>
+                {searchBar}
                 {renderTweets}
                 <br />
             </div>

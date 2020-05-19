@@ -66,6 +66,7 @@ const HomePage = props => {
                                     <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
                                 </h2>
                                 <hr className='ln-white' />
+                                <TwitterWidget style={{ maxHeight: '65vh', overflowY: 'scroll' }} type='search' />
                             </div>
                         </Col>
                         <Col>
@@ -74,7 +75,7 @@ const HomePage = props => {
                                     <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
                                 </h2>
                                 <hr className='ln-white' />
-                                <TwitterWidget style={{ maxHeight: '65vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
+                                <TwitterWidget style={{ maxHeight: '100vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
                             </div>
                         </Col>
                     </Row>
