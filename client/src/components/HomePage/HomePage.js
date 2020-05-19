@@ -9,9 +9,9 @@ import withAuth from '../withAuth/withAuth';
 const HomePage = props => {
     return (
         <div>
-            <UserNavbar history={props.history} />
-            <br />
-            <div>
+            <div className='content'>
+                <UserNavbar history={props.history} />
+                <br />
                 <Container className='text-white'>
                     <Row className='justify-content-center'>
                         <Col className='text-center'>
@@ -80,8 +80,8 @@ const HomePage = props => {
                         </Col>
                     </Row>
                 </Container>
+                <br />
             </div>
-            <br />
             <Footer />
         </div>
     );

@@ -12,6 +12,13 @@
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
     - Add more info to DeleteTradeModal - help user understand what happens
 
+- Tutorial Page
+    - Begin building tutorial page
+
+- Account Page
+    - Begin building account page
+
+- decorate trade info modal
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)
 - Use correct decimal placement for different alts (currencies.js)

@@ -57,9 +57,9 @@ class GetTargetPricePage extends Component {
     render = () => {
         return (
             <div>
-                <UserNavbar history={this.props.history} />
-                <br />
-                <div>
+                <div className='content'>
+                    <UserNavbar history={this.props.history} />
+                    <br />
                     <Container>
                         <Row className='justify-content-center align-items-center'>
                             <Col className='text-white'>
@@ -124,10 +124,10 @@ class GetTargetPricePage extends Component {
                                 </div>
                             </Col>
                         </Row>
-                        <br />
-                        <Footer />
                     </Container>
+                    <br />
                 </div>
+                <Footer />
             </div>
         );
     };

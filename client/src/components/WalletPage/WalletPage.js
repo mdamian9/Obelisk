@@ -7,6 +7,7 @@ import DepositFundsModal from './DepositFundsModal';
 import WithdrawFundsModal from './WithdrawFundsModal';
 import TransferFundsModal from './TransferFundsModal';
 import ResetFundsModal from './ResetFundsModal';
+import Footer from '../Footer/Footer';
 import './WalletPage.css';
 
 const TableRow = ({ targetWallet, walletName }) => {
@@ -69,9 +70,9 @@ class WalletPage extends Component {
     render = () => {
         return (
             <div>
-                <UserNavbar history={this.props.history} />
-                <br />
-                <div>
+                <div className='content'>
+                    <UserNavbar history={this.props.history} />
+                    <br />
                     <Container>
                         <Row className='d-flex justify-content-center'>
                             <div className='section-solid-white text-white'>
@@ -109,7 +110,9 @@ class WalletPage extends Component {
                             </div>
                         </Row>
                     </Container>
+                    <br />
                 </div>
+                <Footer />
             </div>
         );
     };

@@ -64,14 +64,14 @@ class ExitTradeLogPage extends Component {
     render = () => {
         return (
             <div>
-                <UserNavbar history={this.props.history} />
-                <br />
-                <div>
+                <div className='content'>
+                    <UserNavbar history={this.props.history} />
+                    <br />
                     <Container>
                         <Row>
                             <Col xs={10} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
-                                    Exit Trades
+                                    Exit Trade Log
                                 </h3>
                                 <hr className='ln-white' />
                                 <Table dark striped>
@@ -91,8 +91,8 @@ class ExitTradeLogPage extends Component {
                         </Row>
                     </Container>
                     <br />
-                    <Footer />
                 </div>
+                <Footer />
             </div>
         );
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardText, CardBody, CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Card, CardText, CardBody, CardTitle, CardSubtitle, Form, FormGroup, Input, Button } from 'reactstrap';
 import axios from 'axios';
 
 const RenderTweet = ({ tweet }) => {

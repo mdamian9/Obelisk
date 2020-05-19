@@ -50,9 +50,9 @@ class FindPercentChangePage extends Component {
     render = () => {
         return (
             <div>
-                <UserNavbar history={this.props.history} />
-                <br />
-                <div>
+                <div className='content'>
+                    <UserNavbar history={this.props.history} />
+                    <br />
                     <Container>
                         <Row className='justify-content-center align-items-center'>
                             <Col className='text-white'>
@@ -119,8 +119,8 @@ class FindPercentChangePage extends Component {
                         </Row>
                     </Container>
                     <br />
-                    <Footer />
                 </div>
+                <Footer />
             </div>
         );
     };

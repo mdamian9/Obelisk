@@ -192,6 +192,7 @@ class NewEntryTradePage extends Component {
                             </Col>
                         </Row>
                     </Container>
+                    <br />
                 </div>
                 <Footer />
             </div>
