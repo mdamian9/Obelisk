@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardText, CardBody, CardTitle, CardSubtitle, Form, FormGroup, Input, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
 const RenderTweet = ({ tweet }) => {
@@ -31,7 +32,6 @@ class TwitterWidget extends Component {
 
     componentDidMount = () => {
         if (this.props.keyphrase) {
-            console.log(this.props.keyphrase);
             axios.get(`/tweets/${this.props.keyphrase}`).then(res => {
                 this.setState({ tweets: res.data });
             }).catch(err => {
@@ -42,7 +42,12 @@ class TwitterWidget extends Component {
 
     searchTweets = event => {
         event.preventDefault();
-        console.log(event.target.value);
+        axios.get(`/tweets/${event.target.keyphrase.value}`).then(res => {
+            this.setState({ tweets: res.data });
+        }).catch(err => {
+            console.log(err);
+        });
+        event.target.reset();
     };
 
     render = () => {
@@ -50,9 +55,12 @@ class TwitterWidget extends Component {
         if (this.props.type === 'search') {
             searchBar =
                 <div>
+                    <h2 className='text-center'>
+                        <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
+                    </h2>
                     <Form className='d-flex justify-content-center' style={{ padding: '10px' }} onSubmit={this.searchTweets}>
                         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                            <Input type="text" name="searchTweets" id="search-tweets" placeholder="Enter keyword(s)" required />
+                            <Input type="text" name="keyphrase" id="keyphrase" placeholder="Enter keyword(s)" required />
                         </FormGroup>
                         <Button>Search</Button>
                     </Form>
@@ -68,10 +76,12 @@ class TwitterWidget extends Component {
             });
         };
         return (
-            <div style={this.props.style}>
+            <div>
                 {searchBar}
-                {renderTweets}
-                <br />
+                <div style={this.props.style}>
+                    {renderTweets}
+                    <br />
+                </div>
             </div>
         );
     };

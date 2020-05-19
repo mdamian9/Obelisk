@@ -14,8 +14,8 @@ const HomePage = props => {
                 <br />
                 <Container className='text-white'>
                     <Row className='justify-content-center'>
-                        <Col className='text-center'>
-                            <div className='section-solid-white'>
+                        <Col>
+                            <div className='section-solid-white text-center'>
                                 <h2>
                                     Welcome {props.user.username}!
                                 </h2>
@@ -62,10 +62,6 @@ const HomePage = props => {
                             </div>
                             <br />
                             <div className='section-solid-white'>
-                                <h2>
-                                    <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
-                                </h2>
-                                <hr className='ln-white' />
                                 <TwitterWidget style={{ maxHeight: '65vh', overflowY: 'scroll' }} type='search' />
                             </div>
                         </Col>
@@ -75,7 +71,7 @@ const HomePage = props => {
                                     <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
                                 </h2>
                                 <hr className='ln-white' />
-                                <TwitterWidget style={{ maxHeight: '100vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
+                                <TwitterWidget style={{ maxHeight: '114.4vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
                             </div>
                         </Col>
                     </Row>
