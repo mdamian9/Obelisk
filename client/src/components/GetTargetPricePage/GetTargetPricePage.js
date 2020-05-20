@@ -18,6 +18,10 @@ class GetTargetPricePage extends Component {
         };
     };
 
+    handleSelect = selectedOption => {
+        this.setState({ selectedOption, currency: selectedOption.value });
+    };
+
     // Handles the change of a form field and sets new state
     handleChange = event => {
         // Extract name & value from event target and set to state
@@ -25,10 +29,6 @@ class GetTargetPricePage extends Component {
         this.setState({
             [name]: value
         });
-    };
-
-    handleSelect = selectedOption => {
-        this.setState({ selectedOption, currency: selectedOption.value });
     };
 
     // Handle target price calculation and set to state, reset form fields
