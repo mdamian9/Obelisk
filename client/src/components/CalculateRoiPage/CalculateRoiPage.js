@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import Select from 'react-select';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
+import Currencies from '../../assets/currencies';
 import withAuth from '../withAuth/withAuth';
 
 class CalculateRoiPage extends Component {
@@ -9,6 +11,7 @@ class CalculateRoiPage extends Component {
     constructor() {
         super();
         this.state = {
+            selectedOption: null,
             currency: '',
             initialInvestment: '0.0',
             finalDivestment: '0.0',
@@ -16,6 +19,10 @@ class CalculateRoiPage extends Component {
             roi_percent: '0.0',
             totalProfit: '0.0'
         };
+    };
+
+    handleSelect = selectedOption => {
+        this.setState({ selectedOption, currency: selectedOption.value });
     };
 
     // Handles the change of a form field and sets new state
@@ -56,6 +63,44 @@ class CalculateRoiPage extends Component {
     };
 
     render = () => {
+        const { selectedOption } = this.state;
+        const selectOptions = [
+            {
+                value: 'USD',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['USD'].icon} alt={`icon-USD`} width={26} height={26} />&ensp;United States Dollar (USD)
+                    </div >
+            },
+            {
+                value: 'USDT',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['USDT'].icon} alt={`icon-USDT`} width={26} height={26} />&ensp;Tether (USDT)
+                    </div >
+            },
+            {
+                value: 'BTC',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['BTC'].icon} alt={`icon-BTC`} width={26} height={26} />&ensp;Bitcoin (BTC)
+                    </div >
+            },
+            {
+                value: 'ETH',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['ETH'].icon} alt={`icon-ETH`} width={26} height={26} />&ensp;Ethereum (ETH)
+                    </div >
+            },
+            {
+                value: 'BNB',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['BNB'].icon} alt={`icon-BNB`} width={26} height={26} />&ensp;Binance Coin (BNB)
+                    </div >
+            }
+        ];
         return (
             <div>
                 <div className='content'>
@@ -72,15 +117,8 @@ class CalculateRoiPage extends Component {
                                     <Form id='calc-form' onSubmit={this.handleFormSubmit}>
                                         <FormGroup>
                                             <Label for='currency'>Select currency:</Label>
-                                            <Input type='select' name='currency' id='currency'
-                                                defaultValue='-- select currency --' onChange={this.handleChange} required>
-                                                <option disabled>-- select currency --</option>
-                                                <option>USD</option>
-                                                <option>USDT</option>
-                                                <option>BTC</option>
-                                                <option>ETH</option>
-                                                <option>BNB</option>
-                                            </Input>
+                                            <Select value={selectedOption} onChange={this.handleSelect} options={selectOptions}
+                                                id='currency' name='currency' />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for='initial-investment'>Initial investment:</Label>

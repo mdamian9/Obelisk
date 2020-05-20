@@ -3,8 +3,8 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reac
 import Select from 'react-select';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
-import withAuth from '../withAuth/withAuth';
 import Currencies from '../../assets/currencies';
+import withAuth from '../withAuth/withAuth';
 
 class FindPercentChangePage extends Component {
 
