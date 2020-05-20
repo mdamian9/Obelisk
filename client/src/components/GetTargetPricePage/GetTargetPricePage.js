@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import Select from 'react-select';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
+import Currencies from '../../assets/currencies';
 
 class GetTargetPricePage extends Component {
 
@@ -23,6 +25,10 @@ class GetTargetPricePage extends Component {
         this.setState({
             [name]: value
         });
+    };
+
+    handleSelect = selectedOption => {
+        this.setState({ selectedOption, currency: selectedOption.value });
     };
 
     // Handle target price calculation and set to state, reset form fields
@@ -46,6 +52,7 @@ class GetTargetPricePage extends Component {
     // Reset state (calculation display) and all form fields. Basically start with a clean calculation
     resetCalculation = () => {
         this.setState({
+            selectedOption: null,
             currency: '',
             entryPrice: '0.0',
             percentChange: '0.0',
@@ -55,6 +62,44 @@ class GetTargetPricePage extends Component {
     };
 
     render = () => {
+        const { selectedOption } = this.state;
+        const selectOptions = [
+            {
+                value: 'USD',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['USD'].icon} alt={`icon-USD`} width={26} height={26} />&ensp;United States Dollar (USD)
+                    </div >
+            },
+            {
+                value: 'USDT',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['USDT'].icon} alt={`icon-USDT`} width={26} height={26} />&ensp;Tether (USDT)
+                    </div >
+            },
+            {
+                value: 'BTC',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['BTC'].icon} alt={`icon-BTC`} width={26} height={26} />&ensp;Bitcoin (BTC)
+                    </div >
+            },
+            {
+                value: 'ETH',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['ETH'].icon} alt={`icon-ETH`} width={26} height={26} />&ensp;Ethereum (ETH)
+                    </div >
+            },
+            {
+                value: 'BNB',
+                label:
+                    < div style={{ color: 'black' }}>
+                        <img src={Currencies['BNB'].icon} alt={`icon-BNB`} width={26} height={26} />&ensp;Binance Coin (BNB)
+                    </div >
+            }
+        ];
         return (
             <div>
                 <div className='content'>
@@ -71,15 +116,8 @@ class GetTargetPricePage extends Component {
                                     <Form id='calc-form' onSubmit={this.handleFormSubmit}>
                                         <FormGroup>
                                             <Label for='currency'>Select currency:</Label>
-                                            <Input type='select' name='currency' id='currency'
-                                                defaultValue='-- select currency --' onChange={this.handleChange} required>
-                                                <option disabled>-- select currency --</option>
-                                                <option>USD</option>
-                                                <option>USDT</option>
-                                                <option>BTC</option>
-                                                <option>ETH</option>
-                                                <option>BNB</option>
-                                            </Input>
+                                            <Select value={selectedOption} onChange={this.handleSelect} options={selectOptions}
+                                                id='currency' name='currency' />
                                         </FormGroup>
                                         <FormGroup>
                                             <Label for='entry-price'>Entry price:</Label>
