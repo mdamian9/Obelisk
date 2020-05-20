@@ -1,5 +1,5 @@
 - *** Most Recent *** 
-    - Working on TwitterWidget / HomePage
+    - Completed TwitterWidget / HomePage
 
 - *** To do next ***
     - Use react-select for tools pages forms
@@ -19,6 +19,7 @@
     - Begin building account page
 
 - decorate trade info modal
+- Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)
 - Use correct decimal placement for different alts (currencies.js)

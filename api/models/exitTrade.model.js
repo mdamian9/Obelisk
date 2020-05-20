@@ -57,7 +57,6 @@ const ExitTradeSchema = new Schema({
         ref: 'EntryTrade',
         required: true
     },
-
     date: {
         type: Date,
         default: Date.now

@@ -24,7 +24,7 @@ class LandingPage extends Component {
         return (
             <div>
                 <LandingNavbar history={this.props.history} />
-                <div className='full-r-div' style={{ marginTop: '-30px' }}>
+                <div className='full-r-div'>
                     <Container>
                         <Row>
                             <Col className='text-center'>
@@ -46,12 +46,19 @@ class LandingPage extends Component {
                             </Col>
                         </Row>
                     </Container>
-                    <Footer />
+                    <div style={footerStyle}><Footer /></div>
                 </div>
             </div>
         );
     };
 
 };
+
+const footerStyle = {
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+}
 
 export default LandingPage;

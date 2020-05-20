@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Currencies from '../../assets/currencies';
 import axios from 'axios';
 import moment from 'moment';
+
 
 class TradeInfoModal extends Component {
 
@@ -86,7 +88,16 @@ class TradeInfoModal extends Component {
                 <Button color='primary' onClick={this.toggleModal}>Info</Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader>
-                        <b>Trade information:</b>
+                        <b>Trade information:</b><br />
+                        <div className='d-flex align-items-center'>
+                            <img src={Currencies[this.props.trade.coinName].icon} width={20} height={20} style={{ marginRight: '2px' }}
+                                alt={`icon-${this.props.trade.coinName}`} />
+                            {this.props.trade.coinName}
+                            <span style={{margin: '0px 2px'}}>/</span>
+                            <img src={Currencies[this.props.trade.currency].icon} width={20} height={20} style={{ marginRight: '2px' }}
+                                alt={`icon-${this.props.trade.currency}`} />
+                            {this.props.trade.currency}
+                        </div>
                     </ModalHeader>
                     {renderTradeInfo}
                     <ModalFooter>

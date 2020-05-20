@@ -85,7 +85,7 @@ class EntryTradeLogPage extends Component {
                                     Entry Trade Log
                                 </h3>
                                 <hr className='ln-white' />
-                                <Table dark striped>
+                                <Table responsive dark striped>
                                     <thead>
                                         <tr>
                                             <th>Date</th>
