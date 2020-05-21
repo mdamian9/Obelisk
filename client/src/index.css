@@ -39,6 +39,8 @@ code {
 .section-solid-white {
   border: solid white 2px;
   padding: 10px;
+  border-radius: 10px;
+  background: rgba(80, 214, 255, .3)
 }
 
 .ln-white { 

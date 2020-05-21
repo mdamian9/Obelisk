@@ -24,21 +24,19 @@ class LoginPage extends Component {
             <div>
                 <LogoNavbar />
                 <div className="d-flex align-items-center text-white full-r-div">
-                    <div className="mx-auto" style={{ width: '30%' }}>
-                        <Container style={{ width: '100%' }}>
-                            <Row>
-                                <Col>
-                                    <h1 className="text-center" style={{ fontSize: '4vh' }}>Log in to your account</h1>
-                                    <hr />
-                                    <LoginForm history={this.props.history} />
-                                    <hr />
-                                    <p className="text-center">
-                                        Don't have an account? Sign up <Link to="/signup">here</Link>
-                                    </p>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </div>
+                    <Container className='section-solid-white'>
+                        <Row>
+                            <Col>
+                                <h4 className="text-center">Log in to your account</h4>
+                                <hr />
+                                <LoginForm history={this.props.history} />
+                                <hr />
+                                <p className="text-center">
+                                    Don't have an account? Sign up <Link to="/signup">here</Link>
+                                </p>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div >
             </div>
         );

@@ -64,6 +64,7 @@ const HomePage = props => {
                             <div className='section-solid-white'>
                                 <TwitterWidget style={{ maxHeight: '65vh', overflowY: 'scroll' }} type='search' />
                             </div>
+                            <br />
                         </Col>
                         <Col>
                             <div className='section-solid-white'>
