@@ -30,7 +30,8 @@
         - full-r-div conflict with navbar in landing page
         - 
 
-- decorate trade info modal
+- Add 
+- NewEntryTradePage - required for both selects (don't let user submit until all fields are filled)
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)

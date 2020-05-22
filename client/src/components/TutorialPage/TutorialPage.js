@@ -14,7 +14,7 @@ const TutorialPage = props => {
                     <Row className='text-center'>
                         <Col>
                             <h2>
-                                Tutorial
+                                Obelisk Tutorial
                             </h2>
                         </Col>
                     </Row>

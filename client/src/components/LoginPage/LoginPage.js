@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import LogoNavbar from '../LogoNavbar/LogoNavbar';
 import LoginForm from '../LoginForm/LoginForm';
+import Footer from '../Footer/Footer';
 import AuthService from '../AuthService/AuthService';
+import './LoginPage.css';
 
 class LoginPage extends Component {
 
@@ -22,22 +24,24 @@ class LoginPage extends Component {
     render = () => {
         return (
             <div>
-                <LogoNavbar />
-                <div className="d-flex align-items-center text-white full-r-div">
-                    <Container className='section-solid-white'>
+                <div className='content'>
+                    <LogoNavbar />
+                    <Container id='login' className='text-white section-solid-white' style={{ marginTop: '17vh' }}>
                         <Row>
-                            <Col>
-                                <h4 className="text-center">Log in to your account</h4>
-                                <hr />
+                            <Col className='mx-auto' xs={8}>
+                                <h3 className="text-center">Log in to your account</h3>
+                                <hr className='ln-white' />
                                 <LoginForm history={this.props.history} />
-                                <hr />
+                                <hr className='ln-white' />
                                 <p className="text-center">
                                     Don't have an account? Sign up <Link to="/signup">here</Link>
                                 </p>
                             </Col>
                         </Row>
                     </Container>
-                </div >
+                    <br />
+                </div>
+                <Footer />
             </div>
         );
     };

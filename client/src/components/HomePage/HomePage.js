@@ -76,8 +76,8 @@ const HomePage = props => {
                             </div>
                         </Col>
                     </Row>
+                    <br />
                 </Container>
-                <br />
             </div>
             <Footer />
         </div>

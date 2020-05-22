@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from 'react-select';
 import axios from 'axios';
 import Currencies from '../../assets/currencies';
@@ -155,18 +156,18 @@ class NewEntryTradePage extends Component {
                     <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container>
+                    <Container style={{marginTop: '7.5vh'}}>
                         <Row>
                             <Col xs={7} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
-                                    New Entry Trade
+                                    <FontAwesomeIcon icon='file-import' />&nbsp;New Entry Trade
                                 </h3>
                                 <hr className='ln-white' />
                                 <Form id='entry-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
                                         <Label for='currency'>Select currency:</Label>
                                         <Select value={selectedOptionOne} onChange={this.handleSelectOne} options={selectOptionsOne}
-                                            id='currency' name='currency' />
+                                            id='currency' name='currency' required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>
@@ -179,7 +180,7 @@ class NewEntryTradePage extends Component {
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
                                         <Select value={selectedOptionTwo} onChange={this.handleSelectTwo} options={selectOptionsTwo}
-                                            id='coin-name' name='coinName' />
+                                            id='coin-name' name='coinName' required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Coin entry price:</Label>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Table } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import withAuth from '../withAuth/withAuth';
 import Currencies from '../../assets/currencies';
 import UserNavbar from '../UserNavbar/UserNavbar';
@@ -73,11 +74,11 @@ class WalletPage extends Component {
                 <div className='content'>
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container>
+                    <Container style={{ marginTop: '7.5vh' }}>
                         <Row className='d-flex justify-content-center'>
                             <div className='section-solid-white text-white'>
                                 <h3 className='text-center'>
-                                    Main Wallet
+                                    <FontAwesomeIcon icon='wallet' />&nbsp;Main Wallet
                                 </h3>
                                 <hr className='ln-white' />
                                 <Table dark striped>
@@ -94,7 +95,7 @@ class WalletPage extends Component {
                             &ensp;
                             <div className='section-solid-white text-white'>
                                 <h3 className='text-center'>
-                                    Trading Wallet
+                                    <FontAwesomeIcon icon='wallet' />&nbsp;Trading Wallet
                                 </h3>
                                 <hr className='ln-white' />
                                 <Table dark striped>

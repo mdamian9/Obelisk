@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+import Footer from '../Footer/Footer';
 import LogoNavbar from '../LogoNavbar/LogoNavbar';
 import SignupForm from '../SignupForm/SignupForm';
 import AuthService from '../AuthService/AuthService';
@@ -22,22 +23,24 @@ class SignupPage extends Component {
     render = () => {
         return (
             <div>
-                <LogoNavbar />
-                <div className="d-flex align-items-center text-white full-r-div">
-                    <Container id='signup' className='section-solid-white'>
+                <div className='content'>
+                    <LogoNavbar />
+                    <Container id='signup' className='text-white section-solid-white' style={{marginTop: '12vh'}}>
                         <Row>
-                            <Col>
-                                <h4 className="text-center">Create a new account</h4>
-                                <hr />
+                            <Col className='mx-auto' xs={8}>
+                                <h3 className="text-center">Create a new account</h3>
+                                <hr className='ln-white' />
                                 <SignupForm history={this.props.history} />
-                                <hr />
+                                <hr className='ln-white' />
                                 <p className="text-center">
                                     Already have an account? Log in <Link to="/login">here</Link>
                                 </p>
                             </Col>
                         </Row>
                     </Container>
+                    <br />
                 </div>
+                <Footer />
             </div>
         );
     };

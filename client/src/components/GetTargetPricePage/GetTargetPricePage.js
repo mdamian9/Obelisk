@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from 'react-select';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
@@ -105,12 +106,12 @@ class GetTargetPricePage extends Component {
                 <div className='content'>
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container>
+                    <Container className='tool'>
                         <Row className='justify-content-center align-items-center'>
                             <Col className='text-white'>
                                 <div className='section-solid-white'>
                                     <h3 className='text-center'>
-                                        Get Target Exit Price
+                                    <FontAwesomeIcon icon='search-dollar' />&nbsp;Get Target Exit Price
                                     </h3>
                                     <hr className='ln-white' />
                                     <Form id='calc-form' onSubmit={this.handleFormSubmit}>

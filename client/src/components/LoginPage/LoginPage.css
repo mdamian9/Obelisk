@@ -1,16 +1,16 @@
-#signup {
+#login {
     width: 600px;
 }
 
 /* @media screen and (max-width: 300px) {
-    #signup {
+    #login {
       width: 200px;
     }  
 }
 */
  
 @media screen and (max-width: 600px) {
-    #signup {
+    #login {
       width: 300px;
     }  
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import moment from 'moment';
 import UserNavbar from '../UserNavbar/UserNavbar';
@@ -71,7 +72,7 @@ class ExitTradeLogPage extends Component {
                         <Row>
                             <Col xs={10} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
-                                    Exit Trade Log
+                                    <FontAwesomeIcon icon='file-export' />&nbsp;Exit Trade Log
                                 </h3>
                                 <hr className='ln-white' />
                                 <Table responsive dark striped>
