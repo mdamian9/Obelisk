@@ -48,8 +48,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
     const exitTrade = req.body;
     console.log(exitTrade);
     db.ExitTrade.create(exitTrade).then(trade => {
-        const options = { useFindAndModify: false, new: true };
-        return db.EntryTrade.findByIdAndUpdate(trade.entryTrade, { $set: { sold: true, exitTrade: trade._id } }, options);
+        return db.EntryTrade.findByIdAndUpdate(trade.entryTrade, { $set: { sold: true, exitTrade: trade._id } }, { new: true });
     }).then(trade => {
         const targetWallet = exitTrade.currency.toLowerCase()
         db.User.findById(trade.user).then(user => {
@@ -73,16 +72,15 @@ router.post('/', isAuthenticated, (req, res, next) => {
 // Delete an exit trade by ID - update user wallet
 router.delete('/:id', isAuthenticated, (req, res, next) => {
     db.ExitTrade.findByIdAndDelete(req.params.id).then(trade => {
-        const options = { useFindAndModify: false, new: true };
         const promise1 = db.EntryTrade.findByIdAndUpdate(
             trade.entryTrade,
             {
                 $unset: { exitTrade: trade._id },
                 $set: { sold: false }
             },
-            options
+            { new: true }
         );
-        const promise2 = db.User.findByIdAndUpdate(trade.user, { $pull: { exitTrades: trade._id }, options })
+        const promise2 = db.User.findByIdAndUpdate(trade.user, { $pull: { exitTrades: trade._id } }, { new: true })
             .then(user => {
                 const targetWallet = trade.currency.toLowerCase();
                 const updatedTradingFunds = user.tradingWallet[targetWallet].funds - parseFloat(trade.totalDivestment);

@@ -93,7 +93,7 @@ class TradeInfoModal extends Component {
                             <img src={Currencies[this.props.trade.coinName].icon} width={20} height={20} style={{ marginRight: '2px' }}
                                 alt={`icon-${this.props.trade.coinName}`} />
                             {this.props.trade.coinName}
-                            <span style={{margin: '0px 2px'}}>/</span>
+                            <span style={{margin: '0px 3px'}}>/</span>
                             <img src={Currencies[this.props.trade.currency].icon} width={20} height={20} style={{ marginRight: '2px' }}
                                 alt={`icon-${this.props.trade.currency}`} />
                             {this.props.trade.currency}

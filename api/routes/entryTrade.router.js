@@ -33,8 +33,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
     const entryTrade = req.body;
     targetWallet = req.body.currency.toLowerCase();
     db.EntryTrade.create(entryTrade).then(trade => {
-        const options = { useFindAndModify: false, new: true };
-        return db.User.findByIdAndUpdate(trade.user, { $push: { entryTrades: trade._id } }, options);
+        return db.User.findByIdAndUpdate(trade.user, { $push: { entryTrades: trade._id } }, { new: true });
     }).then(user => {
         const updatedTradingFunds = user.tradingWallet[targetWallet].funds - parseFloat(entryTrade.totalInvestment);
         user.tradingWallet[targetWallet].funds = updatedTradingFunds;
@@ -53,8 +52,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
 
 router.delete('/:id', isAuthenticated, (req, res, next) => {
     db.EntryTrade.findByIdAndDelete(req.params.id).then(trade => {
-        const options = { useFindAndModify: false, new: true };
-        db.User.findByIdAndUpdate(trade.user, { $pull: { entryTrades: trade._id }, options }).then(user => {
+        db.User.findByIdAndUpdate(trade.user, { $pull: { entryTrades: trade._id } }, { new: true }).then(user => {
             const targetWallet = trade.currency.toLowerCase();
             const updatedTradingFunds = user.tradingWallet[targetWallet].funds + parseFloat(trade.totalInvestment);
             user.tradingWallet[targetWallet].funds = updatedTradingFunds;

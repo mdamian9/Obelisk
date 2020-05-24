@@ -10,7 +10,9 @@
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
-    - Add more info to DeleteTradeModal - help user understand what happens
+
+- NewEntryTradePage
+    - Build simple error modal (trade still goes thru when currency and coin are not selected)
 
 - Tutorial Page
     - Begin building tutorial page
@@ -27,17 +29,16 @@
 
 - Make App responsive / optimzied for mobile browsers
     - Issues:
-        - full-r-div conflict with navbar in landing page
         - 
 
-- Add 
+- Add 0, 1/4, 1/2 and 3/4 buttons to 'max' section (wallet, newEntryTradePage)
+- Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
 - NewEntryTradePage - required for both selects (don't let user submit until all fields are filled)
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)
 - Use correct decimal placement for different alts (currencies.js)
 - Add *Nomics API to get real time market data, and integrate into app to dynamically render using API data
-- redesign section-solid-white, round corners, opaque bg for forms
 
 - In the end, convert all possible class components to functional components using useState
 

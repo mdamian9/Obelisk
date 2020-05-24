@@ -180,13 +180,13 @@ class NewEntryTradePage extends Component {
                                     <FormGroup>
                                         <Label for='coin-name'>Coin name:</Label>
                                         <Select value={selectedOptionTwo} onChange={this.handleSelectTwo} options={selectOptionsTwo}
-                                            id='coin-name' name='coinName' required />
+                                            id='coin-name' name='coinName' required={true} />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='entry-price'>Coin entry price:</Label>
                                         <Input type='number' name='entryPrice' id='entry-price'
                                             placeholder='0.00000000' step='0.00000001' min='0.00000001'
-                                            onChange={this.handleChange} required />
+                                            onChange={this.handleChange} required={true} />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>

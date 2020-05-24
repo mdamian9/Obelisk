@@ -25,7 +25,7 @@ app.use(express.json());
 // Connect to remote MongoDB using MONGODB_URI
 mongoose.connect(
     process.env.MONGODB_URI,
-    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
 ).catch(err => { console.log(err); });
 mongoose.connection.once('open', () => {
     console.log('>>> Connected to MongoDB successfully');

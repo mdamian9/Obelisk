@@ -24,7 +24,8 @@ const TableRow = ({ trade, updateTrades, history }) => {
             <div className='d-flex'>
                 <TradeInfoModal type='exitTrade' trade={trade} oppTradeId={trade.exitTrade} />
                 &ensp;
-                <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
+                <DeleteTradeModal type='entryTrade' tradeId={trade._id} exitTradeId={trade.exitTrade} updateTrades={updateTrades}
+                sold={true} currency={trade.currency} totalInvestment={trade.totalInvestment} />
             </div>;
     };
     return (
