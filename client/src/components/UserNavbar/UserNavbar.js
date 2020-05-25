@@ -93,7 +93,7 @@ class UserNavbar extends Component {
                                 <DropdownItem href='/wallet'>
                                     <FontAwesomeIcon icon='wallet' /> Wallet
                                 </DropdownItem>
-                                <DropdownItem>
+                                <DropdownItem href='/account'>
                                     <FontAwesomeIcon icon='user-circle' /> Account
                                 </DropdownItem>
                                 <DropdownItem divider />

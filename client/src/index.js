@@ -11,6 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import SignupPage from './components/SignupPage/SignupPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
+import AccountPage from './components/AccountPage/AccountPage';
 import FindPercentChangePage from './components/FindPercentChangePage/FindPercentChangePage';
 import GetTargetPricePage from './components/GetTargetPricePage/GetTargetPricePage';
 import CalculateRoiPage from './components/CalculateRoiPage/CalculateRoiPage';
@@ -42,6 +43,7 @@ ReactDOM.render(
         <Route exact path='/signup' component={SignupPage} />
         <Route exact path='/login' component={LoginPage} />
         <Route exact path='/home' component={HomePage} />
+        <Route exact path='/account' component={AccountPage} />
         <Route exact path='/tutorial' component={TutorialPage} />
         <Route exact path='/find-percent-change' component={FindPercentChangePage} />
         <Route exact path='/get-target-price' component={GetTargetPricePage} />
