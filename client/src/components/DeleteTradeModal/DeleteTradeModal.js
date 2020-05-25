@@ -19,14 +19,13 @@ class DeleteTradeModal extends Component {
 
     // Sometimes wallet balances are not updated correctly. Not sure why
     deleteTrade = () => {
+        let promises = [];
         if (this.props.exitTradeId) {
-            axios.delete(`/exitTrade/${this.props.exitTradeId}`).then(() => {
-                console.log('Deleted respective exit trade');
-            }).catch(err => {
-                console.log(err);
-            });
+            promises.push(axios.delete(`/exitTrade/${this.props.exitTradeId}`));
         };
-        axios.delete(`/${this.props.type}/${this.props.tradeId}`).then(() => {
+        promises.push(axios.delete(`/${this.props.type}/${this.props.tradeId}`));
+        Promise.all(promises).then(res => {
+            console.log(res)
             this.props.updateTrades();
             this.toggleModal();
         }).catch(err => {

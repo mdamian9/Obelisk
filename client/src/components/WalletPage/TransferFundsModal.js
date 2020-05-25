@@ -35,9 +35,11 @@ class TransferFundsModal extends Component {
         this.setState({ [name]: value });
     };
 
-    setMax = () => {
-        document.getElementById('transfer-form').totalTransfer.value = this.props.targetWallet.funds;
-        this.setState({ totalTransfer: this.props.targetWallet.funds });
+    setTransferAmount = event => {
+        const { value } = event.target;
+        const transferAmount = this.props.targetWallet.funds * value;
+        document.getElementById('transfer-form').totalTransfer.value = transferAmount;
+        this.setState({ totalTransfer: transferAmount });
     };
 
     handleFormSubmit = event => {
@@ -64,8 +66,20 @@ class TransferFundsModal extends Component {
                 <div>
                     Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}
                 </div>
+                <div className='flex-grow-1' />
+                <Button value={.25} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setTransferAmount}>
+                    25%
+                </Button>
                 &ensp;
-                <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMax}>
+                <Button value={.50} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setTransferAmount}>
+                    50%
+                </Button>
+                &ensp;
+                <Button value={.75} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setTransferAmount}>
+                    75%
+                </Button>
+                &ensp;
+                <Button value={1} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setTransferAmount}>
                     Max
                 </Button>
             </div>;
@@ -74,8 +88,14 @@ class TransferFundsModal extends Component {
             fromWallet = 'trading wallet';
             toWallet = 'main wallet';
         };
-        if (this.state.totalTransfer > this.props.targetWallet.funds) {
-            renderAvailableFunds = <p><b className='text-danger'>You do not have enough funds in your {fromWallet}.</b></p>
+        if (this.state.totalTransfer > this.props.targetWallet.funds || this.props.targetWallet.funds === 0) {
+            renderAvailableFunds =
+                <div>
+                    <div>
+                        Available {this.props.targetWallet.ticker}: {this.props.targetWallet.funds}
+                    </div>
+                    <b className='text-danger'>You do not have enough funds in your {fromWallet}.</b>
+                </div>
             confirmButton = <div></div>;
         };
         return (

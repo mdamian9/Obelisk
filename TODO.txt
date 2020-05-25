@@ -31,7 +31,6 @@
     - Issues:
         - 
 
-- Add 0, 1/4, 1/2 and 3/4 buttons to 'max' section (wallet, newEntryTradePage)
 - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
 - NewEntryTradePage - required for both selects (don't let user submit until all fields are filled)
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency

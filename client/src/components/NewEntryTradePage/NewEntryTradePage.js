@@ -28,10 +28,11 @@ class NewEntryTradePage extends Component {
         }));
     };
 
-    setMax = () => {
-        const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
-        document.getElementById('entry-form').totalInvestment.value = availableFunds;
-        this.setState({ totalInvestment: availableFunds })
+    setInvestmentAmount = event => {
+        const {value} = event.target;
+        const investmentAmount = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds * value;
+        document.getElementById('entry-form').totalInvestment.value = investmentAmount;
+        this.setState({ totalInvestment: investmentAmount })
     };
 
     // Handles the change of a form field
@@ -141,10 +142,22 @@ class NewEntryTradePage extends Component {
                     <div>
                         Available {this.state.currency}: {availableFunds}
                     </div>
-                    &ensp;
-                    <Button color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setMax}>
-                        Max
-                    </Button>
+                    <div className='flex-grow-1' />
+                <Button value={.25} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
+                    25%
+                </Button>
+                &ensp;
+                <Button value={.50} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
+                    50%
+                </Button>
+                &ensp;
+                <Button value={.75} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
+                    75%
+                </Button>
+                &ensp;
+                <Button value={1} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
+                    Max
+                </Button>
                 </div>;
             if (this.state.totalInvestment > availableFunds) {
                 renderAvailableFunds = <b className='text-danger'>You do not have enough funds in your trading wallet.</b>
