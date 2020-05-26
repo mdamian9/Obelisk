@@ -90,6 +90,9 @@ class UserNavbar extends Component {
                                 <DropdownItem href='/tutorial'>
                                     <FontAwesomeIcon icon='clipboard-list' /> Tutorial
                                 </DropdownItem>
+                                <DropdownItem href='/resources'>
+                                    <FontAwesomeIcon icon='book' /> Resources
+                                </DropdownItem>
                                 <DropdownItem href='/wallet'>
                                     <FontAwesomeIcon icon='wallet' /> Wallet
                                 </DropdownItem>

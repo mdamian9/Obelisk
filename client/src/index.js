@@ -12,6 +12,8 @@ import SignupPage from './components/SignupPage/SignupPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
 import AccountPage from './components/AccountPage/AccountPage';
+import TutorialPage from './components/TutorialPage/TutorialPage';
+import ResourcesPage from './components/ResourcesPage/ResourcesPage';
 import FindPercentChangePage from './components/FindPercentChangePage/FindPercentChangePage';
 import GetTargetPricePage from './components/GetTargetPricePage/GetTargetPricePage';
 import CalculateRoiPage from './components/CalculateRoiPage/CalculateRoiPage';
@@ -19,7 +21,6 @@ import WalletPage from './components/WalletPage/WalletPage';
 import NewEntryTradePage from './components/NewEntryTradePage/NewEntryTradePage';
 import EntryTradeLogPage from './components/EntryTradeLogPage/EntryTradeLogPage';
 import ExitTradeLogPage from './components/ExitTradeLogPage/ExitTradeLogPage';
-import TutorialPage from './components/TutorialPage/TutorialPage';
 // Import font awesome modules and build library with icons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -45,6 +46,7 @@ ReactDOM.render(
         <Route exact path='/home' component={HomePage} />
         <Route exact path='/account' component={AccountPage} />
         <Route exact path='/tutorial' component={TutorialPage} />
+        <Route exact path='resources' component={ResourcesPage} />
         <Route exact path='/find-percent-change' component={FindPercentChangePage} />
         <Route exact path='/get-target-price' component={GetTargetPricePage} />
         <Route exact path='/calculate-roi' component={CalculateRoiPage} />
