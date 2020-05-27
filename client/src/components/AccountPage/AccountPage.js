@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
+import ChangePasswordModal from './ChangePasswordModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
 
@@ -13,6 +14,7 @@ class AccountPage extends Component {
     };
 
     render = () => {
+        console.log(this.props.user)
         return (
             <div>
                 <div className='content'>
@@ -31,8 +33,8 @@ class AccountPage extends Component {
                                             <h5><FontAwesomeIcon icon='at' /> Email:</h5>
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
-                                            <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
-                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' />Edit</Button>
+                                            <h5 style={{ marginBottom: '0px' }}>{this.props.user.email}</h5>&ensp;
+                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' /> Edit</Button>
                                         </Col>
                                     </Row>
                                     <br />
@@ -42,7 +44,7 @@ class AccountPage extends Component {
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
                                             <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
-                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' />Edit</Button>
+                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' /> Edit</Button>
                                         </Col>
                                     </Row>
                                     <br />
@@ -51,7 +53,7 @@ class AccountPage extends Component {
                                             <h5><FontAwesomeIcon icon='key' /> Password:</h5>
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
-                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' />Edit Password</Button>
+                                            <ChangePasswordModal />
                                         </Col>
                                     </Row>
                                 </div>

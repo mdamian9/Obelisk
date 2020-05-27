@@ -19,9 +19,9 @@
 
 - Account Page
     - Begin building account page
-        - Change username
-        - Change password
-        - Change e-mail?
+        - Change username *
+        - Change password *
+        - Change e-mail? *
         - Reset account (delete all trades and reset wallet balances)
         - Delete account
 
@@ -31,6 +31,7 @@
     - Issues:
         - 
 
+- Props - user - getting user data and passing as prop <> getting user data again (fix)
 - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
 - NewEntryTradePage - required for both selects (don't let user submit until all fields are filled)
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
