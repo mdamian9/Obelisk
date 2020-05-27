@@ -59,7 +59,7 @@ class TwitterWidget extends Component {
             searchBar =
                 <div>
                     <h2 className='text-center'>
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Search Twitter
+                        <FontAwesomeIcon icon={['fab', 'twitter-square']} />&nbsp;Search Twitter
                     </h2>
                     <Form className='d-flex justify-content-center' style={{ padding: '10px' }} onSubmit={this.searchTweets}>
                         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
+import './AccountPage.css';
 
 class AccountPage extends Component {
 
@@ -16,12 +18,43 @@ class AccountPage extends Component {
                 <div className='content'>
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container>
+                    <Container className='tool'>
                         <Row>
-                            <Col xs={10} className='section-solid-white text-white mx-auto'>
+                            <Col xs={8} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
                                     Account Settings
                                 </h3>
+                                <hr className='ln-white' />
+                                <div style={{ padding: '50px' }}>
+                                    <Row>
+                                        <Col>
+                                            <h5><FontAwesomeIcon icon='at' /> Email:</h5>
+                                        </Col>
+                                        <Col className='d-flex justify-content-end align-items-center'>
+                                            <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
+                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' />Edit</Button>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row className='d-flex align-items-center'>
+                                        <Col>
+                                            <h5><FontAwesomeIcon icon='user' /> Username:</h5>
+                                        </Col>
+                                        <Col className='d-flex justify-content-end align-items-center'>
+                                            <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
+                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' />Edit</Button>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <h5><FontAwesomeIcon icon='key' /> Password:</h5>
+                                        </Col>
+                                        <Col className='d-flex justify-content-end align-items-center'>
+                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' />Edit Password</Button>
+                                        </Col>
+                                    </Row>
+                                </div>
                             </Col>
                         </Row>
                     </Container>

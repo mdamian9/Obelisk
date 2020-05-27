@@ -25,12 +25,14 @@ import ExitTradeLogPage from './components/ExitTradeLogPage/ExitTradeLogPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
-    faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faUserCircle, faClipboardList, faSignInAlt,
-    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser
+    faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faBook, faUserCircle, faClipboardList, faSignInAlt,
+    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser, faTools, faEdit,
+    faInfoCircle, faAt, faUser, faKey
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
-    fab, faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faUserCircle, faClipboardList, faSignInAlt,
-    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser
+    fab, faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faBook, faUserCircle, faClipboardList, faSignInAlt,
+    faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser, faTools, faEdit,
+    faInfoCircle, faAt, faUser, faKey
 );
 
 // If there is a valid token, automatically set headers with Auth bearer token for axios requests

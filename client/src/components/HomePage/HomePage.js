@@ -69,7 +69,7 @@ const HomePage = props => {
                         <Col>
                             <div className='section-solid-white'>
                                 <h2 className='text-center'>
-                                    <FontAwesomeIcon icon={['fab', 'twitter']} />&nbsp;Twitter News
+                                    <FontAwesomeIcon icon={['fab', 'twitter-square']} />&nbsp;Twitter News
                                 </h2>
                                 <hr className='ln-white' />
                                 <TwitterWidget style={{ maxHeight: '114.4vh', overflowY: 'scroll' }} keyphrase='bitcoin' />

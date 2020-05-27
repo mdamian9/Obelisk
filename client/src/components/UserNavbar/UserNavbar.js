@@ -55,7 +55,7 @@ class UserNavbar extends Component {
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
-                                Trade Log
+                                <FontAwesomeIcon icon='clipboard-list' /> Trade Log
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem href='/entry-trades'>
@@ -68,7 +68,7 @@ class UserNavbar extends Component {
                         </UncontrolledDropdown>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
-                                Tools
+                                <FontAwesomeIcon icon='tools' /> Tools
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem href='/find-percent-change'>
@@ -88,7 +88,7 @@ class UserNavbar extends Component {
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem href='/tutorial'>
-                                    <FontAwesomeIcon icon='clipboard-list' /> Tutorial
+                                    <FontAwesomeIcon icon='info-circle' /> Tutorial
                                 </DropdownItem>
                                 <DropdownItem href='/resources'>
                                     <FontAwesomeIcon icon='book' /> Resources
