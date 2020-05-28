@@ -7,6 +7,7 @@ import ChangeEmailModal from './ChangeEmailModal';
 import ChangeUsernameModal from './ChangeUsernameModal';
 import ChangePasswordModal from './ChangePasswordModal';
 import ResetAccountModal from './ResetAccountModal';
+import DeleteAccountModal from './DeleteAccountModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
 
@@ -73,6 +74,7 @@ class AccountPage extends Component {
                                             <h5><FontAwesomeIcon icon='user-slash' /> Delete Account:</h5>
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
+                                            <DeleteAccountModal />
                                         </Col>
                                     </Row>
                                 </div>
