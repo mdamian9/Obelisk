@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
 import ChangeEmailModal from './ChangeEmailModal';
+import ChangeUsernameModal from './ChangeUsernameModal';
 import ChangePasswordModal from './ChangePasswordModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
@@ -44,7 +45,7 @@ class AccountPage extends Component {
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
                                             <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
-                                            <Button className='account-btn'><FontAwesomeIcon icon='edit' /> Edit</Button>
+                                            <ChangeUsernameModal />
                                         </Col>
                                     </Row>
                                     <br />

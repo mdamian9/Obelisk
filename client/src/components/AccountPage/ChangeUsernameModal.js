@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import './AccountPage.css';
 
-class ChangeEmailModal extends Component {
+class ChangeUsernameModal extends Component {
 
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class ChangeEmailModal extends Component {
     };
 
     handleFormSubmit = () => {
-        console.log('change email');
+        console.log('change username');
         this.toggleModal();
     };
 
@@ -27,7 +27,7 @@ class ChangeEmailModal extends Component {
             <div>
                 <Button className='account-btn' onClick={this.toggleModal}><FontAwesomeIcon icon='edit' /> Edit</Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
-                    <ModalHeader toggle={this.toggleModal} className='text-danger'>Change Email</ModalHeader>
+                    <ModalHeader toggle={this.toggleModal} className='text-danger'>Change Username</ModalHeader>
                     <ModalBody>
 
                     </ModalBody>
@@ -42,4 +42,4 @@ class ChangeEmailModal extends Component {
 
 };
 
-export default ChangeEmailModal;
+export default ChangeUsernameModal;
