@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 import ChangeEmailModal from './ChangeEmailModal';
 import ChangeUsernameModal from './ChangeUsernameModal';
 import ChangePasswordModal from './ChangePasswordModal';
+import ResetAccountModal from './ResetAccountModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
 
@@ -63,6 +64,7 @@ class AccountPage extends Component {
                                             <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
+                                            <ResetAccountModal />
                                         </Col>
                                     </Row>
                                     <br />
