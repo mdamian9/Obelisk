@@ -29,6 +29,7 @@ const withAuth = (AuthComponent) => {
                         profile.mainWallet = res.data.mainWallet;
                         profile.tradingWallet = res.data.tradingWallet;
                         profile.entryTrades = res.data.entryTrades;
+                        profile.exitTrades = res.data.exitTrades;
                         this.setState({
                             user: profile
                         });

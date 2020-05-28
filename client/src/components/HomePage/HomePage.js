@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
 
 const HomePage = props => {
+    console.log(props.user)
     return (
         <div>
             <div className='content'>

@@ -4,26 +4,19 @@
 - *** To do next ***
     - 
 
-- Wallet / Delete exit trade
-    - fix toLowerCase issue (front to back end) **
-
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
 
 - NewEntryTradePage
     - Build simple error modal (trade still goes thru when currency and coin are not selected)
+    - required for both selects (don't let user submit until all fields are filled)
 
 - Tutorial Page
     - Begin building tutorial page
 
 - Account Page
-    - Begin building account page
-        - Change username *
-        - Change password *
-        - Change e-mail? *
-        - Reset account (delete all trades and reset wallet balances)
-        - Delete account
+    - Finish account page / functionality
 
 - Resources Page
 
@@ -31,9 +24,9 @@
     - Issues:
         - 
 
+- toLowerCase issue (fix from root - user model - wallets)
 - Props - user - getting user data and passing as prop <> getting user data again (fix)
 - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
-- NewEntryTradePage - required for both selects (don't let user submit until all fields are filled)
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)

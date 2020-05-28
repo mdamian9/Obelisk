@@ -28,12 +28,12 @@ class SignupPage extends Component {
                     <Container id='signup' className='text-white section-solid-white' style={{marginTop: '12vh'}}>
                         <Row>
                             <Col className='mx-auto' xs={8}>
-                                <h3 className="text-center">Create a new account</h3>
+                                <h3 className='text-center' style={{marginTop: 10}}>Create a new account</h3>
                                 <hr className='ln-white' />
                                 <SignupForm history={this.props.history} />
                                 <hr className='ln-white' />
-                                <p className="text-center">
-                                    Already have an account? Log in <Link to="/login">here</Link>
+                                <p className='text-center'>
+                                    Already have an account? Log in <Link to='/login'>here</Link>
                                 </p>
                             </Col>
                         </Row>
