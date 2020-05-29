@@ -17,7 +17,8 @@ class ChangeUsernameModal extends Component {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
     };
 
-    handleFormSubmit = () => {
+    handleFormSubmit = event => {
+        event.preventDefault();
         console.log('change username');
         this.toggleModal();
     };

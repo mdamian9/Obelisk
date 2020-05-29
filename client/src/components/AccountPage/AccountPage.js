@@ -23,7 +23,7 @@ class AccountPage extends Component {
                 <div className='content'>
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container style={{marginTop: '9vh'}}>
+                    <Container style={{ marginTop: '9vh' }}>
                         <Row>
                             <Col xs={8} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
@@ -37,7 +37,7 @@ class AccountPage extends Component {
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
                                             <h5 style={{ marginBottom: '0px' }}>{this.props.user.email}</h5>&ensp;
-                                            <ChangeEmailModal />
+                                            <ChangeEmailModal currentEmail={this.props.user.email} />
                                         </Col>
                                     </Row>
                                     <br />

@@ -110,4 +110,23 @@ router.patch('/resetFunds/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Change email route
+router.patch('/changeEmail/:id', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        console.log(user);
+        user.email = req.body.newEmail;
+        return user.save();
+    }).then(() => {
+        res.status(200).json({
+            message: 'Successfully changed email!'
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 module.exports = router;

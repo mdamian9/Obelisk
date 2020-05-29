@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
 
@@ -8,6 +9,7 @@ class ChangeEmailModal extends Component {
 
     constructor(props) {
         super(props);
+        this.Auth = new AuthService();
         this.state = {
             isOpen: false
         };
@@ -17,8 +19,23 @@ class ChangeEmailModal extends Component {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
     };
 
-    handleFormSubmit = () => {
-        console.log('change email');
+    handleChange = event => {
+        // Extract name & value from event target and set to state
+        const { name, value } = event.target;
+        this.setState({ [name]: value })
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        const update = { newEmail: this.state.newEmail };
+        if (this.state.currentEmail === this.props.currentEmail) {
+            axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, update).then(res => {
+                alert(res.data.message);
+                window.location.reload();
+            }).catch(err => {
+                console.log(err);
+            });
+        };
         this.toggleModal();
     };
 
@@ -29,10 +46,21 @@ class ChangeEmailModal extends Component {
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader toggle={this.toggleModal} className='text-danger'>Change Email</ModalHeader>
                     <ModalBody>
-
+                        <Form onSubmit={this.handleFormSubmit}>
+                            <FormGroup>
+                                <Label for='currentEmail'>Current Email:</Label>
+                                <Input type='email' id='currentEmail' name='currentEmail' onChange={this.handleChange}
+                                    placeholder='Enter your current email' required />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for='newEmail'>New Email:</Label>
+                                <Input type='email' id='newEmail' name='newEmail' onChange={this.handleChange}
+                                    placeholder='Enter your new email' required />
+                            </FormGroup>
+                            <Button color='danger'>Confirm</Button>
+                        </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="danger" onClick={this.handleFormSubmit}>Confirm</Button>{' '}
                         <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
