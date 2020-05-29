@@ -44,9 +44,9 @@ class CalculateRoiPage extends Component {
         const roi_percent = ((divestment / investment) - 1) * 100;
         let totalProfit = divestment - investment;
         switch (this.state.currency) {
-            case 'USD': totalProfit = totalProfit.toFixed(4); break;
-            case 'USDT': totalProfit = totalProfit.toFixed(7); break;
-            case 'BTC': case 'ETH': case 'BNB': totalProfit = totalProfit.toFixed(8); break;
+            case 'USD': totalProfit = totalProfit.toFixed(4).replace(/\.?0+$/, ''); break;
+            case 'USDT': totalProfit = totalProfit.toFixed(7).replace(/\.?0+$/, ''); break;
+            case 'BTC': case 'ETH': case 'BNB': totalProfit = totalProfit.toFixed(8).replace(/\.?0+$/, ''); break;
             default: /* Do nothing */ break;
         };    
         this.setState({

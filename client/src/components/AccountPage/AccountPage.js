@@ -47,7 +47,7 @@ class AccountPage extends Component {
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
                                             <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
-                                            <ChangeUsernameModal />
+                                            <ChangeUsernameModal currentUsername={this.props.user.username} />
                                         </Col>
                                     </Row>
                                     <br />

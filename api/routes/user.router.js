@@ -129,4 +129,23 @@ router.patch('/changeEmail/:id', isAuthenticated, (req, res, next) => {
     });
 });
 
+// Change username route
+router.patch('/changeUsername/:id', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        console.log(user);
+        user.username = req.body.newUsername;
+        return user.save();
+    }).then(() => {
+        res.status(200).json({
+            message: 'Successfully changed username!'
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
 module.exports = router;

@@ -29,8 +29,7 @@ class ChangeEmailModal extends Component {
         event.preventDefault();
         const update = { newEmail: this.state.newEmail };
         if (this.state.currentEmail === this.props.currentEmail) {
-            axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, update).then(res => {
-                alert(res.data.message);
+            axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, update).then(() => {
                 window.location.reload();
             }).catch(err => {
                 console.log(err);
