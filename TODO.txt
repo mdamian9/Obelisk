@@ -24,6 +24,9 @@
     - Issues:
         - 
 
+- Main fixes:
+    - Using AuthService in multiple components to get user id, vs just setting user id in withAuth when setting profile
+
 - toLowerCase issue (fix from root - user model - wallets)
 - Props - user - getting user data and passing as prop <> getting user data again (fix)
 - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why

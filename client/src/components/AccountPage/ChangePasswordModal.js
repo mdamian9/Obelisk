@@ -27,7 +27,7 @@ class ChangePasswordModal extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const update = {currentPassword: this.state.currentPassword, newPassword: this.state.newPassword};
-        axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`).then(res => {
+        axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`, update).then(res => {
             alert(res.data.message);
             window.location.reload();
         }).catch(err => {
@@ -46,7 +46,7 @@ class ChangePasswordModal extends Component {
                         <Form onSubmit={this.handleFormSubmit}>
                             <FormGroup>
                                 <Label for='currentPassword'>Current password:</Label>
-                                <Input type='text' id='currentPassword' name='currentPassword' onChange={this.handleChange}
+                                <Input type='password' id='currentPassword' name='currentPassword' onChange={this.handleChange}
                                     placeholder='Enter your current password' required />
                             </FormGroup>
                             <FormGroup>

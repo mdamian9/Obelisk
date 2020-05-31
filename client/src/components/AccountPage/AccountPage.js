@@ -65,7 +65,7 @@ class AccountPage extends Component {
                                             <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>
                                         </Col>
                                         <Col className='d-flex justify-content-end align-items-center'>
-                                            <ResetAccountModal />
+                                            <ResetAccountModal history={this.props.history} />
                                         </Col>
                                     </Row>
                                     <br />
