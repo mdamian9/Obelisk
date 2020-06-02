@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
-import ChangeEmailModal from './ChangeEmailModal';
+import ChangeEmailCollapse from './ChangeEmailCollapse';
+import ChangeUsernameCollapse from './ChangeUsernameCollapse';
 import ChangeUsernameModal from './ChangeUsernameModal';
 import ChangePasswordModal from './ChangePasswordModal';
 import ResetAccountModal from './ResetAccountModal';
 import DeleteAccountModal from './DeleteAccountModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
-import ChangeEmailCollapse from './ChangeEmailCollapse';
 
 class AccountPage extends Component {
 
@@ -24,7 +24,7 @@ class AccountPage extends Component {
                 <div className='content'>
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container style={{ marginTop: '8vh' }}>
+                    <Container style={{ marginTop: '1vh', marginBottom: '1vh' }}>
                         <Row>
                             <Col xs={8} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
@@ -34,15 +34,7 @@ class AccountPage extends Component {
                                 <div style={{ padding: '50px' }}>
                                     <ChangeEmailCollapse currentEmail={this.props.user.email} />
                                     <br />
-                                    <Row className='d-flex align-items-center'>
-                                        <Col>
-                                            <h5><FontAwesomeIcon icon='user' /> Username:</h5>
-                                        </Col>
-                                        <Col className='d-flex justify-content-end align-items-center'>
-                                            <h5 style={{ marginBottom: '0px' }}>{this.props.user.username}</h5>&ensp;
-                                            <ChangeUsernameModal currentUsername={this.props.user.username} />
-                                        </Col>
-                                    </Row>
+                                    <ChangeUsernameCollapse currentUsername={this.props.user.username} />
                                     <br />
                                     <Row className='align-items-center'>
                                         <Col>
@@ -73,6 +65,7 @@ class AccountPage extends Component {
                                 </div>
                             </Col>
                         </Row>
+                        <br />
                     </Container>
                 </div>
                 <Footer />
