@@ -10,6 +10,7 @@ import ResetAccountModal from './ResetAccountModal';
 import DeleteAccountModal from './DeleteAccountModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
+import ChangeEmailCollapse from './ChangeEmailCollapse';
 
 class AccountPage extends Component {
 
@@ -31,15 +32,7 @@ class AccountPage extends Component {
                                 </h3>
                                 <hr className='ln-white' />
                                 <div style={{ padding: '50px' }}>
-                                    <Row className='align-items-center'>
-                                        <Col>
-                                            <h5><FontAwesomeIcon icon='at' /> Email:</h5>
-                                        </Col>
-                                        <Col className='d-flex justify-content-end align-items-center'>
-                                            <h5 style={{ marginBottom: '0px' }}>{this.props.user.email}</h5>&ensp;
-                                            <ChangeEmailModal currentEmail={this.props.user.email} />
-                                        </Col>
-                                    </Row >
+                                    <ChangeEmailCollapse currentEmail={this.props.user.email} />
                                     <br />
                                     <Row className='d-flex align-items-center'>
                                         <Col>

@@ -27,12 +27,12 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
     faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faBook, faUserCircle, faClipboardList, faSignInAlt,
     faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser, faTools, faEdit,
-    faInfoCircle, faAt, faUser, faKey, faRedo, faUserSlash
+    faInfoCircle, faAt, faUser, faKey, faRedo, faUserSlash, faAngleDoubleDown, faAngleDoubleUp
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
     fab, faHome, faExchangeAlt, faMinusSquare, faTimesCircle, faWallet, faBook, faUserCircle, faClipboardList, faSignInAlt,
     faSignOutAlt, faFileImport, faFileExport, faChartLine, faSearchDollar, faHandHoldingUsd, faHouseUser, faTools, faEdit,
-    faInfoCircle, faAt, faUser, faKey, faRedo, faUserSlash
+    faInfoCircle, faAt, faUser, faKey, faRedo, faUserSlash, faAngleDoubleDown, faAngleDoubleUp
 );
 
 // If there is a valid token, automatically set headers with Auth bearer token for axios requests
