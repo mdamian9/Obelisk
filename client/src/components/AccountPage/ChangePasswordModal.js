@@ -51,7 +51,7 @@ class ChangePasswordModal extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label for='newPassword'>New Password:</Label>
-                                <Input type='text' id='newPassword' name='newPassword' onChange={this.handleChange}
+                                <Input type='password' id='newPassword' name='newPassword' onChange={this.handleChange}
                                     placeholder='Enter your new password' required />
                             </FormGroup>
                             <Button color='danger'>Confirm</Button>

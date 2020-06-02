@@ -31,6 +31,8 @@ class ResetAccountModal extends Component {
             this.toggleModal();
         }).catch(err => {
             console.log(err);
+            alert('The password you entered was incorrect');
+            this.toggleModal();
         });
     };
 
@@ -45,10 +47,10 @@ class ResetAccountModal extends Component {
                             Are you sure you want to reset your account? This will reset all balances in both your main wallet and
                             trading wallet to 0, and will delete all of your entry trades and exit trades.
                         </p>
-                        <Form>
+                        <Form onSubmit={this.handleFormSubmit}>
                             <FormGroup>
                                 <Label for='password'>Enter your password:</Label>
-                                <Input type='password' id='password' name='password' onChange={this.onChange} required />
+                                <Input type='password' id='password' name='password' onChange={this.handleChange} required />
                             </FormGroup>
                             <Button color='danger'>Confirm</Button>
                         </Form>

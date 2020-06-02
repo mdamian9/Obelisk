@@ -23,7 +23,7 @@ class AccountPage extends Component {
                 <div className='content'>
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container style={{ marginTop: '9vh' }}>
+                    <Container style={{ marginTop: '8vh' }}>
                         <Row>
                             <Col xs={8} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
@@ -31,7 +31,7 @@ class AccountPage extends Component {
                                 </h3>
                                 <hr className='ln-white' />
                                 <div style={{ padding: '50px' }}>
-                                    <Row>
+                                    <Row className='align-items-center'>
                                         <Col>
                                             <h5><FontAwesomeIcon icon='at' /> Email:</h5>
                                         </Col>
@@ -39,7 +39,7 @@ class AccountPage extends Component {
                                             <h5 style={{ marginBottom: '0px' }}>{this.props.user.email}</h5>&ensp;
                                             <ChangeEmailModal currentEmail={this.props.user.email} />
                                         </Col>
-                                    </Row>
+                                    </Row >
                                     <br />
                                     <Row className='d-flex align-items-center'>
                                         <Col>
@@ -51,7 +51,7 @@ class AccountPage extends Component {
                                         </Col>
                                     </Row>
                                     <br />
-                                    <Row>
+                                    <Row className='align-items-center'>
                                         <Col>
                                             <h5><FontAwesomeIcon icon='key' /> Password:</h5>
                                         </Col>
@@ -60,7 +60,7 @@ class AccountPage extends Component {
                                         </Col>
                                     </Row>
                                     <br />
-                                    <Row>
+                                    <Row className='align-items-center'>
                                         <Col>
                                             <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>
                                         </Col>
@@ -69,7 +69,7 @@ class AccountPage extends Component {
                                         </Col>
                                     </Row>
                                     <br />
-                                    <Row>
+                                    <Row className='align-items-center'>
                                         <Col>
                                             <h5><FontAwesomeIcon icon='user-slash' /> Delete Account:</h5>
                                         </Col>

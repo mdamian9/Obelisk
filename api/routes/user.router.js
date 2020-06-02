@@ -147,7 +147,6 @@ router.patch('/changeUsername/:id', isAuthenticated, (req, res, next) => {
 });
 
 // Change password route
-// Need to fix / test
 router.patch('/changePassword/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         user.verifyPassword(req.body.currentPassword, (err, isMatch) => {
@@ -175,27 +174,35 @@ router.patch('/changePassword/:id', isAuthenticated, (req, res, next) => {
 // Need to fix / test
 router.patch('/resetAccount/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
-        console.log(user);
         user.verifyPassword(req.body.password, (err, isMatch) => {
-            console.log(user.mainWallet);
-            console.log(user.tradingWallet);
             if (!err && isMatch) {
-                for (const currency in user.mainWallet) {
-                    currency.funds = 0;
-                };
-                for (const currency in user.tradingWallet) {
-                    currency.funds = 0;
-                };
+                user.mainWallet['usd'].funds = 0;
+                user.mainWallet['usdt'].funds = 0;
+                user.mainWallet['btc'].funds = 0;
+                user.mainWallet['btc'].funds = 0;
+                user.mainWallet['eth'].funds = 0;
+                user.mainWallet['bnb'].funds = 0;
+                user.tradingWallet['usd'].funds = 0;
+                user.tradingWallet['usdt'].funds = 0;
+                user.tradingWallet['btc'].funds = 0;
+                user.tradingWallet['eth'].funds = 0;
+                user.tradingWallet['bnb'].funds = 0;
                 user.entryTrades = [];
                 user.exitTrades = [];
-                return user.save();
+                const promises = [
+                    user.save(),
+                    db.EntryTrade.deleteMany({ user: req.params.id }),
+                    db.ExitTrade.deleteMany({ user: req.params.id })
+                ];
+                return Promise.all(promises).then(() => {
+                    res.status(200).json({
+                        success: true,
+                        message: 'Successfully reset account!'
+                    });
+                })
             } else {
                 return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
             };
-        });
-    }).then(() => {
-        res.status(200).json({
-            message: 'Successfully reset account!'
         });
     }).catch(err => {
         console.log(err);
