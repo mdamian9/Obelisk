@@ -5,8 +5,7 @@ import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
 import ChangeEmailCollapse from './ChangeEmailCollapse';
 import ChangeUsernameCollapse from './ChangeUsernameCollapse';
-import ChangeUsernameModal from './ChangeUsernameModal';
-import ChangePasswordModal from './ChangePasswordModal';
+import ChangePasswordCollapse from './ChangePasswordCollapse';
 import ResetAccountModal from './ResetAccountModal';
 import DeleteAccountModal from './DeleteAccountModal';
 import withAuth from '../withAuth/withAuth';
@@ -36,14 +35,7 @@ class AccountPage extends Component {
                                     <br />
                                     <ChangeUsernameCollapse currentUsername={this.props.user.username} />
                                     <br />
-                                    <Row className='align-items-center'>
-                                        <Col>
-                                            <h5><FontAwesomeIcon icon='key' /> Password:</h5>
-                                        </Col>
-                                        <Col className='d-flex justify-content-end align-items-center'>
-                                            <ChangePasswordModal />
-                                        </Col>
-                                    </Row>
+                                    <ChangePasswordCollapse />
                                     <br />
                                     <Row className='align-items-center'>
                                         <Col>

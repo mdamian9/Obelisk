@@ -31,7 +31,7 @@ class ResetAccountModal extends Component {
             this.toggleModal();
         }).catch(err => {
             console.log(err);
-            alert('The password you entered was incorrect');
+            alert('The password you entered was incorrect!');
             this.toggleModal();
         });
     };
