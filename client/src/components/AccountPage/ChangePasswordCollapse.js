@@ -27,15 +27,16 @@ class ChangePasswordCollapse extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const update = {currentPassword: this.state.currentPassword, newPassword: this.state.newPassword};
+        event.persist();
+        const update = { currentPassword: this.state.currentPassword, newPassword: this.state.newPassword };
         axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`, update).then(res => {
             alert(res.data.message);
-            this.toggleCollapse();
             window.location.reload();
         }).catch(err => {
             console.log(err);
             alert('The password you entered was incorrect!');
             event.target.reset();
+            this.setState({ password: '' });
             this.toggleCollapse();
         });
     };

@@ -30,13 +30,12 @@ class ChangeEmailCollapse extends Component {
         const update = { newEmail: this.state.newEmail };
         if (this.state.currentEmail === this.props.currentEmail) {
             axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, update).then(() => {
-                this.toggleCollapse();
                 window.location.reload();
             }).catch(err => {
                 console.log(err);
             });
         } else {
-            alert('Incorrect current email');
+            alert('The current email you entered is incorrect!');
             event.target.reset();
             this.setState({ currentEmail: '', newEmail: '' });
             this.toggleCollapse();

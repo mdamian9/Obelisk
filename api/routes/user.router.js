@@ -171,7 +171,6 @@ router.patch('/changePassword/:id', isAuthenticated, (req, res, next) => {
 });
 
 // Reset account route
-// Need to fix / test
 router.patch('/resetAccount/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         user.verifyPassword(req.body.password, (err, isMatch) => {

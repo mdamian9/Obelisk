@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 import ChangeEmailCollapse from './ChangeEmailCollapse';
 import ChangeUsernameCollapse from './ChangeUsernameCollapse';
 import ChangePasswordCollapse from './ChangePasswordCollapse';
-import ResetAccountModal from './ResetAccountModal';
+import ResetAccountCollapse from './ResetAccountCollapse';
 import DeleteAccountModal from './DeleteAccountModal';
 import withAuth from '../withAuth/withAuth';
 import './AccountPage.css';
@@ -37,14 +37,7 @@ class AccountPage extends Component {
                                     <br />
                                     <ChangePasswordCollapse />
                                     <br />
-                                    <Row className='align-items-center'>
-                                        <Col>
-                                            <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>
-                                        </Col>
-                                        <Col className='d-flex justify-content-end align-items-center'>
-                                            <ResetAccountModal history={this.props.history} />
-                                        </Col>
-                                    </Row>
+                                    <ResetAccountCollapse />
                                     <br />
                                     <Row className='align-items-center'>
                                         <Col>

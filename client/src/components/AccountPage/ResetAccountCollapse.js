@@ -5,7 +5,7 @@ import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
 
-class ChangeUsernameCollapse extends Component {
+class ResetAccountCollapse extends Component {
 
     constructor(props) {
         super(props);
@@ -27,23 +27,23 @@ class ChangeUsernameCollapse extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const update = { newUsername: this.state.newUsername };
-        if (this.state.currentUsername === this.props.currentUsername) {
-            axios.patch(`/user/changeUsername/${this.Auth.getProfile().id}`, update).then(() => {
-                window.location.reload();
-            }).catch(err => {
-                console.log(err);
-            });
-        } else {
-            alert('The current username you entered is incorrect!');
+        event.persist();
+        axios.patch(`/user/resetAccount/${this.Auth.getProfile().id}`, { password: this.state.password }).then(res => {
+            alert(res.data.message);
             event.target.reset();
-            this.setState({ currentUsername: '', newUsername: '' });
+            this.setState({ password: '' });
             this.toggleCollapse();
-        };
+        }).catch(err => {
+            console.log(err);
+            alert('The password you entered was incorrect!');
+            event.target.reset();
+            this.setState({ password: '' });
+            this.toggleCollapse();
+        });
     };
 
     render = () => {
-        let editButton = <div><FontAwesomeIcon icon='edit' /> Edit</div>
+        let editButton = <div><FontAwesomeIcon icon='edit' /> Reset Account</div>
         if (this.state.isOpen === true) {
             editButton = <div style={{ padding: '0px 10px 0px 10px' }}><FontAwesomeIcon icon='angle-double-up' /></div>
         };
@@ -51,26 +51,23 @@ class ChangeUsernameCollapse extends Component {
             <div>
                 <Row>
                     <Col>
-                        <h5><FontAwesomeIcon icon='user' /> Username:</h5>
+                        <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>
                     </Col>
                     <Col className='d-flex justify-content-end align-items-center'>
-                        <h5 style={{ marginBottom: '0px' }}>{this.props.currentUsername}</h5>&ensp;
                         <Button className='account-btn' onClick={this.toggleCollapse}>{editButton}</Button>
                     </Col>
                 </Row >
                 <Collapse isOpen={this.state.isOpen} style={{ marginTop: 5, color: 'black' }}>
                     <Card>
                         <CardBody>
+                            <p>
+                                Are you sure you want to reset your account? This will reset all balances in both your main wallet and
+                                trading wallet to 0, and will delete all of your entry trades and exit trades.
+                            </p>
                             <Form onSubmit={this.handleFormSubmit}>
                                 <FormGroup>
-                                    <Label for='currentUsername'>Current Username:</Label>
-                                    <Input type='text' id='currentUsername' name='currentUsername' onChange={this.handleChange}
-                                        placeholder='Enter your current username' required />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for='newUsername'>New Username:</Label>
-                                    <Input type='text' id='newUsername' name='newUsername' onChange={this.handleChange}
-                                        placeholder='Enter your new username' required />
+                                    <Label for='password'>Enter your password:</Label>
+                                    <Input type='password' id='password' name='password' onChange={this.handleChange} required />
                                 </FormGroup>
                                 <Button color='danger'>Confirm</Button>
                             </Form>
@@ -83,4 +80,4 @@ class ChangeUsernameCollapse extends Component {
 
 };
 
-export default ChangeUsernameCollapse;
+export default ResetAccountCollapse;
