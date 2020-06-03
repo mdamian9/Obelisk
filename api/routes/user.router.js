@@ -198,6 +198,34 @@ router.patch('/resetAccount/:id', isAuthenticated, (req, res, next) => {
                         success: true,
                         message: 'Successfully reset account!'
                     });
+                });
+            } else {
+                return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+            };
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error occurred',
+            error: err
+        });
+    });
+});
+
+router.delete('/:id/:password', isAuthenticated, (req, res, next) => {
+    db.User.findById(req.params.id).then(user => {
+        user.verifyPassword(req.params.password, (err, isMatch) => {
+            if (!err && isMatch) {
+                const promises = [
+                    db.User.findByIdAndDelete(req.params.id),
+                    db.EntryTrade.deleteMany({ user: req.params.id }),
+                    db.ExitTrade.deleteMany({ user: req.params.id })
+                ];
+                return Promise.all(promises).then(() => {
+                    res.status(200).json({
+                        success: true,
+                        message: 'Successfully deleted user account!'
+                    });
                 })
             } else {
                 return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });

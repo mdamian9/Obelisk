@@ -46,7 +46,6 @@ router.get('/userTrades/:userId', isAuthenticated, (req, res, next) => {
 // Post a new exit trade - add to DB and update user trades / wallet
 router.post('/', isAuthenticated, (req, res, next) => {
     const exitTrade = req.body;
-    console.log(exitTrade);
     db.ExitTrade.create(exitTrade).then(trade => {
         return db.EntryTrade.findByIdAndUpdate(trade.entryTrade, { $set: { sold: true, exitTrade: trade._id } }, { new: true });
     }).then(trade => {
@@ -58,7 +57,6 @@ router.post('/', isAuthenticated, (req, res, next) => {
             return user.save();
         });
     }).then(result => {
-        console.log(result);
         res.status(201).json(result);
     }).catch(err => {
         console.log(err);

@@ -1,9 +1,3 @@
-- *** Most Recent *** 
-    - 
-
-- *** To do next ***
-    - 
-
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
@@ -16,7 +10,7 @@
     - Begin building tutorial page
 
 - Account Page
-    - Finish account page / functionality
+    - Finished page, need only some small details (error modals / checks, final tests)
 
 - Resources Page
 
