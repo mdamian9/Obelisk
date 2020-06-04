@@ -28,17 +28,24 @@ class ChangePasswordCollapse extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
-        const update = { currentPassword: this.state.currentPassword, newPassword: this.state.newPassword };
-        axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`, update).then(res => {
-            alert(res.data.message);
-            window.location.reload();
-        }).catch(err => {
-            console.log(err);
-            alert('The password you entered was incorrect!');
+        if (this.state.username === this.props.username) {
+            const update = { currentPassword: this.state.currentPassword, newPassword: this.state.newPassword };
+            axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`, update).then(res => {
+                alert(res.data.message);
+                window.location.reload();
+            }).catch(err => {
+                console.log(err);
+                alert('The password you entered is incorrect!');
+                event.target.reset();
+                this.setState({ username: '', password: '' });
+                this.toggleCollapse();
+            });
+        } else {
+            alert('The username you entered is incorrect!');
             event.target.reset();
-            this.setState({ password: '' });
+            this.setState({ username: '', password: '' });
             this.toggleCollapse();
-        });
+        };
     };
 
     render = () => {
@@ -61,12 +68,17 @@ class ChangePasswordCollapse extends Component {
                         <CardBody>
                             <Form onSubmit={this.handleFormSubmit}>
                                 <FormGroup>
+                                    <Label for='username'>Username:</Label>
+                                    <Input type='username' id='username' name='username' onChange={this.handleChange}
+                                        placeholder='Enter your username' required />
+                                </FormGroup>
+                                <FormGroup>
                                     <Label for='currentPassword'>Current password:</Label>
                                     <Input type='password' id='currentPassword' name='currentPassword' onChange={this.handleChange}
                                         placeholder='Enter your current password' required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for='newPassword'>New Password:</Label>
+                                    <Label for='newPassword'>New password:</Label>
                                     <Input type='password' id='newPassword' name='newPassword' onChange={this.handleChange}
                                         placeholder='Enter your new password' required />
                                 </FormGroup>

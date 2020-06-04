@@ -25,21 +25,28 @@ class ResetAccountCollapse extends Component {
         this.setState({ [name]: value })
     };
 
+    resetAll = event => {
+        event.target.reset();
+        this.setState({ email: '', username: '', password: '' });
+        this.toggleCollapse();
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
-        axios.patch(`/user/resetAccount/${this.Auth.getProfile().id}`, { password: this.state.password }).then(res => {
-            alert(res.data.message);
-            event.target.reset();
-            this.setState({ password: '' });
-            this.toggleCollapse();
-        }).catch(err => {
-            console.log(err);
-            alert('The password you entered was incorrect!');
-            event.target.reset();
-            this.setState({ password: '' });
-            this.toggleCollapse();
-        });
+        if (this.state.username !== this.props.username) {
+            alert('The username you entered is incorrect!');
+            this.resetAll(event);
+        } else {
+            axios.patch(`/user/resetAccount/${this.Auth.getProfile().id}`, { password: this.state.password }).then(res => {
+                alert(res.data.message);
+                this.resetAll(event);
+            }).catch(err => {
+                console.log(err);
+                alert('The password you entered is incorrect!');
+                this.resetAll(event);
+            });
+        };
     };
 
     render = () => {
@@ -60,14 +67,21 @@ class ResetAccountCollapse extends Component {
                 <Collapse isOpen={this.state.isOpen} style={{ marginTop: 5, color: 'black' }}>
                     <Card>
                         <CardBody>
-                            <p>
+                            <b className='text-danger'>
                                 Are you sure you want to reset your account? This will reset all balances in both your main wallet and
                                 trading wallet to 0, and will delete all of your entry trades and exit trades.
-                            </p>
+                            </b>
+                            <hr />
                             <Form onSubmit={this.handleFormSubmit}>
                                 <FormGroup>
-                                    <Label for='password'>Enter your password:</Label>
-                                    <Input type='password' id='password' name='password' onChange={this.handleChange} required />
+                                    <Label for='username'>Username:</Label>
+                                    <Input type='text' id='username' name='username' onChange={this.handleChange}
+                                        placeholder='Enter your username' required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='password'>Password:</Label>
+                                    <Input type='password' id='password' name='password' onChange={this.handleChange}
+                                        placeholder='Enter your password' required />
                                 </FormGroup>
                                 <Button color='danger'>Confirm</Button>
                             </Form>

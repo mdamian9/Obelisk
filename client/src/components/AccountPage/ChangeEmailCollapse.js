@@ -27,17 +27,23 @@ class ChangeEmailCollapse extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const update = { newEmail: this.state.newEmail };
+        event.persist();
+        const body = { newEmail: this.state.newEmail, password: this.state.password };
         if (this.state.currentEmail === this.props.currentEmail) {
-            axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, update).then(() => {
+            axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, body).then(res => {
+                alert(res.data.message);
                 window.location.reload();
             }).catch(err => {
                 console.log(err);
+                alert('The password you entered is incorrect.');
+                event.target.reset();
+                this.setState({ currentEmail: '', newEmail: '', password: '' });
+                this.toggleCollapse();
             });
         } else {
             alert('The current email you entered is incorrect!');
             event.target.reset();
-            this.setState({ currentEmail: '', newEmail: '' });
+            this.setState({ currentEmail: '', newEmail: '', password: '' });
             this.toggleCollapse();
         };
     };
@@ -45,7 +51,7 @@ class ChangeEmailCollapse extends Component {
     render = () => {
         let editButton = <div><FontAwesomeIcon icon='edit' /> Edit</div>
         if (this.state.isOpen === true) {
-            editButton = <div style={{padding: '0px 10px 0px 10px'}}><FontAwesomeIcon icon='angle-double-up' /></div>
+            editButton = <div style={{ padding: '0px 10px 0px 10px' }}><FontAwesomeIcon icon='angle-double-up' /></div>
         };
         return (
             <div>
@@ -63,14 +69,19 @@ class ChangeEmailCollapse extends Component {
                         <CardBody>
                             <Form onSubmit={this.handleFormSubmit}>
                                 <FormGroup>
-                                    <Label for='currentEmail'>Current Email:</Label>
+                                    <Label for='currentEmail'>Current email:</Label>
                                     <Input type='email' id='currentEmail' name='currentEmail' onChange={this.handleChange}
                                         placeholder='Enter your current email' required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for='newEmail'>New Email:</Label>
+                                    <Label for='newEmail'>New email:</Label>
                                     <Input type='email' id='newEmail' name='newEmail' onChange={this.handleChange}
                                         placeholder='Enter your new email' required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='password'>Password:</Label>
+                                    <Input type='password' id='password' name='password' onChange={this.handleChange}
+                                        placeholder='Enter your password' required />
                                 </FormGroup>
                                 <Button color='danger'>Confirm</Button>
                             </Form>

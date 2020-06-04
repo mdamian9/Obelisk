@@ -27,17 +27,23 @@ class ChangeUsernameCollapse extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const update = { newUsername: this.state.newUsername };
+        event.persist();
         if (this.state.currentUsername === this.props.currentUsername) {
-            axios.patch(`/user/changeUsername/${this.Auth.getProfile().id}`, update).then(() => {
+            const body = { newUsername: this.state.newUsername, password: this.state.password };
+            axios.patch(`/user/changeUsername/${this.Auth.getProfile().id}`, body).then(res => {
+                alert(res.data.message);
                 window.location.reload();
             }).catch(err => {
                 console.log(err);
+                alert('The password you entered is incorrect!');
+                event.target.reset();
+                this.setState({ currentUsername: '', newUsername: '', password: '' });
+                this.toggleCollapse();
             });
         } else {
             alert('The current username you entered is incorrect!');
             event.target.reset();
-            this.setState({ currentUsername: '', newUsername: '' });
+            this.setState({ currentUsername: '', newUsername: '', password: '' });
             this.toggleCollapse();
         };
     };
@@ -63,14 +69,19 @@ class ChangeUsernameCollapse extends Component {
                         <CardBody>
                             <Form onSubmit={this.handleFormSubmit}>
                                 <FormGroup>
-                                    <Label for='currentUsername'>Current Username:</Label>
+                                    <Label for='currentUsername'>Current username:</Label>
                                     <Input type='text' id='currentUsername' name='currentUsername' onChange={this.handleChange}
                                         placeholder='Enter your current username' required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for='newUsername'>New Username:</Label>
+                                    <Label for='newUsername'>New username:</Label>
                                     <Input type='text' id='newUsername' name='newUsername' onChange={this.handleChange}
                                         placeholder='Enter your new username' required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='password'>Password:</Label>
+                                    <Input type='password' id='password' name='password' onChange={this.handleChange}
+                                        placeholder='Enter your password' required />
                                 </FormGroup>
                                 <Button color='danger'>Confirm</Button>
                             </Form>

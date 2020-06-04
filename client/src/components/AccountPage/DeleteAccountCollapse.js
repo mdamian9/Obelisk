@@ -25,21 +25,34 @@ class DeleteAccountCollapse extends Component {
         this.setState({ [name]: value })
     };
 
+    resetAll = event => {
+        event.target.reset();
+        this.setState({ email: '', username: '', password: '' });
+        this.toggleCollapse();
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.username === this.props.username) {
+        event.persist();
+        if (this.state.email !== this.props.email) {
+            alert('The email you entered is incorrect!');
+            if (this.state.username !== this.props.username) {
+                alert('The username you entered is incorrect!');
+            };
+            this.resetAll(event);
+        } else if (this.state.username !== this.props.username) {
+            alert('The username you entered is incorrect!');
+            this.resetAll(event);
+        } else {
             axios.delete(`/user/${this.Auth.getProfile().id}/${this.state.password}`).then(res => {
                 alert(res.data.message);
                 this.Auth.logout();
                 this.props.history.replace('/');
             }).catch(err => {
                 console.log(err);
+                alert('The password you entered is incorrect!');
+                this.resetAll(event);
             });
-        } else {
-            alert('The current username you entered is incorrect!');
-            event.target.reset();
-            this.setState({ username: '', password: '' });
-            this.toggleCollapse();
         };
     };
 
@@ -62,17 +75,25 @@ class DeleteAccountCollapse extends Component {
                     <Card>
                         <CardBody>
                             <b className='text-danger'>
-                                Are you sure you want to reset your account? This will delete your entire account, there is no
+                                Are you sure you want to delete your account? This will delete your entire account, there is no
                                 going back.
                             </b>
-                            <Form style={{ marginTop: '1vh' }} onSubmit={this.handleFormSubmit}>
+                            <hr />
+                            <Form onSubmit={this.handleFormSubmit}>
                                 <FormGroup>
-                                    <Label for='username'>Enter your username:</Label>
-                                    <Input type='text' id='username' name='username' onChange={this.handleChange} required />
+                                    <Label for='email'>Email:</Label>
+                                    <Input type='email' id='email' name='email' onChange={this.handleChange}
+                                        placeholder='Enter your email' required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for='password'>Enter your password:</Label>
-                                    <Input type='password' id='password' name='password' onChange={this.handleChange} required />
+                                    <Label for='username'>Username</Label>
+                                    <Input type='text' id='username' name='username' onChange={this.handleChange}
+                                        placeholder='Enter your username' required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='password'>Password:</Label>
+                                    <Input type='password' id='password' name='password' onChange={this.handleChange}
+                                        placeholder='Enter your password' required />
                                 </FormGroup>
                                 <Button color='danger'>Confirm</Button>
                             </Form>

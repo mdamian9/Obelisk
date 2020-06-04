@@ -28,17 +28,17 @@ const AccountPage = props => {
                                 <br />
                                 <ChangeUsernameCollapse currentUsername={props.user.username} />
                                 <br />
-                                <ChangePasswordCollapse />
+                                <ChangePasswordCollapse username={props.user.username} />
                                 <br />
-                                <ResetAccountCollapse />
+                                <ResetAccountCollapse username={props.user.username} />
                                 <br />
-                                <DeleteAccountCollapse username={props.user.username} history={props.history} />
+                                <DeleteAccountCollapse email={props.user.email} username={props.user.username} history={props.history} />
                             </div>
                         </Col>
                     </Row>
-                    <br />
                 </Container>
             </div>
+            <br />
             <Footer />
         </div>
     );

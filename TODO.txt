@@ -21,6 +21,8 @@
 - Main fixes:
     - Using AuthService in multiple components to get user id, vs just setting user id in withAuth when setting profile
 
+- 401 no response, works in Login (navbar) but no data returned in rest?
+- Modals vs alerts?
 - toLowerCase issue (fix from root - user model - wallets)
 - 304 status code
 - Props - user - getting user data and passing as prop <> getting user data again (fix)
