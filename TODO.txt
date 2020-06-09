@@ -1,5 +1,6 @@
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
+        - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
 
 - NewEntryTradePage
@@ -10,7 +11,7 @@
     - Begin building tutorial page
 
 - Account Page
-    - Finished page, need only some small details (error modals / checks, final tests)
+    - Modals vs alerts for errors
 
 - Resources Page
 
@@ -18,15 +19,11 @@
     - Issues:
         - 
 
-- Main fixes:
-    - Using AuthService in multiple components to get user id, vs just setting user id in withAuth when setting profile
-
+- Using AuthService in multiple components to get user id, vs just setting user id in withAuth when setting profile
 - 401 no response, works in Login (navbar) but no data returned in rest?
-- Modals vs alerts?
 - toLowerCase issue (fix from root - user model - wallets)
-- 304 status code
+- 304 status code (GET /user/:id)
 - Props - user - getting user data and passing as prop <> getting user data again (fix)
-- Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
 - Fix decimals toFixed on trades / balances
 - Change 'funds' field to 'balance' (front / back end)

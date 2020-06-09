@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Collapse, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertModal from './AlertModal';
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
@@ -11,7 +12,10 @@ class ChangeEmailCollapse extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            alertModalOpen: false,
+            alertMsg: null,
+            error: null
         };
     };
 
@@ -19,10 +23,14 @@ class ChangeEmailCollapse extends Component {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
     };
 
+    toggleAlertModal = () => {
+        this.setState(prevState => ({ alertModalOpen: !prevState.alertModalOpen }));
+    };
+
     handleChange = event => {
         // Extract name & value from event target and set to state
         const { name, value } = event.target;
-        this.setState({ [name]: value })
+        this.setState({ [name]: value });
     };
 
     handleFormSubmit = event => {
@@ -31,16 +39,21 @@ class ChangeEmailCollapse extends Component {
         const body = { newEmail: this.state.newEmail, password: this.state.password };
         if (this.state.currentEmail === this.props.currentEmail) {
             axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, body).then(res => {
-                alert(res.data.message);
-                window.location.reload();
+                this.setState({ alertMsg: res.data.message });
+                this.toggleAlertModal();
+                // window.location.reload();
             }).catch(err => {
                 console.log(err);
-                alert('The password you entered is incorrect.');
+                this.setState({ error: 'password' });
+                this.toggleAlertModal();
+                // alert('The password you entered is incorrect!');
                 event.target.reset();
                 this.setState({ currentEmail: '', newEmail: '', password: '' });
                 this.toggleCollapse();
             });
         } else {
+            this.setState({ error: 'email' });
+            this.toggleAlertModal();
             alert('The current email you entered is incorrect!');
             event.target.reset();
             this.setState({ currentEmail: '', newEmail: '', password: '' });
@@ -49,12 +62,15 @@ class ChangeEmailCollapse extends Component {
     };
 
     render = () => {
+        console.log(this.state.error);
         let editButton = <div><FontAwesomeIcon icon='edit' /> Edit</div>
         if (this.state.isOpen === true) {
             editButton = <div style={{ padding: '0px 10px 0px 10px' }}><FontAwesomeIcon icon='angle-double-up' /></div>
         };
         return (
             <div>
+                <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                    message={this.state.alertMsg} error={this.state.error} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='at' /> Email:</h5>

@@ -29,7 +29,7 @@ class NewEntryTradePage extends Component {
     };
 
     setInvestmentAmount = event => {
-        const {value} = event.target;
+        const { value } = event.target;
         const investmentAmount = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds * value;
         document.getElementById('entry-form').totalInvestment.value = investmentAmount;
         this.setState({ totalInvestment: investmentAmount })
@@ -143,25 +143,29 @@ class NewEntryTradePage extends Component {
                         Available {this.state.currency}: {availableFunds}
                     </div>
                     <div className='flex-grow-1' />
-                <Button value={.25} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
-                    25%
-                </Button>
+                    <Button value={.25} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
+                        25%
+                    </Button>
                 &ensp;
                 <Button value={.50} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
-                    50%
+                        50%
                 </Button>
                 &ensp;
                 <Button value={.75} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
-                    75%
+                        75%
                 </Button>
                 &ensp;
                 <Button value={1} color='danger' style={{ padding: '0px 5px', fontSize: '12px' }} onClick={this.setInvestmentAmount}>
-                    Max
+                        Max
                 </Button>
                 </div>;
             if (this.state.totalInvestment > availableFunds) {
                 renderAvailableFunds = <b className='text-danger'>You do not have enough funds in your trading wallet.</b>
             };
+        };
+        let renderCurrency = '';
+        if (this.state.currency) {
+            renderCurrency = ` (${this.state.currency})`;
         };
         return (
             <div>
@@ -169,7 +173,7 @@ class NewEntryTradePage extends Component {
                     <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
                     <UserNavbar history={this.props.history} />
                     <br />
-                    <Container style={{marginTop: '7.5vh'}}>
+                    <Container style={{ marginTop: '7.5vh' }}>
                         <Row>
                             <Col xs={7} className='section-solid-white text-white mx-auto'>
                                 <h3 className='text-center'>
@@ -178,9 +182,9 @@ class NewEntryTradePage extends Component {
                                 <hr className='ln-white' />
                                 <Form id='entry-form' onSubmit={this.handleFormSubmit}>
                                     <FormGroup>
-                                        <Label for='currency'>Select currency:</Label>
+                                        <Label for='currency'>Base currency:</Label>
                                         <Select value={selectedOptionOne} onChange={this.handleSelectOne} options={selectOptionsOne}
-                                            id='currency' name='currency' required />
+                                            id='currency' name='currency' placeholder='Select base currency...' required />
                                     </FormGroup>
                                     <FormGroup>
                                         <Label for='total-investment'>Total investment:</Label>
@@ -191,15 +195,15 @@ class NewEntryTradePage extends Component {
                                         {renderAvailableFunds}
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for='coin-name'>Coin name:</Label>
+                                        <Label for='coin-name'>Cryptocurrency:</Label>
                                         <Select value={selectedOptionTwo} onChange={this.handleSelectTwo} options={selectOptionsTwo}
-                                            id='coin-name' name='coinName' required={true} />
+                                            id='coin-name' name='coinName' placeholder='Select cryptocurrency...' required />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Label for='entry-price'>Coin entry price:</Label>
+                                        <Label for='entry-price'>Entry price{renderCurrency}:</Label>
                                         <Input type='number' name='entryPrice' id='entry-price'
                                             placeholder='0.00000000' step='0.00000001' min='0.00000001'
-                                            onChange={this.handleChange} required={true} />
+                                            onChange={this.handleChange} required />
                                     </FormGroup>
                                     <Button>Submit</Button>
                                 </Form>
