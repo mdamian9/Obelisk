@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Collapse, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertModal from './AlertModal';
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
@@ -11,12 +12,19 @@ class ChangePasswordCollapse extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            alertModalOpen: false,
+            alertMsg: null,
+            error: null
         };
     };
 
     toggleCollapse = () => {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    };
+
+    toggleAlertModal = () => {
+        this.setState(prevState => ({ alertModalOpen: !prevState.alertModalOpen }));
     };
 
     handleChange = event => {
@@ -31,20 +39,20 @@ class ChangePasswordCollapse extends Component {
         if (this.state.username === this.props.username) {
             const update = { currentPassword: this.state.currentPassword, newPassword: this.state.newPassword };
             axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`, update).then(res => {
-                alert(res.data.message);
-                window.location.reload();
+                this.setState({ alertMsg: res.data.message, error: null });
+                this.toggleAlertModal();
             }).catch(err => {
                 console.log(err);
-                alert('The password you entered is incorrect!');
+                this.setState({ username: '', password: '', error: 'password' });
                 event.target.reset();
-                this.setState({ username: '', password: '' });
                 this.toggleCollapse();
+                this.toggleAlertModal();
             });
         } else {
-            alert('The username you entered is incorrect!');
+            this.setState({ username: '', password: '', error: 'username' });
             event.target.reset();
-            this.setState({ username: '', password: '' });
             this.toggleCollapse();
+            this.toggleAlertModal();
         };
     };
 
@@ -55,6 +63,8 @@ class ChangePasswordCollapse extends Component {
         };
         return (
             <div>
+                <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                    message={this.state.alertMsg} error={this.state.error} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='key' /> Password:</h5>

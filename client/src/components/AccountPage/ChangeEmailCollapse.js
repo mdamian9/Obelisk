@@ -39,25 +39,20 @@ class ChangeEmailCollapse extends Component {
         const body = { newEmail: this.state.newEmail, password: this.state.password };
         if (this.state.currentEmail === this.props.currentEmail) {
             axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, body).then(res => {
-                this.setState({ alertMsg: res.data.message });
+                this.setState({ alertMsg: res.data.message, error: null });
                 this.toggleAlertModal();
-                // window.location.reload();
             }).catch(err => {
                 console.log(err);
-                this.setState({ error: 'password' });
-                this.toggleAlertModal();
-                // alert('The password you entered is incorrect!');
+                this.setState({ currentEmail: '', newEmail: '', password: '', error: 'password' });
                 event.target.reset();
-                this.setState({ currentEmail: '', newEmail: '', password: '' });
                 this.toggleCollapse();
+                this.toggleAlertModal();
             });
         } else {
-            this.setState({ error: 'email' });
-            this.toggleAlertModal();
-            alert('The current email you entered is incorrect!');
+            this.setState({ currentEmail: '', newEmail: '', password: '', error: 'email' });
             event.target.reset();
-            this.setState({ currentEmail: '', newEmail: '', password: '' });
             this.toggleCollapse();
+            this.toggleAlertModal();
         };
     };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Collapse, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertModal from './AlertModal';
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
@@ -11,12 +12,19 @@ class DeleteAccountCollapse extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            alertModalOpen: false,
+            alertMsg: null,
+            error: null
         };
     };
 
     toggleCollapse = () => {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    };
+
+    toggleAlertModal = () => {
+        this.setState(prevState => ({ alertModalOpen: !prevState.alertModalOpen }));
     };
 
     handleChange = event => {
@@ -25,24 +33,25 @@ class DeleteAccountCollapse extends Component {
         this.setState({ [name]: value })
     };
 
-    resetAll = event => {
+    resolve = event => {
         event.target.reset();
         this.setState({ email: '', username: '', password: '' });
         this.toggleCollapse();
+        this.toggleAlertModal();
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
         if (this.state.email !== this.props.email) {
-            alert('The email you entered is incorrect!');
+            this.setState({ error: 'email' });
             if (this.state.username !== this.props.username) {
-                alert('The username you entered is incorrect!');
+                this.setState({ error: 'email and username info' });
             };
-            this.resetAll(event);
+            this.resolve(event);
         } else if (this.state.username !== this.props.username) {
-            alert('The username you entered is incorrect!');
-            this.resetAll(event);
+            this.setState({ error: 'username' });
+            this.resolve(event);
         } else {
             axios.delete(`/user/${this.Auth.getProfile().id}/${this.state.password}`).then(res => {
                 alert(res.data.message);
@@ -50,8 +59,8 @@ class DeleteAccountCollapse extends Component {
                 this.props.history.replace('/');
             }).catch(err => {
                 console.log(err);
-                alert('The password you entered is incorrect!');
-                this.resetAll(event);
+                this.setState({ error: 'password' });
+                this.resolve(event);
             });
         };
     };
@@ -63,6 +72,8 @@ class DeleteAccountCollapse extends Component {
         };
         return (
             <div>
+                <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                    message={this.state.alertMsg} error={this.state.error} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='user-slash' /> Delete Account:</h5>

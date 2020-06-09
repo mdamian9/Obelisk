@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Collapse, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertModal from './AlertModal';
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
@@ -11,12 +12,19 @@ class ChangeUsernameCollapse extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            alertModalOpen: false,
+            alertMsg: null,
+            error: null
         };
     };
 
     toggleCollapse = () => {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    };
+
+    toggleAlertModal = () => {
+        this.setState(prevState => ({ alertModalOpen: !prevState.alertModalOpen }));
     };
 
     handleChange = event => {
@@ -31,20 +39,20 @@ class ChangeUsernameCollapse extends Component {
         if (this.state.currentUsername === this.props.currentUsername) {
             const body = { newUsername: this.state.newUsername, password: this.state.password };
             axios.patch(`/user/changeUsername/${this.Auth.getProfile().id}`, body).then(res => {
-                alert(res.data.message);
-                window.location.reload();
+                this.setState({ alertMsg: res.data.message, error: null });
+                this.toggleAlertModal();
             }).catch(err => {
                 console.log(err);
-                alert('The password you entered is incorrect!');
+                this.setState({ currentUsername: '', newUsername: '', password: '', error: 'password' });
                 event.target.reset();
-                this.setState({ currentUsername: '', newUsername: '', password: '' });
                 this.toggleCollapse();
+                this.toggleAlertModal();
             });
         } else {
-            alert('The current username you entered is incorrect!');
+            this.setState({ currentUsername: '', newUsername: '', password: '', error: 'current username' });
             event.target.reset();
-            this.setState({ currentUsername: '', newUsername: '', password: '' });
             this.toggleCollapse();
+            this.toggleAlertModal();
         };
     };
 
@@ -55,6 +63,8 @@ class ChangeUsernameCollapse extends Component {
         };
         return (
             <div>
+                <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                    message={this.state.alertMsg} error={this.state.error} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='user' /> Username:</h5>
