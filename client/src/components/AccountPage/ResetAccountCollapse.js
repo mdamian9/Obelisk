@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Collapse, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertModal from './AlertModal';
 import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
 import './AccountPage.css';
@@ -11,12 +12,19 @@ class ResetAccountCollapse extends Component {
         super(props);
         this.Auth = new AuthService();
         this.state = {
-            isOpen: false
+            isOpen: false,
+            alertModalOpen: false,
+            alertMsg: null,
+            error: null
         };
     };
 
     toggleCollapse = () => {
         this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    };
+
+    toggleAlertModal = () => {
+        this.setState(prevState => ({ alertModalOpen: !prevState.alertModalOpen }));
     };
 
     handleChange = event => {
@@ -29,21 +37,22 @@ class ResetAccountCollapse extends Component {
         event.target.reset();
         this.setState({ email: '', username: '', password: '' });
         this.toggleCollapse();
+        this.toggleAlertModal();
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
         if (this.state.username !== this.props.username) {
-            alert('The username you entered is incorrect!');
+            this.setState({ error: 'username' });
             this.resetAll(event);
         } else {
             axios.patch(`/user/resetAccount/${this.Auth.getProfile().id}`, { password: this.state.password }).then(res => {
-                alert(res.data.message);
+                this.setState({ alertMsg: res.data.message, error: null });
                 this.resetAll(event);
             }).catch(err => {
                 console.log(err);
-                alert('The password you entered is incorrect!');
+                this.setState({ error: 'password' });
                 this.resetAll(event);
             });
         };
@@ -56,6 +65,8 @@ class ResetAccountCollapse extends Component {
         };
         return (
             <div>
+                <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                    message={this.state.alertMsg} error={this.state.error} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>

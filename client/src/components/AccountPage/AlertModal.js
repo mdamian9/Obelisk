@@ -4,13 +4,9 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 const AlertModal = props => {
     let className = 'text-success';
     let header = 'Success:';
-    let message = props.message;
-    let errType = null;
     if (props.error) {
         className = 'text-danger';
         header = 'Error:';
-        errType = props.error;
-        message = `The ${errType} you entered is incorrect!`;
     };
     const resolve = () => {
         props.toggleAlertModal();
@@ -24,7 +20,7 @@ const AlertModal = props => {
                 <b style={{ fontSize: '24px' }}>{header}</b>
             </ModalHeader>
             <ModalBody>
-                {message}
+                {props.message}
             </ModalBody>
             <ModalFooter>
                 <Button onClick={() => { resolve(); }}>Close</Button>

@@ -38,6 +38,10 @@ class DeleteAccountCollapse extends Component {
         this.setState({ email: '', username: '', password: '' });
         this.toggleCollapse();
         this.toggleAlertModal();
+        if (this.state.error === null) {
+            this.Auth.logout();
+            this.props.history.replace('/');
+        };
     };
 
     handleFormSubmit = event => {
@@ -46,7 +50,7 @@ class DeleteAccountCollapse extends Component {
         if (this.state.email !== this.props.email) {
             this.setState({ error: 'email' });
             if (this.state.username !== this.props.username) {
-                this.setState({ error: 'email and username info' });
+                this.setState({ error: 'email and username information' });
             };
             this.resolve(event);
         } else if (this.state.username !== this.props.username) {
@@ -54,9 +58,8 @@ class DeleteAccountCollapse extends Component {
             this.resolve(event);
         } else {
             axios.delete(`/user/${this.Auth.getProfile().id}/${this.state.password}`).then(res => {
-                alert(res.data.message);
-                this.Auth.logout();
-                this.props.history.replace('/');
+                this.setState({ alertMsg: res.data.message, error: null });
+                this.resolve();
             }).catch(err => {
                 console.log(err);
                 this.setState({ error: 'password' });

@@ -15,7 +15,7 @@ class ChangeUsernameCollapse extends Component {
             isOpen: false,
             alertModalOpen: false,
             alertMsg: null,
-            error: null
+            error: false
         };
     };
 
@@ -33,26 +33,28 @@ class ChangeUsernameCollapse extends Component {
         this.setState({ [name]: value })
     };
 
+    resolve = event => {
+        event.target.reset();
+        this.setState({ currentUsername: '', newUsername: '', password: '' });
+        this.toggleCollapse();
+        this.toggleAlertModal();
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
         if (this.state.currentUsername === this.props.currentUsername) {
             const body = { newUsername: this.state.newUsername, password: this.state.password };
             axios.patch(`/user/changeUsername/${this.Auth.getProfile().id}`, body).then(res => {
-                this.setState({ alertMsg: res.data.message, error: null });
-                this.toggleAlertModal();
+                this.setState({ alertMsg: res.data.message, error: false });
+                this.resolve(event);
             }).catch(err => {
-                console.log(err);
-                this.setState({ currentUsername: '', newUsername: '', password: '', error: 'password' });
-                event.target.reset();
-                this.toggleCollapse();
-                this.toggleAlertModal();
+                this.setState({ alertMsg: err.response.data.message, error: true });
+                this.resolve(event);
             });
         } else {
-            this.setState({ currentUsername: '', newUsername: '', password: '', error: 'current username' });
-            event.target.reset();
-            this.toggleCollapse();
-            this.toggleAlertModal();
+            this.setState({ alertMsg: 'The current username you entered is incorrect!', error: true });
+            this.resolve(event);
         };
     };
 

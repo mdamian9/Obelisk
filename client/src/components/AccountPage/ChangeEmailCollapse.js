@@ -15,7 +15,7 @@ class ChangeEmailCollapse extends Component {
             isOpen: false,
             alertModalOpen: false,
             alertMsg: null,
-            error: null
+            error: false
         };
     };
 
@@ -33,31 +33,32 @@ class ChangeEmailCollapse extends Component {
         this.setState({ [name]: value });
     };
 
+    resolve = event => {
+        event.target.reset();
+        this.setState({ currentUsername: '', newUsername: '', password: '' });
+        this.toggleCollapse();
+        this.toggleAlertModal();
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
         const body = { newEmail: this.state.newEmail, password: this.state.password };
         if (this.state.currentEmail === this.props.currentEmail) {
             axios.patch(`/user/changeEmail/${this.Auth.getProfile().id}`, body).then(res => {
-                this.setState({ alertMsg: res.data.message, error: null });
-                this.toggleAlertModal();
+                this.setState({ alertMsg: res.data.message, error: false });
+                this.resolve(event);
             }).catch(err => {
-                console.log(err);
-                this.setState({ currentEmail: '', newEmail: '', password: '', error: 'password' });
-                event.target.reset();
-                this.toggleCollapse();
-                this.toggleAlertModal();
+                this.setState({ alertMsg: err.response.data.message, error: true });
+                this.resolve(event);
             });
         } else {
-            this.setState({ currentEmail: '', newEmail: '', password: '', error: 'email' });
-            event.target.reset();
-            this.toggleCollapse();
-            this.toggleAlertModal();
+            this.setState({ alertMsg: 'The email you entered is incorrect!', error: true });
+            this.resolve(event);
         };
     };
 
     render = () => {
-        console.log(this.state.error);
         let editButton = <div><FontAwesomeIcon icon='edit' /> Edit</div>
         if (this.state.isOpen === true) {
             editButton = <div style={{ padding: '0px 10px 0px 10px' }}><FontAwesomeIcon icon='angle-double-up' /></div>

@@ -21,14 +21,14 @@ router.post('/login', (req, res, next) => {
                 let token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: 129600 });
                 res.json({ success: true, message: "Token issued!", token: token, user: user });
             } else {
-                res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+                res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         });
     }).catch(err => {
         console.log(err);
         res.status(404).json({
             success: false,
-            message: 'No user was found with the username you entered.',
+            message: 'No user was found with the username you entered!',
             error: err
         });
     });

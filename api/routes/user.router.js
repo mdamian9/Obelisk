@@ -19,16 +19,20 @@ const fixDecimal = (currency, total) => {
 router.get('/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         if (!user) {
-            res.status(404).send({
+            res.status(404).json({
                 success: false,
-                message: 'No user found'
+                message: 'No user found with that ID!'
             });
         } else {
             res.status(200).json(user);
         };
     }).catch(err => {
         console.log(err);
-        res.status(400).send(err);
+        res.status(500).json({
+            success: false,
+            message: 'Error occurred',
+            error: err
+        });
     });
 });
 
@@ -123,7 +127,7 @@ router.patch('/changeEmail/:id', isAuthenticated, (req, res, next) => {
                     });
                 });
             } else {
-                return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+                res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         });
     }).catch(err => {
@@ -147,7 +151,7 @@ router.patch('/changeUsername/:id', isAuthenticated, (req, res, next) => {
                     });
                 });
             } else {
-                return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+                res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         })
     }).catch(err => {
@@ -171,7 +175,7 @@ router.patch('/changePassword/:id', isAuthenticated, (req, res, next) => {
                     });
                 });
             } else {
-                return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+                res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         });
     }).catch(err => {
@@ -213,7 +217,7 @@ router.patch('/resetAccount/:id', isAuthenticated, (req, res, next) => {
                     });
                 });
             } else {
-                return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+                res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         });
     }).catch(err => {
@@ -241,7 +245,7 @@ router.delete('/:id/:password', isAuthenticated, (req, res, next) => {
                     });
                 })
             } else {
-                return res.status(401).json({ success: false, message: 'The password you entered is incorrect.' });
+                return res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         });
     }).catch(err => {
