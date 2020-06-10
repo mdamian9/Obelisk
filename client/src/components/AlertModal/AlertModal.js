@@ -18,7 +18,8 @@ const AlertModal = props => {
         };
         if (props.logout) {
             Auth.logout();
-            props.history.replace('/');        }
+            props.history.replace('/');
+        };
     };
     return (
         <Modal isOpen={props.isOpen} toggle={props.toggleAlertModal} className={props.className}>

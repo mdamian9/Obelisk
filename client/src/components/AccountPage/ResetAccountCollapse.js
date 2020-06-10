@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Collapse, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AlertModal from './AlertModal';
-import AuthService from '../AuthService/AuthService';
 import axios from 'axios';
+import AuthService from '../AuthService/AuthService';
+import AlertModal from '../AlertModal/AlertModal';
 import './AccountPage.css';
 
 class ResetAccountCollapse extends Component {
