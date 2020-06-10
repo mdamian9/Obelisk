@@ -15,7 +15,7 @@ class DeleteAccountCollapse extends Component {
             isOpen: false,
             alertModalOpen: false,
             alertMsg: null,
-            error: null
+            error: false
         };
     };
 
@@ -38,31 +38,23 @@ class DeleteAccountCollapse extends Component {
         this.setState({ email: '', username: '', password: '' });
         this.toggleCollapse();
         this.toggleAlertModal();
-        if (this.state.error === null) {
-            this.Auth.logout();
-            this.props.history.replace('/');
-        };
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
         if (this.state.email !== this.props.email) {
-            this.setState({ error: 'email' });
-            if (this.state.username !== this.props.username) {
-                this.setState({ error: 'email and username information' });
-            };
+            this.setState({ alertMsg: 'The email you entered is incorrect!', error: true });
             this.resolve(event);
         } else if (this.state.username !== this.props.username) {
-            this.setState({ error: 'username' });
+            this.setState({ alertMsg: 'The username you entered is incorrect!', error: true });
             this.resolve(event);
         } else {
             axios.delete(`/user/${this.Auth.getProfile().id}/${this.state.password}`).then(res => {
-                this.setState({ alertMsg: res.data.message, error: null });
-                this.resolve();
+                this.setState({ alertMsg: res.data.message, error: false, logout: true });
+                this.resolve(event);
             }).catch(err => {
-                console.log(err);
-                this.setState({ error: 'password' });
+                this.setState({ alertMsg: err.response.data.message, error: true });
                 this.resolve(event);
             });
         };
@@ -76,7 +68,7 @@ class DeleteAccountCollapse extends Component {
         return (
             <div>
                 <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
-                    message={this.state.alertMsg} error={this.state.error} />
+                    message={this.state.alertMsg} error={this.state.error} reload={false} logout={true} history={this.props.history} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='user-slash' /> Delete Account:</h5>

@@ -15,7 +15,7 @@ class ResetAccountCollapse extends Component {
             isOpen: false,
             alertModalOpen: false,
             alertMsg: null,
-            error: null
+            error: false
         };
     };
 
@@ -33,9 +33,9 @@ class ResetAccountCollapse extends Component {
         this.setState({ [name]: value })
     };
 
-    resetAll = event => {
+    resolve = event => {
         event.target.reset();
-        this.setState({ email: '', username: '', password: '' });
+        this.setState({ username: '', password: '' });
         this.toggleCollapse();
         this.toggleAlertModal();
     };
@@ -43,18 +43,17 @@ class ResetAccountCollapse extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
-        if (this.state.username !== this.props.username) {
-            this.setState({ error: 'username' });
-            this.resetAll(event);
-        } else {
+        if (this.state.username === this.props.username) {
             axios.patch(`/user/resetAccount/${this.Auth.getProfile().id}`, { password: this.state.password }).then(res => {
-                this.setState({ alertMsg: res.data.message, error: null });
-                this.resetAll(event);
+                this.setState({ alertMsg: res.data.message, error: false });
+                this.resolve(event);
             }).catch(err => {
-                console.log(err);
-                this.setState({ error: 'password' });
-                this.resetAll(event);
+                this.setState({ alertMsg: err.response.data.message, error: true });
+                this.resolve(event);
             });
+        } else {
+            this.setState({ alertMsg: 'The username you entered is incorrect!', error: true });
+            this.resolve(event);
         };
     };
 
@@ -66,7 +65,7 @@ class ResetAccountCollapse extends Component {
         return (
             <div>
                 <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
-                    message={this.state.alertMsg} error={this.state.error} />
+                    message={this.state.alertMsg} error={this.state.error} reload={false} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='redo' /> Reset Account:</h5>

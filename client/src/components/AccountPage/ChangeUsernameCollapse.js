@@ -66,7 +66,7 @@ class ChangeUsernameCollapse extends Component {
         return (
             <div>
                 <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
-                    message={this.state.alertMsg} error={this.state.error} />
+                    message={this.state.alertMsg} error={this.state.error} reload={true} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='user' /> Username:</h5>

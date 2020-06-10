@@ -15,7 +15,7 @@ class ChangePasswordCollapse extends Component {
             isOpen: false,
             alertModalOpen: false,
             alertMsg: null,
-            error: null
+            error: false
         };
     };
 
@@ -33,26 +33,28 @@ class ChangePasswordCollapse extends Component {
         this.setState({ [name]: value })
     };
 
+    resolve = event => {
+        event.target.reset();
+        this.setState({ username: '', currentPassword: '', newPassword: '' });
+        this.toggleCollapse();
+        this.toggleAlertModal();
+    };
+
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
         if (this.state.username === this.props.username) {
             const update = { currentPassword: this.state.currentPassword, newPassword: this.state.newPassword };
             axios.patch(`/user/changePassword/${this.Auth.getProfile().id}`, update).then(res => {
-                this.setState({ alertMsg: res.data.message, error: null });
-                this.toggleAlertModal();
+                this.setState({ alertMsg: res.data.message, error: false });
+                this.resolve(event);
             }).catch(err => {
-                console.log(err);
-                this.setState({ username: '', password: '', error: 'password' });
-                event.target.reset();
-                this.toggleCollapse();
-                this.toggleAlertModal();
+                this.setState({ alertMsg: err.response.data.message, error: true });
+                this.resolve(event);
             });
         } else {
-            this.setState({ username: '', password: '', error: 'username' });
-            event.target.reset();
-            this.toggleCollapse();
-            this.toggleAlertModal();
+            this.setState({ alertMsg: 'The username you entered is incorrect!', error: true });
+            this.resolve(event);
         };
     };
 
@@ -64,7 +66,7 @@ class ChangePasswordCollapse extends Component {
         return (
             <div>
                 <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
-                    message={this.state.alertMsg} error={this.state.error} />
+                    message={this.state.alertMsg} error={this.state.error} reload={true} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='key' /> Password:</h5>

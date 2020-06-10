@@ -35,7 +35,7 @@ class ChangeEmailCollapse extends Component {
 
     resolve = event => {
         event.target.reset();
-        this.setState({ currentUsername: '', newUsername: '', password: '' });
+        this.setState({ currentEmail: '', newEmail: '', password: '' });
         this.toggleCollapse();
         this.toggleAlertModal();
     };
@@ -66,7 +66,7 @@ class ChangeEmailCollapse extends Component {
         return (
             <div>
                 <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
-                    message={this.state.alertMsg} error={this.state.error} />
+                    message={this.state.alertMsg} error={this.state.error} reload={true} />
                 <Row>
                     <Col>
                         <h5><FontAwesomeIcon icon='at' /> Email:</h5>

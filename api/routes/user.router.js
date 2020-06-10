@@ -41,7 +41,7 @@ router.patch('/depositFunds/:id/', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         const updatedFunds = user['mainWallet'][req.body.currency.toLowerCase()].funds + parseFloat(req.body.totalDeposit);
         user['mainWallet'][req.body.currency.toLowerCase()].funds = fixDecimal(req.body.currency, updatedFunds);
-        return user.save().then(() => {
+        user.save().then(() => {
             res.status(200).json({
                 message: 'Sucessfully added funds to main wallet!',
             });
@@ -63,7 +63,7 @@ router.patch('/transferFunds/:id', isAuthenticated, (req, res, next) => {
         const updatedToWalletFunds = user[req.body.to][targetCurrency].funds + parseFloat(req.body.totalTransfer);
         user[req.body.from][targetCurrency].funds = fixDecimal(req.body.currency, updatedFromWalletFunds);
         user[req.body.to][targetCurrency].funds = fixDecimal(req.body.currency, updatedToWalletFunds);
-        return user.save().then(() => {
+        user.save().then(() => {
             res.status(200).json({
                 message: 'Sucessfully transferred funds!',
             });
@@ -82,7 +82,7 @@ router.patch('/withdrawFunds/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         const updatedBalance = user['mainWallet'][req.body.currency.toLowerCase()].funds - parseFloat(req.body.totalWithdrawal);
         user['mainWallet'][req.body.currency.toLowerCase()].funds = fixDecimal(req.body.currency, updatedBalance);
-        return user.save().then(() => {
+        user.save().then(() => {
             res.status(200).json({
                 message: 'Successfully withdrew funds!'
             });
@@ -100,7 +100,7 @@ router.patch('/withdrawFunds/:id', isAuthenticated, (req, res, next) => {
 router.patch('/resetFunds/:id', isAuthenticated, (req, res, next) => {
     db.User.findById(req.params.id).then(user => {
         user['mainWallet'][req.body.currency].funds = 0;
-        return user.save().then(() => {
+        user.save().then(() => {
             res.status(200).json({
                 message: 'Successfully reset funds to 0!'
             });
@@ -120,7 +120,7 @@ router.patch('/changeEmail/:id', isAuthenticated, (req, res, next) => {
         user.verifyPassword(req.body.password, (err, isMatch) => {
             if (!err && isMatch) {
                 user.email = req.body.newEmail;
-                return user.save().then(() => {
+                user.save().then(() => {
                     res.status(200).json({
                         success: true,
                         message: 'Successfully changed user email!'
@@ -145,7 +145,7 @@ router.patch('/changeUsername/:id', isAuthenticated, (req, res, next) => {
         user.verifyPassword(req.body.password, (err, isMatch) => {
             if (!err && isMatch) {
                 user.username = req.body.newUsername;
-                return user.save().then(() => {
+                user.save().then(() => {
                     res.status(200).json({
                         message: 'Successfully changed username!'
                     });
@@ -169,7 +169,7 @@ router.patch('/changePassword/:id', isAuthenticated, (req, res, next) => {
         user.verifyPassword(req.body.currentPassword, (err, isMatch) => {
             if (!err && isMatch) {
                 user.password = req.body.newPassword;
-                return user.save().then(() => {
+                user.save().then(() => {
                     res.status(200).json({
                         message: 'Successfully changed password!'
                     });
@@ -210,7 +210,7 @@ router.patch('/resetAccount/:id', isAuthenticated, (req, res, next) => {
                     db.EntryTrade.deleteMany({ user: req.params.id }),
                     db.ExitTrade.deleteMany({ user: req.params.id })
                 ];
-                return Promise.all(promises).then(() => {
+                Promise.all(promises).then(() => {
                     res.status(200).json({
                         success: true,
                         message: 'Successfully reset account!'
@@ -238,14 +238,14 @@ router.delete('/:id/:password', isAuthenticated, (req, res, next) => {
                     db.EntryTrade.deleteMany({ user: req.params.id }),
                     db.ExitTrade.deleteMany({ user: req.params.id })
                 ];
-                return Promise.all(promises).then(() => {
+                Promise.all(promises).then(() => {
                     res.status(200).json({
                         success: true,
                         message: 'Successfully deleted user account!'
                     });
                 })
             } else {
-                return res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
+                res.status(401).json({ success: false, message: 'The password you entered is incorrect!' });
             };
         });
     }).catch(err => {
