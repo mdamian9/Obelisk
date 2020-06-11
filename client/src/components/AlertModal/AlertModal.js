@@ -20,6 +20,9 @@ const AlertModal = props => {
             Auth.logout();
             props.history.replace('/');
         };
+        if (props.login) {
+            props.history.replace('/login');     
+        };
     };
     return (
         <Modal isOpen={props.isOpen} toggle={props.toggleAlertModal} className={props.className}>

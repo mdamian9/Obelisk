@@ -5,11 +5,30 @@ const db = require('../models');
 
 // Signup Route
 router.post('/signup', (req, res, next) => {
-    db.User.create(req.body).then(() => {
-        res.status(201).json({ message: 'You have successfully created a new account!' });
+    const promises = [
+        db.User.findOne({ email: req.body.email }),
+        db.User.findOne({ username: req.body.username })
+    ];
+    Promise.all(promises).then(values => {
+        console.log(values);
+        if (values[0]) {
+            res.status(409).json({
+                success: false,
+                message: 'The email you entered already exists!'
+            });
+        } else if (values[1]) {
+            res.status(409).json({
+                success: false,
+                message: 'The username you entered already exists!'
+            });
+        } else {
+            db.User.create(req.body).then(() => {
+                res.status(201).json({ message: 'You have successfully created a new account!' });
+            });
+        };
     }).catch(err => {
         console.log(err);
-        res.status(500).json({ message: 'Error occurred while creating a new account.', error: err });
+        res.status(500).json({ message: 'Error occurred while creating a new account!', error: err });
     });
 });
 

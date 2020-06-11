@@ -1,3 +1,6 @@
+- To-do next:
+    - Finish implementing alert modal (success creating account, signup page login page if needed)
+
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
         - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
