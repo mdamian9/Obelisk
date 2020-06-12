@@ -72,7 +72,7 @@ class SellTradeModal extends Component {
                     <ModalHeader className='text-danger'>
                         <b style={{ fontSize: '24px' }}>Sell Position</b>
                     </ModalHeader>
-                    <Form id='add-funds-form' onSubmit={this.handleFormSubmit}>
+                    <Form id='sell-trade-form' onSubmit={this.handleFormSubmit}>
                         <ModalBody>
                             <FormGroup>
                                 <b>Selling {this.props.trade.totalCoins} {this.props.trade.coinName}</b>

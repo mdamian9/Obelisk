@@ -2,47 +2,14 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import moment from 'moment';
 import UserNavbar from '../UserNavbar/UserNavbar';
-import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
-import SellTradeModal from './SellTradeModal';
-import TradeInfoModal from '../TradeInfoModal/TradeInfoModal';
+import EntryTradeRow from './EntryTradeRow';
 import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
 
-const TableRow = ({ trade, updateTrades, history }) => {
-    const date = moment.utc(trade.date).local().format('MM/D/YYYY');
-    const time = moment.utc(trade.date).local().format('h:mm a');
-    let ActionButton =
-        <div className='d-flex'>
-            <SellTradeModal trade={trade} history={history} />
-            &ensp;
-            <DeleteTradeModal type='entryTrade' tradeId={trade._id} updateTrades={updateTrades} />
-        </div>;
-    if (trade.sold === true) {
-        ActionButton =
-            <div className='d-flex'>
-                <TradeInfoModal type='exitTrade' trade={trade} oppTradeId={trade.exitTrade} />
-                &ensp;
-                <DeleteTradeModal type='entryTrade' tradeId={trade._id} exitTradeId={trade.exitTrade} updateTrades={updateTrades}
-                sold={true} currency={trade.currency} totalInvestment={trade.totalInvestment} />
-            </div>;
-    };
-    return (
-        <tr>
-            <th scope="row">{date},<br />{time}</th>
-            <td>{trade.tradingPair}</td>
-            <td>{trade.totalInvestment} {trade.currency}</td>
-            <td>{trade.entryPrice} {trade.currency}</td>
-            <td>{trade.totalCoins} {trade.coinName}</td>
-            <td>{ActionButton}</td>
-        </tr >
-    );
-};
-
 const TableBody = ({ trades, updateTrades, history }) => {
     const tradeRows = trades.map(trade => {
-        return <TableRow key={trade._id} trade={trade} updateTrades={updateTrades} history={history} />
+        return <EntryTradeRow key={trade._id} trade={trade} updateTrades={updateTrades} history={history} />
     });
     return (
         <tbody>

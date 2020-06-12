@@ -30,7 +30,7 @@ class ResetAccountCollapse extends Component {
     handleChange = event => {
         // Extract name & value from event target and set to state
         const { name, value } = event.target;
-        this.setState({ [name]: value })
+        this.setState({ [name]: value });
     };
 
     resolve = event => {

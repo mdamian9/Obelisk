@@ -6,6 +6,9 @@
         - Fix deleteTrade() in DeleteTradeModal - sometimes wallet balances are not updated correctly. Not sure why
     - may be case where trading funds are not enough (transfer back funds to tradingWallet to delete trade)
 
+- EntryTradeRow
+    - Double check if switch statement returns correct output
+
 - NewEntryTradePage
     - Build simple error modal (trade still goes thru when currency and coin are not selected)
     - required for both selects (don't let user submit until all fields are filled)
