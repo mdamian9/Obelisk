@@ -13,15 +13,21 @@ const AlertModal = props => {
     };
     const resolve = () => {
         props.toggleAlertModal();
-        if (!props.error && props.reload) {
-            window.location.reload();
+        if (props.login) {
+            props.history.replace('/login');     
         };
         if (props.logout) {
             Auth.logout();
             props.history.replace('/');
         };
-        if (props.login) {
-            props.history.replace('/login');     
+        if (props.entryTrade) {
+            props.history.replace('/entry-trades');
+        };
+        if (props.exitTrade) {
+            props.history.replace('/exit-trades');
+        };
+        if (!props.error && props.reload) {
+            window.location.reload();
         };
     };
     return (

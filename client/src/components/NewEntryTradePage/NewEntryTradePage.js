@@ -7,6 +7,7 @@ import Currencies from '../../assets/currencies';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import NewEntryTradeErrModal from './NewEntryTradeErrorModal';
 import Footer from '../Footer/Footer';
+import AlertModal from '../AlertModal/AlertModal';
 import AuthService from '../AuthService/AuthService';
 import withAuth from '../withAuth/withAuth';
 
@@ -18,8 +19,15 @@ class NewEntryTradePage extends Component {
         this.state = {
             errModalOpen: false,
             selectedOptionOne: null,
-            selectedOptionTwo: null
+            selectedOptionTwo: null,
+            alertModalOpen: false,
+            alertMsg: null,
+            error: false
         };
+    };
+
+    toggleAlertModal = () => {
+        this.setState(prevState => ({ alertModalOpen: !prevState.alertModalOpen }));
     };
 
     toggleErrModal = () => {
@@ -57,6 +65,7 @@ class NewEntryTradePage extends Component {
     // Create new entry trade and save to database
     handleFormSubmit = event => {
         event.preventDefault();
+        event.persist();
         const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
         // If total investment is greater than available trading funds, toggle error modal
         if (this.state.totalInvestment > availableFunds) {
@@ -76,10 +85,18 @@ class NewEntryTradePage extends Component {
                 totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
                 user: this.props.user.id
             };
-            axios.post('/entryTrade', entryTrade).then(() => {
-                this.props.history.replace('/entry-trades');
-            }).catch(err => { console.log(err); });
-            event.target.reset();
+            axios.post('/entryTrade', entryTrade).then(res => {
+                event.target.reset();
+                this.setState({ alertMsg: res.data.message, error: false });
+                this.toggleAlertModal();
+            }).catch(err => {
+                event.target.reset();
+                this.setState({
+                    currency: null, totalInvestment: null, coinName: null, entryPrice: null,
+                    alertMsg: err.response.data.message, err: true
+                });
+                this.toggleAlertModal();
+            });
         };
     };
 
@@ -170,6 +187,9 @@ class NewEntryTradePage extends Component {
         return (
             <div>
                 <div className='content'>
+                    <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                        message={this.state.alertMsg} error={this.state.error} reload={false} history={this.props.history}
+                        entryTrade={true} />
                     <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
                     <UserNavbar history={this.props.history} />
                     <br />
