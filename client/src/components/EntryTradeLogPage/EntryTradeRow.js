@@ -35,6 +35,7 @@ class EntryTradeRow extends Component {
     handleFormSubmit = event => {
         const { trade, history } = this.props;
         event.preventDefault();
+        event.persist();
         let totalDivestment = trade.totalCoins * this.state.exitPrice;
         let totalProfit = totalDivestment - trade.totalInvestment;
 
@@ -70,9 +71,10 @@ class EntryTradeRow extends Component {
             user: trade.user,
             entryTrade: trade._id
         };
-        axios.post('/exitTrade', exitTrade).catch(err => { console.log(err); });
-        event.target.reset();
-        history.replace('/exit-trades');
+        axios.post('/exitTrade', exitTrade).then(() => {
+            event.target.reset();
+            history.replace('/exit-trades');
+        }).catch(err => { console.log(err); });
     };
 
     render = () => {

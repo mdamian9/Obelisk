@@ -16,9 +16,6 @@
 - Tutorial Page
     - Begin building tutorial page
 
-- Account Page
-    - Modals vs alerts for errors
-
 - Resources Page
 
 - Make App responsive / optimzied for mobile browsers
