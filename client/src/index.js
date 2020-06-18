@@ -48,7 +48,7 @@ ReactDOM.render(
         <Route exact path='/home' component={HomePage} />
         <Route exact path='/account' component={AccountPage} />
         <Route exact path='/tutorial' component={TutorialPage} />
-        <Route exact path='resources' component={ResourcesPage} />
+        <Route exact path='/resources' component={ResourcesPage} />
         <Route exact path='/find-percent-change' component={FindPercentChangePage} />
         <Route exact path='/get-target-price' component={GetTargetPricePage} />
         <Route exact path='/calculate-roi' component={CalculateRoiPage} />

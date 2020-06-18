@@ -5,6 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 import DeleteTradeModal from '../DeleteTradeModal/DeleteTradeModal';
 import TradeInfoModal from '../TradeInfoModal/TradeInfoModal';
+import AlertModal from '../AlertModal/AlertModal';
 
 class EntryTradeRow extends Component {
 
@@ -71,10 +72,15 @@ class EntryTradeRow extends Component {
             user: trade.user,
             entryTrade: trade._id
         };
-        axios.post('/exitTrade', exitTrade).then(() => {
+        axios.post('/exitTrade', exitTrade).then(res => {
             event.target.reset();
-            history.replace('/exit-trades');
-        }).catch(err => { console.log(err); });
+            this.setState({ alertMsg: res.data.message, error: false });
+            this.toggleAlertModal();
+        }).catch(err => {
+            event.target.reset();
+            this.setState({ exitPrice: 0, alertMsg: err.response.data.message, error: true });
+            this.toggleAlertModal();
+        });
     };
 
     render = () => {
@@ -113,6 +119,9 @@ class EntryTradeRow extends Component {
             </tr >,
             <tr key={`${trade._id}_sell`}>
                 <td colSpan={6}>
+                    <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
+                        message={this.state.alertMsg} error={this.state.error} reload={false} history={this.props.history}
+                        exitTrade={true} />
                     <Collapse isOpen={this.state.isOpen} style={{ color: 'black' }}>
                         <Card style={{ width: '60%' }} className='mx-auto'>
                             <CardBody>

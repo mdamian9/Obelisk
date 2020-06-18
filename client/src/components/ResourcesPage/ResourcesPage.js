@@ -22,6 +22,22 @@ class ResourcesPage extends Component {
                                 <h3 className='text-center'>
                                     Resources
                                 </h3>
+                                <hr className='ln-white' />
+                                <div className='d-flex justify-content-center'>
+                                    <ul>
+                                        <li>Twitter:</li>
+                                        <li>CoinMarketCap:</li>
+                                        <li>BitcoinWisdom:</li>
+                                        <li>TradingView:</li>
+                                        <li>Binance:</li>
+                                        <li>Binance.US:</li>
+                                        <li>Bittrex:</li>
+                                        <li>Coinbase:</li>
+                                        <li>Bitcoin Magazine:</li>
+                                        <li>Coindesk:</li>
+                                        <li>CoinTelegraph:</li>
+                                    </ul>
+                                </div>
                             </Col>
                         </Row>
                     </Container>

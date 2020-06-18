@@ -1,5 +1,4 @@
 - To-do next:
-    - Finish implementing alert modal (success creating account, signup page login page if needed)
 
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
@@ -17,15 +16,13 @@
     - Begin building tutorial page
 
 - Resources Page
+    - Finish resources page
 
 - Make App responsive / optimzied for mobile browsers
     - Issues:
         - 
 
-- Using AuthService in multiple components to get user id, vs just setting user id in withAuth when setting profile
-- 401 no response, works in Login (navbar) but no data returned in rest?
 - toLowerCase issue (fix from root - user model - wallets)
-- 304 status code (GET /user/:id)
 - Props - user - getting user data and passing as prop <> getting user data again (fix)
 - Rename 'currency' and 'coinName' fields in trade models to baseCurrency and quoteCurrency
 - Fix decimals toFixed on trades / balances
@@ -34,5 +31,12 @@
 - Add *Nomics API to get real time market data, and integrate into app to dynamically render using API data
 
 - In the end, convert all possible class components to functional components using useState
-
 - Review and comment code
+________________________________________________________________________________________________________________________________
+
+* Questions *
+
+- Unneccessary event.target.resets when showing alerts? (All through out components)
+- 304 status code (GET /user/:id)
+- Using AuthService in multiple components to get user id, vs just setting user id in withAuth when setting profile
+

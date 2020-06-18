@@ -56,8 +56,11 @@ router.post('/', isAuthenticated, (req, res, next) => {
             user.tradingWallet[targetWallet].funds = fixDecimal(trade.currency, updatedTradingFunds);
             return user.save();
         });
-    }).then(result => {
-        res.status(201).json(result);
+    }).then(() => {
+        res.status(201).json({
+            success: true,
+            message: 'Successfully sold position and created new exit trade!'
+        });
     }).catch(err => {
         console.log(err);
         res.status(500).json({
