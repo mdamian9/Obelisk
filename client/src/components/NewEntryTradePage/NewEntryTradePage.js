@@ -20,6 +20,7 @@ class NewEntryTradePage extends Component {
             errModalOpen: false,
             selectedOptionOne: null,
             selectedOptionTwo: null,
+            errModalErr: null,
             alertModalOpen: false,
             alertMsg: null,
             error: false
@@ -66,38 +67,81 @@ class NewEntryTradePage extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         event.persist();
-        const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
-        // If total investment is greater than available trading funds, toggle error modal
-        if (this.state.totalInvestment > availableFunds) {
+        console.log(this.state);
+        if (this.state.selectedOptionOne === null || this.state.selectedOptionTwo === null) {
+            // console.log('missing curr or coinname')
             event.target.reset();
+            this.setState({ totalInvestment: null, entryPrice: null });
             this.toggleErrModal();
-            this.setState({
-                totalInvestment: 0
-            });
         } else {
-            const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.entryPrice);
-            const entryTrade = {
-                currency: this.state.currency,
-                totalInvestment: this.state.totalInvestment,
-                coinName: this.state.coinName,
-                tradingPair: `${this.state.coinName}/${this.state.currency}`,
-                entryPrice: this.state.entryPrice,
-                totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
-                user: this.props.user.id
-            };
-            axios.post('/entryTrade', entryTrade).then(res => {
-                event.target.reset();
-                this.setState({ alertMsg: res.data.message, error: false });
-                this.toggleAlertModal();
-            }).catch(err => {
+            const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
+            // If total investment is greater than available trading funds, toggle error modal
+            if (this.state.totalInvestment > availableFunds) {
                 event.target.reset();
                 this.setState({
-                    currency: null, totalInvestment: null, coinName: null, entryPrice: null,
-                    alertMsg: err.response.data.message, err: true
+                    totalInvestment: 0,
+                    errModalErr: 'funds'
                 });
-                this.toggleAlertModal();
-            });
-        };
+                this.toggleErrModal();
+            } else {
+                const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.entryPrice);
+                const entryTrade = {
+                    currency: this.state.currency,
+                    totalInvestment: this.state.totalInvestment,
+                    coinName: this.state.coinName,
+                    tradingPair: `${this.state.coinName}/${this.state.currency}`,
+                    entryPrice: this.state.entryPrice,
+                    totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
+                    user: this.props.user.id
+                };
+                axios.post('/entryTrade', entryTrade).then(res => {
+                    event.target.reset();
+                    this.setState({ alertMsg: res.data.message, error: false });
+                    this.toggleAlertModal();
+                }).catch(err => {
+                    event.target.reset();
+                    this.setState({
+                        currency: null, totalInvestment: null, coinName: null, entryPrice: null,
+                        alertMsg: err.response.data.message, err: true
+                    });
+                    this.toggleAlertModal();
+                });
+            };
+        }
+        // } else {
+        //     const availableFunds = this.props.user.tradingWallet[this.state.currency.toLowerCase()].funds;
+        //     // If total investment is greater than available trading funds, toggle error modal
+        //     if (this.state.totalInvestment > availableFunds) {
+        //         event.target.reset();
+        //         this.toggleErrModal();
+        //         this.setState({
+        //             totalInvestment: 0
+        //         });
+        //     } else {
+        //         const totalCoins = parseFloat(this.state.totalInvestment) / parseFloat(this.state.entryPrice);
+        //         const entryTrade = {
+        //             currency: this.state.currency,
+        //             totalInvestment: this.state.totalInvestment,
+        //             coinName: this.state.coinName,
+        //             tradingPair: `${this.state.coinName}/${this.state.currency}`,
+        //             entryPrice: this.state.entryPrice,
+        //             totalCoins: totalCoins.toFixed(8).replace(/\.?0+$/, ''),
+        //             user: this.props.user.id
+        //         };
+        //         axios.post('/entryTrade', entryTrade).then(res => {
+        //             event.target.reset();
+        //             this.setState({ alertMsg: res.data.message, error: false });
+        //             this.toggleAlertModal();
+        //         }).catch(err => {
+        //             event.target.reset();
+        //             this.setState({
+        //                 currency: null, totalInvestment: null, coinName: null, entryPrice: null,
+        //                 alertMsg: err.response.data.message, err: true
+        //             });
+        //             this.toggleAlertModal();
+        //         });
+        //     };
+        // };
     };
 
     render = () => {
@@ -190,7 +234,8 @@ class NewEntryTradePage extends Component {
                     <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
                         message={this.state.alertMsg} error={this.state.error} reload={false} history={this.props.history}
                         entryTrade={true} />
-                    <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal} />
+                    <NewEntryTradeErrModal isOpen={this.state.errModalOpen} toggleErrModal={this.toggleErrModal}
+                        error={this.state.errModalErr} />
                     <UserNavbar history={this.props.history} />
                     <br />
                     <Container style={{ marginTop: '7.5vh' }}>

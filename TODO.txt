@@ -7,11 +7,7 @@
 
 - EntryTradeRow
     - Double check if switch statement returns correct output
-
-- NewEntryTradePage
-    - Build simple error modal (trade still goes thru when currency and coin are not selected)
-    - required for both selects (don't let user submit until all fields are filled)
-
+    
 - Tutorial Page
     - Begin building tutorial page
 

@@ -1,0 +1,7 @@
+#resources a {
+    color: white;
+}
+
+#resources a:hover {
+    color: silver;
+}

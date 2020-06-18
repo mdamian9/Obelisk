@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import UserNavbar from '../UserNavbar/UserNavbar';
 import Footer from '../Footer/Footer';
 import withAuth from '../withAuth/withAuth';
+import './ResourcesPage.css';
 
 class ResourcesPage extends Component {
 
@@ -24,12 +26,15 @@ class ResourcesPage extends Component {
                                 </h3>
                                 <hr className='ln-white' />
                                 <div className='d-flex justify-content-center'>
-                                    <ul>
-                                        <li>Twitter:</li>
+                                    <ul id='resources'>
+                                        <li>
+                                            Twitter: <Link to='https://twitter.com/'>https://twitter.com/</Link><br />
+                                            Twitter is this and that
+                                        </li>
                                         <li>CoinMarketCap:</li>
                                         <li>BitcoinWisdom:</li>
                                         <li>TradingView:</li>
-                                        <li>Binance:</li>
+                                        <li>Binance: <Link to='https://binance.com/'>https://binance.com/</Link></li>
                                         <li>Binance.US:</li>
                                         <li>Bittrex:</li>
                                         <li>Coinbase:</li>
