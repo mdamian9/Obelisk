@@ -5,6 +5,7 @@ import SignupModal from '../SignupModal/SignupModal';
 import Logo from '../Logo/Logo';
 import Footer from '../Footer/Footer';
 import AuthService from '../AuthService/AuthService';
+import './LandingPage.css';
 
 class LandingPage extends Component {
 
@@ -24,12 +25,12 @@ class LandingPage extends Component {
         return (
             <div>
                 <LandingNavbar history={this.props.history} />
-                <div className='full-r-div'>
+                <div className='landing-content'>
                     <Container>
                         <Row>
                             <Col className='text-center'>
                                 <div className='d-flex align-items-center justify-content-center' style={{ color: 'black' }}>
-                                    <Logo width='100px' height='100px' /><h3>Obelisk.Trade</h3>
+                                    <Logo className='logo' /><h3>Obelisk.Trade</h3>
                                 </div>
                                 <hr className='ln-white' />
                                 <div style={{ color: 'white' }}>

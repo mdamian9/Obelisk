@@ -1,4 +1,6 @@
 - To-do next:
+    - Make App responsive / optimzied for mobile browsers
+        - Working on LandingPage - navbar - position logo / login button when responsive, create login modal
 
 - EntryTradeLogPage
     - Make it so that deleting an entry also deletes the exit trade if it's already sold. Return balances back to normal
@@ -13,10 +15,6 @@
 
 - Resources Page
     - Finish resources page
-
-- Make App responsive / optimzied for mobile browsers
-    - Issues:
-        - 
 
 - toLowerCase issue (fix from root - user model - wallets)
 - Props - user - getting user data and passing as prop <> getting user data again (fix)

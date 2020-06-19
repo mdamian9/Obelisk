@@ -27,7 +27,7 @@ class SignupModal extends Component {
                         <SignupForm history={this.props.history} />
                     </ModalBody>
                     <ModalFooter>
-                        <div className="text-center">
+                        <div className="mx-auto">
                             Already have an account? Log in&nbsp;<Link to="/login">here</Link>
                         </div>
                     </ModalFooter>

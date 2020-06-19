@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthService from '../AuthService/AuthService';
 import Logo from '../Logo/Logo';
 import AlertModal from '../AlertModal/AlertModal';
+import './LandingNavbar.css';
 
 class LandingNavbar extends Component {
 
@@ -50,10 +51,10 @@ class LandingNavbar extends Component {
                 <AlertModal isOpen={this.state.alertModalOpen} toggleAlertModal={this.toggleAlertModal}
                     message={this.state.alertMsg} error={this.state.error} reload={false} />
                 <Navbar color='light' light expand='md'>
-                    <NavbarBrand href='/' className='d-flex align-items-center'>
+                    <NavbarBrand id='nav-brand' href='/'>
                         <Logo width='30px' height='30px' /><b>Obelisk</b>
                     </NavbarBrand>
-                    <Nav className='ml-auto' navbar>
+                    <Nav id='nav' className='nav-class ml-auto' navbar>
                         <Form inline id="login-form" onSubmit={this.handleFormSubmit}>
                             <FormGroup className='mb-2 mr-sm-2 mb-sm-0'>
                                 <Label for='login-username' className='mr-sm-2'>Username:</Label>
