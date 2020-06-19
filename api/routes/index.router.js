@@ -14,12 +14,12 @@ router.post('/signup', (req, res, next) => {
         if (values[0]) {
             res.status(409).json({
                 success: false,
-                message: 'The email you entered already exists!'
+                message: 'A user already exists with the email you entered!'
             });
         } else if (values[1]) {
             res.status(409).json({
                 success: false,
-                message: 'The username you entered already exists!'
+                message: 'A user already exists with the username you entered!'
             });
         } else {
             db.User.create(req.body).then(() => {

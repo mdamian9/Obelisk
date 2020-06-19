@@ -1,7 +1,7 @@
 #resources a {
-    color: white;
+    color: rgb(206, 206, 206);
 }
 
 #resources a:hover {
-    color: silver;
+    color: darkgrey;
 }

@@ -34,7 +34,7 @@ class EntryTradeRow extends Component {
     };
 
     handleFormSubmit = event => {
-        const { trade, history } = this.props;
+        const { trade } = this.props;
         event.preventDefault();
         event.persist();
         let totalDivestment = trade.totalCoins * this.state.exitPrice;
