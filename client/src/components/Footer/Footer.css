@@ -1,0 +1,23 @@
+@media only screen and (max-width: 590px) {
+    #d-three {
+        display: none !important;
+    }
+    #rights {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 443px) {
+    #logo {
+        display: none !important;
+    }
+    #d-one {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 344px) {
+    #copyright {
+        display: none !important;
+    }
+}
