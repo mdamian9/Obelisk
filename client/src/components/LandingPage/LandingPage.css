@@ -10,6 +10,14 @@
     height: 100px;
 }
 
+.content-header {
+
+}
+
+.content-body {
+    
+}
+
 @media only screen and (max-width: 768px) {
     /* .landing-content {
         margin-top: 5vh;

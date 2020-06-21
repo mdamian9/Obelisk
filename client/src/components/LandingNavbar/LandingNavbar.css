@@ -1,21 +1,22 @@
 #nav-brand {
     display: flex;
     align-items: center;
-    /* margin: 0 auto; */
 }
 
 @media only screen and (max-width: 820px) {
 
-    #nav-brand {
-        margin: 0 auto;
-    };
-
-    #nav {
+    #nav-login-form {
         display: none !important;
     }
 
-    .nav-class {
+    /* .nav-class {
+        display: none !important;
+    } */
+
+}
+
+@media only screen and (min-width: 821px) {
+    #login-modal {
         display: none !important;
     }
-
 }
