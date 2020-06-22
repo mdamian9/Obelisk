@@ -26,19 +26,21 @@ class LoginPage extends Component {
             <div>
                 <div className='content'>
                     <LogoNavbar />
-                    <Container id='login' className='text-white section-solid-white' style={{ marginTop: '17vh' }}>
-                        <Row>
-                            <Col className='mx-auto' xs={8}>
-                                <h3 className='text-center' style={{marginTop: 10}}>Log in to your account</h3>
-                                <hr className='ln-white' />
-                                <LoginForm history={this.props.history} />
-                                <hr className='ln-white' />
-                                <p className='text-center'>
-                                    Don't have an account? Sign up <Link to='/signup'>here</Link>
-                                </p>
-                            </Col>
-                        </Row>
-                    </Container>
+                    <div style={{ margin: '0px 20px 0px 20px' }}>
+                        <Container id='login' className='text-white section-solid-white'>
+                            <Row>
+                                <Col className='mx-auto' xs={12} sm={10} md={8}>
+                                    <h3 className='text-center' style={{ marginTop: 10 }}>Log in to your account</h3>
+                                    <hr className='ln-white' />
+                                    <LoginForm history={this.props.history} />
+                                    <hr className='ln-white' />
+                                    <p className='text-center'>
+                                        Don't have an account? Sign up <Link to='/signup'>here</Link>
+                                    </p>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
                     <br />
                 </div>
                 <Footer />

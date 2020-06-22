@@ -30,16 +30,16 @@ class LandingPage extends Component {
                         <Row>
                             <Col className='text-center'>
                                 <div className='d-flex align-items-center justify-content-center' style={{ color: 'black' }}>
-                                    <Logo className='logo' /><h3 className='content-header'>Obelisk.Trade</h3>
+                                    <Logo className='logo' /><h3>Obelisk.Trade</h3>
                                 </div>
                                 <hr className='ln-white' />
                                 <div style={{ color: 'white' }}>
-                                    <h3 className='middle-text'>
+                                    <h3 id='lnd-middle-text'>
                                         Welcome to obelisk.trade, where you can practice trading highly volatile cryptocurrencies without
                                         risking real capital.
                                     </h3>
                                     <hr className='ln-white' />
-                                    <h5 className='bottom-text'>
+                                    <h5 id='lnd-bottom-text'>
                                         Log in above or create an account below!
                                     </h5>
                                 </div>

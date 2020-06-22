@@ -1,16 +1,36 @@
 #signup {
-    width: 600px;
+    max-width: 600px;
+    /* margin-top: 12vh; */
 }
 
-/* @media screen and (max-width: 300px) {
-    #signup {
-      width: 200px;
-    }  
+#signup-header {
+  margin-top: 10;
+  text-align: center;
 }
-*/
- 
-@media screen and (max-width: 600px) {
-    #signup {
-      width: 300px;
-    }  
+
+@media only screen and (max-width: 345px) {
+  #signup-header {
+    font-size: 24px;
+  }
 }
+
+@media only screen and (min-width: 337px) {
+  #br {
+    display: none;
+  }
+}
+
+@media only screen and (max-height: 568px) {
+}
+
+/* @media only screen and (min-height: 569px) {
+  #signup {
+    margin-top: 5vh;
+  }
+} */
+
+/* @media only screen and (max-height: 812px) {
+  #signup {
+    margin-top: 16vh;
+  }
+} */

@@ -18,7 +18,7 @@ class SignupModal extends Component {
     render = () => {
         return (
             <div>
-                <Button color='primary' onClick={this.toggleModal}>Create account</Button>
+                <Button color='primary' onClick={this.toggleModal}>Create Account</Button>
                 <Modal isOpen={this.state.isOpen} toggle={this.toggleModal} className={this.props.className}>
                     <ModalHeader toggle={this.toggleModal}>Create Account</ModalHeader>
                     <ModalBody>

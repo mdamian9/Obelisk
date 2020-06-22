@@ -25,19 +25,22 @@ class SignupPage extends Component {
             <div>
                 <div className='content'>
                     <LogoNavbar />
-                    <Container id='signup' className='text-white section-solid-white' style={{marginTop: '12vh'}}>
-                        <Row>
-                            <Col className='mx-auto' xs={8}>
-                                <h3 className='text-center' style={{marginTop: 10}}>Create a new account</h3>
-                                <hr className='ln-white' />
-                                <SignupForm history={this.props.history} />
-                                <hr className='ln-white' />
-                                <p className='text-center'>
-                                    Already have an account? Log in <Link to='/login'>here</Link>
-                                </p>
-                            </Col>
-                        </Row>
-                    </Container>
+                    <br />
+                    <div style={{ marginLeft: '20px', marginRight: '20px' }}>
+                        <Container id='signup' className='text-white section-solid-white'>
+                            <Row>
+                                <Col className='mx-auto' xs='12' sm='10'>
+                                    <h3 id='signup-header'>Create a new account</h3>
+                                    <hr className='ln-white' />
+                                    <SignupForm history={this.props.history} />
+                                    <hr className='ln-white' />
+                                    <p className='text-center'>
+                                        Already have an account? <br id='br' />Log in <Link to='/login'>here</Link>
+                                    </p>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
                     <br />
                 </div>
                 <Footer />
