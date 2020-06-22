@@ -31,7 +31,7 @@ class LoginPage extends Component {
                         <Container id='login' className='text-white section-solid-white'>
                             <Row>
                                 <Col className='mx-auto' xs={12} sm={10} md={8}>
-                                    <h3 className='text-center' style={{ marginTop: 10 }}>Log in to your account</h3>
+                                    <h4 className='text-center' style={{ marginTop: 10 }}>Log in to your account</h4>
                                     <hr className='ln-white' />
                                     <LoginForm history={this.props.history} />
                                     <hr className='ln-white' />

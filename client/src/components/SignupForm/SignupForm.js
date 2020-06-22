@@ -66,7 +66,7 @@ class SignupForm extends Component {
                             placeholder="Enter your password" onChange={this.handleChange} required
                         />
                     </FormGroup>
-                    <Button color='primary'>Create Account</Button>
+                    <Button style={{width: '100%'}} color='primary'>Create Account</Button>
                 </Form>
             </div>
         );

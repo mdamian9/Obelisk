@@ -57,7 +57,7 @@ class LoginForm extends Component {
                         <Input type='password' name='password' id='login-password'
                             placeholder='Enter your password' onChange={this.handleChange} required />
                     </FormGroup>
-                    <Button color='primary'>Log in</Button>
+                    <Button style={{width: '100%'}} color='primary'>Log In</Button>
                 </Form>
             </div>
         );

@@ -30,7 +30,7 @@ class SignupPage extends Component {
                         <Container id='signup' className='text-white section-solid-white'>
                             <Row>
                                 <Col className='mx-auto' xs='12' sm='10'>
-                                    <h3 id='signup-header'>Create a new account</h3>
+                                    <h4 id='signup-header'>Create a new account</h4>
                                     <hr className='ln-white' />
                                     <SignupForm history={this.props.history} />
                                     <hr className='ln-white' />
