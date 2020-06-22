@@ -26,6 +26,7 @@ class LoginPage extends Component {
             <div>
                 <div className='content'>
                     <LogoNavbar />
+                    <br />
                     <div style={{ margin: '0px 20px 0px 20px' }}>
                         <Container id='login' className='text-white section-solid-white'>
                             <Row>
