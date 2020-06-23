@@ -1,16 +1,13 @@
 #signup {
   max-width: 440px;
-  margin-top: 8vh;
-  margin-bottom: 8vh;
-}
-
-#signup-header {
-  margin-top: 10;
-  text-align: center;
+  margin-top: 8.5vh;
+  margin-bottom: 8.5vh;
+  color: black;
+  background-color: #f8f9fa;
 }
 
 @media only screen and (min-width: 340px) {
-  #br {
+  #br-signup {
     display: none;
   }
 }

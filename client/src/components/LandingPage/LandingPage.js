@@ -25,6 +25,7 @@ class LandingPage extends Component {
         return (
             <div>
                 <LandingNavbar history={this.props.history} />
+                <br id='br-lnd' />
                 <div className='landing-content'>
                     <Container>
                         <Row>
@@ -47,8 +48,9 @@ class LandingPage extends Component {
                             </Col>
                         </Row>
                     </Container>
-                    <div style={footerStyle}><Footer /></div>
+                    <br id='br-lnd' />
                 </div>
+                <div style={footerStyle}><Footer /></div>
             </div>
         );
     };
@@ -60,6 +62,6 @@ const footerStyle = {
     left: 0,
     bottom: 0,
     width: '100%',
-}
+};
 
 export default LandingPage;

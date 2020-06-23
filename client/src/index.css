@@ -39,6 +39,11 @@ code {
   background: rgba(80, 214, 255, .3)
 }
 
+.border-round-10 {
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .ln-white { 
   border-color: white;
 }
