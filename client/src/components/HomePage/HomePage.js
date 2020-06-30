@@ -11,8 +11,17 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            collapseOneOpen: false,
+            collapseTwoOpen: false
         };
+    };
+
+    toggleCollapseOne = () => {
+        this.setState(prevState => ({ collapseOneOpen: !prevState.collapseOneOpen }))
+    };
+
+    toggleCollapseTwo = () => {
+        this.setState(prevState => ({ collapseTwoOpen: !prevState.collapseTwoOpen }))
     };
 
     render = () => {
@@ -25,9 +34,9 @@ class HomePage extends Component {
                         <Row className='justify-content-center'>
                             <Col>
                                 <div className='section-solid-white text-center'>
-                                    <h2>
+                                    <h2 style={{marginBottom: '0px'}}>
                                         Welcome {this.props.user.username}!
-                                </h2>
+                                    </h2>
                                     <hr className='ln-white' />
                                     <Row>
                                         <Col className='d-flex justify-content-center'>
@@ -76,12 +85,23 @@ class HomePage extends Component {
                                 <br />
                             </Col>
                             <Col>
-                                <div className='section-solid-white'>
-                                    <h2 className='text-center'>
-                                        <FontAwesomeIcon icon={['fab', 'twitter-square']} />&nbsp;Twitter News
-                                </h2>
-                                    <hr className='ln-white' />
-                                    <TwitterWidget style={{ maxHeight: '114.4vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
+                                <div className='section-solid-white' style={{width: '500px'}}>
+                                    <div>
+                                        <h2 style={{marginBottom: '0px'}} className='d-flex justify-content-center align-items-center'>
+                                            <FontAwesomeIcon icon={['fab', 'twitter-square']} />&nbsp;Twitter News
+                                            <Button id='home-colBtn-one' color='primary' onClick={this.toggleCollapseOne}>
+                                                <FontAwesomeIcon icon='angle-double-down' />
+                                            </Button>
+                                        </h2>
+                                        <Collapse isOpen={this.state.collapseOneOpen}>
+                                            <hr className='ln-white' />
+                                            <TwitterWidget style={{ maxHeight: '114.4vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
+                                        </Collapse>
+                                        <div id='twit-widg-one'>
+                                            <hr className='ln-white' />
+                                            <TwitterWidget style={{ maxHeight: '114.4vh', overflowY: 'scroll' }} keyphrase='bitcoin' />
+                                        </div>
+                                    </div>
                                 </div>
                             </Col>
                         </Row>
