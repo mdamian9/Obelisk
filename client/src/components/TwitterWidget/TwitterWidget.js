@@ -51,9 +51,6 @@ class TwitterWidget extends Component {
     };
 
     render = () => {
-        if (this.props.type === 'search') {
-            console.log(this.state.tweets);
-        };
         let searchBar = <div></div>;
         if (this.props.type === 'search') {
             searchBar =
